@@ -366,7 +366,8 @@ async function sendToServer(endpoint, body) {
     });
     const data = await res.json();
     if (data.success) {
-      window.location.href = data.redirect || '/app';
+      const dest = data.redirect || '/app';
+      window.location.href = data.isNewUser ? dest + '?new=1' : dest;
     } else {
       showError(data.error || 'Authentication failed. Please try again.');
     }

@@ -69,9 +69,9 @@ app.post('/auth/google', async (req, res) => {
     });
     const p    = ticket.getPayload();
     const user = { id: p.sub, name: p.name, email: p.email, avatar: p.picture, provider: 'google' };
-    await fb.upsertUser(user);
+    const { isNewUser } = await fb.upsertUser(user);
     setUserCookie(res, user);
-    res.json({ success: true, redirect: '/app' });
+    res.json({ success: true, redirect: '/app', isNewUser });
   } catch (err) {
     console.error('Google auth:', err.message);
     res.status(401).json({ error: 'Invalid Google token' });
@@ -94,9 +94,9 @@ app.post('/auth/apple', async (req, res) => {
       if (p?.name) name = `${p.name.firstName||''} ${p.name.lastName||''}`.trim();
     } catch {}
     const user = { id: payload.sub, name, email: payload.email||'', avatar: null, provider: 'apple' };
-    await fb.upsertUser(user);
+    const { isNewUser } = await fb.upsertUser(user);
     setUserCookie(res, user);
-    res.json({ success: true, redirect: '/app' });
+    res.json({ success: true, redirect: '/app', isNewUser });
   } catch (err) {
     console.error('Apple auth:', err.message);
     res.status(401).json({ error: 'Invalid Apple token' });
@@ -121,6 +121,27 @@ app.post('/api/session/end', requireAuthAPI, async (req, res) => {
     durationSeconds: durationSeconds || 0,
     levelBreakdown:  levelBreakdown  || {},
   });
+  res.json({ success: true });
+});
+
+// ─── Settings API ────────────────────────────────────────────────────────────
+app.get('/api/settings', requireAuthAPI, async (req, res) => {
+  const settings = await fb.getSettings(req.user.id);
+  res.json(settings);
+});
+
+app.post('/api/settings', requireAuthAPI, async (req, res) => {
+  await fb.saveSettings(req.user.id, req.body);
+  const settings = await fb.getSettings(req.user.id);
+  res.json({ success: true, settings });
+});
+
+app.post('/api/onboarding/complete', requireAuthAPI, async (req, res) => {
+  // Save initial settings from onboarding, then mark complete
+  if (req.body && Object.keys(req.body).length) {
+    await fb.saveSettings(req.user.id, req.body);
+  }
+  await fb.completeOnboarding(req.user.id);
   res.json({ success: true });
 });
 

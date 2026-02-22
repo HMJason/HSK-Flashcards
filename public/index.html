@@ -262,13 +262,227 @@
     z-index: 9998;
   }
 
-  @media (max-width: 600px) {
-    header { padding: 12px 16px; height: auto; flex-wrap: wrap; gap: 10px; }
-    nav { padding: 0 16px; } main { padding: 20px 12px; }
-    .card { padding: 24px 18px; } .card-chinese { font-size: 40px; }
-    .header-stats { gap: 20px; } .recall-label { display: none !important; }
-    .toast { bottom: 20px; }
+
+  /* ── Settings icon in header ───────────────────────────────────────────────── */
+  .settings-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--border); background: none; cursor: pointer;
+    color: var(--ink-muted); transition: all 0.22s; flex-shrink: 0;
   }
+  .settings-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(139,105,20,0.05); transform: rotate(30deg); }
+  .settings-btn svg { width: 17px; height: 17px; }
+
+  /* ── Overlay backdrop ──────────────────────────────────────────────────────── */
+  .overlay {
+    position: fixed; inset: 0; background: rgba(44,36,22,0.45);
+    z-index: 1000; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease; backdrop-filter: blur(2px);
+  }
+  .overlay.show { opacity: 1; pointer-events: auto; }
+
+  /* ── Shared modal base ─────────────────────────────────────────────────────── */
+  .modal {
+    position: fixed; z-index: 1001;
+    background: var(--card-bg); border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(44,36,22,0.18), 0 4px 16px rgba(44,36,22,0.08);
+    display: flex; flex-direction: column;
+  }
+  .modal-header {
+    padding: 28px 32px 0;
+    display: flex; align-items: flex-start; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .modal-title {
+    font-family: 'Playfair Display', serif; font-size: 22px;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .modal-sub { font-size: 14px; color: var(--ink-muted); font-style: italic; }
+  .modal-close {
+    background: none; border: none; cursor: pointer; color: var(--ink-muted);
+    padding: 4px; border-radius: 50%; transition: color 0.2s; margin-top: -4px;
+    flex-shrink: 0;
+  }
+  .modal-close:hover { color: var(--ink); }
+  .modal-body { padding: 24px 32px; overflow-y: auto; flex: 1; }
+  .modal-footer {
+    padding: 20px 32px 28px; border-top: 1px solid var(--border);
+    display: flex; gap: 10px; justify-content: flex-end; flex-shrink: 0;
+  }
+
+  /* ── Onboarding modal ──────────────────────────────────────────────────────── */
+  .onboarding-modal {
+    top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.92);
+    border-radius: 8px; width: 100%; max-width: 440px;
+    transition: transform 0.35s cubic-bezier(0.2,0.8,0.3,1), opacity 0.3s ease;
+    opacity: 0;
+  }
+  .onboarding-modal.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  .onboarding-hero {
+    text-align: center; padding: 36px 32px 12px;
+  }
+  .onboarding-char {
+    font-family: 'Noto Serif SC', serif; font-size: 64px; color: var(--red);
+    font-weight: 700; line-height: 1; display: block; margin-bottom: 16px;
+    filter: drop-shadow(0 2px 10px rgba(139,26,26,0.2));
+  }
+  .onboarding-title {
+    font-family: 'Playfair Display', serif; font-size: 24px; color: var(--ink); margin-bottom: 8px;
+  }
+  .onboarding-sub {
+    font-size: 15px; color: var(--ink-muted); font-style: italic; line-height: 1.5;
+  }
+  .target-picker {
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+    padding: 28px 0 8px;
+  }
+  .target-display {
+    font-family: 'Playfair Display', serif; font-size: 72px; color: var(--gold);
+    line-height: 1; transition: all 0.15s ease; min-width: 120px; text-align: center;
+  }
+  .target-display-sub {
+    font-size: 14px; color: var(--ink-muted); margin-top: -8px; text-align: center;
+    letter-spacing: 0.08em;
+  }
+  .target-slider {
+    width: 100%; -webkit-appearance: none; appearance: none;
+    height: 6px; border-radius: 3px; outline: none; cursor: pointer;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold) var(--pct, 20%), var(--cream-dark) var(--pct, 20%), var(--cream-dark) 100%);
+    transition: background 0.1s;
+  }
+  .target-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(139,105,20,0.4); cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .target-slider::-webkit-slider-thumb:hover { transform: scale(1.15); box-shadow: 0 3px 12px rgba(139,105,20,0.5); }
+  .target-presets {
+    display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+  }
+  .preset-btn {
+    border: 1px solid var(--border); background: none; border-radius: 20px;
+    padding: 6px 16px; font-family: 'EB Garamond', serif; font-size: 14px;
+    color: var(--ink-light); cursor: pointer; transition: all 0.18s;
+  }
+  .preset-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .preset-btn.active { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+  /* ── Settings panel (slide-in from right) ──────────────────────────────────── */
+  .settings-panel {
+    top: 0; right: 0; bottom: 0; width: 100%; max-width: 400px;
+    border-radius: 0; border-right: none;
+    transform: translateX(100%); opacity: 1;
+    transition: transform 0.35s cubic-bezier(0.2,0.8,0.3,1);
+  }
+  .settings-panel.show { transform: translateX(0); }
+
+  /* Settings sections */
+  .settings-section {
+    margin-bottom: 28px; padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .settings-section:last-child { border-bottom: none; margin-bottom: 0; }
+  .settings-section-title {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted); margin-bottom: 16px;
+  }
+  .settings-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; gap: 16px;
+  }
+  .settings-row-label { font-size: 15px; color: var(--ink); }
+  .settings-row-sub { font-size: 12px; color: var(--ink-muted); margin-top: 1px; }
+
+  /* Number input stepper */
+  .stepper {
+    display: flex; align-items: center; gap: 0;
+    border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+  }
+  .stepper-btn {
+    background: var(--cream-dark); border: none; width: 34px; height: 34px;
+    font-size: 18px; cursor: pointer; color: var(--ink-light);
+    transition: background 0.15s; display: flex; align-items: center; justify-content: center;
+  }
+  .stepper-btn:hover { background: var(--cream); color: var(--gold); }
+  .stepper-val {
+    width: 52px; text-align: center; font-family: 'Playfair Display', serif;
+    font-size: 18px; color: var(--ink); background: var(--card-bg);
+    border: none; padding: 0; outline: none;
+  }
+
+  /* Toggle switch */
+  .toggle-wrap { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+  .toggle-wrap input { opacity: 0; width: 0; height: 0; }
+  .toggle-track {
+    position: absolute; inset: 0; border-radius: 12px;
+    background: var(--cream-dark); border: 1px solid var(--border);
+    cursor: pointer; transition: background 0.25s, border-color 0.25s;
+  }
+  .toggle-track::before {
+    content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%;
+    background: #fff; top: 2px; left: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+  .toggle-wrap input:checked + .toggle-track { background: var(--gold); border-color: var(--gold); }
+  .toggle-wrap input:checked + .toggle-track::before { transform: translateX(20px); }
+
+  /* Segment control */
+  .segment {
+    display: flex; border: 1px solid var(--border); border-radius: 4px;
+    overflow: hidden; background: var(--cream-dark);
+  }
+  .segment-btn {
+    flex: 1; border: none; background: none; padding: 8px 12px;
+    font-family: 'EB Garamond', serif; font-size: 14px; cursor: pointer;
+    color: var(--ink-muted); transition: all 0.18s; white-space: nowrap;
+  }
+  .segment-btn.active {
+    background: var(--card-bg); color: var(--gold);
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  /* Select dropdown */
+  .settings-select {
+    border: 1px solid var(--border); background: var(--card-bg); border-radius: 4px;
+    padding: 7px 10px; font-family: 'EB Garamond', serif; font-size: 15px;
+    color: var(--ink); cursor: pointer; outline: none; min-width: 110px;
+  }
+  .settings-select:focus { border-color: var(--gold); }
+
+  /* Danger zone */
+  .danger-btn {
+    width: 100%; border: 1px solid rgba(139,26,26,0.25); background: none;
+    border-radius: 3px; padding: 10px; font-family: 'EB Garamond', serif;
+    font-size: 15px; color: var(--red); cursor: pointer; transition: all 0.2s;
+    text-align: left;
+  }
+  .danger-btn:hover { background: rgba(139,26,26,0.04); border-color: var(--red); }
+
+  /* Primary / secondary modal buttons */
+  .btn-primary {
+    border: 1px solid var(--gold); background: var(--gold); border-radius: 3px;
+    padding: 10px 24px; font-family: 'EB Garamond', serif; font-size: 16px;
+    color: #fff; cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em;
+  }
+  .btn-primary:hover { background: #7a5c12; border-color: #7a5c12; }
+  .btn-secondary {
+    border: 1px solid var(--border); background: none; border-radius: 3px;
+    padding: 10px 20px; font-family: 'EB Garamond', serif; font-size: 16px;
+    color: var(--ink-light); cursor: pointer; transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+  @media (max-width: 600px) {
+    .settings-panel { max-width: 100%; }
+    .modal-body { padding: 20px; }
+    .modal-header { padding: 20px 20px 0; }
+    .modal-footer { padding: 16px 20px 24px; }
+    .onboarding-char { font-size: 48px; }
+    .target-display { font-size: 56px; }
+  }
+
 </style>
 </head>
 <body>
@@ -287,6 +501,12 @@
     <button class="script-btn" onclick="setScript('traditional',this)">Traditional</button>
   </div>
   <div class="user-area">
+    <button class="settings-btn" onclick="openSettings()" aria-label="Settings" title="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+      </svg>
+    </button>
     <div class="user-avatar" id="userAvatar">漢</div>
     <span class="user-name" id="userName"></span>
     <button class="logout-btn" onclick="logout()">Sign out</button>
@@ -342,6 +562,166 @@
   </button>
 </div>
 <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+
+<!-- Shared overlay -->
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<!-- ── Onboarding Modal ─────────────────────────────────────────────────────── -->
+<div class="modal onboarding-modal" id="onboardingModal" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
+  <div class="onboarding-hero">
+    <span class="onboarding-char">歡</span>
+    <div class="onboarding-title" id="onboardingTitle">Welcome to HSK Flashcards!</div>
+    <div class="onboarding-sub">Let's personalise your study plan.<br>How many cards would you like to review each day?</div>
+  </div>
+  <div class="modal-body">
+    <div class="target-picker">
+      <div>
+        <div class="target-display" id="onboardingTargetDisplay">20</div>
+        <div class="target-display-sub">cards per day</div>
+      </div>
+      <input type="range" class="target-slider" id="onboardingSlider"
+             min="5" max="100" step="5" value="20"
+             oninput="onboardingSliderChange(this.value)"
+             style="--pct: 15%">
+      <div class="target-presets">
+        <button class="preset-btn" onclick="setOnboardingTarget(5)">5 — Casual</button>
+        <button class="preset-btn active" onclick="setOnboardingTarget(20)">20 — Daily</button>
+        <button class="preset-btn" onclick="setOnboardingTarget(50)">50 — Intensive</button>
+        <button class="preset-btn" onclick="setOnboardingTarget(100)">100 — Hardcore</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer" style="justify-content:center; padding-top:16px">
+    <button class="btn-primary" style="width:100%;max-width:240px;padding:14px" onclick="completeOnboarding()">
+      Start Learning →
+    </button>
+  </div>
+</div>
+
+<!-- ── Settings Panel ──────────────────────────────────────────────────────── -->
+<div class="modal settings-panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <div class="modal-header">
+    <div>
+      <div class="modal-title" id="settingsTitle">Settings</div>
+      <div class="modal-sub">Customise your study experience</div>
+    </div>
+    <button class="modal-close" onclick="closeSettings()" aria-label="Close settings">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <!-- Study Goals -->
+    <div class="settings-section">
+      <div class="settings-section-title">Study Goals</div>
+      <div class="settings-row">
+        <div>
+          <div class="settings-row-label">Daily target</div>
+          <div class="settings-row-sub">Cards to complete each day</div>
+        </div>
+        <div class="stepper">
+          <button class="stepper-btn" onclick="stepTarget(-5)">−</button>
+          <input class="stepper-val" id="settingsTarget" type="number" value="20" min="5" max="200" onchange="clampTarget()">
+          <button class="stepper-btn" onclick="stepTarget(5)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Display -->
+    <div class="settings-section">
+      <div class="settings-section-title">Display</div>
+      <div class="settings-row">
+        <div>
+          <div class="settings-row-label">Default script</div>
+          <div class="settings-row-sub">Shown when app loads</div>
+        </div>
+        <div class="segment" id="scriptSegment">
+          <button class="segment-btn active" onclick="setSegment('scriptSegment', this, 'preferredScript', 'simplified')">Simplified</button>
+          <button class="segment-btn" onclick="setSegment('scriptSegment', this, 'preferredScript', 'traditional')">Traditional</button>
+        </div>
+      </div>
+      <div class="settings-row">
+        <div>
+          <div class="settings-row-label">Default HSK level</div>
+          <div class="settings-row-sub">Level selected on load</div>
+        </div>
+        <select class="settings-select" id="settingsLevel" onchange="settingChanged('defaultLevel', this.value)">
+          <option value="all">All HSK</option>
+          <option value="1">HSK 1</option>
+          <option value="2">HSK 2</option>
+          <option value="3">HSK 3</option>
+          <option value="4">HSK 4</option>
+          <option value="5">HSK 5</option>
+          <option value="6">HSK 6</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Audio -->
+    <div class="settings-section">
+      <div class="settings-section-title">Audio</div>
+      <div class="settings-row">
+        <div>
+          <div class="settings-row-label">Sound effects</div>
+          <div class="settings-row-sub">Audio feedback on recall</div>
+        </div>
+        <label class="toggle-wrap">
+          <input type="checkbox" id="settingsSound" onchange="settingChanged('soundEnabled', this.checked)">
+          <span class="toggle-track"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Analytics -->
+    <div class="settings-section">
+      <div class="settings-section-title">Analytics</div>
+      <div class="settings-row">
+        <div>
+          <div class="settings-row-label">Session tracking</div>
+          <div class="settings-row-sub">Save study sessions to Firebase</div>
+        </div>
+        <label class="toggle-wrap">
+          <input type="checkbox" id="settingsTracking" checked onchange="settingChanged('trackingEnabled', this.checked)">
+          <span class="toggle-track"></span>
+        </label>
+      </div>
+      <div class="settings-row" style="padding-top:0">
+        <a href="/dashboard" style="font-family:'EB Garamond',serif;font-size:15px;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:6px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          View detailed analytics →
+        </a>
+      </div>
+    </div>
+
+    <!-- Account -->
+    <div class="settings-section">
+      <div class="settings-section-title">Account</div>
+      <div class="settings-row" style="padding-bottom:0">
+        <div>
+          <div class="settings-row-label" id="settingsUserName">—</div>
+          <div class="settings-row-sub" id="settingsUserEmail">—</div>
+        </div>
+        <div class="user-avatar" id="settingsAvatar" style="width:38px;height:38px;font-size:16px">漢</div>
+      </div>
+    </div>
+
+    <!-- Danger zone -->
+    <div class="settings-section" style="border-bottom:none">
+      <div class="settings-section-title">Account Actions</div>
+      <button class="danger-btn" onclick="logout()">
+        Sign out of HSK Flashcards
+      </button>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn-secondary" onclick="closeSettings()">Cancel</button>
+    <button class="btn-primary" id="settingsSaveBtn" onclick="saveSettings()">Save changes</button>
+  </div>
+</div>
+
 <script>
 // ─── State ────────────────────────────────────────────────────────────────────
 let allVocab=[], script='simplified', currentLevel='all';
@@ -495,43 +875,227 @@ async function loadVocab(){
   }
 }
 
+// ─── Settings state ──────────────────────────────────────────────────────────
+let currentSettings = {};
+let pendingSettings  = {};
+
+// ─── User & Settings loading ──────────────────────────────────────────────────
 async function loadUser(){
+  let user;
   try {
     const res = await fetch('/auth/me');
     if (!res.ok) { window.location.href='/login'; return; }
-    const user = await res.json();
-    document.getElementById('userName').textContent = user.name?.split(' ')[0] || '';
-    const avatarEl = document.getElementById('userAvatar');
-    if (user.avatar) {
-      avatarEl.innerHTML = `<img src="${user.avatar}" alt="${user.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
-    } else {
-      avatarEl.textContent = (user.name?.[0] || '漢').toUpperCase();
-    }
+    user = await res.json();
   } catch { window.location.href='/login'; return; }
 
-  // Load progress to seed daily bar
+  // Render avatar in header
+  setAvatarEl('userAvatar', user);
+
+  // Populate settings panel account section
+  document.getElementById('settingsUserName').textContent  = user.name  || '—';
+  document.getElementById('settingsUserEmail').textContent = user.email || '—';
+  document.getElementById('userName').textContent = user.name?.split(' ')[0] || '';
+  setAvatarEl('settingsAvatar', user);
+
+  // Load settings from server
   try {
-    const res = await fetch('/api/progress');
-    if (!res.ok) { initDailyBar(20); return; }
-    const { progress } = await res.json();
+    const sr = await fetch('/api/settings');
+    currentSettings = sr.ok ? await sr.json() : { dailyTarget: 20 };
+  } catch { currentSettings = { dailyTarget: 20 }; }
 
-    // Daily target = weeklyTarget / 7, rounded up, minimum 5
-    const weeklyTarget = progress?.weeklyTarget || 140;
-    const target = Math.max(5, Math.ceil(weeklyTarget / 7));
+  applySettings(currentSettings);
 
-    // Cards done today = weeklyProgress if weekStart is this week, else 0
-    // We use today's session count from the server — fall back to 0 for new users
-    const todayStr = new Date().toISOString().split('T')[0];
-    const weekStart = progress?.weekStart;
-    // weeklyProgress resets each Monday — use it as a rough today proxy
-    // For a precise "today" count we'd need a daily sub-collection; for now
-    // seed from 0 each page load (Firebase tracks the real total)
-    dailyDone = 0;
-    targetNotified = false;
-    initDailyBar(target);
-  } catch {
-    initDailyBar(20);
+  // Show onboarding if ?new=1 in URL
+  if (new URLSearchParams(location.search).get('new') === '1') {
+    showOnboarding(user.name);
   }
+}
+
+function setAvatarEl(id, user) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (user.avatar) {
+    el.innerHTML = `<img src="${user.avatar}" alt="${user.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+  } else {
+    el.textContent = (user.name?.[0] || '漢').toUpperCase();
+  }
+}
+
+function applySettings(s) {
+  // Daily bar
+  dailyDone = 0;
+  targetNotified = false;
+  initDailyBar(s.dailyTarget || 20);
+
+  // Script
+  if (s.preferredScript) {
+    script = s.preferredScript;
+    document.querySelectorAll('.script-btn').forEach(b => {
+      b.classList.toggle('active', b.textContent.toLowerCase().includes(script));
+    });
+  }
+
+  // Default level
+  if (s.defaultLevel !== undefined) {
+    currentLevel = s.defaultLevel === 'all' ? 'all' : parseInt(s.defaultLevel);
+    document.querySelectorAll('.level-btn').forEach(b => {
+      const lvl = b.textContent.includes('All') ? 'all' : parseInt(b.textContent.replace('HSK ',''));
+      b.classList.toggle('active', lvl === currentLevel || (lvl === 'all' && currentLevel === 'all'));
+    });
+  }
+
+  // Populate settings panel controls
+  const ti = document.getElementById('settingsTarget');
+  if (ti) ti.value = s.dailyTarget || 20;
+
+  const ss = document.getElementById('settingsSound');
+  if (ss) ss.checked = s.soundEnabled !== false;
+
+  const st = document.getElementById('settingsTracking');
+  if (st) st.checked = s.trackingEnabled !== false;
+
+  const sel = document.getElementById('settingsLevel');
+  if (sel) sel.value = s.defaultLevel || 'all';
+
+  // Script segment
+  const scriptSeg = document.getElementById('scriptSegment');
+  if (scriptSeg) {
+    scriptSeg.querySelectorAll('.segment-btn').forEach(b => {
+      b.classList.toggle('active', b.textContent.toLowerCase().trim() === (s.preferredScript || 'simplified'));
+    });
+  }
+}
+
+// ─── Onboarding ───────────────────────────────────────────────────────────────
+function showOnboarding(name) {
+  const title = document.getElementById('onboardingTitle');
+  if (title && name) title.textContent = `Welcome, ${name.split(' ')[0]}!`;
+  document.getElementById('overlay').classList.add('show');
+  document.getElementById('onboardingModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function setOnboardingTarget(val) {
+  const slider  = document.getElementById('onboardingSlider');
+  const display = document.getElementById('onboardingTargetDisplay');
+  slider.value  = val;
+  display.textContent = val;
+  const pct = ((val - 5) / (100 - 5)) * 100;
+  slider.style.setProperty('--pct', pct + '%');
+  document.querySelectorAll('.preset-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.textContent) === val);
+  });
+}
+
+function onboardingSliderChange(val) {
+  const v = parseInt(val);
+  const display = document.getElementById('onboardingTargetDisplay');
+  display.textContent = v;
+  const pct = ((v - 5) / (100 - 5)) * 100;
+  document.getElementById('onboardingSlider').style.setProperty('--pct', pct + '%');
+  document.querySelectorAll('.preset-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.textContent) === v);
+  });
+}
+
+async function completeOnboarding() {
+  const target = parseInt(document.getElementById('onboardingSlider').value) || 20;
+  await fetch('/api/onboarding/complete', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ dailyTarget: target })
+  });
+  currentSettings.dailyTarget = target;
+  initDailyBar(target);
+  closeAll();
+  // Clean URL
+  history.replaceState({}, '', '/app');
+}
+
+// ─── Settings panel ───────────────────────────────────────────────────────────
+function openSettings() {
+  pendingSettings = { ...currentSettings };
+  document.getElementById('overlay').classList.add('show');
+  document.getElementById('settingsPanel').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSettings() {
+  document.getElementById('settingsPanel').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function closeAll() {
+  document.getElementById('overlay').classList.remove('show');
+  document.getElementById('onboardingModal').classList.remove('show');
+  document.getElementById('settingsPanel').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function settingChanged(key, value) {
+  pendingSettings[key] = value;
+}
+
+function setSegment(containerId, btn, key, value) {
+  document.getElementById(containerId).querySelectorAll('.segment-btn')
+    .forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  pendingSettings[key] = value;
+}
+
+function stepTarget(delta) {
+  const input = document.getElementById('settingsTarget');
+  const val   = Math.max(5, Math.min(200, (parseInt(input.value) || 20) + delta));
+  input.value = val;
+  pendingSettings.dailyTarget = val;
+}
+
+function clampTarget() {
+  const input = document.getElementById('settingsTarget');
+  const val   = Math.max(5, Math.min(200, parseInt(input.value) || 20));
+  input.value = val;
+  pendingSettings.dailyTarget = val;
+}
+
+async function saveSettings() {
+  const btn = document.getElementById('settingsSaveBtn');
+  btn.textContent = 'Saving…'; btn.disabled = true;
+
+  // Collect all current control values
+  const target   = parseInt(document.getElementById('settingsTarget').value) || 20;
+  const sound    = document.getElementById('settingsSound').checked;
+  const tracking = document.getElementById('settingsTracking').checked;
+  const level    = document.getElementById('settingsLevel').value;
+  const scriptSeg = document.getElementById('scriptSegment');
+  const scriptVal = scriptSeg?.querySelector('.segment-btn.active')?.textContent.toLowerCase().trim() || 'simplified';
+
+  const updates = {
+    dailyTarget:      target,
+    soundEnabled:     sound,
+    trackingEnabled:  tracking,
+    defaultLevel:     level,
+    preferredScript:  scriptVal,
+    ...pendingSettings,
+    // overwrite with explicit control values
+    dailyTarget:      target,
+  };
+
+  try {
+    const res  = await fetch('/api/settings', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updates)
+    });
+    const data = await res.json();
+    if (data.success) {
+      currentSettings = data.settings;
+      applySettings(currentSettings);
+      closeSettings();
+    }
+  } catch(e) {
+    alert('Could not save settings. Please try again.');
+  }
+
+  btn.textContent = 'Save changes'; btn.disabled = false;
 }
 
 async function logout(){

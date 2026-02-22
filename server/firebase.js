@@ -66,29 +66,37 @@ function getDb() { return db; }
 // ─── Users ────────────────────────────────────────────────────────────────────
 
 async function upsertUser(user) {
-  if (!db) return;
-  const ref = db.collection('users').doc(user.id);
+  if (!db) return { isNewUser: false };
+  const ref  = db.collection('users').doc(user.id);
   const snap = await ref.get();
 
   if (!snap.exists) {
     await ref.set({
-      provider: user.provider,
-      name: user.name,
-      email: user.email,
-      avatar: user.avatar || null,
-      createdAt: admin.firestore.FieldValue.serverTimestamp(),
-      lastLoginAt: admin.firestore.FieldValue.serverTimestamp(),
-      totalSessions: 0,
-      totalCards: 0,
-      totalTime: 0,
+      provider:           user.provider,
+      name:               user.name,
+      email:              user.email,
+      avatar:             user.avatar || null,
+      createdAt:          admin.firestore.FieldValue.serverTimestamp(),
+      lastLoginAt:        admin.firestore.FieldValue.serverTimestamp(),
+      totalSessions:      0,
+      totalCards:         0,
+      totalTime:          0,
+      onboardingComplete: false,
     });
+    return { isNewUser: true };
   } else {
     await ref.update({
       lastLoginAt: admin.firestore.FieldValue.serverTimestamp(),
-      name: user.name,      // name can change on provider
-      avatar: user.avatar || null,
+      name:        user.name,
+      avatar:      user.avatar || null,
     });
+    return { isNewUser: !snap.data().onboardingComplete };
   }
+}
+
+async function completeOnboarding(uid) {
+  if (!db) return;
+  await db.collection('users').doc(uid).update({ onboardingComplete: true });
 }
 
 async function getUser(uid) {
@@ -277,8 +285,41 @@ async function getTopLevel(uid) {
 // ─── Exports ──────────────────────────────────────────────────────────────────
 module.exports = {
   init, getDb,
-  upsertUser, getUser,
+  upsertUser, getUser, completeOnboarding,
   startSession, endSession,
   getProgress, setWeeklyTarget, updateProgress,
   getRecentSessions, getTopLevel,
+  getSettings, saveSettings, SETTINGS_DEFAULTS,
 };
+
+// ─── Settings ─────────────────────────────────────────────────────────────────
+
+const SETTINGS_DEFAULTS = {
+  dailyTarget:          20,
+  preferredScript:      'simplified',   // 'simplified' | 'traditional'
+  defaultLevel:         'all',          // 'all' | 1-6
+  soundEnabled:         true,
+  notificationsEnabled: false,
+  theme:                'cream',        // future: 'dark'
+};
+
+async function getSettings(uid) {
+  if (!db) return SETTINGS_DEFAULTS;
+  const snap = await db.collection('settings').doc(uid).get();
+  return snap.exists ? { ...SETTINGS_DEFAULTS, ...snap.data() } : { ...SETTINGS_DEFAULTS };
+}
+
+async function saveSettings(uid, updates) {
+  if (!db) return;
+  const allowed = Object.keys(SETTINGS_DEFAULTS);
+  const clean   = Object.fromEntries(
+    Object.entries(updates).filter(([k]) => allowed.includes(k))
+  );
+  clean.updatedAt = admin.firestore.FieldValue.serverTimestamp();
+  await db.collection('settings').doc(uid).set(clean, { merge: true });
+
+  // Keep weeklyTarget in progress in sync with dailyTarget
+  if (clean.dailyTarget != null) {
+    await setWeeklyTarget(uid, clean.dailyTarget * 7);
+  }
+}
