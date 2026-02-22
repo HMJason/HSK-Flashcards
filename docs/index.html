@@ -302,8 +302,8 @@
 
 <nav>
   <span class="nav-label">Level:</span>
-  <button class="level-btn active" onclick="setLevel('all',this)">All HSK</button>
-  <button class="level-btn" onclick="setLevel(1,this)">HSK 1</button>
+  <button class="level-btn" onclick="setLevel('all',this)">All HSK</button>
+  <button class="level-btn active" onclick="setLevel(1,this)">HSK 1</button>
   <button class="level-btn" onclick="setLevel(2,this)">HSK 2</button>
   <button class="level-btn" onclick="setLevel(3,this)">HSK 3</button>
   <button class="level-btn" onclick="setLevel(4,this)">HSK 4</button>
@@ -459,7 +459,7 @@ const DEFAULT_SETTINGS = {
 };
 
 // ─── State ────────────────────────────────────────────────────────────────────
-let allVocab=[], script='simplified', currentLevel='all';
+let allVocab=[], script='simplified', currentLevel=1;
 let queue=[], doneCount=0, reviewCount=0, reviewed=0, cardsCorrect=0, currentCard=null;
 let currentSettings={}, pendingSettings={};
 let dailyTarget=20, dailyDone=0, targetNotified=false;

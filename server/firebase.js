@@ -297,7 +297,7 @@ module.exports = {
 const SETTINGS_DEFAULTS = {
   dailyTarget:          20,
   preferredScript:      'simplified',   // 'simplified' | 'traditional'
-  defaultLevel:         'all',          // 'all' | 1-6
+  defaultLevel:         1,          // 'all' | 1-6
   soundEnabled:         true,
   notificationsEnabled: false,
   theme:                'cream',        // future: 'dark'
