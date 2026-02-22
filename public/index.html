@@ -64,6 +64,9 @@
   .card-chinese { font-family: 'Noto Serif SC', serif; font-size: 56px; color: var(--ink); font-weight: 400; line-height: 1.1; }
   .card-pinyin { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--red); margin-top: 8px; }
   .card-meaning { font-size: 16px; color: var(--ink-light); margin-top: 4px; }
+  .reveal-btn { width: 100%; margin-top: 24px; padding: 14px; border: 1.5px dashed var(--border); background: none; border-radius: 3px; font-family: 'EB Garamond', serif; font-size: 16px; color: var(--ink-muted); cursor: pointer; letter-spacing: 0.06em; transition: all 0.2s; }
+  .reveal-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(139,105,20,0.04); }
+  .card-answer { animation: fadeSlide 0.25s ease; }
   .card-alt-label { font-size: 13px; color: var(--ink-muted); margin-top: 6px; }
   .card-alt-label span { font-family: 'Noto Serif SC', serif; font-size: 15px; color: var(--ink-light); }
   .card-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
@@ -1241,31 +1244,41 @@ function renderCard(card){
       <div class="card-top">
         <div class="card-chinese">${chinese}</div>
         <div class="card-pinyin">${card.p}</div>
-        <div class="card-meaning">${card.m}</div>
         ${showAlt?`<div class="card-alt-label">${isTrad?'Simplified':'Traditional'}: <span>${alt}</span></div>`:''}
       </div>
-      <hr class="card-divider">
-      <div class="speak-row">
-        <button class="speak-btn" onclick="speakWord()">
-          <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.536 8.464a5 5 0 010 7.072M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Speak word
-        </button>
-        <button class="speak-btn" onclick="speakPinyin()">
-          <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg>
-          Pinyin hint
-        </button>
-        <a href="/dashboard" class="speak-btn" style="text-decoration:none">
-          <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          My Stats
-        </a>
-      </div>
-      ${charsHTML}
-      <div class="recall-row">
-        <button class="recall-btn recall-again" onclick="recall('again')"><span class="recall-label">AGAIN</span><span class="recall-name">Tomorrow</span></button>
-        <button class="recall-btn recall-good" onclick="recall('good')"><span class="recall-label">GOOD</span><span class="recall-name">Recall</span></button>
-        <button class="recall-btn recall-perfect" onclick="recall('perfect')"><span class="recall-label">PERFECT</span><span class="recall-name">Recall</span></button>
+      <button class="reveal-btn" onclick="revealCard()">Tap to reveal meaning</button>
+      <div id="cardAnswer" class="card-answer" style="display:none">
+        <div class="card-meaning">${card.m}</div>
+        <hr class="card-divider">
+        <div class="speak-row">
+          <button class="speak-btn" onclick="speakWord()">
+            <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.536 8.464a5 5 0 010 7.072M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Speak word
+          </button>
+          <button class="speak-btn" onclick="speakPinyin()">
+            <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg>
+            Pinyin hint
+          </button>
+          <a href="/dashboard" class="speak-btn" style="text-decoration:none">
+            <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            My Stats
+          </a>
+        </div>
+        ${charsHTML}
+        <div class="recall-row">
+          <button class="recall-btn recall-again" data-t="again" onclick="recall(this.dataset.t)"><span class="recall-label">AGAIN</span><span class="recall-name">Tomorrow</span></button>
+          <button class="recall-btn recall-good" data-t="good" onclick="recall(this.dataset.t)"><span class="recall-label">GOOD</span><span class="recall-name">Recall</span></button>
+          <button class="recall-btn recall-perfect" data-t="perfect" onclick="recall(this.dataset.t)"><span class="recall-label">PERFECT</span><span class="recall-name">Recall</span></button>
+        </div>
       </div>
     </div>`;
+}
+
+function revealCard(){
+  const btn = document.querySelector('.reveal-btn');
+  const ans = document.getElementById('cardAnswer');
+  if(btn) btn.style.display = 'none';
+  if(ans) ans.style.display = '';
 }
 
 function recall(type){

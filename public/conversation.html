@@ -68,6 +68,9 @@
   .card-chinese{font-family:'Noto Serif SC',serif;font-size:56px;color:var(--ink);font-weight:400;line-height:1.1}
   .card-pinyin{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--red);margin-top:8px}
   .card-meaning{font-size:16px;color:var(--ink-light);margin-top:4px}
+  .reveal-btn{width:100%;margin-top:24px;padding:14px;border:1.5px dashed var(--border);background:none;border-radius:3px;font-family:'EB Garamond',serif;font-size:16px;color:var(--ink-muted);cursor:pointer;letter-spacing:.06em;transition:all .2s}
+  .reveal-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(139,105,20,.04)}
+  .card-answer{animation:fadeSlide .25s ease}
   .card-tip{font-size:14px;color:var(--ink-muted);font-style:italic;margin-top:10px;line-height:1.55;
     padding-top:10px;border-top:1px dashed rgba(139,105,20,0.2)}
   .card-divider{border:none;border-top:1px solid var(--border);margin:20px 0}
@@ -228,9 +231,11 @@ function renderCard(p){
     '<div class="card-top">'+
     '<div class="'+primaryCls+'">'+primary+'</div>'+
     '<div class="'+secondaryCls+'">'+secondary+'</div>'+
+    '</div>'+
+    '<button class="reveal-btn" onclick="revealCard()">Tap to reveal meaning</button>'+
+    '<div id="cardAnswer" class="card-answer" style="display:none">'+
     '<div class="card-meaning">'+p.en+'</div>'+
     '<div class="card-tip">&#128161; '+p.tip+'</div>'+
-    '</div>'+
     '<hr class="card-divider">'+
     '<div class="speak-row">'+
     '<button class="speak-btn" data-lang="zh" onclick="speakPhrase(this)">'+speakerSvg+'Speak Chinese</button>'+
@@ -240,7 +245,13 @@ function renderCard(p){
     '<button class="recall-btn recall-again" data-t="again" onclick="recall(this.dataset.t)"><span class="recall-label">AGAIN</span><span class="recall-name">Not yet</span></button>'+
     '<button class="recall-btn recall-good" data-t="good" onclick="recall(this.dataset.t)"><span class="recall-label">GOOD</span><span class="recall-name">Got it</span></button>'+
     '<button class="recall-btn recall-perfect" data-t="perfect" onclick="recall(this.dataset.t)"><span class="recall-label">PERFECT</span><span class="recall-name">Nailed it</span></button>'+
-    '</div></div>';
+    '</div></div></div>';
+}
+function revealCard(){
+  var btn=document.querySelector(".reveal-btn");
+  var ans=document.getElementById("cardAnswer");
+  if(btn) btn.style.display="none";
+  if(ans) ans.style.display="";
 }
 function recall(type){
   if(!currentCard) return;
