@@ -59,16 +59,16 @@
   .progress-bar-wrap{height:6px;background:var(--cream-dark);border-radius:3px;margin-bottom:32px;overflow:hidden}
   .progress-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--red) 0%,var(--gold) 100%);
     transition:width .6s cubic-bezier(.4,0,.2,1)}
-  .card{background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:40px 44px;
+  .card{background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:60px 56px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;
     box-shadow:0 4px 24px rgba(44,36,22,.06);animation:fadeSlide .35s ease}
   @keyframes fadeSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
   .cat-badge{display:inline-block;font-size:10px;letter-spacing:.15em;border:1px solid var(--gold-light);
     color:var(--gold);padding:2px 8px;border-radius:2px;margin-bottom:12px}
   .card-top{margin-bottom:20px}
-  .card-chinese{font-family:'Noto Serif SC',serif;font-size:56px;color:var(--ink);font-weight:400;line-height:1.1}
-  .card-pinyin{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--red);margin-top:8px}
+  .card-chinese{font-family:'Noto Serif SC',serif;font-size:80px;color:var(--ink);font-weight:400;line-height:1.05}
+  .card-pinyin{font-family:'Playfair Display',serif;font-size:32px;font-style:italic;color:var(--red);margin-top:12px}
   .card-meaning{font-size:16px;color:var(--ink-light);margin-top:4px}
-  .reveal-btn{width:100%;margin-top:24px;padding:14px;border:1.5px dashed var(--border);background:none;border-radius:3px;font-family:'EB Garamond',serif;font-size:16px;color:var(--ink-muted);cursor:pointer;letter-spacing:.06em;transition:all .2s}
+  .reveal-btn{width:100%;margin-top:32px;padding:22px;border:1.5px dashed var(--border);background:none;border-radius:3px;font-family:'EB Garamond',serif;font-size:20px;color:var(--ink-muted);cursor:pointer;letter-spacing:.08em;transition:all .2s}
   .reveal-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(139,105,20,.04)}
   .card-answer{animation:fadeSlide .25s ease}
   .card-tip{font-size:14px;color:var(--ink-muted);font-style:italic;margin-top:10px;line-height:1.55;
@@ -103,7 +103,7 @@
     header{padding:0 16px;gap:8px} nav{padding:0 12px}
     .logo-text{display:none}
     .stats-strip{gap:28px;padding:0 16px} main{padding:20px 12px 60px}
-    .card{padding:24px 18px} .card-chinese{font-size:40px}
+    .card{padding:36px 24px;min-height:260px} .card-chinese{font-size:56px}
     .recall-label{display:none!important}
   }
 </style>
