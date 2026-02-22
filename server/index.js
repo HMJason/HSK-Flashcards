@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express      = require('express');
+const compression  = require('compression');
 const cookieParser = require('cookie-parser');
 const path         = require('path');
 const fs           = require('fs');
@@ -11,6 +12,7 @@ const fb           = require('./firebase');
 fb.init();
 const app  = express();
 const PORT = process.env.PORT || 3000;
+app.use(compression());           // gzip all responses
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -67,8 +69,13 @@ app.get('/login', (_req, res) => {
 app.get('/app',       requireAuth, (_req, res) => res.sendFile(path.join(__dirname, '../public/index.html')));
 app.get('/dashboard', requireAuth, (_req, res) => res.sendFile(path.join(__dirname, '../public/dashboard.html')));
 
-// Static assets only for authenticated users
-app.use('/app-assets', requireAuth, express.static(path.join(__dirname, '../public')));
+// Static assets — vocab.json gets a long cache (content never changes)
+app.use('/app-assets', requireAuth, (req, res, next) => {
+  if (req.path.startsWith('/vocab')) {
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+  }
+  next();
+}, express.static(path.join(__dirname, '../public')));
 
 // ─── Google Auth ──────────────────────────────────────────────────────────────
 app.post('/auth/google', async (req, res) => {

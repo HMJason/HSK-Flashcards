@@ -888,11 +888,55 @@ window.addEventListener('beforeunload', () => {
 });
 
 // ─── Data loading ─────────────────────────────────────────────────────────────
-async function loadVocab(){
+// ─── Vocab loading (lazy by level) ───────────────────────────────────────────
+// Loads only the active level first so first cards appear in <1s,
+// then streams remaining levels silently in the background.
+const vocabCache = {};   // level → words array, keyed 1-6 or 'all'
+
+async function fetchLevel(level) {
+  if (vocabCache[level]) return vocabCache[level];
+  const url = level === 'all'
+    ? '/app-assets/vocab.json'
+    : `/app-assets/vocab-hsk${level}.json`;
+  const res  = await fetch(url);
+  const data = await res.json();
+  vocabCache[level] = data;
+  if (level !== 'all') {
+    // also merge into the 'all' cache as levels arrive
+    vocabCache['all'] = Object.values(
+      Object.fromEntries(
+        [...(vocabCache['all']||[]), ...data].map(w => [w.s+w.h, w])
+      )
+    );
+  }
+  return data;
+}
+
+async function loadVocab() {
   try {
-    const res = await fetch('/app-assets/vocab.json');
-    allVocab = await res.json();
+    // Load active level first so cards appear immediately
+    const firstLevel = currentLevel === 'all' ? 1 : currentLevel;
+    const firstBatch = await fetchLevel(firstLevel);
+
+    if (currentLevel === 'all') {
+      allVocab = firstBatch;  // show HSK1 cards while rest loads
+    } else {
+      allVocab = firstBatch;
+    }
     initQueue();
+
+    // Background: load remaining levels silently
+    if (currentLevel === 'all') {
+      const remaining = [2, 3, 4, 5, 6];
+      for (const lvl of remaining) {
+        fetchLevel(lvl).then(words => {
+          allVocab = [...allVocab, ...words];
+          vocabCache['all'] = allVocab;
+          // Update due count as more words load in
+          document.getElementById('statDue').textContent = queue.length + (allVocab.length - queue.length - doneCount > 0 ? '+' : '');
+        }).catch(() => {});
+      }
+    }
   } catch(e) {
     document.getElementById('cardContainer').innerHTML='<div class="done-state"><div class="done-char">！</div><div class="done-title">Could not load vocabulary</div><div class="done-subtitle">Make sure the server is running: <code>npm start</code></div></div>';
   }
@@ -1137,11 +1181,25 @@ async function initQueue(){
   showNext();
 }
 
-function setLevel(l,btn){
-  currentLevel = l==='all'?'all':parseInt(l);
-  document.querySelectorAll('.level-btn').forEach(b=>b.classList.remove('active'));
+async function setLevel(l, btn) {
+  currentLevel = l === 'all' ? 'all' : parseInt(l);
+  document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  if(allVocab.length) initQueue();
+
+  // Use cache if available, else fetch (shows spinner briefly)
+  if (currentLevel === 'all' && vocabCache['all']?.length) {
+    allVocab = vocabCache['all'];
+    initQueue();
+  } else if (currentLevel !== 'all' && vocabCache[currentLevel]) {
+    allVocab = vocabCache[currentLevel];
+    initQueue();
+  } else {
+    document.getElementById('cardContainer').innerHTML =
+      '<div class="loading"><div class="loading-char">漢</div><div class="loading-text">Loading HSK '+(l==='all'?'words':'level '+l)+'…</div></div>';
+    const words = await fetchLevel(currentLevel === 'all' ? 'all' : currentLevel);
+    allVocab = words;
+    initQueue();
+  }
 }
 
 function setScript(s,btn){

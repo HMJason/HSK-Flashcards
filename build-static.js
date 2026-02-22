@@ -12,12 +12,16 @@ const path = require('path');
 const DOCS = path.join(__dirname, 'docs');
 if (!fs.existsSync(DOCS)) fs.mkdirSync(DOCS);
 
-// Copy vocab.json
-fs.copyFileSync(
-  path.join(__dirname, 'public/vocab.json'),
-  path.join(DOCS, 'vocab.json')
-);
-console.log('✅ Copied vocab.json');
+// Copy vocab files (full + per-level)
+const vocabFiles = ['vocab.json', 'vocab-hsk1.json', 'vocab-hsk2.json',
+  'vocab-hsk3.json', 'vocab-hsk4.json', 'vocab-hsk5.json', 'vocab-hsk6.json'];
+vocabFiles.forEach(f => {
+  const src = path.join(__dirname, 'public', f);
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, path.join(DOCS, f));
+    console.log('✅ Copied ' + f);
+  }
+});
 
 // ─── Build index.html ─────────────────────────────────────────────────────────
 const html = `<!DOCTYPE html>
@@ -697,12 +701,32 @@ function saveProgress(){
   document.getElementById('statStreak').textContent=streak;
 }
 
-// ─── Vocab loading ────────────────────────────────────────────────────────────
+// ─── Vocab loading (lazy by level) ────────────────────────────────────────────
+const vocabCache={};
+async function fetchLevel(level){
+  if(vocabCache[level]) return vocabCache[level];
+  const url=level==='all'?'vocab.json':'vocab-hsk'+level+'.json';
+  const res=await fetch(url);
+  const data=await res.json();
+  vocabCache[level]=data;
+  if(level!=='all'){
+    vocabCache['all']=[...(vocabCache['all']||[]),...data];
+  }
+  return data;
+}
 async function loadVocab(){
   try{
-    const res=await fetch('vocab.json');
-    allVocab=await res.json();
+    const first=currentLevel==='all'?1:currentLevel;
+    allVocab=await fetchLevel(first);
     initQueue();
+    if(currentLevel==='all'){
+      for(const lvl of [2,3,4,5,6]){
+        fetchLevel(lvl).then(w=>{
+          allVocab=[...allVocab,...w];
+          vocabCache['all']=allVocab;
+        }).catch(()=>{});
+      }
+    }
   }catch(e){
     document.getElementById('cardContainer').innerHTML=
       '<div class="done-state"><div class="done-char">！</div><div class="done-title">Could not load vocabulary</div></div>';
@@ -716,11 +740,23 @@ function initQueue(){
   sessionStart=Date.now();
   updateStats(); showNext();
 }
-function setLevel(l,btn){
+async function setLevel(l,btn){
   currentLevel=l==='all'?'all':parseInt(l);
   document.querySelectorAll('.level-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  if(allVocab.length) initQueue();
+  const cacheKey=currentLevel;
+  if(vocabCache[cacheKey]?.length){
+    allVocab=vocabCache[cacheKey];
+    initQueue();
+  } else {
+    document.getElementById('cardContainer').innerHTML=
+      '<div class="loading"><div class="loading-char">漢</div><div class="loading-text">Loading…</div></div>';
+    allVocab=await fetchLevel(currentLevel==='all'?1:currentLevel);
+    initQueue();
+    if(currentLevel==='all'){
+      for(const lvl of [2,3,4,5,6]) fetchLevel(lvl).then(w=>{allVocab=[...allVocab,...w];}).catch(()=>{});
+    }
+  }
 }
 function setScript(s,btn){
   script=s;
