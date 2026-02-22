@@ -186,7 +186,7 @@
 </head>
 <body>
 <header>
-  <a class="logo" href="index.html">
+  <a class="logo" href="/home">
     <div class="logo-char">漢</div>
     <div class="logo-text">HSK Flashcards</div>
   </a>
@@ -203,7 +203,7 @@
   <p class="hero-sub">We're here to help. What would you like to do today?</p>
 
   <div class="choices">
-    <a class="choice-card" href="flashcards.html">
+    <a class="choice-card" href="/app">
       <span class="choice-icon">學</span>
       <div class="choice-label">Study</div>
       <div class="choice-title">Flashcards</div>
@@ -214,7 +214,7 @@
       </div>
     </a>
 
-    <a class="choice-card" href="conversation.html">
+    <a class="choice-card" href="/conversation">
       <span class="choice-icon">說</span>
       <div class="choice-label">Speak</div>
       <div class="choice-title">Conversational Starters</div>
@@ -228,21 +228,28 @@
 </main>
 
 <footer>
-  <a href="#">View your analytics</a> &nbsp;·&nbsp;
+  <a href="/dashboard">View your analytics</a> &nbsp;·&nbsp;
   5,000 words across HSK 1–6
 </footer>
 
 <script>
-const LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d}catch{return d}}};
-function loadUser(){
-  const user=LS.get('hsk_user',null);
-  if(user){
-    document.getElementById('userName').textContent=user.name?.split(' ')[0]||'';
-    document.getElementById('userAvatar').textContent=(user.name?.[0]||'漢').toUpperCase();
-  }
+async function loadUser() {
+  try {
+    const res = await fetch('/auth/me');
+    if (!res.ok) { window.location.href = '/login'; return; }
+    const user = await res.json();
+    document.getElementById('userName').textContent = user.name?.split(' ')[0] || '';
+    const av = document.getElementById('userAvatar');
+    if (user.avatar) {
+      av.innerHTML = `<img src="${user.avatar}" alt="${user.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+    } else {
+      av.textContent = (user.name?.[0] || '漢').toUpperCase();
+    }
+  } catch { window.location.href = '/login'; }
 }
-function signOut(){
-  if(confirm('Clear all local data and reset?')){localStorage.clear();location.reload();}
+async function signOut() {
+  await fetch('/auth/logout', { method: 'POST' });
+  window.location.href = '/login';
 }
 loadUser();
 </script>

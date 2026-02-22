@@ -56,7 +56,9 @@ if (process.env.MOCK_AUTH === 'true') {
 }
 
 // ─── Pages ────────────────────────────────────────────────────────────────────
-app.get('/', (req, res) => res.redirect(req.cookies?.user ? '/app' : '/login'));
+app.get('/', (req, res) => res.redirect(req.cookies?.user ? '/home' : '/login'));
+app.get('/home',         requireAuth, (_req, res) => res.sendFile(path.join(__dirname, '../public/landing.html')));
+app.get('/conversation', requireAuth, (_req, res) => res.sendFile(path.join(__dirname, '../public/conversation.html')));
 
 app.get('/login', (_req, res) => {
   let html = fs.readFileSync(path.join(__dirname, '../public/login.html'), 'utf8');
@@ -89,7 +91,7 @@ app.post('/auth/google', async (req, res) => {
     const user = { id: p.sub, name: p.name, email: p.email, avatar: p.picture, provider: 'google' };
     const { isNewUser } = await fb.upsertUser(user);
     setUserCookie(res, user);
-    res.json({ success: true, redirect: '/app', isNewUser });
+    res.json({ success: true, redirect: '/home', isNewUser });
   } catch (err) {
     console.error('Google auth:', err.message);
     res.status(401).json({ error: 'Invalid Google token' });
@@ -114,7 +116,7 @@ app.post('/auth/apple', async (req, res) => {
     const user = { id: payload.sub, name, email: payload.email||'', avatar: null, provider: 'apple' };
     const { isNewUser } = await fb.upsertUser(user);
     setUserCookie(res, user);
-    res.json({ success: true, redirect: '/app', isNewUser });
+    res.json({ success: true, redirect: '/home', isNewUser });
   } catch (err) {
     console.error('Apple auth:', err.message);
     res.status(401).json({ error: 'Invalid Apple token' });
