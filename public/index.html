@@ -15,22 +15,35 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'EB Garamond', Georgia, serif; background: var(--cream); color: var(--ink); min-height: 100vh; background-image: radial-gradient(ellipse at 20% 50%, rgba(139,105,20,0.04) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(139,26,26,0.03) 0%, transparent 50%); }
-  header { background: var(--cream); border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 70px; position: sticky; top: 0; z-index: 100; }
-  .logo { display: flex; align-items: center; gap: 14px; }
-  .logo-char { font-family: 'Noto Serif SC', serif; font-size: 36px; color: var(--red); font-weight: 700; line-height: 1; }
-  .logo-text { font-size: 12px; letter-spacing: 0.25em; color: var(--ink-muted); text-transform: uppercase; }
-  .header-stats { display: flex; gap: 40px; }
+  header {
+    background: var(--cream); border-bottom: 1px solid var(--border);
+    padding: 0 32px; display: flex; align-items: center;
+    justify-content: space-between; height: 64px;
+    position: sticky; top: 0; z-index: 100; gap: 16px;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .logo-char { font-family: 'Noto Serif SC', serif; font-size: 32px; color: var(--red); font-weight: 700; line-height: 1; }
+  .logo-text { font-size: 11px; letter-spacing: 0.22em; color: var(--ink-muted); text-transform: uppercase; }
+  /* Stats moved to below-header strip */
+  .header-stats { display: none; }
   .stat { text-align: center; }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; color: var(--ink); line-height: 1; }
-  .stat-label { font-size: 10px; letter-spacing: 0.18em; color: var(--ink-muted); text-transform: uppercase; margin-top: 2px; }
-  .script-toggle { display: flex; background: var(--cream-dark); border-radius: 40px; padding: 4px; border: 1px solid var(--border); }
-  .script-btn { background: none; border: none; font-family: 'EB Garamond', serif; font-size: 13px; letter-spacing: 0.08em; padding: 6px 16px; border-radius: 30px; cursor: pointer; color: var(--ink-muted); transition: all 0.25s; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: var(--ink); line-height: 1; }
+  .stat-label { font-size: 10px; letter-spacing: 0.15em; color: var(--ink-muted); text-transform: uppercase; margin-top: 2px; }
+  /* Stats strip below nav */
+  .stats-strip {
+    background: var(--cream); border-bottom: 1px solid var(--border);
+    padding: 0 32px; display: flex; align-items: center; justify-content: center;
+    gap: 48px;
+  }
+  .stats-strip .stat { padding: 10px 0; }
+  .script-toggle { display: flex; background: var(--cream-dark); border-radius: 40px; padding: 3px; border: 1px solid var(--border); flex-shrink: 0; }
+  .script-btn { background: none; border: none; font-family: 'EB Garamond', serif; font-size: 13px; letter-spacing: 0.06em; padding: 5px 14px; border-radius: 30px; cursor: pointer; color: var(--ink-muted); transition: all 0.25s; white-space: nowrap; }
   .script-btn.active { background: var(--card-bg); color: var(--gold); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
-  .user-area { display: flex; align-items: center; gap: 10px; }
-  .user-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border); object-fit: cover; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif SC', serif; font-size: 14px; color: var(--gold); overflow: hidden; }
+  .user-area { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .user-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border); background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif SC', serif; font-size: 14px; color: var(--gold); overflow: hidden; flex-shrink: 0; }
   .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .user-name { font-size: 14px; color: var(--ink-light); max-width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .logout-btn { border: 1px solid var(--border); background: none; border-radius: 30px; padding: 5px 14px; font-family: 'EB Garamond', serif; font-size: 13px; color: var(--ink-muted); cursor: pointer; transition: all 0.2s; letter-spacing: 0.05em; }
+  .user-name { font-size: 14px; color: var(--ink-light); max-width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .logout-btn { border: 1px solid var(--border); background: none; border-radius: 30px; padding: 5px 12px; font-family: 'EB Garamond', serif; font-size: 13px; color: var(--ink-muted); cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em; white-space: nowrap; }
   .logout-btn:hover { border-color: var(--red); color: var(--red); }
   nav { border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; align-items: center; gap: 6px; background: var(--cream); flex-wrap: wrap; }
   .nav-label { font-size: 11px; letter-spacing: 0.2em; color: var(--ink-muted); text-transform: uppercase; margin-right: 10px; }
@@ -474,7 +487,17 @@
   }
   .btn-secondary:hover { border-color: var(--ink-muted); color: var(--ink); }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
+    header { padding: 0 16px; gap: 10px; }
+    nav { padding: 0 12px; }
+    .logo-text { display: none; }
+    .user-name { display: none; }
+    .stats-strip { gap: 28px; padding: 0 16px; }
+    main { padding: 20px 12px; }
+    .card { padding: 24px 18px; }
+    .card-chinese { font-size: 40px; }
+    .recall-label { display: none !important; }
+    .toast { bottom: 20px; }
     .settings-panel { max-width: 100%; }
     .modal-body { padding: 20px; }
     .modal-header { padding: 20px 20px 0; }
@@ -490,11 +513,6 @@
   <div class="logo">
     <div class="logo-char">漢</div>
     <div class="logo-text">HSK Flashcards</div>
-  </div>
-  <div class="header-stats">
-    <div class="stat"><div class="stat-num" id="statDue">—</div><div class="stat-label">Due Today</div></div>
-    <div class="stat"><div class="stat-num" id="statReviewed">0</div><div class="stat-label">Reviewed</div></div>
-    <div class="stat"><div class="stat-num" id="statStreak">1</div><div class="stat-label">Streak</div></div>
   </div>
   <div class="script-toggle">
     <button class="script-btn active" onclick="setScript('simplified',this)">Simplified</button>
@@ -522,6 +540,12 @@
   <button class="level-btn" onclick="setLevel(5,this)">HSK 5</button>
   <button class="level-btn" onclick="setLevel(6,this)">HSK 6</button>
 </nav>
+<!-- Stats strip -->
+<div class="stats-strip">
+  <div class="stat"><div class="stat-num" id="statDue">—</div><div class="stat-label">Due Today</div></div>
+  <div class="stat"><div class="stat-num" id="statReviewed">0</div><div class="stat-label">Reviewed</div></div>
+  <div class="stat"><div class="stat-num" id="statStreak">1</div><div class="stat-label">Day Streak</div></div>
+</div>
 <main>
   <!-- Daily Progress Bar -->
   <div class="daily-bar-section">
