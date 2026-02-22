@@ -134,8 +134,56 @@
   </div>
 </main>
 <script>
-let allVocab=[], script='simplified', currentLevel='all', queue=[], doneCount=0, reviewCount=0, reviewed=0, currentCard=null;
+// ─── State ────────────────────────────────────────────────────────────────────
+let allVocab=[], script='simplified', currentLevel='all';
+let queue=[], doneCount=0, reviewCount=0, reviewed=0, cardsCorrect=0, currentCard=null;
 
+// ─── Session Tracking ─────────────────────────────────────────────────────────
+let sessionId=null, sessionStart=null, levelBreakdown={};
+
+async function startSession(){
+  sessionStart = Date.now();
+  levelBreakdown = {};
+  cardsCorrect = 0;
+  try {
+    const res = await fetch('/api/session/start', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ level: currentLevel })
+    });
+    const data = await res.json();
+    sessionId = data.sessionId;
+  } catch(e){ sessionId = null; }
+}
+
+async function endSession(){
+  if(!sessionStart) return;
+  const duration = Math.round((Date.now() - sessionStart) / 1000);
+  try {
+    await fetch('/api/session/end', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        sessionId,
+        cardsReviewed: reviewed,
+        cardsCorrect,
+        durationSeconds: duration,
+        levelBreakdown,
+      })
+    });
+  } catch(e){}
+  sessionId=null; sessionStart=null;
+}
+
+// End session on page close
+window.addEventListener('beforeunload', () => {
+  if(sessionStart && reviewed > 0) {
+    const duration = Math.round((Date.now()-sessionStart)/1000);
+    navigator.sendBeacon('/api/session/end', JSON.stringify({
+      sessionId, cardsReviewed:reviewed, cardsCorrect, durationSeconds:duration, levelBreakdown
+    }));
+  }
+});
+
+// ─── Data loading ─────────────────────────────────────────────────────────────
 async function loadVocab(){
   try {
     const res = await fetch('/app-assets/vocab.json');
@@ -162,14 +210,19 @@ async function loadUser(){
 }
 
 async function logout(){
+  await endSession();
   await fetch('/auth/logout', { method:'POST' });
   window.location.href='/login';
 }
 
-function initQueue(){
+// ─── Queue ────────────────────────────────────────────────────────────────────
+async function initQueue(){
+  await endSession(); // close previous session if any
   queue = (currentLevel==='all' ? [...allVocab] : allVocab.filter(v=>v.h===currentLevel)).sort(()=>Math.random()-0.5);
-  doneCount=0; reviewCount=0; reviewed=0;
-  updateStats(); showNext();
+  doneCount=0; reviewCount=0; reviewed=0; cardsCorrect=0; levelBreakdown={};
+  updateStats();
+  await startSession();
+  showNext();
 }
 
 function setLevel(l,btn){
@@ -196,6 +249,7 @@ function updateStats(){
   document.getElementById('progressBar').style.width=(total>0?(doneCount/total*100):0)+'%';
 }
 
+// ─── Card ─────────────────────────────────────────────────────────────────────
 function showNext(){
   if(!queue.length){showDone();return;}
   currentCard=queue[0]; renderCard(currentCard);
@@ -205,7 +259,6 @@ function renderCard(card){
   const isTrad=script==='traditional';
   const chinese=isTrad?card.t:card.s;
   const alt=isTrad?card.s:card.t;
-  const altLabel=isTrad?'Simplified':'Traditional';
   const showAlt=alt!==chinese;
   const chars=[...chinese];
   const charsHTML=chars.length>1?`
@@ -218,7 +271,7 @@ function renderCard(card){
       <div class="card-top">
         <div>
           <div class="card-chinese">${chinese}</div>
-          ${showAlt?`<div class="card-alt-label">${altLabel}: <span>${alt}</span></div>`:''}
+          ${showAlt?`<div class="card-alt-label">${isTrad?'Simplified':'Traditional'}: <span>${alt}</span></div>`:''}
         </div>
         <div class="card-right">
           <div class="card-pinyin">${card.p}</div>
@@ -235,6 +288,10 @@ function renderCard(card){
           <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg>
           Pinyin hint
         </button>
+        <a href="/dashboard" class="speak-btn" style="text-decoration:none">
+          <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          My Stats
+        </a>
       </div>
       ${charsHTML}
       <div class="recall-row">
@@ -247,14 +304,20 @@ function renderCard(card){
 
 function recall(type){
   if(!currentCard) return;
+  const cardLevel = currentCard.h;
+  levelBreakdown[cardLevel] = (levelBreakdown[cardLevel]||0) + 1;
   queue.shift(); reviewed++;
   if(type==='again'){
     queue.splice(Math.min(queue.length,5+Math.floor(Math.random()*5)),0,currentCard);
     reviewCount++;
-  } else { doneCount++; }
+  } else {
+    doneCount++;
+    if(type==='good'||type==='perfect') cardsCorrect++;
+  }
   updateStats(); showNext();
 }
 
+// ─── Speech ───────────────────────────────────────────────────────────────────
 function speakWord(){
   if(!currentCard||!window.speechSynthesis) return;
   speechSynthesis.cancel();
@@ -269,18 +332,27 @@ function speakPinyin(){
   utt.lang='en-US'; utt.rate=0.75; speechSynthesis.speak(utt);
 }
 
-function showDone(){
+// ─── Done screen ──────────────────────────────────────────────────────────────
+async function showDone(){
+  await endSession();
   currentCard=null;
   const lvl=currentLevel==='all'?'All HSK':`HSK ${currentLevel}`;
+  const accuracy=reviewed>0?Math.round((cardsCorrect/reviewed)*100):0;
   document.getElementById('cardContainer').innerHTML=`
     <div class="done-state">
       <div class="done-char">完</div>
       <div class="done-title">Session Complete!</div>
-      <div class="done-subtitle">You reviewed ${reviewed} ${lvl} card${reviewed!==1?'s':''}. 很好！</div>
-      <button class="restart-btn" onclick="initQueue()">Study Again</button>
+      <div class="done-subtitle">
+        You reviewed <strong>${reviewed}</strong> ${lvl} card${reviewed!==1?'s':''} with <strong>${accuracy}%</strong> accuracy. 很好！
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px">
+        <button class="restart-btn" onclick="initQueue()">Study Again</button>
+        <a href="/dashboard" class="restart-btn" style="text-decoration:none">View Stats</a>
+      </div>
     </div>`;
 }
 
+// ─── Init ─────────────────────────────────────────────────────────────────────
 loadUser();
 loadVocab();
 </script>

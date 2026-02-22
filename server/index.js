@@ -1,148 +1,146 @@
 require('dotenv').config();
-const express = require('express');
+const express      = require('express');
 const cookieParser = require('cookie-parser');
-const path = require('path');
+const path         = require('path');
+const fs           = require('fs');
 const { OAuth2Client } = require('google-auth-library');
 const { createRemoteJWKSet, jwtVerify } = require('jose');
+const fb           = require('./firebase');
 
-const app = express();
+// ─── Init ─────────────────────────────────────────────────────────────────────
+fb.init();
+const app  = express();
 const PORT = process.env.PORT || 3000;
-
-// ─── Middleware ───────────────────────────────────────────────────────────────
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// ─── Auth Middleware ──────────────────────────────────────────────────────────
-function requireAuth(req, res, next) {
-  const user = req.cookies?.user;
-  if (!user) return res.redirect('/login');
-  try {
-    req.user = JSON.parse(Buffer.from(user, 'base64').toString('utf8'));
-    next();
-  } catch {
-    res.clearCookie('user');
-    res.redirect('/login');
-  }
+// ─── Auth helpers ─────────────────────────────────────────────────────────────
+const encodeUser = u  => Buffer.from(JSON.stringify(u)).toString('base64');
+const decodeUser = c  => JSON.parse(Buffer.from(c, 'base64').toString('utf8'));
+
+function setUserCookie(res, user) {
+  res.cookie('user', encodeUser(user), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  });
 }
 
-// ─── Routes ───────────────────────────────────────────────────────────────────
+function requireAuth(req, res, next) {
+  const raw = req.cookies?.user;
+  if (!raw) return res.redirect('/login');
+  try { req.user = decodeUser(raw); next(); }
+  catch { res.clearCookie('user'); res.redirect('/login'); }
+}
 
-// Login page (public)
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/login.html'));
+function requireAuthAPI(req, res, next) {
+  const raw = req.cookies?.user;
+  if (!raw) return res.status(401).json({ error: 'Unauthorised' });
+  try { req.user = decodeUser(raw); next(); }
+  catch { res.status(401).json({ error: 'Invalid session' }); }
+}
+
+// ─── Pages ────────────────────────────────────────────────────────────────────
+app.get('/', (req, res) => res.redirect(req.cookies?.user ? '/app' : '/login'));
+
+app.get('/login', (_req, res) => {
+  let html = fs.readFileSync(path.join(__dirname, '../public/login.html'), 'utf8');
+  html = html
+    .replace('__GOOGLE_CLIENT_ID__', process.env.GOOGLE_CLIENT_ID || '')
+    .replace('__APPLE_CLIENT_ID__',  process.env.APPLE_CLIENT_ID  || '');
+  res.send(html);
 });
 
-// Root → redirect to app if logged in, else login
-app.get('/', (req, res) => {
-  const user = req.cookies?.user;
-  if (user) return res.redirect('/app');
-  res.redirect('/login');
-});
+app.get('/app',       requireAuth, (_req, res) => res.sendFile(path.join(__dirname, '../public/index.html')));
+app.get('/dashboard', requireAuth, (_req, res) => res.sendFile(path.join(__dirname, '../public/dashboard.html')));
 
-// Protected app
-app.get('/app', requireAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
-});
-
-// Serve static assets (vocab.json, etc.) — only for authenticated users
+// Static assets only for authenticated users
 app.use('/app-assets', requireAuth, express.static(path.join(__dirname, '../public')));
 
 // ─── Google Auth ──────────────────────────────────────────────────────────────
 app.post('/auth/google', async (req, res) => {
   const { credential } = req.body;
   if (!credential) return res.status(400).json({ error: 'Missing credential' });
-
   try {
-    const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-    const ticket = await client.verifyIdToken({
-      idToken: credential,
-      audience: process.env.GOOGLE_CLIENT_ID,
+    const ticket = await new OAuth2Client(process.env.GOOGLE_CLIENT_ID).verifyIdToken({
+      idToken: credential, audience: process.env.GOOGLE_CLIENT_ID,
     });
-    const payload = ticket.getPayload();
-
-    const user = {
-      id: payload.sub,
-      name: payload.name,
-      email: payload.email,
-      avatar: payload.picture,
-      provider: 'google',
-    };
-
-    const encoded = Buffer.from(JSON.stringify(user)).toString('base64');
-    res.cookie('user', encoded, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    });
+    const p    = ticket.getPayload();
+    const user = { id: p.sub, name: p.name, email: p.email, avatar: p.picture, provider: 'google' };
+    await fb.upsertUser(user);
+    setUserCookie(res, user);
     res.json({ success: true, redirect: '/app' });
   } catch (err) {
-    console.error('Google auth error:', err.message);
+    console.error('Google auth:', err.message);
     res.status(401).json({ error: 'Invalid Google token' });
   }
 });
 
 // ─── Apple Auth ───────────────────────────────────────────────────────────────
-const APPLE_JWKS = createRemoteJWKSet(
-  new URL('https://appleid.apple.com/auth/keys')
-);
+const APPLE_JWKS = createRemoteJWKSet(new URL('https://appleid.apple.com/auth/keys'));
 
 app.post('/auth/apple', async (req, res) => {
   const { id_token, user: appleUser } = req.body;
   if (!id_token) return res.status(400).json({ error: 'Missing id_token' });
-
   try {
     const { payload } = await jwtVerify(id_token, APPLE_JWKS, {
-      issuer: 'https://appleid.apple.com',
-      audience: process.env.APPLE_CLIENT_ID,
+      issuer: 'https://appleid.apple.com', audience: process.env.APPLE_CLIENT_ID,
     });
-
-    // Apple only sends name on first sign-in; cache it if provided
     let name = 'Apple User';
-    if (appleUser) {
-      try {
-        const parsed = typeof appleUser === 'string' ? JSON.parse(appleUser) : appleUser;
-        if (parsed?.name) {
-          name = `${parsed.name.firstName || ''} ${parsed.name.lastName || ''}`.trim();
-        }
-      } catch {}
-    }
-
-    const user = {
-      id: payload.sub,
-      name,
-      email: payload.email || 'hidden@privaterelay.appleid.com',
-      avatar: null,
-      provider: 'apple',
-    };
-
-    const encoded = Buffer.from(JSON.stringify(user)).toString('base64');
-    res.cookie('user', encoded, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+    try {
+      const p = typeof appleUser === 'string' ? JSON.parse(appleUser) : appleUser;
+      if (p?.name) name = `${p.name.firstName||''} ${p.name.lastName||''}`.trim();
+    } catch {}
+    const user = { id: payload.sub, name, email: payload.email||'', avatar: null, provider: 'apple' };
+    await fb.upsertUser(user);
+    setUserCookie(res, user);
     res.json({ success: true, redirect: '/app' });
   } catch (err) {
-    console.error('Apple auth error:', err.message);
+    console.error('Apple auth:', err.message);
     res.status(401).json({ error: 'Invalid Apple token' });
   }
 });
 
-// ─── Current User ─────────────────────────────────────────────────────────────
-app.get('/auth/me', requireAuth, (req, res) => {
-  res.json(req.user);
+// ─── Auth API ─────────────────────────────────────────────────────────────────
+app.get('/auth/me',      requireAuthAPI, (req, res) => res.json(req.user));
+app.post('/auth/logout', (req, res) => { res.clearCookie('user'); res.json({ success: true }); });
+
+// ─── Session Tracking ─────────────────────────────────────────────────────────
+app.post('/api/session/start', requireAuthAPI, async (req, res) => {
+  const sessionId = await fb.startSession(req.user.id, req.body.level ?? 'all');
+  res.json({ sessionId });
 });
 
-// ─── Logout ───────────────────────────────────────────────────────────────────
-app.post('/auth/logout', (req, res) => {
-  res.clearCookie('user');
+app.post('/api/session/end', requireAuthAPI, async (req, res) => {
+  const { sessionId, cardsReviewed, cardsCorrect, durationSeconds, levelBreakdown } = req.body;
+  await fb.endSession(sessionId, {
+    cardsReviewed:   cardsReviewed   || 0,
+    cardsCorrect:    cardsCorrect    || 0,
+    durationSeconds: durationSeconds || 0,
+    levelBreakdown:  levelBreakdown  || {},
+  });
+  res.json({ success: true });
+});
+
+// ─── Progress & Metrics API ───────────────────────────────────────────────────
+app.get('/api/progress', requireAuthAPI, async (req, res) => {
+  const [progress, user, sessions, topLevel] = await Promise.all([
+    fb.getProgress(req.user.id),
+    fb.getUser(req.user.id),
+    fb.getRecentSessions(req.user.id, 14),
+    fb.getTopLevel(req.user.id),
+  ]);
+  res.json({ progress, user, sessions, topLevel });
+});
+
+app.post('/api/progress/target', requireAuthAPI, async (req, res) => {
+  const target = parseInt(req.body.target);
+  if (!target || target < 1) return res.status(400).json({ error: 'Invalid target' });
+  await fb.setWeeklyTarget(req.user.id, target);
   res.json({ success: true });
 });
 
 // ─── Start ────────────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\n  漢 HSK Flashcards running at http://localhost:${PORT}\n`);
-});
+app.listen(PORT, () => console.log(`\n  漢 HSK Flashcards → http://localhost:${PORT}\n`));
