@@ -60,13 +60,12 @@
   .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; padding: 40px 44px; box-shadow: 0 4px 24px rgba(44,36,22,0.06); animation: fadeSlide 0.35s ease; }
   @keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   .hsk-badge { display: inline-block; font-size: 10px; letter-spacing: 0.15em; border: 1px solid var(--gold-light); color: var(--gold); padding: 2px 8px; border-radius: 2px; margin-bottom: 12px; }
-  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 20px; }
+  .card-top { margin-bottom: 20px; }
   .card-chinese { font-family: 'Noto Serif SC', serif; font-size: 56px; color: var(--ink); font-weight: 400; line-height: 1.1; }
+  .card-pinyin { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--red); margin-top: 8px; }
+  .card-meaning { font-size: 16px; color: var(--ink-light); margin-top: 4px; }
   .card-alt-label { font-size: 13px; color: var(--ink-muted); margin-top: 6px; }
   .card-alt-label span { font-family: 'Noto Serif SC', serif; font-size: 15px; color: var(--ink-light); }
-  .card-right { text-align: right; flex-shrink: 0; }
-  .card-pinyin { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--red); }
-  .card-meaning { font-size: 16px; color: var(--ink-light); margin-top: 4px; max-width: 220px; }
   .card-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   .speak-row { display: flex; gap: 10px; margin-bottom: 24px; }
   .speak-btn { display: flex; align-items: center; gap: 8px; border: 1px solid var(--border); background: none; border-radius: 3px; padding: 9px 18px; font-family: 'EB Garamond', serif; font-size: 15px; color: var(--ink-light); cursor: pointer; transition: all 0.2s; }
@@ -1182,14 +1181,10 @@ function renderCard(card){
     <div class="card">
       <div class="hsk-badge">HSK ${card.h}</div>
       <div class="card-top">
-        <div>
-          <div class="card-chinese">${chinese}</div>
-          ${showAlt?`<div class="card-alt-label">${isTrad?'Simplified':'Traditional'}: <span>${alt}</span></div>`:''}
-        </div>
-        <div class="card-right">
-          <div class="card-pinyin">${card.p}</div>
-          <div class="card-meaning">${card.m}</div>
-        </div>
+        <div class="card-chinese">${chinese}</div>
+        <div class="card-pinyin">${card.p}</div>
+        <div class="card-meaning">${card.m}</div>
+        ${showAlt?`<div class="card-alt-label">${isTrad?'Simplified':'Traditional'}: <span>${alt}</span></div>`:''}
       </div>
       <hr class="card-divider">
       <div class="speak-row">
