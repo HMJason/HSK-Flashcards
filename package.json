@@ -8,7 +8,8 @@
     "dev": "nodemon server/index.js",
     "deploy:rules": "firebase deploy --only firestore:rules",
     "deploy:indexes": "firebase deploy --only firestore:indexes",
-    "deploy:all": "firebase deploy --only firestore"
+    "deploy:all": "firebase deploy --only firestore",
+    "build": "node build-static.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",

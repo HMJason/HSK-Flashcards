@@ -42,6 +42,17 @@ function requireAuthAPI(req, res, next) {
   catch { res.status(401).json({ error: 'Invalid session' }); }
 }
 
+// ─── Mock dev mode ────────────────────────────────────────────────────────────
+// Set MOCK_AUTH=true in .env to bypass login entirely (development only)
+if (process.env.MOCK_AUTH === 'true') {
+  console.log('⚠️  MOCK_AUTH enabled — all requests auto-authenticated as Dev User');
+  const MOCK_USER = { id: 'dev-user-001', name: 'Dev User', email: 'dev@local.test', avatar: null, provider: 'mock' };
+  app.use((req, res, next) => {
+    if (!req.cookies?.user) setUserCookie(res, MOCK_USER);
+    next();
+  });
+}
+
 // ─── Pages ────────────────────────────────────────────────────────────────────
 app.get('/', (req, res) => res.redirect(req.cookies?.user ? '/app' : '/login'));
 
