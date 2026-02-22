@@ -703,38 +703,43 @@ function saveProgress(){
   document.getElementById('statStreak').textContent=streak;
 }
 
-// ─── Vocab loading (lazy by level) ────────────────────────────────────────────
-const vocabCache={};
+// ─── Vocab (HSK 1 embedded, 2-6 lazy-fetched) ────────────────────────────────
+// HSK 1 is bundled directly — zero network request for first cards.
+// Levels 2-6 are fetched in the background after first card appears.
+const VOCAB_HSK1 = __HSK1_DATA__;
+const vocabCache={1: VOCAB_HSK1};
+
 async function fetchLevel(level){
   if(vocabCache[level]?.length) return vocabCache[level];
-  const url=level==='all'?'vocab.json':'vocab-hsk'+level+'.json';
+  const url='vocab-hsk'+level+'.json';
   const res=await fetch(url);
-  if(!res.ok) throw new Error('HTTP '+res.status+' loading '+url);
+  if(!res.ok) throw new Error('HTTP '+res.status+' fetching '+url);
   const data=await res.json();
-  if(!Array.isArray(data)||!data.length) throw new Error('Empty vocab for level '+level);
+  if(!Array.isArray(data)||!data.length) throw new Error('Empty data in '+url);
   vocabCache[level]=data;
-  if(level!=='all'){
-    vocabCache['all']=[...(vocabCache['all']||[]),...data];
-  }
+  vocabCache['all']=[...(vocabCache['all']||[]),...data];
   return data;
 }
-async function loadVocab(){
-  try{
-    const first=currentLevel==='all'?1:currentLevel;
-    allVocab=await fetchLevel(first);
+
+function loadVocab(){
+  // HSK 1 is already in memory — show cards immediately
+  const startLevel = currentLevel === 'all' ? 1 : currentLevel;
+  if(vocabCache[startLevel]?.length){
+    allVocab = vocabCache[startLevel];
     initQueue();
-    if(currentLevel==='all'){
-      for(const lvl of [2,3,4,5,6]){
-        fetchLevel(lvl).then(w=>{
-          allVocab=[...allVocab,...w];
-          vocabCache['all']=allVocab;
-        }).catch(()=>{});
-      }
-    }
-  }catch(e){
-    document.getElementById('cardContainer').innerHTML=
-      '<div class="done-state"><div class="done-char">！</div><div class="done-title">Could not load vocabulary</div><div class="done-subtitle" style="margin-top:12px">'+e.message+'<br><br>Try refreshing the page.</div></div>';
   }
+  // Stream remaining levels in the background
+  const levelsToFetch = currentLevel === 'all'
+    ? [2,3,4,5,6]
+    : [1,2,3,4,5,6].filter(l => l !== startLevel);
+  levelsToFetch.forEach(lvl => {
+    fetchLevel(lvl).then(words => {
+      if(currentLevel === 'all') {
+        allVocab = [...allVocab, ...words];
+        vocabCache['all'] = allVocab;
+      }
+    }).catch(()=>{});
+  });
 }
 
 // ─── Queue ────────────────────────────────────────────────────────────────────
@@ -748,18 +753,32 @@ async function setLevel(l,btn){
   currentLevel=l==='all'?'all':parseInt(l);
   document.querySelectorAll('.level-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  const cacheKey=currentLevel;
-  if(vocabCache[cacheKey]?.length){
-    allVocab=vocabCache[cacheKey];
+
+  const needed = currentLevel === 'all' ? 'all' : currentLevel;
+  if(currentLevel !== 'all' && vocabCache[currentLevel]?.length){
+    // Instant — already in memory
+    allVocab = vocabCache[currentLevel];
     initQueue();
+  } else if(currentLevel === 'all' && vocabCache['all']?.length >= 5000){
+    allVocab = vocabCache['all'];
+    initQueue();
+  } else if(currentLevel === 'all'){
+    // Start with what we have, background-load the rest
+    allVocab = vocabCache[1] || VOCAB_HSK1;
+    vocabCache['all'] = allVocab;
+    initQueue();
+    [2,3,4,5,6].forEach(lvl => {
+      fetchLevel(lvl).then(w => {
+        allVocab = [...allVocab, ...w];
+        vocabCache['all'] = allVocab;
+      }).catch(()=>{});
+    });
   } else {
+    // Need to fetch this level
     document.getElementById('cardContainer').innerHTML=
-      '<div class="loading"><div class="loading-char">漢</div><div class="loading-text">Loading…</div></div>';
-    allVocab=await fetchLevel(currentLevel==='all'?1:currentLevel);
+      '<div class="loading"><div class="loading-char">漢</div><div class="loading-text">Loading HSK '+currentLevel+'…</div></div>';
+    allVocab = await fetchLevel(currentLevel);
     initQueue();
-    if(currentLevel==='all'){
-      for(const lvl of [2,3,4,5,6]) fetchLevel(lvl).then(w=>{allVocab=[...allVocab,...w];}).catch(()=>{});
-    }
   }
 }
 function setScript(s,btn){
@@ -809,9 +828,9 @@ function renderCard(card){
     '</div>'+
     charsHTML+
     '<div class="recall-row">'+
-    '<button class="recall-btn recall-again" onclick="recall(\'again\')"><span class="recall-label">AGAIN</span><span class="recall-name">Tomorrow</span></button>'+
-    '<button class="recall-btn recall-good" onclick="recall(\'good\')"><span class="recall-label">GOOD</span><span class="recall-name">Recall</span></button>'+
-    '<button class="recall-btn recall-perfect" onclick="recall(\'perfect\')"><span class="recall-label">PERFECT</span><span class="recall-name">Recall</span></button>'+
+    '<button class="recall-btn recall-again" data-t="again" onclick="recall(this.dataset.t)"><span class="recall-label">AGAIN</span><span class="recall-name">Tomorrow</span></button>'+
+    '<button class="recall-btn recall-good" data-t="good" onclick="recall(this.dataset.t)"><span class="recall-label">GOOD</span><span class="recall-name">Recall</span></button>'+
+    '<button class="recall-btn recall-perfect" data-t="perfect" onclick="recall(this.dataset.t)"><span class="recall-label">PERFECT</span><span class="recall-name">Recall</span></button>'+
     '</div></div>';
 }
 function recall(type){
@@ -860,8 +879,13 @@ loadVocab();
 </body>
 </html>`;
 
-fs.writeFileSync(path.join(DOCS, 'index.html'), html);
-console.log('✅ Built docs/index.html');
+// Inject HSK 1 vocab inline — eliminates fetch for initial load
+const hsk1Data = JSON.stringify(
+  JSON.parse(fs.readFileSync(path.join(__dirname, 'public/vocab-hsk1.json')))
+);
+const finalHtml = html.replace('__HSK1_DATA__', hsk1Data);
+fs.writeFileSync(path.join(DOCS, 'index.html'), finalHtml);
+console.log('✅ Built docs/index.html (HSK1 embedded inline, '+Math.round(hsk1Data.length/1024)+'KB)');
 console.log('\\n✨ Static build complete!');
 console.log('   Open docs/index.html in a browser, or push to GitHub to deploy via Pages.');
 console.log('   Enable Pages: Repo Settings → Pages → Source: master /docs\\n');
