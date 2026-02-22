@@ -71,6 +71,9 @@
   .reveal-btn{width:100%;margin-top:32px;padding:22px;border:1.5px dashed var(--border);background:none;border-radius:3px;font-family:'EB Garamond',serif;font-size:20px;color:var(--ink-muted);cursor:pointer;letter-spacing:.08em;transition:all .2s}
   .reveal-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(139,105,20,.04)}
   .card-answer{animation:fadeSlide .25s ease}
+  .auto-play-btn{display:flex;align-items:center;gap:6px;border:1px solid var(--border);background:none;border-radius:20px;padding:5px 12px;font-family:'EB Garamond',serif;font-size:13px;color:var(--ink-muted);cursor:pointer;transition:all .2s;white-space:nowrap}
+  .auto-play-btn:hover{border-color:var(--gold);color:var(--gold)}
+  .auto-play-btn.active{border-color:var(--green);color:var(--green);background:rgba(45,90,61,.06)}
   .card-tip{font-size:14px;color:var(--ink-muted);font-style:italic;margin-top:10px;line-height:1.55;
     padding-top:10px;border-top:1px dashed rgba(139,105,20,0.2)}
   .card-divider{border:none;border-top:1px solid var(--border);margin:20px 0}
@@ -120,7 +123,10 @@
     <button class="script-btn" onclick="setScript('pinyin',this)">Pinyin first</button>
   </div>
   <div class="user-area">
-    <a class="back-link" href="index.html">
+    <button class="auto-play-btn" id="autoPlayBtn" onclick="toggleAutoPlay()" title="Auto-play audio on reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15.536 8.464a5 5 0 010 7.072M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z"/><path d="M19.07 4.929a10 10 0 010 14.142"/></svg>
+      Auto-play
+    </button>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Home
     </a>
@@ -179,6 +185,28 @@ var PHRASES=[
 ];
 
 var CAT_LABELS={all:"All Phrases",greetings:"Greetings",introductions:"Introductions",politeness:"Politeness",learning:"Learning Chinese",practical:"Practical"};
+
+var SETTINGS_KEY='hsk_settings';
+var autoPlayAudio=true;
+
+function loadAutoPlaySetting(){
+  try{
+    var s=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}');
+    autoPlayAudio = s.autoPlayAudio !== false;
+  }catch(e){ autoPlayAudio=true; }
+  var btn=document.getElementById('autoPlayBtn');
+  if(btn) btn.classList.toggle('active', autoPlayAudio);
+}
+function toggleAutoPlay(){
+  autoPlayAudio=!autoPlayAudio;
+  try{
+    var s=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}');
+    s.autoPlayAudio=autoPlayAudio;
+    localStorage.setItem(SETTINGS_KEY,JSON.stringify(s));
+  }catch(e){}
+  var btn=document.getElementById('autoPlayBtn');
+  if(btn) btn.classList.toggle('active', autoPlayAudio);
+}
 
 var currentCat="all", script="chinese";
 var queue=[], doneCount=0, reviewCount=0, reviewed=0, currentCard=null;
@@ -252,6 +280,12 @@ function revealCard(){
   var ans=document.getElementById("cardAnswer");
   if(btn) btn.style.display="none";
   if(ans) ans.style.display="";
+  if(autoPlayAudio && currentCard && window.speechSynthesis){
+    speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(currentCard.zh);
+    u.lang="zh-CN"; u.rate=0.75;
+    speechSynthesis.speak(u);
+  }
 }
 function recall(type){
   if(!currentCard) return;
@@ -288,6 +322,7 @@ function showDone(){
 const LS2={get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d}catch{return d}}};
 const _u=LS2.get('hsk_user',null);
 if(_u) document.getElementById('userAvatar').textContent=(_u.name?.[0]||'漢').toUpperCase();
+loadAutoPlaySetting();
 initQueue();
 </script>
 </body>

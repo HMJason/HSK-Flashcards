@@ -689,6 +689,16 @@
       <div class="settings-section-title">Audio</div>
       <div class="settings-row">
         <div>
+          <div class="settings-row-label">Auto-play on reveal</div>
+          <div class="settings-row-sub">Speak the word when you reveal a card</div>
+        </div>
+        <label class="toggle-wrap">
+          <input type="checkbox" id="settingsAutoPlay" checked onchange="settingChanged('autoPlayAudio', this.checked)">
+          <span class="toggle-track"></span>
+        </label>
+      </div>
+      <div class="settings-row">
+        <div>
           <div class="settings-row-label">Sound effects</div>
           <div class="settings-row-sub">Audio feedback on recall</div>
         </div>
@@ -1021,6 +1031,9 @@ function applySettings(s) {
   const ss = document.getElementById('settingsSound');
   if (ss) ss.checked = s.soundEnabled !== false;
 
+  const sap = document.getElementById('settingsAutoPlay');
+  if (sap) sap.checked = s.autoPlayAudio !== false;
+
   const st = document.getElementById('settingsTracking');
   if (st) st.checked = s.trackingEnabled !== false;
 
@@ -1279,6 +1292,7 @@ function revealCard(){
   const ans = document.getElementById('cardAnswer');
   if(btn) btn.style.display = 'none';
   if(ans) ans.style.display = '';
+  if(currentSettings.autoPlayAudio !== false) speakWord();
 }
 
 function recall(type){
