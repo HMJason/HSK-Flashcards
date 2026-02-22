@@ -5,378 +5,279 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>漢 Conversational Starters</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #f0ebe0; --cream-dark: #e5dfd2; --cream-mid: #ede8dc;
-    --gold: #8b6914; --gold-light: #c4a035;
-    --red: #8b1a1a;
-    --ink: #2c2416; --ink-light: #5a4e3a; --ink-muted: #8a7a62;
-    --green: #2d5a3d; --blue: #1a3a5c;
-    --card-bg: #faf7f2; --border: rgba(139,105,20,0.18);
+    --cream:#f0ebe0; --cream-dark:#e5dfd2; --cream-mid:#ede8dc;
+    --gold:#8b6914; --gold-light:#c4a035; --red:#8b1a1a; --red-light:#c0392b;
+    --ink:#2c2416; --ink-light:#5a4e3a; --ink-muted:#8a7a62;
+    --green:#2d5a3d; --green-light:#4a9062; --blue:#1a3a5c;
+    --card-bg:#faf7f2; --border:rgba(139,105,20,0.2);
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'EB Garamond', Georgia, serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
-
-  /* ── Header ── */
-  header {
-    background: var(--cream); border-bottom: 1px solid var(--border);
-    padding: 0 48px; display: flex; align-items: center; justify-content: space-between;
-    height: 64px; position: sticky; top: 0; z-index: 10;
-  }
-  .header-left { display: flex; align-items: center; gap: 20px; }
-  .back-btn {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 14px; color: var(--ink-muted); text-decoration: none;
-    transition: color 0.2s; border: none; background: none; cursor: pointer;
-    font-family: 'EB Garamond', serif;
-  }
-  .back-btn:hover { color: var(--gold); }
-  .back-btn svg { width: 15px; height: 15px; }
-  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .logo-char { font-family: 'Noto Serif SC', serif; font-size: 28px; color: var(--red); font-weight: 700; line-height: 1; }
-  .logo-text { font-size: 11px; letter-spacing: 0.22em; color: var(--ink-muted); text-transform: uppercase; }
-  .header-right { display: flex; align-items: center; gap: 10px; }
-  .user-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border); background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif SC', serif; font-size: 14px; color: var(--gold); overflow: hidden; }
-  .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-  /* ── Page hero ── */
-  .page-hero {
-    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-mid) 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 48px 48px 40px;
-    display: flex; align-items: flex-end; justify-content: space-between;
-    gap: 24px;
-  }
-  .page-hero-text {}
-  .page-eyebrow {
-    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 12px;
-  }
-  .page-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 4vw, 44px);
-    color: var(--ink); line-height: 1.15; margin-bottom: 14px;
-  }
-  .page-sub {
-    font-size: 16px; color: var(--ink-muted); font-style: italic;
-    max-width: 520px; line-height: 1.6;
-  }
-  .page-hero-char {
-    font-family: 'Noto Serif SC', serif;
-    font-size: clamp(80px, 10vw, 120px);
-    color: rgba(139,26,26,0.12);
-    font-weight: 700; line-height: 1;
-    flex-shrink: 0;
-    user-select: none;
-  }
-
-  /* ── Category filter ── */
-  .filter-bar {
-    padding: 16px 48px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    background: var(--card-bg);
-    position: sticky; top: 64px; z-index: 9;
-  }
-  .filter-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); margin-right: 4px; }
-  .filter-btn {
-    border: 1px solid var(--border); background: none; border-radius: 20px;
-    padding: 5px 16px; font-family: 'EB Garamond', serif; font-size: 14px;
-    color: var(--ink-light); cursor: pointer; transition: all 0.18s;
-  }
-  .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
-  .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #fff; }
-
-  /* ── Main content ── */
-  main { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
-
-  /* ── Category section ── */
-  .category-section { margin-bottom: 56px; }
-  .category-section:last-child { margin-bottom: 0; }
-  .category-header {
-    display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
-  }
-  .category-title {
-    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--ink-muted); white-space: nowrap;
-  }
-  .category-line { flex: 1; height: 1px; background: var(--border); }
-  .category-count {
-    font-size: 12px; color: var(--ink-muted); white-space: nowrap;
-  }
-
-  /* ── Phrase cards grid ── */
-  .phrases-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-  }
-
-  /* ── Phrase card ── */
-  .phrase-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 24px 24px 20px;
-    position: relative;
-    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.3, 1);
-    animation: fadeUp 0.4s ease both;
-  }
-  .phrase-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(44,36,22,0.1), 0 2px 8px rgba(139,105,20,0.08); border-color: rgba(139,105,20,0.3); }
-
-  .phrase-num {
-    position: absolute; top: 16px; right: 18px;
-    font-family: 'Playfair Display', serif; font-size: 28px;
-    color: rgba(139,105,20,0.12); font-weight: 600; line-height: 1;
-  }
-  .phrase-chinese {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 36px; color: var(--ink); font-weight: 400;
-    line-height: 1.1; margin-bottom: 8px;
-  }
-  .phrase-pinyin {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px; font-style: italic; color: var(--red);
-    margin-bottom: 6px;
-  }
-  .phrase-english {
-    font-size: 15px; color: var(--ink-light);
-    margin-bottom: 12px; line-height: 1.4;
-  }
-  .phrase-tip {
-    font-size: 13px; color: var(--ink-muted);
-    font-style: italic; line-height: 1.5;
-    padding-top: 12px; border-top: 1px solid var(--border);
-    margin-bottom: 14px;
-  }
-  .phrase-tip::before { content: '💡 '; font-style: normal; }
-  .phrase-actions { display: flex; gap: 8px; }
-  .speak-btn {
-    display: flex; align-items: center; gap: 6px;
-    border: 1px solid var(--border); background: none; border-radius: 3px;
-    padding: 6px 14px; font-family: 'EB Garamond', serif; font-size: 14px;
-    color: var(--ink-muted); cursor: pointer; transition: all 0.2s;
-  }
-  .speak-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(139,105,20,0.04); }
-  .speak-btn.speaking { border-color: var(--green); color: var(--green); background: rgba(45,90,61,0.06); }
-  .speak-btn svg { width: 14px; height: 14px; }
-
-  /* ── Progress banner ── */
-  .progress-banner {
-    background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px;
-    padding: 20px 28px; margin-bottom: 40px;
-    display: flex; align-items: center; justify-content: space-between; gap: 20px;
-    flex-wrap: wrap;
-  }
-  .progress-banner-text { font-size: 15px; color: var(--ink-muted); font-style: italic; }
-  .progress-banner-text strong { color: var(--ink); font-style: normal; }
-  .practice-all-btn {
-    border: 1px solid var(--gold); background: none; border-radius: 3px;
-    padding: 9px 22px; font-family: 'EB Garamond', serif; font-size: 15px;
-    color: var(--gold); cursor: pointer; transition: all 0.2s; white-space: nowrap;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .practice-all-btn:hover { background: var(--gold); color: #fff; }
-  .practice-all-btn svg { width: 16px; height: 16px; }
-
-  @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
-
-  @media (max-width: 700px) {
-    header { padding: 0 16px; }
-    .page-hero { padding: 32px 20px 28px; }
-    .page-hero-char { display: none; }
-    .filter-bar { padding: 12px 16px; top: 64px; }
-    main { padding: 32px 16px 60px; }
-    .phrases-grid { grid-template-columns: 1fr; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'EB Garamond',Georgia,serif;background:var(--cream);color:var(--ink);min-height:100vh;
+    background-image:radial-gradient(ellipse at 20% 50%,rgba(139,105,20,0.04) 0%,transparent 60%),
+    radial-gradient(ellipse at 80% 20%,rgba(139,26,26,0.03) 0%,transparent 50%)}
+  header{background:var(--cream);border-bottom:1px solid var(--border);padding:0 32px;
+    display:flex;align-items:center;justify-content:space-between;height:64px;
+    position:sticky;top:0;z-index:100;gap:16px}
+  .logo{display:flex;align-items:center;gap:12px;flex-shrink:0;text-decoration:none;color:inherit}
+  .logo-char{font-family:'Noto Serif SC',serif;font-size:32px;color:var(--red);font-weight:700;line-height:1}
+  .logo-text{font-size:11px;letter-spacing:0.22em;color:var(--ink-muted);text-transform:uppercase}
+  .script-toggle{display:flex;background:var(--cream-dark);border-radius:40px;padding:3px;border:1px solid var(--border);flex-shrink:0}
+  .script-btn{background:none;border:none;font-family:'EB Garamond',serif;font-size:13px;letter-spacing:0.06em;
+    padding:5px 14px;border-radius:30px;cursor:pointer;color:var(--ink-muted);transition:all .25s;white-space:nowrap}
+  .script-btn.active{background:var(--card-bg);color:var(--gold);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+  .user-area{display:flex;align-items:center;gap:8px;flex-shrink:0}
+  .back-link{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-muted);
+    text-decoration:none;border:1px solid var(--border);border-radius:20px;padding:5px 12px;
+    transition:all .2s;white-space:nowrap}
+  .back-link:hover{border-color:var(--gold);color:var(--gold)}
+  .back-link svg{width:13px;height:13px}
+  .user-avatar{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);background:var(--cream-dark);
+    display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;
+    font-size:14px;color:var(--gold);overflow:hidden;flex-shrink:0}
+  .user-avatar img{width:100%;height:100%;object-fit:cover}
+  nav{border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:center;
+    gap:6px;background:var(--cream);flex-wrap:wrap}
+  .nav-label{font-size:11px;letter-spacing:0.2em;color:var(--ink-muted);text-transform:uppercase;margin-right:10px}
+  .cat-btn{border:1px solid transparent;background:none;padding:10px 18px;font-family:'EB Garamond',serif;
+    font-size:14px;cursor:pointer;color:var(--ink-light);border-radius:4px;transition:all .2s;margin:8px 2px}
+  .cat-btn:hover{border-color:var(--border)}
+  .cat-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .stats-strip{background:var(--cream);border-bottom:1px solid var(--border);padding:0 32px;
+    display:flex;align-items:center;justify-content:center;gap:48px}
+  .stat{text-align:center;padding:10px 0}
+  .stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ink);line-height:1}
+  .stat-label{font-size:10px;letter-spacing:.15em;color:var(--ink-muted);text-transform:uppercase;margin-top:2px}
+  main{max-width:740px;margin:0 auto;padding:36px 24px 60px}
+  .progress-counters{display:flex;justify-content:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+  .counter-pill{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:30px;
+    padding:6px 18px;font-size:14px;color:var(--ink-light);background:var(--card-bg)}
+  .counter-dot{width:8px;height:8px;border-radius:50%}
+  .dot-red{background:var(--red-light)}.dot-blue{background:var(--blue)}.dot-green{background:var(--green)}
+  .progress-bar-wrap{height:6px;background:var(--cream-dark);border-radius:3px;margin-bottom:32px;overflow:hidden}
+  .progress-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--red) 0%,var(--gold) 100%);
+    transition:width .6s cubic-bezier(.4,0,.2,1)}
+  .card{background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:40px 44px;
+    box-shadow:0 4px 24px rgba(44,36,22,.06);animation:fadeSlide .35s ease}
+  @keyframes fadeSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .cat-badge{display:inline-block;font-size:10px;letter-spacing:.15em;border:1px solid var(--gold-light);
+    color:var(--gold);padding:2px 8px;border-radius:2px;margin-bottom:12px}
+  .card-top{margin-bottom:20px}
+  .card-chinese{font-family:'Noto Serif SC',serif;font-size:56px;color:var(--ink);font-weight:400;line-height:1.1}
+  .card-pinyin{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--red);margin-top:8px}
+  .card-meaning{font-size:16px;color:var(--ink-light);margin-top:4px}
+  .card-tip{font-size:14px;color:var(--ink-muted);font-style:italic;margin-top:10px;line-height:1.55;
+    padding-top:10px;border-top:1px dashed rgba(139,105,20,0.2)}
+  .card-divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+  .speak-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+  .speak-btn{display:flex;align-items:center;gap:8px;border:1px solid var(--border);background:none;
+    border-radius:3px;padding:9px 18px;font-family:'EB Garamond',serif;font-size:15px;
+    color:var(--ink-light);cursor:pointer;transition:all .2s}
+  .speak-btn:hover{background:var(--cream-dark);color:var(--ink)}
+  .speak-btn.speaking{border-color:var(--green);color:var(--green);background:rgba(45,90,61,.06)}
+  .speak-icon{width:18px;height:18px}
+  .recall-row{display:flex;gap:10px}
+  .recall-btn{flex:1;border:1px solid var(--border);background:none;padding:12px 10px;border-radius:3px;
+    font-family:'EB Garamond',serif;cursor:pointer;transition:all .22s;color:var(--ink-light)}
+  .recall-btn .recall-label{font-size:11px;display:block;color:var(--ink-muted);margin-bottom:2px;letter-spacing:.12em}
+  .recall-btn .recall-name{font-size:15px}
+  .recall-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(44,36,22,.1)}
+  .recall-again:hover{border-color:var(--red-light);color:var(--red);background:rgba(139,26,26,.03)}
+  .recall-good:hover{border-color:var(--blue);color:var(--blue);background:rgba(26,58,92,.03)}
+  .recall-perfect:hover{border-color:var(--green);color:var(--green);background:rgba(45,90,61,.03)}
+  .done-state{text-align:center;padding:60px 40px;background:var(--card-bg);border:1px solid var(--border);
+    border-radius:4px;animation:fadeSlide .4s ease}
+  .done-char{font-family:'Noto Serif SC',serif;font-size:72px;color:var(--gold);margin-bottom:16px}
+  .done-title{font-family:'Playfair Display',serif;font-size:28px;color:var(--ink);margin-bottom:10px}
+  .done-subtitle{color:var(--ink-muted);font-size:16px;font-style:italic}
+  .restart-btn{margin-top:28px;display:inline-block;border:1px solid var(--gold);background:none;
+    padding:12px 32px;border-radius:3px;font-family:'EB Garamond',serif;font-size:16px;color:var(--gold);
+    cursor:pointer;letter-spacing:.08em;transition:all .2s}
+  .restart-btn:hover{background:var(--gold);color:#fff}
+  @media(max-width:700px){
+    header{padding:0 16px;gap:8px} nav{padding:0 12px}
+    .logo-text{display:none}
+    .stats-strip{gap:28px;padding:0 16px} main{padding:20px 12px 60px}
+    .card{padding:24px 18px} .card-chinese{font-size:40px}
+    .recall-label{display:none!important}
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-left">
-    <a class="back-btn" href="index.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Back
-    </a>
-    <a class="logo" href="index.html">
-      <div class="logo-char">漢</div>
-      <div class="logo-text">HSK Flashcards</div>
-    </a>
+  <a class="logo" href="index.html">
+    <div class="logo-char">漢</div>
+    <div class="logo-text">HSK Flashcards</div>
+  </a>
+  <div class="script-toggle">
+    <button class="script-btn active" onclick="setScript('chinese',this)">Chinese</button>
+    <button class="script-btn" onclick="setScript('pinyin',this)">Pinyin first</button>
   </div>
-  <div class="header-right">
+  <div class="user-area">
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Home
+    </a>
     <div class="user-avatar" id="userAvatar">漢</div>
   </div>
 </header>
 
-<div class="page-hero">
-  <div class="page-hero-text">
-    <div class="page-eyebrow">Speak from day one</div>
-    <h1 class="page-title">Conversational Starters</h1>
-    <p class="page-sub">Twenty essential phrases to start speaking Mandarin in real situations. Tap the speaker icon to hear any phrase.</p>
-  </div>
-  <div class="page-hero-char">說</div>
-</div>
+<nav>
+  <span class="nav-label">Category:</span>
+  <button class="cat-btn active" onclick="setCategory('all',this)">All 20</button>
+  <button class="cat-btn" onclick="setCategory('greetings',this)">Greetings</button>
+  <button class="cat-btn" onclick="setCategory('introductions',this)">Introductions</button>
+  <button class="cat-btn" onclick="setCategory('politeness',this)">Politeness</button>
+  <button class="cat-btn" onclick="setCategory('learning',this)">Learning</button>
+  <button class="cat-btn" onclick="setCategory('practical',this)">Practical</button>
+</nav>
 
-<div class="filter-bar">
-  <span class="filter-label">Category:</span>
-  <button class="filter-btn active" onclick="filterCategory('all', this)">All 20</button>
-  <button class="filter-btn" onclick="filterCategory('greetings', this)">Greetings</button>
-  <button class="filter-btn" onclick="filterCategory('introductions', this)">Introductions</button>
-  <button class="filter-btn" onclick="filterCategory('politeness', this)">Politeness</button>
-  <button class="filter-btn" onclick="filterCategory('learning', this)">Learning</button>
-  <button class="filter-btn" onclick="filterCategory('practical', this)">Practical</button>
+<div class="stats-strip">
+  <div class="stat"><div class="stat-num" id="statRemaining">&#x2014;</div><div class="stat-label">Remaining</div></div>
+  <div class="stat"><div class="stat-num" id="statReviewed">0</div><div class="stat-label">Reviewed</div></div>
+  <div class="stat"><div class="stat-num" id="statDone">0</div><div class="stat-label">Done</div></div>
 </div>
 
 <main>
-  <div class="progress-banner">
-    <p class="progress-banner-text">Practise all 20 phrases with your device's text-to-speech — <strong>no internet required.</strong></p>
-    <button class="practice-all-btn" onclick="speakAll()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.536 8.464a5 5 0 010 7.072M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z"/><path d="M19.07 4.929a10 10 0 010 14.142"/></svg>
-      Speak all phrases
-    </button>
+  <div class="progress-counters">
+    <div class="counter-pill"><span class="counter-dot dot-red"></span><span id="countNew">&#x2014;</span> New</div>
+    <div class="counter-pill"><span class="counter-dot dot-blue"></span><span id="countReview">0</span> Review</div>
+    <div class="counter-pill"><span class="counter-dot dot-green"></span><span id="countDone">0</span> Done</div>
   </div>
-
-  <div id="phraseList"></div>
+  <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+  <div id="cardContainer"></div>
 </main>
 
 <script>
-const PHRASES = [
-  // Greetings
-  { id:1, cat:'greetings', zh:'你好', py:'Nǐ hǎo', en:'Hello', tip:'The universal greeting. Use any time of day. Pair with a nod for extra warmth.' },
-  { id:2, cat:'greetings', zh:'你好吗？', py:'Nǐ hǎo ma?', en:'How are you?', tip:'Adding 吗 (ma) turns any statement into a yes/no question — a very useful pattern.' },
-  { id:3, cat:'greetings', zh:'我很好，谢谢！', py:'Wǒ hěn hǎo, xièxie!', en:'I\'m very well, thank you!', tip:'很 (hěn) means "very". Chinese speakers often add it even when not emphasising — it sounds more natural.' },
-  { id:4, cat:'greetings', zh:'再见', py:'Zàijiàn', en:'Goodbye', tip:'Literally "see again". For a casual goodbye, 拜拜 (bāibai) is the Chinese version of "bye bye".' },
-
-  // Introductions
-  { id:5, cat:'introductions', zh:'你叫什么名字？', py:'Nǐ jiào shénme míngzì?', en:'What is your name?', tip:'叫 (jiào) means "to be called". A common shorter form is just 你叫什么？' },
-  { id:6, cat:'introductions', zh:'我叫___', py:'Wǒ jiào ___', en:'My name is ___', tip:'Fill in your name. Chinese friends may give you a Chinese name — it\'s a lovely tradition.' },
-  { id:7, cat:'introductions', zh:'你从哪里来？', py:'Nǐ cóng nǎlǐ lái?', en:'Where are you from?', tip:'从 (cóng) means "from". A great follow-up to any introduction.' },
-  { id:8, cat:'introductions', zh:'我从英国来', py:'Wǒ cóng Yīngguó lái', en:'I am from England', tip:'Replace 英国 with your country. 美国 = USA, 澳大利亚 = Australia, 加拿大 = Canada.' },
-
-  // Politeness
-  { id:9,  cat:'politeness', zh:'谢谢', py:'Xièxie', en:'Thank you', tip:'Say it twice for emphasis: 谢谢你 (xièxie nǐ) adds "you" for extra sincerity.' },
-  { id:10, cat:'politeness', zh:'不客气', py:'Bù kèqi', en:'You\'re welcome', tip:'Literally "don\'t be polite". Another common response is 没事 (méi shì) — "no worries".' },
-  { id:11, cat:'politeness', zh:'对不起', py:'Duìbuqǐ', en:'I\'m sorry / Excuse me', tip:'Use to apologise. To get someone\'s attention, 不好意思 (bù hǎo yìsi) is softer.' },
-  { id:12, cat:'politeness', zh:'没关系', py:'Méi guānxi', en:'It\'s okay / No problem', tip:'Literally "there is no relationship [to the issue]". Very commonly heard in response to apologies.' },
-
-  // Learning
-  { id:13, cat:'learning', zh:'我在学中文', py:'Wǒ zài xué Zhōngwén', en:'I am learning Chinese', tip:'在 (zài) indicates an ongoing action, like "-ing" in English. Say this proudly — locals love it!' },
-  { id:14, cat:'learning', zh:'请说慢一点', py:'Qǐng shuō màn yīdiǎn', en:'Please speak more slowly', tip:'请 (qǐng) makes any request polite. 一点 (yīdiǎn) means "a little bit".' },
-  { id:15, cat:'learning', zh:'能再说一遍吗？', py:'Néng zài shuō yībiàn ma?', en:'Can you say that again?', tip:'一遍 (yībiàn) = one time through. This is more natural than 再说一次 in everyday speech.' },
-  { id:16, cat:'learning', zh:'我不明白', py:'Wǒ bù míngbai', en:'I don\'t understand', tip:'不 (bù) is the general negation word. 听不懂 (tīng bù dǒng) specifically means "I can\'t follow what I\'m hearing".' },
-
-  // Practical
-  { id:17, cat:'practical', zh:'这个多少钱？', py:'Zhège duōshao qián?', en:'How much does this cost?', tip:'Point and say this in any shop or market. Essential for bargaining in street markets.' },
-  { id:18, cat:'practical', zh:'在哪里？', py:'Zài nǎlǐ?', en:'Where is it?', tip:'Add a location before: 厕所在哪里？(cèsuǒ zài nǎlǐ?) = Where is the bathroom?' },
-  { id:19, cat:'practical', zh:'我想要这个', py:'Wǒ xiǎng yào zhège', en:'I would like this one', tip:'Point at what you want. 想 = want/think, 要 = want/need. Together they\'re softer than 要 alone.' },
-  { id:20, cat:'practical', zh:'好吃！', py:'Hǎo chī!', en:'Delicious!', tip:'Literally "good eat". Say this after any meal and watch the cook beam with pride.' },
+var PHRASES=[
+  {id:1,cat:"greetings",zh:"\u4f60\u597d",py:"N\u01d0 h\u01ceo",en:"Hello",tip:"The universal greeting. Use any time of day. Pair with a nod for extra warmth."},
+  {id:2,cat:"greetings",zh:"\u4f60\u597d\u5417\uff1f",py:"N\u01d0 h\u01ceo ma?",en:"How are you?",tip:"Adding \u5417 (ma) turns any statement into a yes/no question \u2014 a very useful pattern."},
+  {id:3,cat:"greetings",zh:"\u6211\u5f88\u597d\uff0c\u8c22\u8c22\uff01",py:"W\u01d2 h\u011bn h\u01ceo, xi\u00e8xie!",en:"I'm very well, thank you!",tip:"\u5f88 (h\u011bn) means 'very'. Chinese speakers often add it even when not emphasising \u2014 it sounds more natural."},
+  {id:4,cat:"greetings",zh:"\u518d\u89c1",py:"Z\u00e0iji\u00e0n",en:"Goodbye",tip:"Literally 'see again'. For a casual goodbye, \u62dc\u62dc (b\u0101ibai) is the Chinese version of 'bye bye'."},
+  {id:5,cat:"introductions",zh:"\u4f60\u53eb\u4ec0\u4e48\u540d\u5b57\uff1f",py:"N\u01d0 ji\u00e0o sh\u00e9nme m\u00edngz\u00ec?",en:"What is your name?",tip:"\u53eb (ji\u00e0o) means 'to be called'. A common shorter form is just \u4f60\u53eb\u4ec0\u4e48\uff1f"},
+  {id:6,cat:"introductions",zh:"\u6211\u53eb___",py:"W\u01d2 ji\u00e0o ___",en:"My name is ___",tip:"Fill in your name. Chinese friends may give you a Chinese name \u2014 it's a lovely tradition."},
+  {id:7,cat:"introductions",zh:"\u4f60\u4ece\u54ea\u91cc\u6765\uff1f",py:"N\u01d0 c\u00f3ng n\u01cel\u01d0 l\u00e1i?",en:"Where are you from?",tip:"\u4ece (c\u00f3ng) means 'from'. A great follow-up to any introduction."},
+  {id:8,cat:"introductions",zh:"\u6211\u4ece\u82f1\u56fd\u6765",py:"W\u01d2 c\u00f3ng Y\u012bnggu\u00f3 l\u00e1i",en:"I am from England",tip:"Replace \u82f1\u56fd with your country. \u7f8e\u56fd = USA, \u6fb3\u5927\u5229\u4e9a = Australia, \u52a0\u62ff\u5927 = Canada."},
+  {id:9,cat:"politeness",zh:"\u8c22\u8c22",py:"Xi\u00e8xie",en:"Thank you",tip:"Say it twice for emphasis: \u8c22\u8c22\u4f60 (xi\u00e8xie n\u01d0) adds 'you' for extra sincerity."},
+  {id:10,cat:"politeness",zh:"\u4e0d\u5ba2\u6c14",py:"B\u00f9 k\u00e8qi",en:"You're welcome",tip:"Literally 'don't be polite'. Another common response is \u6ca1\u4e8b (m\u00e9i sh\u00ec) \u2014 'no worries'."},
+  {id:11,cat:"politeness",zh:"\u5bf9\u4e0d\u8d77",py:"Du\u00ecbuq\u01d0",en:"I'm sorry / Excuse me",tip:"Use to apologise. To get someone's attention, \u4e0d\u597d\u610f\u601d (b\u00f9 h\u01ceo y\u00ecs\u00ec) is softer."},
+  {id:12,cat:"politeness",zh:"\u6ca1\u5173\u7cfb",py:"M\u00e9i gu\u0101nxi",en:"It's okay / No problem",tip:"Literally 'there is no relationship to the issue'. Very commonly heard in response to apologies."},
+  {id:13,cat:"learning",zh:"\u6211\u5728\u5b66\u4e2d\u6587",py:"W\u01d2 z\u00e0i xu\u00e9 Zh\u014dngw\u00e9n",en:"I am learning Chinese",tip:"\u5728 (z\u00e0i) indicates an ongoing action, like '-ing' in English. Say this proudly \u2014 locals love it!"},
+  {id:14,cat:"learning",zh:"\u8bf7\u8bf4\u6162\u4e00\u70b9",py:"Q\u01d0ng shu\u014d m\u00e0n y\u012bdian",en:"Please speak more slowly",tip:"\u8bf7 (q\u01d0ng) makes any request polite. \u4e00\u70b9 (y\u012bdian) means 'a little bit'."},
+  {id:15,cat:"learning",zh:"\u80fd\u518d\u8bf4\u4e00\u904d\u5417\uff1f",py:"N\u00e9ng z\u00e0i shu\u014d y\u012bpi\u00e0n ma?",en:"Can you say that again?",tip:"\u4e00\u904d (y\u012bpi\u00e0n) = one time through. This is more natural than \u518d\u8bf4\u4e00\u6b21 in everyday speech."},
+  {id:16,cat:"learning",zh:"\u6211\u4e0d\u660e\u767d",py:"W\u01d2 b\u00f9 m\u00edngbai",en:"I don't understand",tip:"\u4e0d (b\u00f9) is the general negation word. \u542c\u4e0d\u61c2 (t\u012bng b\u00f9 d\u01d2ng) specifically means 'I can't follow what I'm hearing'."},
+  {id:17,cat:"practical",zh:"\u8fd9\u4e2a\u591a\u5c11\u9322\uff1f",py:"Zh\u00e8ge du\u014dshao qi\u00e1n?",en:"How much does this cost?",tip:"Point and say this in any shop or market. Essential for bargaining in street markets."},
+  {id:18,cat:"practical",zh:"\u5728\u54ea\u91cc\uff1f",py:"Z\u00e0i n\u01cel\u01d0?",en:"Where is it?",tip:"Add a location before: \u5395\u6240\u5728\u54ea\u91cc\uff1f(c\u00e8su\u01d2 z\u00e0i n\u01cel\u01d0?) = Where is the bathroom?"},
+  {id:19,cat:"practical",zh:"\u6211\u60f3\u8981\u8fd9\u4e2a",py:"W\u01d2 xi\u01ceng y\u00e0o zh\u00e8ge",en:"I would like this one",tip:"Point at what you want. \u60f3\u8981 together is softer than \u8981 alone."},
+  {id:20,cat:"practical",zh:"\u597d\u5403\uff01",py:"H\u01ceo ch\u012b!",en:"Delicious!",tip:"Literally 'good eat'. Say this after any meal and watch the cook beam with pride."}
 ];
 
-const CATEGORIES = {
-  greetings:     { label: 'Greetings',      color: 'var(--red)' },
-  introductions: { label: 'Introductions',  color: 'var(--blue)' },
-  politeness:    { label: 'Politeness',     color: 'var(--green)' },
-  learning:      { label: 'Learning',       color: 'var(--gold)' },
-  practical:     { label: 'Practical',      color: '#5a3a8c' },
-};
+var CAT_LABELS={all:"All Phrases",greetings:"Greetings",introductions:"Introductions",politeness:"Politeness",learning:"Learning Chinese",practical:"Practical"};
 
-let currentFilter = 'all';
-let speakAllTimer = null;
+var currentCat="all", script="chinese";
+var queue=[], doneCount=0, reviewCount=0, reviewed=0, currentCard=null;
 
-function renderPhrases(filter) {
-  const container = document.getElementById('phraseList');
-  container.innerHTML = '';
-
-  const cats = filter === 'all'
-    ? Object.keys(CATEGORIES)
-    : [filter];
-
-  let delay = 0;
-  cats.forEach(cat => {
-    const phrases = PHRASES.filter(p => p.cat === cat);
-    if (!phrases.length) return;
-
-    const section = document.createElement('div');
-    section.className = 'category-section';
-    section.dataset.cat = cat;
-
-    section.innerHTML = `
-      <div class="category-header">
-        <div class="category-title" style="color:${CATEGORIES[cat].color}">${CATEGORIES[cat].label}</div>
-        <div class="category-line"></div>
-        <div class="category-count">${phrases.length} phrase${phrases.length > 1 ? 's' : ''}</div>
-      </div>
-      <div class="phrases-grid">
-        ${phrases.map((p, i) => `
-          <div class="phrase-card" style="animation-delay:${delay + i * 0.06}s">
-            <div class="phrase-num">${String(p.id).padStart(2, '0')}</div>
-            <div class="phrase-chinese">${p.zh}</div>
-            <div class="phrase-pinyin">${p.py}</div>
-            <div class="phrase-english">${p.en}</div>
-            <div class="phrase-tip">${p.tip}</div>
-            <div class="phrase-actions">
-              <button class="speak-btn" onclick="speakPhrase(this, '${p.zh}', 'zh')" title="Speak in Mandarin">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.536 8.464a5 5 0 010 7.072M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z"/></svg>
-                Chinese
-              </button>
-              <button class="speak-btn" onclick="speakPhrase(this, '${p.py}', 'en')" title="Speak pinyin">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg>
-                Pinyin
-              </button>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-    delay += phrases.length * 0.06 + 0.1;
-    container.appendChild(section);
-  });
+function initQueue(){
+  var pool=currentCat==="all"?PHRASES.slice():PHRASES.filter(function(p){return p.cat===currentCat;});
+  queue=pool.sort(function(){return Math.random()-.5;});
+  doneCount=0; reviewCount=0; reviewed=0;
+  updateStats(); showNext();
 }
-
-function filterCategory(cat, btn) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderPhrases(cat);
+function setCategory(cat,btn){
+  currentCat=cat;
+  document.querySelectorAll(".cat-btn").forEach(function(b){b.classList.remove("active");});
+  btn.classList.add("active");
+  initQueue();
 }
-
-function speakPhrase(btn, text, lang) {
-  if (!window.speechSynthesis) return;
+function setScript(s,btn){
+  script=s;
+  document.querySelectorAll(".script-btn").forEach(function(b){b.classList.remove("active");});
+  btn.classList.add("active");
+  if(currentCard) renderCard(currentCard);
+}
+function updateStats(){
+  var total=queue.length+doneCount;
+  document.getElementById("statRemaining").textContent=queue.length;
+  document.getElementById("statReviewed").textContent=reviewed;
+  document.getElementById("statDone").textContent=doneCount;
+  document.getElementById("countNew").textContent=Math.max(0,queue.length-reviewCount);
+  document.getElementById("countReview").textContent=reviewCount;
+  document.getElementById("countDone").textContent=doneCount;
+  document.getElementById("progressBar").style.width=(total>0?(doneCount/total*100):0)+"%";
+}
+function showNext(){
+  if(!queue.length){showDone();return;}
+  currentCard=queue[0]; renderCard(currentCard);
+}
+function renderCard(p){
+  var isPinyinFirst=script==="pinyin";
+  var primary=isPinyinFirst?p.py:p.zh;
+  var primaryCls=isPinyinFirst?"card-pinyin":"card-chinese";
+  var secondary=isPinyinFirst?p.zh:p.py;
+  var secondaryCls=isPinyinFirst?"card-chinese":"card-pinyin";
+  var cat=CAT_LABELS[p.cat]||p.cat;
+  var num=("0"+p.id).slice(-2);
+  var speakerSvg='<svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.536 8.464a5 5 0 010 7.072M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var infoSvg='<svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg>';
+  document.getElementById("cardContainer").innerHTML=
+    '<div class="card">'+
+    '<div class="cat-badge">'+cat+' &middot; '+num+' / 20</div>'+
+    '<div class="card-top">'+
+    '<div class="'+primaryCls+'">'+primary+'</div>'+
+    '<div class="'+secondaryCls+'">'+secondary+'</div>'+
+    '<div class="card-meaning">'+p.en+'</div>'+
+    '<div class="card-tip">&#128161; '+p.tip+'</div>'+
+    '</div>'+
+    '<hr class="card-divider">'+
+    '<div class="speak-row">'+
+    '<button class="speak-btn" data-lang="zh" onclick="speakPhrase(this)">'+speakerSvg+'Speak Chinese</button>'+
+    '<button class="speak-btn" data-lang="py" onclick="speakPhrase(this)">'+infoSvg+'Speak Pinyin</button>'+
+    '</div>'+
+    '<div class="recall-row">'+
+    '<button class="recall-btn recall-again" data-t="again" onclick="recall(this.dataset.t)"><span class="recall-label">AGAIN</span><span class="recall-name">Not yet</span></button>'+
+    '<button class="recall-btn recall-good" data-t="good" onclick="recall(this.dataset.t)"><span class="recall-label">GOOD</span><span class="recall-name">Got it</span></button>'+
+    '<button class="recall-btn recall-perfect" data-t="perfect" onclick="recall(this.dataset.t)"><span class="recall-label">PERFECT</span><span class="recall-name">Nailed it</span></button>'+
+    '</div></div>';
+}
+function recall(type){
+  if(!currentCard) return;
+  queue.shift(); reviewed++;
+  if(type==="again"){
+    queue.splice(Math.min(queue.length,3+Math.floor(Math.random()*3)),0,currentCard);
+    reviewCount++;
+  } else { doneCount++; }
+  updateStats(); showNext();
+}
+function speakPhrase(btn){
+  if(!window.speechSynthesis||!currentCard) return;
   speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = lang === 'zh' ? 'zh-CN' : 'en-US';
-  u.rate = 0.75;
-  if (btn) {
-    const allBtns = document.querySelectorAll('.speak-btn');
-    allBtns.forEach(b => b.classList.remove('speaking'));
-    btn.classList.add('speaking');
-    u.onend = () => btn.classList.remove('speaking');
-  }
+  var lang=btn.dataset.lang;
+  var text=lang==="zh"?currentCard.zh:currentCard.py;
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang=lang==="zh"?"zh-CN":"en-US"; u.rate=0.75;
+  document.querySelectorAll(".speak-btn").forEach(function(b){b.classList.remove("speaking");});
+  btn.classList.add("speaking");
+  u.onend=function(){btn.classList.remove("speaking");};
   speechSynthesis.speak(u);
 }
-
-function speakAll() {
-  if (!window.speechSynthesis) return;
-  speechSynthesis.cancel();
-  const phrases = currentFilter === 'all' ? PHRASES : PHRASES.filter(p => p.cat === currentFilter);
-  let i = 0;
-  function next() {
-    if (i >= phrases.length) return;
-    const p = phrases[i++];
-    const u = new SpeechSynthesisUtterance(p.zh);
-    u.lang = 'zh-CN'; u.rate = 0.7;
-    u.onend = () => setTimeout(next, 800);
-    speechSynthesis.speak(u);
-  }
-  next();
+function showDone(){
+  currentCard=null;
+  var cat=CAT_LABELS[currentCat]||currentCat;
+  document.getElementById("cardContainer").innerHTML=
+    '<div class="done-state">'+
+    '<div class="done-char">\u5b8c</div>'+
+    '<div class="done-title">Well done!</div>'+
+    '<div class="done-subtitle">You reviewed all <strong>'+reviewed+'</strong> '+cat+' phrases. \u5f88\u597d\uff01</div>'+
+    '<button class="restart-btn" onclick="initQueue()">Practice again</button>'+
+    '</div>';
 }
-
 const LS2={get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d}catch{return d}}};
 const _u=LS2.get('hsk_user',null);
 if(_u) document.getElementById('userAvatar').textContent=(_u.name?.[0]||'漢').toUpperCase();
-renderPhrases('all');
+initQueue();
 </script>
 </body>
 </html>
