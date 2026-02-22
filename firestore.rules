@@ -1,0 +1,97 @@
+// ─── HSK Flashcards — Firestore Security Rules ───────────────────────────────
+//
+// Architecture note:
+// All database access goes through our Express server using the Firebase Admin
+// SDK, which bypasses these rules entirely. These rules therefore act as a
+// hard security net — locking out any attempt to access Firestore directly
+// from a browser or third-party client, even with a valid Firebase token.
+//
+// Rule of thumb: deny everything by default; allow only what's explicitly safe.
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helper functions ────────────────────────────────────────────────────
+
+    // Is the requesting user authenticated via Firebase Auth?
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Does the requesting user own this document (uid matches doc path)?
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // Is the incoming data free of unexpected extra fields?
+    function hasOnly(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    // Is the request coming from our server's Admin SDK?
+    // Admin SDK requests carry no auth token, so request.auth == null.
+    // We rely on this to distinguish trusted server writes from client writes.
+    function isAdminSDK() {
+      return request.auth == null;
+    }
+
+    // ── /users/{uid} ────────────────────────────────────────────────────────
+    //
+    // Created and updated exclusively by the server on login.
+    // A signed-in user may read their own profile (e.g. for client-side display)
+    // but cannot write it directly — all mutations go through the server.
+
+    match /users/{uid} {
+      allow read:  if isOwner(uid);
+      allow write: if isAdminSDK();  // server-only writes
+    }
+
+    // ── /sessions/{sessionId} ───────────────────────────────────────────────
+    //
+    // Created by the server when a study session starts.
+    // Users may read their own sessions (for the dashboard).
+    // No client-side writes permitted.
+
+    match /sessions/{sessionId} {
+      allow read:  if isSignedIn() && resource.data.uid == request.auth.uid;
+      allow write: if isAdminSDK();
+    }
+
+    // ── /progress/{uid} ─────────────────────────────────────────────────────
+    //
+    // Tracks streaks, weekly targets, and per-level stats.
+    // Server writes only; user may read their own progress.
+
+    match /progress/{uid} {
+      allow read:  if isOwner(uid);
+      allow write: if isAdminSDK();
+    }
+
+    // ── /settings/{uid} ─────────────────────────────────────────────────────
+    //
+    // Optional user-configurable settings (future use).
+    // Users may read AND write their own settings, but only allowed fields.
+
+    match /settings/{uid} {
+      allow read:  if isOwner(uid);
+      allow write: if isOwner(uid) && hasOnly([
+        'weeklyTarget',
+        'preferredScript',
+        'preferredLevel',
+        'notificationsEnabled',
+        'updatedAt'
+      ]);
+    }
+
+    // ── Catch-all: deny everything else ─────────────────────────────────────
+    //
+    // Any collection or document not explicitly matched above is denied.
+    // This includes the _test collection used during development.
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

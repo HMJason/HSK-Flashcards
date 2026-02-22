@@ -48,3 +48,37 @@ hsk-flashcards/
 ## Vocabulary Source
 
 Vocabulary data sourced from [clem109/hsk-vocabulary](https://github.com/clem109/hsk-vocabulary) (MIT License). Traditional characters converted using [hanziconv](https://pypi.org/project/hanziconv/).
+
+## Deploying Firestore Security Rules
+
+Install the Firebase CLI once:
+```bash
+npm install -g firebase-tools
+firebase login
+firebase use hsk-flashcards-bd0dc
+```
+
+Then deploy rules and indexes:
+```bash
+npm run deploy:rules    # deploys firestore.rules
+npm run deploy:indexes  # deploys firestore.indexes.json
+npm run deploy:all      # deploys both
+```
+
+## Firestore Security Model
+
+All database access in this app goes through the Express server via the **Firebase Admin SDK**, which bypasses security rules entirely. The rules act as a hard safety net against any direct client-side access:
+
+| Collection | Read | Write |
+|---|---|---|
+| `users/{uid}` | Owner only | Server (Admin SDK) only |
+| `sessions/{sessionId}` | Owner only | Server (Admin SDK) only |
+| `progress/{uid}` | Owner only | Server (Admin SDK) only |
+| `settings/{uid}` | Owner only | Owner (allowed fields only) |
+| Everything else | ❌ Denied | ❌ Denied |
+
+## Security Reminders
+
+- **Never commit `.env`** — it's in `.gitignore` but double-check before pushing
+- **Rotate your service account key** if it's ever been shared or exposed
+- **Enable App Check** in Firebase Console for additional protection in production
