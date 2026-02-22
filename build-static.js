@@ -481,7 +481,7 @@ const USER_KEY      = 'hsk_user';
 
 const DEFAULT_SETTINGS = {
   dailyTarget: 20, preferredScript: 'simplified',
-  defaultLevel: 'all', soundEnabled: true,
+  defaultLevel: 1, soundEnabled: true,
 };
 
 // ─── State ────────────────────────────────────────────────────────────────────
@@ -628,6 +628,8 @@ function continueFromName(){
   LS.set(SETTINGS_KEY,{...DEFAULT_SETTINGS,dailyTarget:target});
   closeAll();
   loadUser();
+  // Re-init queue after settings applied (currentLevel may have changed)
+  if(allVocab.length) initQueue();
 }
 
 // ─── Settings panel ───────────────────────────────────────────────────────────
@@ -704,10 +706,12 @@ function saveProgress(){
 // ─── Vocab loading (lazy by level) ────────────────────────────────────────────
 const vocabCache={};
 async function fetchLevel(level){
-  if(vocabCache[level]) return vocabCache[level];
+  if(vocabCache[level]?.length) return vocabCache[level];
   const url=level==='all'?'vocab.json':'vocab-hsk'+level+'.json';
   const res=await fetch(url);
+  if(!res.ok) throw new Error('HTTP '+res.status+' loading '+url);
   const data=await res.json();
+  if(!Array.isArray(data)||!data.length) throw new Error('Empty vocab for level '+level);
   vocabCache[level]=data;
   if(level!=='all'){
     vocabCache['all']=[...(vocabCache['all']||[]),...data];
@@ -729,7 +733,7 @@ async function loadVocab(){
     }
   }catch(e){
     document.getElementById('cardContainer').innerHTML=
-      '<div class="done-state"><div class="done-char">！</div><div class="done-title">Could not load vocabulary</div></div>';
+      '<div class="done-state"><div class="done-char">！</div><div class="done-title">Could not load vocabulary</div><div class="done-subtitle" style="margin-top:12px">'+e.message+'<br><br>Try refreshing the page.</div></div>';
   }
 }
 
