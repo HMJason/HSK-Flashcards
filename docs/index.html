@@ -233,17 +233,15 @@
 </footer>
 
 <script>
-const LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d}catch{return d}}};
+const _LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d}catch{return d}}};
 function loadUser(){
-  const user=LS.get('hsk_user',null);
+  const user=_LS.get('hsk_user',null);
   if(user){
     document.getElementById('userName').textContent=user.name?.split(' ')[0]||'';
     document.getElementById('userAvatar').textContent=(user.name?.[0]||'漢').toUpperCase();
   }
 }
-function signOut(){
-  if(confirm('Clear all local data and reset?')){localStorage.clear();location.reload();}
-}
+function signOut(){if(confirm('Clear all local data?')){localStorage.clear();location.reload();}}
 loadUser();
 </script>
 </body>

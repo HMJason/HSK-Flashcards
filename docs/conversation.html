@@ -319,9 +319,13 @@ function showDone(){
     '<button class="restart-btn" onclick="initQueue()">Practice again</button>'+
     '</div>';
 }
-const LS2={get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d}catch{return d}}};
-const _u=LS2.get('hsk_user',null);
-if(_u) document.getElementById('userAvatar').textContent=(_u.name?.[0]||'漢').toUpperCase();
+function loadUser(){
+  var _ls={get:function(k,d){try{var v=localStorage.getItem(k);return v!=null?JSON.parse(v):d;}catch(e){return d;}}};
+  var u=_ls.get('hsk_user',null);
+  var av=document.getElementById('userAvatar');
+  if(u&&av) av.textContent=(u.name&&u.name[0]||'漢').toUpperCase();
+}
+loadUser();
 loadAutoPlaySetting();
 initQueue();
 </script>
