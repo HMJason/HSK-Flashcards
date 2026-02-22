@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSK Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f0ebe0;
+    --cream-dark: #e5dfd2;
+    --cream-mid: #ede8dc;
+    --gold: #8b6914;
+    --gold-light: #c4a035;
+    --red: #8b1a1a;
+    --red-light: #c0392b;
+    --ink: #2c2416;
+    --ink-light: #5a4e3a;
+    --ink-muted: #8a7a62;
+    --green: #2d5a3d;
+    --blue: #1a3a5c;
+    --card-bg: #faf7f2;
+    --border: rgba(139, 105, 20, 0.2);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(139,105,20,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(139,26,26,0.03) 0%, transparent 50%);
+  }
+
+  /* HEADER */
+  header {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-char {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px;
+    color: var(--red);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .logo-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .header-stats {
+    display: flex;
+    gap: 40px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* SCRIPT TOGGLE */
+  .script-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cream-dark);
+    border-radius: 40px;
+    padding: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .script-btn {
+    background: none;
+    border: none;
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    padding: 6px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: var(--ink-muted);
+    transition: all 0.25s ease;
+  }
+
+  .script-btn.active {
+    background: var(--card-bg);
+    color: var(--gold);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  /* NAV */
+  nav {
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--cream);
+  }
+
+  .nav-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-right: 10px;
+  }
+
+  .level-btn {
+    border: 1px solid transparent;
+    background: none;
+    padding: 10px 18px;
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    color: var(--ink-light);
+    border-radius: 4px;
+    transition: all 0.2s;
+    margin: 8px 2px;
+  }
+
+  .level-btn:hover {
+    border-color: var(--border);
+    color: var(--ink);
+  }
+
+  .level-btn.active {
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 36px 24px 60px;
+  }
+
+  /* PROGRESS COUNTERS */
+  .progress-counters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .counter-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-size: 14px;
+    color: var(--ink-light);
+    background: var(--card-bg);
+  }
+
+  .counter-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .dot-red { background: var(--red-light); }
+  .dot-blue { background: var(--blue); }
+  .dot-green { background: var(--green); }
+
+  /* PROGRESS BAR */
+  .progress-bar-wrap {
+    height: 6px;
+    background: var(--cream-dark);
+    border-radius: 3px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--red) 0%, var(--gold) 100%);
+    transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* CARD */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 40px 44px;
+    box-shadow: 0 4px 24px rgba(44,36,22,0.06), 0 1px 4px rgba(44,36,22,0.04);
+    animation: fadeSlide 0.4s ease;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .card-chinese {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px;
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .card-traditional-label {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .card-traditional-label span {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: var(--ink-light);
+  }
+
+  .card-right {
+    text-align: right;
+  }
+
+  .card-pinyin {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--red);
+    font-weight: 400;
+  }
+
+  .card-meaning {
+    font-size: 16px;
+    color: var(--ink-light);
+    margin-top: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  .card-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 20px 0;
+  }
+
+  /* SPEAK BUTTONS */
+  .speak-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .speak-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    background: none;
+    border-radius: 3px;
+    padding: 9px 18px;
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    color: var(--ink-light);
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+
+  .speak-btn:hover {
+    background: var(--cream-dark);
+    color: var(--ink);
+  }
+
+  .speak-btn:active { transform: scale(0.98); }
+
+  .speak-icon {
+    width: 18px; height: 18px;
+    display: inline-flex;
+  }
+
+  /* EXAMPLE SECTION */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .example-box {
+    background: var(--cream-mid);
+    border-left: 3px solid var(--gold-light);
+    border-radius: 0 3px 3px 0;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+  }
+
+  .example-chinese {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .example-chinese .highlight {
+    color: var(--red-light);
+    text-decoration: underline;
+    text-decoration-color: rgba(192,57,43,0.3);
+  }
+
+  .example-pinyin {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--red-light);
+    margin-bottom: 3px;
+  }
+
+  .example-english {
+    font-size: 15px;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  /* CHARACTER BREAKDOWN */
+  .chars-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .char-tile {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 12px 18px;
+    text-align: center;
+    background: var(--card-bg);
+    min-width: 80px;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .char-tile:hover {
+    border-color: var(--gold-light);
+    box-shadow: 0 2px 8px rgba(139,105,20,0.1);
+  }
+
+  .char-tile-char {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 30px;
+    color: var(--ink);
+    display: block;
+  }
+
+  .char-tile-meaning {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  /* RECALL BUTTONS */
+  .recall-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .recall-btn {
+    flex: 1;
+    border: 1px solid var(--border);
+    background: none;
+    padding: 12px 10px;
+    border-radius: 3px;
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.22s;
+    letter-spacing: 0.04em;
+    color: var(--ink-light);
+    position: relative;
+  }
+
+  .recall-btn .recall-label { font-size: 11px; display: block; color: var(--ink-muted); margin-bottom: 2px; letter-spacing: 0.12em; }
+  .recall-btn .recall-name { font-size: 15px; }
+
+  .recall-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(44,36,22,0.1); }
+
+  .recall-again:hover { border-color: var(--red-light); color: var(--red); background: rgba(139,26,26,0.03); }
+  .recall-good:hover { border-color: var(--blue); color: var(--blue); background: rgba(26,58,92,0.03); }
+  .recall-perfect:hover { border-color: var(--green); color: var(--green); background: rgba(45,90,61,0.03); }
+
+  .recall-btn:active { transform: scale(0.98); }
+
+  /* EMPTY STATE */
+  .done-state {
+    text-align: center;
+    padding: 60px 40px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    animation: fadeSlide 0.4s ease;
+  }
+
+  .done-char {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 72px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .done-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .done-subtitle {
+    color: var(--ink-muted);
+    font-size: 16px;
+    font-style: italic;
+  }
+
+  .restart-btn {
+    margin-top: 28px;
+    border: 1px solid var(--gold);
+    background: none;
+    padding: 12px 32px;
+    border-radius: 3px;
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: var(--gold);
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+  }
+
+  .restart-btn:hover { background: var(--gold); color: #fff; }
+
+  /* HSK BADGE */
+  .hsk-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    border: 1px solid var(--gold-light);
+    color: var(--gold);
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 0 16px; }
+    nav { padding: 0 16px; }
+    main { padding: 24px 12px; }
+    .card { padding: 24px 20px; }
+    .card-chinese { font-size: 40px; }
+    .header-stats { gap: 20px; }
+    .recall-btn .recall-label { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-char">漢</div>
+    <div class="logo-text">HSK Flashcards</div>
+  </div>
+
+  <div class="header-stats">
+    <div class="stat">
+      <div class="stat-num" id="statDue">—</div>
+      <div class="stat-label">Due Today</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="statReviewed">0</div>
+      <div class="stat-label">Reviewed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="statStreak">1</div>
+      <div class="stat-label">Streak</div>
+    </div>
+  </div>
+
+  <div class="script-toggle">
+    <button class="script-btn active" id="btnSimplified" onclick="setScript('simplified')">Simplified</button>
+    <button class="script-btn" id="btnTraditional" onclick="setScript('traditional')">Traditional</button>
+  </div>
+</header>
+
+<nav>
+  <span class="nav-label">Level:</span>
+  <button class="level-btn active" onclick="setLevel('all', this)">All HSK</button>
+  <button class="level-btn" onclick="setLevel(1, this)">HSK 1</button>
+  <button class="level-btn" onclick="setLevel(2, this)">HSK 2</button>
+  <button class="level-btn" onclick="setLevel(3, this)">HSK 3</button>
+  <button class="level-btn" onclick="setLevel(4, this)">HSK 4</button>
+  <button class="level-btn" onclick="setLevel(5, this)">HSK 5</button>
+  <button class="level-btn" onclick="setLevel(6, this)">HSK 6</button>
+</nav>
+
+<main>
+  <div class="progress-counters">
+    <div class="counter-pill"><span class="counter-dot dot-red"></span> <span id="countNew">—</span> New</div>
+    <div class="counter-pill"><span class="counter-dot dot-blue"></span> <span id="countReview">0</span> Review</div>
+    <div class="counter-pill"><span class="counter-dot dot-green"></span> <span id="countDone">0</span> Done</div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progressBar" style="width:0%"></div>
+  </div>
+
+  <div id="cardContainer"></div>
+</main>
+
+<script>
+// ─── VOCABULARY DATA ───────────────────────────────────────────────────────────
+const vocab = [
+  {
+    simplified: '杯子', traditional: '杯子',
+    pinyin: 'bēizi', meaning: 'cup; glass', hsk: 1,
+    example_s: '这个<b>杯子</b>是我的。', example_t: '這個<b>杯子</b>是我的。',
+    pinyin_ex: 'Zhège bēizi shì wǒ de.',
+    english_ex: 'This cup is mine.',
+    chars: [{ s:'杯', t:'杯', m:'cup, glass' }, { s:'子', t:'子', m:'son; suffix' }]
+  },
+  {
+    simplified: '你好', traditional: '你好',
+    pinyin: 'nǐ hǎo', meaning: 'hello; how are you', hsk: 1,
+    example_s: '<b>你好</b>，我叫李明。', example_t: '<b>你好</b>，我叫李明。',
+    pinyin_ex: 'Nǐ hǎo, wǒ jiào Lǐ Míng.',
+    english_ex: 'Hello, my name is Li Ming.',
+    chars: [{ s:'你', t:'你', m:'you' }, { s:'好', t:'好', m:'good; well' }]
+  },
+  {
+    simplified: '谢谢', traditional: '謝謝',
+    pinyin: 'xièxie', meaning: 'thank you', hsk: 1,
+    example_s: '<b>谢谢</b>你的帮助！', example_t: '<b>謝謝</b>你的幫助！',
+    pinyin_ex: 'Xièxie nǐ de bāngzhù!',
+    english_ex: 'Thank you for your help!',
+    chars: [{ s:'谢', t:'謝', m:'thank; decline' }, { s:'谢', t:'謝', m:'thank; decline' }]
+  },
+  {
+    simplified: '朋友', traditional: '朋友',
+    pinyin: 'péngyou', meaning: 'friend', hsk: 1,
+    example_s: '他是我的好<b>朋友</b>。', example_t: '他是我的好<b>朋友</b>。',
+    pinyin_ex: 'Tā shì wǒ de hǎo péngyou.',
+    english_ex: 'He is my good friend.',
+    chars: [{ s:'朋', t:'朋', m:'friend; companion' }, { s:'友', t:'友', m:'friend; friendly' }]
+  },
+  {
+    simplified: '学习', traditional: '學習',
+    pinyin: 'xuéxí', meaning: 'to study; to learn', hsk: 1,
+    example_s: '我每天都<b>学习</b>中文。', example_t: '我每天都<b>學習</b>中文。',
+    pinyin_ex: 'Wǒ měitiān dōu xuéxí Zhōngwén.',
+    english_ex: 'I study Chinese every day.',
+    chars: [{ s:'学', t:'學', m:'learn; study' }, { s:'习', t:'習', m:'practice; habit' }]
+  },
+  {
+    simplified: '吃饭', traditional: '吃飯',
+    pinyin: 'chīfàn', meaning: 'to eat; to have a meal', hsk: 1,
+    example_s: '我们一起去<b>吃饭</b>吧。', example_t: '我們一起去<b>吃飯</b>吧。',
+    pinyin_ex: 'Wǒmen yīqǐ qù chīfàn ba.',
+    english_ex: "Let's go eat together.",
+    chars: [{ s:'吃', t:'吃', m:'eat; suffer' }, { s:'饭', t:'飯', m:'rice; meal' }]
+  },
+  {
+    simplified: '医生', traditional: '醫生',
+    pinyin: 'yīshēng', meaning: 'doctor; physician', hsk: 2,
+    example_s: '我想成为一名<b>医生</b>。', example_t: '我想成為一名<b>醫生</b>。',
+    pinyin_ex: 'Wǒ xiǎng chéngwéi yī míng yīshēng.',
+    english_ex: 'I want to become a doctor.',
+    chars: [{ s:'医', t:'醫', m:'medicine; doctor' }, { s:'生', t:'生', m:'life; born; student' }]
+  },
+  {
+    simplified: '电脑', traditional: '電腦',
+    pinyin: 'diànnǎo', meaning: 'computer', hsk: 2,
+    example_s: '这台<b>电脑</b>很快。', example_t: '這台<b>電腦</b>很快。',
+    pinyin_ex: 'Zhè tái diànnǎo hěn kuài.',
+    english_ex: 'This computer is very fast.',
+    chars: [{ s:'电', t:'電', m:'electricity; electric' }, { s:'脑', t:'腦', m:'brain; mind' }]
+  },
+  {
+    simplified: '音乐', traditional: '音樂',
+    pinyin: 'yīnyuè', meaning: 'music', hsk: 2,
+    example_s: '她很喜欢听<b>音乐</b>。', example_t: '她很喜歡聽<b>音樂</b>。',
+    pinyin_ex: 'Tā hěn xǐhuān tīng yīnyuè.',
+    english_ex: 'She really likes listening to music.',
+    chars: [{ s:'音', t:'音', m:'sound; music' }, { s:'乐', t:'樂', m:'music; happy' }]
+  },
+  {
+    simplified: '旅游', traditional: '旅遊',
+    pinyin: 'lǚyóu', meaning: 'to travel; tourism', hsk: 3,
+    example_s: '我喜欢去国外<b>旅游</b>。', example_t: '我喜歡去國外<b>旅遊</b>。',
+    pinyin_ex: 'Wǒ xǐhuān qù guówài lǚyóu.',
+    english_ex: 'I like to travel abroad.',
+    chars: [{ s:'旅', t:'旅', m:'travel; trip' }, { s:'游', t:'遊', m:'swim; travel; tour' }]
+  },
+  {
+    simplified: '环境', traditional: '環境',
+    pinyin: 'huánjìng', meaning: 'environment; surroundings', hsk: 4,
+    example_s: '我们要保护<b>环境</b>。', example_t: '我們要保護<b>環境</b>。',
+    pinyin_ex: 'Wǒmen yào bǎohù huánjìng.',
+    english_ex: 'We must protect the environment.',
+    chars: [{ s:'环', t:'環', m:'ring; surround' }, { s:'境', t:'境', m:'border; territory' }]
+  },
+  {
+    simplified: '经济', traditional: '經濟',
+    pinyin: 'jīngjì', meaning: 'economy; economic', hsk: 4,
+    example_s: '中国的<b>经济</b>发展很快。', example_t: '中國的<b>經濟</b>發展很快。',
+    pinyin_ex: 'Zhōngguó de jīngjì fāzhǎn hěn kuài.',
+    english_ex: "China's economy is developing rapidly.",
+    chars: [{ s:'经', t:'經', m:'pass through; scripture' }, { s:'济', t:'濟', m:'help; aid' }]
+  },
+  {
+    simplified: '可持续', traditional: '可持續',
+    pinyin: 'kě chíxù', meaning: 'sustainable', hsk: 6,
+    example_s: '<b>可持续</b>发展是未来的关键。', example_t: '<b>可持續</b>發展是未來的關鍵。',
+    pinyin_ex: 'Kě chíxù fāzhǎn shì wèilái de guānjiàn.',
+    english_ex: 'Sustainable development is the key to the future.',
+    chars: [{ s:'可', t:'可', m:'can; may' }, { s:'持', t:'持', m:'hold; maintain' }, { s:'续', t:'續', m:'continue; extend' }]
+  },
+  {
+    simplified: '文化', traditional: '文化',
+    pinyin: 'wénhuà', meaning: 'culture; civilization', hsk: 3,
+    example_s: '中国有悠久的<b>文化</b>历史。', example_t: '中國有悠久的<b>文化</b>歷史。',
+    pinyin_ex: 'Zhōngguó yǒu yōujiǔ de wénhuà lìshǐ.',
+    english_ex: 'China has a long cultural history.',
+    chars: [{ s:'文', t:'文', m:'language; culture; writing' }, { s:'化', t:'化', m:'change; transform' }]
+  },
+  {
+    simplified: '幸福', traditional: '幸福',
+    pinyin: 'xìngfú', meaning: 'happiness; happy; fortunate', hsk: 4,
+    example_s: '家人让我感到<b>幸福</b>。', example_t: '家人讓我感到<b>幸福</b>。',
+    pinyin_ex: 'Jiārén ràng wǒ gǎndào xìngfú.',
+    english_ex: 'My family makes me feel happy.',
+    chars: [{ s:'幸', t:'幸', m:'luck; fortunately' }, { s:'福', t:'福', m:'good fortune; happiness' }]
+  },
+  {
+    simplified: '地铁', traditional: '地鐵',
+    pinyin: 'dìtiě', meaning: 'subway; metro', hsk: 3,
+    example_s: '我坐<b>地铁</b>上班。', example_t: '我坐<b>地鐵</b>上班。',
+    pinyin_ex: 'Wǒ zuò dìtiě shàngbān.',
+    english_ex: 'I take the subway to work.',
+    chars: [{ s:'地', t:'地', m:'earth; land; ground' }, { s:'铁', t:'鐵', m:'iron; rail' }]
+  },
+  {
+    simplified: '手机', traditional: '手機',
+    pinyin: 'shǒujī', meaning: 'mobile phone; cell phone', hsk: 2,
+    example_s: '我的<b>手机</b>没电了。', example_t: '我的<b>手機</b>沒電了。',
+    pinyin_ex: "Wǒ de shǒujī méi diàn le.",
+    english_ex: "My phone's battery is dead.",
+    chars: [{ s:'手', t:'手', m:'hand' }, { s:'机', t:'機', m:'machine; opportunity' }]
+  },
+  {
+    simplified: '天气', traditional: '天氣',
+    pinyin: 'tiānqì', meaning: 'weather', hsk: 1,
+    example_s: '今天的<b>天气</b>很好。', example_t: '今天的<b>天氣</b>很好。',
+    pinyin_ex: 'Jīntiān de tiānqì hěn hǎo.',
+    english_ex: "Today's weather is very nice.",
+    chars: [{ s:'天', t:'天', m:'sky; heaven; day' }, { s:'气', t:'氣', m:'air; gas; spirit' }]
+  },
+  {
+    simplified: '语言', traditional: '語言',
+    pinyin: 'yǔyán', meaning: 'language', hsk: 3,
+    example_s: '她会说三种<b>语言</b>。', example_t: '她會說三種<b>語言</b>。',
+    pinyin_ex: 'Tā huì shuō sān zhǒng yǔyán.',
+    english_ex: 'She can speak three languages.',
+    chars: [{ s:'语', t:'語', m:'language; words' }, { s:'言', t:'言', m:'speech; words; say' }]
+  },
+  {
+    simplified: '努力', traditional: '努力',
+    pinyin: 'nǔlì', meaning: 'to work hard; diligent', hsk: 3,
+    example_s: '只要你<b>努力</b>，就会成功。', example_t: '只要你<b>努力</b>，就會成功。',
+    pinyin_ex: 'Zhǐyào nǐ nǔlì, jiù huì chénggōng.',
+    english_ex: 'As long as you work hard, you will succeed.',
+    chars: [{ s:'努', t:'努', m:'exert; strive' }, { s:'力', t:'力', m:'strength; power' }]
+  }
+];
+
+// ─── STATE ─────────────────────────────────────────────────────────────────────
+let script = 'simplified';
+let currentLevel = 'all';
+let queue = [];
+let doneCount = 0;
+let reviewCount = 0;
+let currentCard = null;
+let reviewed = 0;
+
+function initQueue() {
+  let filtered = currentLevel === 'all' ? [...vocab] : vocab.filter(v => v.hsk === currentLevel);
+  // Shuffle
+  queue = filtered.sort(() => Math.random() - 0.5);
+  doneCount = 0;
+  reviewCount = 0;
+  reviewed = 0;
+  updateStats();
+  showNext();
+}
+
+function setLevel(level, btn) {
+  currentLevel = level === 'all' ? 'all' : parseInt(level);
+  document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  initQueue();
+}
+
+function setScript(s) {
+  script = s;
+  document.getElementById('btnSimplified').classList.toggle('active', s === 'simplified');
+  document.getElementById('btnTraditional').classList.toggle('active', s === 'traditional');
+  if (currentCard) renderCard(currentCard);
+}
+
+function updateStats() {
+  const total = queue.length + doneCount;
+  document.getElementById('statDue').textContent = queue.length;
+  document.getElementById('countNew').textContent = Math.max(0, queue.length - reviewCount);
+  document.getElementById('countReview').textContent = reviewCount;
+  document.getElementById('countDone').textContent = doneCount;
+  document.getElementById('statReviewed').textContent = reviewed;
+
+  const pct = total > 0 ? (doneCount / total) * 100 : 0;
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+function showNext() {
+  if (queue.length === 0) {
+    showDone();
+    return;
+  }
+  currentCard = queue[0];
+  renderCard(currentCard);
+}
+
+function renderCard(card) {
+  const isTrad = script === 'traditional';
+  const chinese = isTrad ? card.traditional : card.simplified;
+  const otherScript = isTrad ? card.simplified : card.traditional;
+  const otherLabel = isTrad ? 'Simplified' : 'Traditional';
+  const example = isTrad ? card.example_t : card.example_s;
+
+  const charsHTML = card.chars.map(c => `
+    <div class="char-tile">
+      <span class="char-tile-char">${isTrad ? c.t : c.s}</span>
+      <div class="char-tile-meaning">${c.m}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('cardContainer').innerHTML = `
+    <div class="card">
+      <div class="hsk-badge">HSK ${card.hsk}</div>
+      <div class="card-top">
+        <div class="card-left">
+          <div class="card-chinese">${chinese}</div>
+          ${otherScript !== chinese ? `<div class="card-traditional-label">${otherLabel}: <span>${otherScript}</span></div>` : ''}
+        </div>
+        <div class="card-right">
+          <div class="card-pinyin">${card.pinyin}</div>
+          <div class="card-meaning">${card.meaning}</div>
+        </div>
+      </div>
+
+      <hr class="card-divider">
+
+      <div class="speak-row">
+        <button class="speak-btn" onclick="speak('${chinese}')">
+          <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Speak word
+        </button>
+        <button class="speak-btn" onclick="speakFull()">
+          <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M19.114 5.636a9 9 0 010 12.728M15.536 8.464a5 5 0 010 7.072M12 6a7 7 0 010 12M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Speak sentence
+        </button>
+      </div>
+
+      <div class="section-label">Example Sentence</div>
+      <div class="example-box">
+        <div class="example-chinese">${example}</div>
+        <div class="example-pinyin">${card.pinyin_ex}</div>
+        <div class="example-english">${card.english_ex}</div>
+      </div>
+
+      <div class="section-label">Character Breakdown</div>
+      <div class="chars-grid">${charsHTML}</div>
+
+      <div class="recall-row">
+        <button class="recall-btn recall-again" onclick="recall('again')">
+          <span class="recall-label">AGAIN</span>
+          <span class="recall-name">Tomorrow</span>
+        </button>
+        <button class="recall-btn recall-good" onclick="recall('good')">
+          <span class="recall-label">GOOD</span>
+          <span class="recall-name">Recall</span>
+        </button>
+        <button class="recall-btn recall-perfect" onclick="recall('perfect')">
+          <span class="recall-label">PERFECT</span>
+          <span class="recall-name">Recall</span>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function recall(type) {
+  if (!currentCard) return;
+  queue.shift();
+  reviewed++;
+
+  if (type === 'again') {
+    // re-insert near the end
+    const pos = Math.min(queue.length, 5 + Math.floor(Math.random() * 5));
+    queue.splice(pos, 0, currentCard);
+    reviewCount++;
+  } else {
+    doneCount++;
+  }
+
+  updateStats();
+  showNext();
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  const utt = new SpeechSynthesisUtterance(text.replace(/<[^>]*>/g, ''));
+  utt.lang = 'zh-CN';
+  utt.rate = 0.85;
+  speechSynthesis.speak(utt);
+}
+
+function speakFull() {
+  if (!currentCard) return;
+  const isTrad = script === 'traditional';
+  const sentence = (isTrad ? currentCard.example_t : currentCard.example_s).replace(/<[^>]*>/g, '');
+  speak(sentence);
+}
+
+function showDone() {
+  currentCard = null;
+  document.getElementById('cardContainer').innerHTML = `
+    <div class="done-state">
+      <div class="done-char">✓</div>
+      <div class="done-title">Session Complete!</div>
+      <div class="done-subtitle">You reviewed ${reviewed} card${reviewed !== 1 ? 's' : ''}. Great work!</div>
+      <button class="restart-btn" onclick="initQueue()">Study Again</button>
+    </div>
+  `;
+}
+
+// Init
+initQueue();
+</script>
+</body>
+</html>
