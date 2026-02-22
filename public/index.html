@@ -26,6 +26,12 @@
   .script-toggle { display: flex; background: var(--cream-dark); border-radius: 40px; padding: 4px; border: 1px solid var(--border); }
   .script-btn { background: none; border: none; font-family: 'EB Garamond', serif; font-size: 13px; letter-spacing: 0.08em; padding: 6px 16px; border-radius: 30px; cursor: pointer; color: var(--ink-muted); transition: all 0.25s; }
   .script-btn.active { background: var(--card-bg); color: var(--gold); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+  .user-area { display: flex; align-items: center; gap: 10px; }
+  .user-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border); object-fit: cover; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif SC', serif; font-size: 14px; color: var(--gold); overflow: hidden; }
+  .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .user-name { font-size: 14px; color: var(--ink-light); max-width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .logout-btn { border: 1px solid var(--border); background: none; border-radius: 30px; padding: 5px 14px; font-family: 'EB Garamond', serif; font-size: 13px; color: var(--ink-muted); cursor: pointer; transition: all 0.2s; letter-spacing: 0.05em; }
+  .logout-btn:hover { border-color: var(--red); color: var(--red); }
   nav { border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; align-items: center; gap: 6px; background: var(--cream); flex-wrap: wrap; }
   .nav-label { font-size: 11px; letter-spacing: 0.2em; color: var(--ink-muted); text-transform: uppercase; margin-right: 10px; }
   .level-btn { border: 1px solid transparent; background: none; padding: 10px 18px; font-family: 'EB Garamond', serif; font-size: 14px; cursor: pointer; color: var(--ink-light); border-radius: 4px; transition: all 0.2s; margin: 8px 2px; }
@@ -100,6 +106,11 @@
     <button class="script-btn active" onclick="setScript('simplified',this)">Simplified</button>
     <button class="script-btn" onclick="setScript('traditional',this)">Traditional</button>
   </div>
+  <div class="user-area">
+    <div class="user-avatar" id="userAvatar">漢</div>
+    <span class="user-name" id="userName"></span>
+    <button class="logout-btn" onclick="logout()">Sign out</button>
+  </div>
 </header>
 <nav>
   <span class="nav-label">Level:</span>
@@ -127,12 +138,32 @@ let allVocab=[], script='simplified', currentLevel='all', queue=[], doneCount=0,
 
 async function loadVocab(){
   try {
-    const res = await fetch('vocab.json');
+    const res = await fetch('/app-assets/vocab.json');
     allVocab = await res.json();
     initQueue();
   } catch(e) {
-    document.getElementById('cardContainer').innerHTML='<div class="done-state"><div class="done-char">！</div><div class="done-title">Could not load vocabulary</div><div class="done-subtitle">Serve this via a web server or GitHub Pages.<br>vocab.json must be in the same folder.</div></div>';
+    document.getElementById('cardContainer').innerHTML='<div class="done-state"><div class="done-char">！</div><div class="done-title">Could not load vocabulary</div><div class="done-subtitle">Make sure the server is running: <code>npm start</code></div></div>';
   }
+}
+
+async function loadUser(){
+  try {
+    const res = await fetch('/auth/me');
+    if (!res.ok) { window.location.href='/login'; return; }
+    const user = await res.json();
+    document.getElementById('userName').textContent = user.name?.split(' ')[0] || '';
+    const avatarEl = document.getElementById('userAvatar');
+    if (user.avatar) {
+      avatarEl.innerHTML = `<img src="${user.avatar}" alt="${user.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+    } else {
+      avatarEl.textContent = (user.name?.[0] || '漢').toUpperCase();
+    }
+  } catch { window.location.href='/login'; }
+}
+
+async function logout(){
+  await fetch('/auth/logout', { method:'POST' });
+  window.location.href='/login';
 }
 
 function initQueue(){
@@ -250,6 +281,7 @@ function showDone(){
     </div>`;
 }
 
+loadUser();
 loadVocab();
 </script>
 </body>
