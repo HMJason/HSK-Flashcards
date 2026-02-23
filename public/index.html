@@ -592,38 +592,6 @@
 <!-- Shared overlay -->
 <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
-<!-- ── Onboarding Modal ─────────────────────────────────────────────────────── -->
-<div class="modal onboarding-modal" id="onboardingModal" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
-  <div class="onboarding-hero">
-    <span class="onboarding-char">歡</span>
-    <div class="onboarding-title" id="onboardingTitle">Welcome to HSK Flashcards!</div>
-    <div class="onboarding-sub">Let's personalise your study plan.<br>How many cards would you like to review each day?</div>
-  </div>
-  <div class="modal-body">
-    <div class="target-picker">
-      <div>
-        <div class="target-display" id="onboardingTargetDisplay">20</div>
-        <div class="target-display-sub">cards per day</div>
-      </div>
-      <input type="range" class="target-slider" id="onboardingSlider"
-             min="5" max="100" step="5" value="20"
-             oninput="onboardingSliderChange(this.value)"
-             style="--pct: 15%">
-      <div class="target-presets">
-        <button class="preset-btn" onclick="setOnboardingTarget(5)">5 — Casual</button>
-        <button class="preset-btn active" onclick="setOnboardingTarget(20)">20 — Daily</button>
-        <button class="preset-btn" onclick="setOnboardingTarget(50)">50 — Intensive</button>
-        <button class="preset-btn" onclick="setOnboardingTarget(100)">100 — Hardcore</button>
-      </div>
-    </div>
-  </div>
-  <div class="modal-footer" style="justify-content:center; padding-top:16px">
-    <button class="btn-primary" style="width:100%;max-width:240px;padding:14px" onclick="completeOnboarding()">
-      Start Learning →
-    </button>
-  </div>
-</div>
-
 <!-- ── Settings Panel ──────────────────────────────────────────────────────── -->
 <div class="modal settings-panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
   <div class="modal-header">

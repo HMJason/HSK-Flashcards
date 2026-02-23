@@ -592,45 +592,6 @@
 <!-- Shared overlay -->
 <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
-<!-- ── Onboarding Modal ─────────────────────────────────────────────────────── -->
-<div class="modal onboarding-modal" id="onboardingModal" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle">
-  <div class="onboarding-hero">
-    <span class="onboarding-char">歡</span>
-    <div class="onboarding-title" id="onboardingTitle">Welcome to HSK Flashcards!</div>
-    <div class="onboarding-sub">Let's personalise your study plan.<br>How many cards would you like to review each day?</div>
-  </div>
-  <div class="modal-body">
-    <div style="margin-bottom:20px">
-      <label style="font-size:13px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:8px">Your name</label>
-      <input id="onboardingNameInput" type="text" placeholder="Enter your name" autocomplete="given-name"
-        style="width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:3px;background:var(--cream);font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);outline:none"
-        onkeydown="if(event.key==='Enter')completeOnboarding()">
-    </div>
-    <div class="target-picker">
-      <div>
-        <div class="target-display" id="onboardingTargetDisplay">20</div>
-        <div class="target-display-sub">cards per day</div>
-      </div>
-      <input type="range" class="target-slider" id="onboardingSlider"
-             min="5" max="100" step="5" value="20"
-             oninput="onboardingSliderChange(this.value)"
-             style="--pct: 15%">
-      <div class="target-presets">
-        <button class="preset-btn" onclick="setOnboardingTarget(5)">5 — Casual</button>
-        <button class="preset-btn active" onclick="setOnboardingTarget(20)">20 — Daily</button>
-        <button class="preset-btn" onclick="setOnboardingTarget(50)">50 — Intensive</button>
-        <button class="preset-btn" onclick="setOnboardingTarget(100)">100 — Hardcore</button>
-      </div>
-    </div>
-    </div>
-  </div>
-  <div class="modal-footer" style="justify-content:center; padding-top:16px">
-    <button class="btn-primary" style="width:100%;max-width:240px;padding:14px" onclick="completeOnboarding()">
-      Start Learning →
-    </button>
-  </div>
-</div>
-
 <!-- ── Settings Panel ──────────────────────────────────────────────────────── -->
 <div class="modal settings-panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
   <div class="modal-header">
@@ -1088,19 +1049,17 @@ function onboardingSliderChange(val) {
   });
 }
 
-function completeOnboarding(){
-  const nameInput=document.getElementById('onboardingNameInput');
-  const name=(nameInput?nameInput.value.trim():'')||'Learner';
-  const target=parseInt(document.getElementById('onboardingSlider').value)||20;
-  window._LS.set('hsk_user',{name});
-  currentSettings={dailyTarget:target,soundEnabled:true,autoPlayAudio:true,trackingEnabled:false,preferredScript:'simplified',defaultLevel:1};
-  window._LS.set('hsk_settings',currentSettings);
-  applySettings(currentSettings);
-  document.getElementById('userName').textContent=name.split(' ')[0];
-  const el=document.getElementById('userAvatar');if(el)el.textContent=(name[0]||'漢').toUpperCase();
-  const sa=document.getElementById('settingsAvatar');if(sa)sa.textContent=(name[0]||'漢').toUpperCase();
-  document.getElementById('settingsUserName').textContent=name;
+async function completeOnboarding() {
+  const target = parseInt(document.getElementById('onboardingSlider').value) || 20;
+  await fetch('/api/onboarding/complete', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ dailyTarget: target })
+  });
+  currentSettings.dailyTarget = target;
+  initDailyBar(target);
   closeAll();
+  // Clean URL
+  history.replaceState({}, '', '/app');
 }
 
 // ─── Settings panel ───────────────────────────────────────────────────────────
@@ -1344,4 +1303,3 @@ loadVocab();
 </script>
 </body>
 </html>
-<!-- deployed Mon Feb 23 21:22:24 UTC 2026 -->
