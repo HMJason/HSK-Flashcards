@@ -64,6 +64,11 @@
   .card-chinese { font-family: 'Noto Serif SC', serif; font-size: 80px; color: var(--ink); font-weight: 400; line-height: 1.05; }
   .card-pinyin { font-family: 'Playfair Display', serif; font-size: 32px; font-style: italic; color: var(--red); margin-top: 12px; }
   .card-meaning { font-size: 16px; color: var(--ink-light); margin-top: 4px; }
+  .card-example { margin-top: 20px; padding: 16px 20px; background: rgba(139,105,20,0.05); border-left: 3px solid var(--gold); border-radius: 0 3px 3px 0; }
+  .card-example-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px; }
+  .card-example-zh { font-family: 'Noto Serif SC', serif; font-size: 20px; color: var(--ink); line-height: 1.5; }
+  .card-example-py { font-family: 'Playfair Display', serif; font-size: 14px; font-style: italic; color: var(--red); margin-top: 4px; }
+  .card-example-en { font-size: 13px; color: var(--ink-muted); margin-top: 4px; }
   .reveal-btn { width: 100%; margin-top: 32px; padding: 22px; border: 1.5px dashed var(--border); background: none; border-radius: 3px; font-family: 'EB Garamond', serif; font-size: 20px; color: var(--ink-muted); cursor: pointer; letter-spacing: 0.08em; transition: all 0.2s; }
   .reveal-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(139,105,20,0.04); }
   .card-answer { animation: fadeSlide 0.25s ease; }
@@ -873,6 +878,7 @@ window.addEventListener('beforeunload', () => {
 // Loads only the active level first so first cards appear in <1s,
 // then streams remaining levels silently in the background.
 const vocabCache = {};   // level → words array, keyed 1-6 or 'all'
+const examplesCache = {}; // simplified character → {zh, py, en}
 
 async function fetchLevel(level) {
   if (vocabCache[level]) return vocabCache[level];
@@ -893,11 +899,24 @@ async function fetchLevel(level) {
   return data;
 }
 
+async function fetchExamples(level) {
+  if (level === 'all') { for (let l=1;l<=6;l++) fetchExamples(l); return; }
+  if (examplesCache[`_loaded${level}`]) return;
+  try {
+    const res = await fetch(`/app-assets/examples-hsk${level}.json`);
+    if (!res.ok) return;
+    const data = await res.json();
+    Object.assign(examplesCache, data);
+    examplesCache[`_loaded${level}`] = true;
+  } catch(e) {}
+}
+
 async function loadVocab() {
   try {
     // Load active level first so cards appear immediately
     const firstLevel = currentLevel === 'all' ? 1 : currentLevel;
     const firstBatch = await fetchLevel(firstLevel);
+    fetchExamples(firstLevel); // load examples in background
 
     if (currentLevel === 'all') {
       allVocab = firstBatch;  // show HSK1 cards while rest loads
@@ -1169,6 +1188,7 @@ async function setLevel(l, btn) {
   currentLevel = l === 'all' ? 'all' : parseInt(l);
   document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  fetchExamples(currentLevel); // preload examples for this level
 
   // Use cache if available, else fetch (shows spinner briefly)
   if (currentLevel === 'all' && vocabCache['all']?.length) {
@@ -1236,6 +1256,7 @@ function cardHTML(card, revealed){
   return `<div class="card">${topHTML}
       <div class="card-answer">
         <div class="card-meaning">${card.m}</div>
+        ${(()=>{const ex=examplesCache[card.s];return ex?`<div class="card-example"><div class="card-example-label">Example</div><div class="card-example-zh">${ex.zh}</div><div class="card-example-py">${ex.py}</div><div class="card-example-en">${ex.en}</div></div>`:''})()}
         <hr class="card-divider">
         <div class="speak-row">
           <button class="speak-btn" onclick="speakWord()">

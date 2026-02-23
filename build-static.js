@@ -15,7 +15,8 @@ if (!fs.existsSync(DOCS)) fs.mkdirSync(DOCS);
 
 // ─── Copy vocab files ──────────────────────────────────────────────────────────
 ['vocab.json','vocab-hsk1.json','vocab-hsk2.json','vocab-hsk3.json',
- 'vocab-hsk4.json','vocab-hsk5.json','vocab-hsk6.json'].forEach(f => {
+ 'vocab-hsk4.json','vocab-hsk5.json','vocab-hsk6.json',
+ 'examples-hsk1.json'].forEach(f => {
   const src = path.join(PUBLIC, f);
   if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(DOCS, f)); console.log('✅ Copied ' + f); }
 });
@@ -38,10 +39,12 @@ flash = replace(flash, 'href="/dashboard"', 'href="#"');
 // 2. Rewrite server-side vocab URLs to relative paths for GitHub Pages
 flash = replace(flash, "'/app-assets/vocab.json'",             "'vocab.json'");
 flash = replace(flash, '`/app-assets/vocab-hsk${level}.json`', '`vocab-hsk${level}.json`');
+flash = replace(flash, '`/app-assets/examples-hsk${level}.json`', '`examples-hsk${level}.json`');
 
 // 3. Inject HSK1 & HSK2 vocab inline so first cards appear with zero network delay
 const hsk1 = JSON.parse(fs.readFileSync(path.join(PUBLIC,'vocab-hsk1.json')));
 const hsk2 = JSON.parse(fs.readFileSync(path.join(PUBLIC,'vocab-hsk2.json')));
+const ex1  = JSON.parse(fs.readFileSync(path.join(PUBLIC,'examples-hsk1.json')));
 const inlineVocab = `
 // ── Inline vocab: HSK1 & HSK2 pre-seeded (zero network fetch for first cards) ──
 (function(){
@@ -49,9 +52,12 @@ const inlineVocab = `
   const h2=${JSON.stringify(hsk2)};
   vocabCache[1]=h1; vocabCache[2]=h2;
   vocabCache['all']=[...h1,...h2];
+  // HSK1 examples pre-seeded
+  Object.assign(examplesCache,${JSON.stringify(ex1)});
+  examplesCache['_loaded1']=true;
 })();
 `;
-flash = replace(flash, 'const vocabCache = {};', 'const vocabCache = {};\n' + inlineVocab);
+flash = replace(flash, 'const examplesCache = {}; // simplified character → {zh, py, en}', 'const examplesCache = {}; // simplified character → {zh, py, en}\n' + inlineVocab);
 
 // 3. Replace server loadUser() with localStorage version — no onboarding, auto-start
 flash = replace(flash,
