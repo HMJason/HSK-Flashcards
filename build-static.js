@@ -39,6 +39,20 @@ flash = replace(flash, 'href="/dashboard"', 'href="#"');
 flash = replace(flash, "'/app-assets/vocab.json'",             "'vocab.json'");
 flash = replace(flash, '`/app-assets/vocab-hsk${level}.json`', '`vocab-hsk${level}.json`');
 
+// 3. Inject HSK1 & HSK2 vocab inline so first cards appear with zero network delay
+const hsk1 = JSON.parse(fs.readFileSync(path.join(PUBLIC,'vocab-hsk1.json')));
+const hsk2 = JSON.parse(fs.readFileSync(path.join(PUBLIC,'vocab-hsk2.json')));
+const inlineVocab = `
+// ── Inline vocab: HSK1 & HSK2 pre-seeded (zero network fetch for first cards) ──
+(function(){
+  const h1=${JSON.stringify(hsk1)};
+  const h2=${JSON.stringify(hsk2)};
+  vocabCache[1]=h1; vocabCache[2]=h2;
+  vocabCache['all']=[...h1,...h2];
+})();
+`;
+flash = replace(flash, 'const vocabCache = {};', 'const vocabCache = {};\n' + inlineVocab);
+
 // 3. Replace server loadUser() with localStorage version
 flash = replace(flash,
 `async function loadUser(){
