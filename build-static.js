@@ -170,6 +170,65 @@ flash = replace(flash,
 `async function endSession(){`,
 `async function endSession(){ return;`);
 
+// 7. Replace completeOnboarding with localStorage version
+flash = replace(flash,
+`async function completeOnboarding() {
+  const target = parseInt(document.getElementById('onboardingSlider').value) || 20;
+  await fetch('/api/onboarding/complete', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ dailyTarget: target })
+  });
+  currentSettings.dailyTarget = target;
+  initDailyBar(target);
+  closeAll();
+  // Clean URL
+  history.replaceState({}, '', '/app');
+}`,
+`function completeOnboarding(){
+  const nameInput = document.getElementById('onboardingNameInput');
+  const name = nameInput ? nameInput.value.trim() || 'Learner' : 'Learner';
+  const target = parseInt(document.getElementById('onboardingSlider').value)||20;
+  window._LS.set('hsk_user',{name});
+  currentSettings={...DEFAULT_SETTINGS,dailyTarget:target};
+  window._LS.set('hsk_settings',currentSettings);
+  applySettings(currentSettings);
+  document.getElementById('userName').textContent=name.split(' ')[0];
+  const el=document.getElementById('userAvatar');
+  if(el) el.textContent=(name[0]||'漢').toUpperCase();
+  const sa=document.getElementById('settingsAvatar');
+  if(sa) sa.textContent=(name[0]||'漢').toUpperCase();
+  document.getElementById('settingsUserName').textContent=name;
+  closeAll();
+}`);
+
+// 8. Add name input to onboarding modal (before the slider)
+flash = replace(flash,
+`<div class="modal-body">
+    <div class="target-picker">`,
+`<div class="modal-body">
+    <div style="margin-bottom:20px">
+      <label style="font-size:13px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:8px">Your name</label>
+      <input id="onboardingNameInput" type="text" placeholder="Enter your name" autocomplete="given-name"
+        style="width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:3px;background:var(--cream);font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);outline:none"
+        onkeydown="if(event.key==='Enter')completeOnboarding()">
+    </div>
+    <div class="target-picker">`);
+flash = replace(flash,
+`    </div>
+  </div>
+  <div class="modal-footer" style="justify-content:center; padding-top:16px">
+    <button class="btn-primary" style="width:100%;max-width:240px;padding:14px" onclick="completeOnboarding()">`,
+`    </div>
+    </div>
+  </div>
+  <div class="modal-footer" style="justify-content:center; padding-top:16px">
+    <button class="btn-primary" style="width:100%;max-width:240px;padding:14px" onclick="completeOnboarding()">`);
+
+// 9. Fix error message (remove server reference)
+flash = replace(flash,
+`Make sure the server is running: <code>npm start</code>`,
+`Check your internet connection and try refreshing.`);
+
 fs.writeFileSync(path.join(DOCS,'flashcards.html'), flash);
 console.log('✅ Built docs/flashcards.html ('+Math.round(flash.length/1024)+'KB, HSK1 embedded)');
 
