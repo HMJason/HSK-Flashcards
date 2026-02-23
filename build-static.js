@@ -53,7 +53,7 @@ const inlineVocab = `
 `;
 flash = replace(flash, 'const vocabCache = {};', 'const vocabCache = {};\n' + inlineVocab);
 
-// 3. Replace server loadUser() with localStorage version
+// 3. Replace server loadUser() with localStorage version — no onboarding, auto-start
 flash = replace(flash,
 `async function loadUser(){
   let user;
@@ -93,16 +93,9 @@ const _LS={
 window._LS=_LS;
 
 function loadUser(){
-  const user=_LS.get('hsk_user',null);
-  if(!user){showOnboarding('');return;}
   const saved=_LS.get('hsk_settings',{});
   currentSettings={dailyTarget:20,soundEnabled:true,autoPlayAudio:true,trackingEnabled:false,preferredScript:'simplified',defaultLevel:1,...saved};
   applySettings(currentSettings);
-  document.getElementById('userName').textContent=user.name?.split(' ')[0]||'';
-  document.getElementById('settingsUserName').textContent=user.name||'—';
-  document.getElementById('settingsUserEmail').textContent='(local)';
-  const el=document.getElementById('userAvatar');if(el)el.textContent=(user.name?.[0]||'漢').toUpperCase();
-  const sa=document.getElementById('settingsAvatar');if(sa)sa.textContent=(user.name?.[0]||'漢').toUpperCase();
   const prog=_LS.get('hsk_progress',{});
   const today=new Date().toISOString().split('T')[0];
   dailyDone=prog.lastStudyDate===today?(prog.dailyCards||0):0;
