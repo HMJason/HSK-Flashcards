@@ -1229,7 +1229,7 @@ function showNext(){
   currentCard=queue[0]; renderCard(currentCard);
 }
 
-function renderCard(card){
+function cardHTML(card, revealed){
   const isTrad=script==='traditional';
   const chinese=isTrad?card.t:card.s;
   const alt=isTrad?card.s:card.t;
@@ -1239,16 +1239,22 @@ function renderCard(card){
     <div class="section-label">Character Breakdown</div>
     <div class="chars-grid">${chars.map(c=>`<div class="char-tile"><span class="char-tile-char">${c}</span></div>`).join('')}</div>`:'';
 
-  document.getElementById('cardContainer').innerHTML=`
-    <div class="card">
+  const topHTML=`
       <div class="hsk-badge">HSK ${card.h}</div>
       <div class="card-top">
         <div class="card-chinese">${chinese}</div>
         <div class="card-pinyin">${card.p}</div>
         ${showAlt?`<div class="card-alt-label">${isTrad?'Simplified':'Traditional'}: <span>${alt}</span></div>`:''}
-      </div>
+      </div>`;
+
+  if(!revealed){
+    return `<div class="card">${topHTML}
       <button class="reveal-btn" onclick="revealCard()">Tap to reveal meaning</button>
-      <div id="cardAnswer" class="card-answer" style="display:none">
+    </div>`;
+  }
+
+  return `<div class="card">${topHTML}
+      <div class="card-answer">
         <div class="card-meaning">${card.m}</div>
         <hr class="card-divider">
         <div class="speak-row">
@@ -1275,11 +1281,13 @@ function renderCard(card){
     </div>`;
 }
 
+function renderCard(card){
+  document.getElementById('cardContainer').innerHTML = cardHTML(card, false);
+}
+
 function revealCard(){
-  const btn = document.querySelector('.reveal-btn');
-  const ans = document.getElementById('cardAnswer');
-  if(btn) btn.style.display = 'none';
-  if(ans) ans.style.display = '';
+  if(!currentCard) return;
+  document.getElementById('cardContainer').innerHTML = cardHTML(currentCard, true);
   if(currentSettings.autoPlayAudio !== false) speakWord();
 }
 
