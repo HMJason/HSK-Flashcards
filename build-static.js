@@ -85,27 +85,31 @@ flash = replace(flash,
     showOnboarding(user.name);
   }
 }`,
-`function loadUser(){
-  const LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d}catch{return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
-  window._LS=LS;
-  const user=LS.get('hsk_user',null);
+`// ── Static localStorage helpers ──
+const _LS={
+  get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d;}catch{return d;}},
+  set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
+};
+window._LS=_LS;
+
+function loadUser(){
+  const user=_LS.get('hsk_user',null);
   if(!user){showOnboarding('');return;}
-  currentSettings={...DEFAULT_SETTINGS,...LS.get('hsk_settings',{})};
+  const saved=_LS.get('hsk_settings',{});
+  currentSettings={dailyTarget:20,soundEnabled:true,autoPlayAudio:true,trackingEnabled:false,preferredScript:'simplified',defaultLevel:1,...saved};
   applySettings(currentSettings);
   document.getElementById('userName').textContent=user.name?.split(' ')[0]||'';
   document.getElementById('settingsUserName').textContent=user.name||'—';
   document.getElementById('settingsUserEmail').textContent='(local)';
-  const el=document.getElementById('userAvatar');
-  if(el) el.textContent=(user.name?.[0]||'漢').toUpperCase();
-  const sa=document.getElementById('settingsAvatar');
-  if(sa) sa.textContent=(user.name?.[0]||'漢').toUpperCase();
-  const prog=LS.get('hsk_progress',{});
+  const el=document.getElementById('userAvatar');if(el)el.textContent=(user.name?.[0]||'漢').toUpperCase();
+  const sa=document.getElementById('settingsAvatar');if(sa)sa.textContent=(user.name?.[0]||'漢').toUpperCase();
+  const prog=_LS.get('hsk_progress',{});
   const today=new Date().toISOString().split('T')[0];
   dailyDone=prog.lastStudyDate===today?(prog.dailyCards||0):0;
   targetNotified=dailyDone>=dailyTarget;
   updateDailyBar();
   const streak=document.getElementById('statStreak');
-  if(streak) streak.textContent=calcStreak(prog);
+  if(streak)streak.textContent=calcStreak(prog);
 }`);
 
 // 4. Replace server saveSettings() with localStorage version
@@ -184,6 +188,34 @@ flash = replace(flash,
 `async function endSession(){`,
 `async function endSession(){ return;`);
 
+// 6b. Remove the beforeunload sendBeacon (calls non-existent server endpoint)
+flash = replace(flash,
+`// End session on page close
+window.addEventListener('beforeunload', () => {
+  if(sessionStart && reviewed > 0) {
+    const duration = Math.round((Date.now()-sessionStart)/1000);
+    navigator.sendBeacon('/api/session/end', JSON.stringify({
+      sessionId, cardsReviewed:reviewed, cardsCorrect, durationSeconds:duration, levelBreakdown
+    }));
+  }
+});`,
+`// (session tracking disabled in static build)`);
+
+// 6c. Add missing calcStreak function (used in loadUser)
+flash = replace(flash,
+`// ─── Data loading`,
+`// ── calcStreak: count consecutive daily study days ──
+function calcStreak(prog){
+  if(!prog||!prog.lastStudyDate) return 0;
+  const today=new Date().toISOString().split('T')[0];
+  const last=prog.lastStudyDate;
+  if(last===today) return prog.streak||1;
+  const diff=(new Date(today)-new Date(last))/(1000*60*60*24);
+  return diff<=1 ? (prog.streak||1) : 0;
+}
+
+// ─── Data loading`);
+
 // 7. Replace completeOnboarding with localStorage version
 flash = replace(flash,
 `async function completeOnboarding() {
@@ -199,18 +231,16 @@ flash = replace(flash,
   history.replaceState({}, '', '/app');
 }`,
 `function completeOnboarding(){
-  const nameInput = document.getElementById('onboardingNameInput');
-  const name = nameInput ? nameInput.value.trim() || 'Learner' : 'Learner';
-  const target = parseInt(document.getElementById('onboardingSlider').value)||20;
+  const nameInput=document.getElementById('onboardingNameInput');
+  const name=(nameInput?nameInput.value.trim():'')||'Learner';
+  const target=parseInt(document.getElementById('onboardingSlider').value)||20;
   window._LS.set('hsk_user',{name});
-  currentSettings={...DEFAULT_SETTINGS,dailyTarget:target};
+  currentSettings={dailyTarget:target,soundEnabled:true,autoPlayAudio:true,trackingEnabled:false,preferredScript:'simplified',defaultLevel:1};
   window._LS.set('hsk_settings',currentSettings);
   applySettings(currentSettings);
   document.getElementById('userName').textContent=name.split(' ')[0];
-  const el=document.getElementById('userAvatar');
-  if(el) el.textContent=(name[0]||'漢').toUpperCase();
-  const sa=document.getElementById('settingsAvatar');
-  if(sa) sa.textContent=(name[0]||'漢').toUpperCase();
+  const el=document.getElementById('userAvatar');if(el)el.textContent=(name[0]||'漢').toUpperCase();
+  const sa=document.getElementById('settingsAvatar');if(sa)sa.textContent=(name[0]||'漢').toUpperCase();
   document.getElementById('settingsUserName').textContent=name;
   closeAll();
 }`);
