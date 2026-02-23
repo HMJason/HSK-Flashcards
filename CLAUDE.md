@@ -1,6 +1,8 @@
-# HSK Flashcards — Developer Documentation
+# HSK Flashcards — Deep Technical Reference (CLAUDE.md)
 
-This document is the authoritative reference for the HSK Flashcards codebase. It is written for AI assistants continuing development, and covers architecture, every file, every key function, past decisions, active bugs fixed, and known next steps.
+**[README.md](./README.md) is the master documentation** — start there for project overview, features, and setup.
+
+This file is the technical annex: exhaustive coverage of every function, every build step, data schemas, past decisions, active bugs fixed, and known next steps. Written for AI assistants picking up development mid-stream.
 
 ---
 
