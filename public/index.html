@@ -672,13 +672,32 @@
       </div>
       <div class="settings-row">
         <div>
-          <div class="settings-row-label">Sound effects</div>
-          <div class="settings-row-sub">Audio feedback on recall</div>
+          <div class="settings-row-label">Voice persona</div>
+          <div class="settings-row-sub">Chinese voice used for playback</div>
         </div>
-        <label class="toggle-wrap">
-          <input type="checkbox" id="settingsSound" onchange="settingChanged('soundEnabled', this.checked)">
-          <span class="toggle-track"></span>
-        </label>
+        <select class="settings-select" id="settingsVoice" style="max-width:180px" onchange="settingChanged('voiceName', this.value)">
+          <option value="">Loading voices…</option>
+        </select>
+      </div>
+      <div class="settings-row" id="voiceNoSupportRow" style="display:none">
+        <div class="settings-row-sub" style="color:#c0392b">No Chinese voices found on this device. Install a Chinese language pack in your OS settings.</div>
+      </div>
+      <div class="settings-row">
+        <div>
+          <div class="settings-row-label">Speech speed</div>
+          <div class="settings-row-sub">How fast words are spoken</div>
+        </div>
+        <div class="segment" id="speedSegment">
+          <button class="segment-btn" onclick="setSegment('speedSegment', this, 'speechRate', 0.6)">Slow</button>
+          <button class="segment-btn active" onclick="setSegment('speedSegment', this, 'speechRate', 0.85)">Normal</button>
+          <button class="segment-btn" onclick="setSegment('speedSegment', this, 'speechRate', 1.15)">Fast</button>
+        </div>
+      </div>
+      <div class="settings-row" style="padding-top:0">
+        <button class="speak-btn" onclick="testVoice()" style="border:1px solid var(--gold);color:var(--gold)">
+          <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.536 8.464a5 5 0 010 7.072M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Test voice
+        </button>
       </div>
     </div>
 
@@ -1034,6 +1053,20 @@ function applySettings(s) {
       b.classList.toggle('active', b.textContent.toLowerCase().trim() === (s.preferredScript || 'simplified'));
     });
   }
+
+  // Speech speed segment
+  const speedSeg = document.getElementById('speedSegment');
+  if (speedSeg) {
+    const rate = typeof s.speechRate === 'number' ? s.speechRate : 0.85;
+    speedSeg.querySelectorAll('.segment-btn').forEach(b => {
+      const bRate = parseFloat(b.getAttribute('onclick')?.match(/[\d.]+/)?.[0] || '0.85');
+      b.classList.toggle('active', Math.abs(bRate - rate) < 0.01);
+    });
+  }
+
+  // Voice selector — repopulate in case voices changed
+  if (voicesReady) populateVoiceSelector();
+  else initVoices();
 }
 
 // ─── Onboarding ───────────────────────────────────────────────────────────────
@@ -1133,11 +1166,16 @@ async function saveSettings() {
 
   // Collect all current control values
   const target   = parseInt(document.getElementById('settingsTarget').value) || 20;
-  const sound    = document.getElementById('settingsSound').checked;
+  const sound    = document.getElementById('settingsSound')?.checked ?? true;
   const tracking = document.getElementById('settingsTracking').checked;
   const level    = document.getElementById('settingsLevel').value;
   const scriptSeg = document.getElementById('scriptSegment');
   const scriptVal = scriptSeg?.querySelector('.segment-btn.active')?.textContent.toLowerCase().trim() || 'simplified';
+  const voiceSel  = document.getElementById('settingsVoice');
+  const voiceName = voiceSel?.value || '';
+  const speedSeg  = document.getElementById('speedSegment');
+  const speechRate = parseFloat(speedSeg?.querySelector('.segment-btn.active')
+    ?.getAttribute('onclick')?.match(/[\d.]+/)?.[0] || '0.85');
 
   const updates = {
     dailyTarget:      target,
@@ -1145,6 +1183,8 @@ async function saveSettings() {
     trackingEnabled:  tracking,
     defaultLevel:     level,
     preferredScript:  scriptVal,
+    voiceName,
+    speechRate,
     ...pendingSettings,
     // overwrite with explicit control values
     dailyTarget:      target,
@@ -1263,10 +1303,6 @@ function cardHTML(card, revealed){
             <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.536 8.464a5 5 0 010 7.072M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Speak word
           </button>
-          <button class="speak-btn" onclick="speakPinyin()">
-            <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg>
-            Pinyin hint
-          </button>
           <a href="/dashboard" class="speak-btn" style="text-decoration:none">
             <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
             My Stats
@@ -1312,18 +1348,141 @@ function recall(type){
 }
 
 // ─── Speech ───────────────────────────────────────────────────────────────────
-function speakWord(){
-  if(!currentCard||!window.speechSynthesis) return;
-  speechSynthesis.cancel();
-  const utt=new SpeechSynthesisUtterance(script==='traditional'?currentCard.t:currentCard.s);
-  utt.lang='zh-CN'; utt.rate=0.8; speechSynthesis.speak(utt);
+// Friendly labels for known voice names across platforms
+const VOICE_LABELS = {
+  // macOS / iOS
+  'Tingting':  'Tingting — Mainland ♀',
+  'Sinji':     'Sinji — Hong Kong ♀',
+  'Meijia':    'Meijia — Taiwan ♀',
+  'Lili':      'Lili — Mainland ♀',
+  // Chrome cloud voices
+  'Google 普通话（中国大陆）':          'Google — Mainland Standard',
+  'Google 中文（普通話）（台灣）':      'Google — Taiwan Standard',
+  'Google 粤语（香港）':               'Google — Cantonese HK',
+  // Windows / Edge
+  'Microsoft Huihui - Chinese (Simplified, PRC)':  'Microsoft Huihui — Mainland ♀',
+  'Microsoft Yaoyao - Chinese (Simplified, PRC)':  'Microsoft Yaoyao — Mainland ♀',
+  'Microsoft Kangkang - Chinese (Simplified, PRC)':'Microsoft Kangkang — Mainland ♂',
+  'Microsoft Danny - Chinese (Traditional, Taiwan)':'Microsoft Danny — Taiwan ♂',
+  'Microsoft Yating - Chinese (Traditional, Taiwan)':'Microsoft Yating — Taiwan ♀',
+  'Microsoft Zhiwei - Chinese (Traditional, Taiwan)':'Microsoft Zhiwei — Taiwan ♂',
+  // Edge Neural (online)
+  'Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)': 'Microsoft Xiaoxiao — Neural ♀',
+  'Microsoft Yunxi Online (Natural) - Chinese (Mainland)':    'Microsoft Yunxi — Neural ♂',
+  'Microsoft Xiaoyi Online (Natural) - Chinese (Mainland)':   'Microsoft Xiaoyi — Neural ♀',
+  'Microsoft Yunyang Online (Natural) - Chinese (Mainland)':  'Microsoft Yunyang — Neural ♂',
+  'Microsoft HsiaoChen Online (Natural) - Chinese (Taiwan)':  'Microsoft HsiaoChen — Taiwan ♀',
+  'Microsoft HsiaoYu Online (Natural) - Chinese (Taiwan)':    'Microsoft HsiaoYu — Taiwan ♀',
+  'Microsoft YunJhe Online (Natural) - Chinese (Taiwan)':     'Microsoft YunJhe — Taiwan ♂',
+  'Microsoft HiuMaan Online (Natural) - Chinese (Hong Kong)': 'Microsoft HiuMaan — HK ♀',
+  'Microsoft WanLung Online (Natural) - Chinese (Hong Kong)': 'Microsoft WanLung — HK ♂',
+};
+
+let zhVoices = [];     // all zh-* voices available on this device
+let voicesReady = false;
+
+// Load voices — handles Chrome's async loading and Firefox/Safari sync loading
+function initVoices() {
+  return new Promise(resolve => {
+    function process() {
+      const all = speechSynthesis.getVoices();
+      // Normalise Android underscores, then filter for any zh locale
+      zhVoices = all.filter(v => v.lang.replace('_','-').toLowerCase().startsWith('zh'));
+      voicesReady = true;
+      populateVoiceSelector();
+      resolve();
+    }
+    const immediate = speechSynthesis.getVoices();
+    if (immediate.length) { process(); return; }
+    // Chrome fires onvoiceschanged when cloud voices arrive
+    speechSynthesis.addEventListener('voiceschanged', function handler() {
+      speechSynthesis.removeEventListener('voiceschanged', handler);
+      process();
+    });
+    // Fallback: some browsers never fire the event
+    setTimeout(() => { if (!voicesReady) process(); }, 1500);
+  });
 }
 
-function speakPinyin(){
-  if(!currentCard||!window.speechSynthesis) return;
+function populateVoiceSelector() {
+  const sel = document.getElementById('settingsVoice');
+  if (!sel) return;
+  sel.innerHTML = '';
+
+  if (!zhVoices.length) {
+    document.getElementById('voiceNoSupportRow').style.display = '';
+    sel.style.display = 'none';
+    return;
+  }
+
+  // Group: local (offline) voices first, then online/cloud
+  const local  = zhVoices.filter(v => v.localService);
+  const remote = zhVoices.filter(v => !v.localService);
+
+  function addGroup(voices, label) {
+    if (!voices.length) return;
+    const grp = document.createElement('optgroup');
+    grp.label = label;
+    voices.forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v.name;
+      opt.textContent = VOICE_LABELS[v.name] || v.name;
+      grp.appendChild(opt);
+    });
+    sel.appendChild(grp);
+  }
+
+  addGroup(local,  'On-device voices');
+  addGroup(remote, 'Online voices (higher quality)');
+
+  // Restore saved preference, or pick best default
+  const saved = currentSettings.voiceName;
+  if (saved && zhVoices.find(v => v.name === saved)) {
+    sel.value = saved;
+  } else {
+    // Prefer a local zh-CN voice, else first available
+    const best = local.find(v => v.lang.startsWith('zh-CN') || v.lang.startsWith('zh_CN'))
+              || local[0] || remote[0];
+    if (best) sel.value = best.name;
+    // Auto-save the default so it's persisted
+    if (best) settingChanged('voiceName', best.name);
+  }
+}
+
+function getSelectedVoice() {
+  const name = currentSettings.voiceName
+    || document.getElementById('settingsVoice')?.value;
+  if (!name) return zhVoices[0] || null;
+  // Always re-query — voice objects may have been replaced after voiceschanged
+  return speechSynthesis.getVoices().find(v => v.name === name)
+    || zhVoices[0] || null;
+}
+
+function speakText(text) {
+  if (!window.speechSynthesis) return;
   speechSynthesis.cancel();
-  const utt=new SpeechSynthesisUtterance(currentCard.p);
-  utt.lang='en-US'; utt.rate=0.75; speechSynthesis.speak(utt);
+  const utt  = new SpeechSynthesisUtterance(text);
+  const voice = getSelectedVoice();
+  if (voice) {
+    utt.voice = voice;
+    utt.lang  = voice.lang.replace('_', '-');
+  } else {
+    utt.lang = 'zh-CN';
+  }
+  utt.rate = typeof currentSettings.speechRate === 'number' ? currentSettings.speechRate : 0.85;
+  speechSynthesis.speak(utt);
+}
+
+function speakWord() {
+  if (!currentCard) return;
+  speakText(script === 'traditional' ? currentCard.t : currentCard.s);
+}
+
+function testVoice() {
+  // Save pending voice selection before testing
+  const sel = document.getElementById('settingsVoice');
+  if (sel) currentSettings.voiceName = sel.value;
+  speakText('你好，欢迎学习汉语！');
 }
 
 // ─── Done screen ──────────────────────────────────────────────────────────────
@@ -1349,6 +1508,7 @@ async function showDone(){
 // ─── Init ─────────────────────────────────────────────────────────────────────
 loadUser();
 loadVocab();
+initVoices();
 </script>
 </body>
 </html>

@@ -119,11 +119,16 @@ flash = replace(flash,
 
   // Collect all current control values
   const target   = parseInt(document.getElementById('settingsTarget').value) || 20;
-  const sound    = document.getElementById('settingsSound').checked;
+  const sound    = document.getElementById('settingsSound')?.checked ?? true;
   const tracking = document.getElementById('settingsTracking').checked;
   const level    = document.getElementById('settingsLevel').value;
   const scriptSeg = document.getElementById('scriptSegment');
   const scriptVal = scriptSeg?.querySelector('.segment-btn.active')?.textContent.toLowerCase().trim() || 'simplified';
+  const voiceSel  = document.getElementById('settingsVoice');
+  const voiceName = voiceSel?.value || '';
+  const speedSeg  = document.getElementById('speedSegment');
+  const speechRate = parseFloat(speedSeg?.querySelector('.segment-btn.active')
+    ?.getAttribute('onclick')?.match(/[\\d.]+/)?.[0] || '0.85');
 
   const updates = {
     dailyTarget:      target,
@@ -131,6 +136,8 @@ flash = replace(flash,
     trackingEnabled:  tracking,
     defaultLevel:     level,
     preferredScript:  scriptVal,
+    voiceName,
+    speechRate,
     ...pendingSettings,
     // overwrite with explicit control values
     dailyTarget:      target,
@@ -155,13 +162,17 @@ flash = replace(flash,
 }`,
 `function saveSettings(){
   const target   = parseInt(document.getElementById('settingsTarget').value)||20;
-  const sound    = document.getElementById('settingsSound').checked;
+  const sound    = document.getElementById('settingsSound')?.checked??true;
   const autoplay = document.getElementById('settingsAutoPlay').checked;
   const tracking = document.getElementById('settingsTracking').checked;
   const level    = document.getElementById('settingsLevel').value;
   const scriptSeg = document.getElementById('scriptSegment');
   const scriptVal = scriptSeg?.querySelector('.segment-btn.active')?.textContent.toLowerCase().trim()||'simplified';
-  const updates = {dailyTarget:target,soundEnabled:sound,autoPlayAudio:autoplay,trackingEnabled:tracking,defaultLevel:level,preferredScript:scriptVal,...pendingSettings,dailyTarget:target};
+  const voiceSel  = document.getElementById('settingsVoice');
+  const voiceName = voiceSel?.value||'';
+  const speedSeg  = document.getElementById('speedSegment');
+  const speechRate = parseFloat(speedSeg?.querySelector('.segment-btn.active')?.getAttribute('onclick')?.match(/[\\d.]+/)?.[0]||'0.85');
+  const updates = {dailyTarget:target,soundEnabled:sound,autoPlayAudio:autoplay,trackingEnabled:tracking,defaultLevel:level,preferredScript:scriptVal,voiceName,speechRate,...pendingSettings,dailyTarget:target};
   window._LS.set('hsk_settings',updates);
   currentSettings=updates;
   applySettings(currentSettings);
