@@ -85,14 +85,14 @@
   .char-tile { border: 1px solid var(--border); border-radius: 3px; padding: 12px 18px; text-align: center; background: var(--card-bg); min-width: 66px; transition: all 0.2s; }
   .char-tile:hover { border-color: var(--gold-light); box-shadow: 0 2px 8px rgba(139,105,20,0.1); }
   .char-tile-char { font-family: 'Noto Serif SC', serif; font-size: 30px; color: var(--ink); display: block; }
-  .recall-row { display: flex; gap: 10px; }
-  .recall-btn { flex: 1; border: 1px solid var(--border); background: none; padding: 12px 10px; border-radius: 3px; font-family: 'EB Garamond', serif; cursor: pointer; transition: all 0.22s; color: var(--ink-light); }
-  .recall-btn .recall-label { font-size: 11px; display: block; color: var(--ink-muted); margin-bottom: 2px; letter-spacing: 0.12em; }
-  .recall-btn .recall-name { font-size: 15px; }
-  .recall-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(44,36,22,0.1); }
-  .recall-again:hover { border-color: var(--red-light); color: var(--red); background: rgba(139,26,26,0.03); }
-  .recall-good:hover { border-color: var(--blue); color: var(--blue); background: rgba(26,58,92,0.03); }
-  .recall-perfect:hover { border-color: var(--green); color: var(--green); background: rgba(45,90,61,0.03); }
+  .recall-row { display: flex; gap: 12px; margin-top: 8px; }
+  .recall-btn { flex: 1; border: none; padding: 18px 10px; border-radius: 6px; font-family: 'EB Garamond', serif; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 20px; font-weight: 600; letter-spacing: 0.02em; }
+  .recall-btn:active { transform: scale(0.97); }
+  .recall-again { background: #fef2f2; color: #c0392b; }
+  .recall-again:hover { background: #fde8e8; box-shadow: 0 4px 14px rgba(192,57,43,0.18); }
+  .recall-good  { background: #f0faf4; color: #1e7e45; }
+  .recall-good:hover  { background: #e3f7ec; box-shadow: 0 4px 14px rgba(30,126,69,0.18); }
+  .recall-icon { font-size: 22px; line-height: 1; }
   .loading { text-align: center; padding: 80px; }
   .loading-char { font-family: 'Noto Serif SC', serif; font-size: 56px; color: var(--gold); animation: pulse 1.5s ease infinite; }
   @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
@@ -1214,7 +1214,33 @@ async function logout(){
   window.location.href='/login';
 }
 
-// ─── Queue ────────────────────────────────────────────────────────────────────
+// ─── Swipe & keyboard ────────────────────────────────────────────────────────
+// Keyboard: ← = didn't know, → = got it, Space/↓ = reveal
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  if (e.key === 'ArrowLeft')  { if (currentCard && document.getElementById('cardAnswer')) recall('again'); }
+  else if (e.key === 'ArrowRight') { if (currentCard && document.getElementById('cardAnswer')) recall('good'); }
+  else if ((e.key === ' ' || e.key === 'ArrowDown') && currentCard) {
+    e.preventDefault();
+    if (!document.querySelector('.card-answer')) revealCard();
+  }
+});
+
+// Swipe: left = didn't know, right = got it
+(function(){
+  let sx=0, sy=0;
+  document.addEventListener('touchstart', e=>{sx=e.touches[0].clientX; sy=e.touches[0].clientY;}, {passive:true});
+  document.addEventListener('touchend', e=>{
+    if(!currentCard) return;
+    const dx=e.changedTouches[0].clientX-sx;
+    const dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)<50||Math.abs(dx)<Math.abs(dy)*1.5) return; // too short or too vertical
+    const revealed = document.querySelector('.card-answer');
+    if(!revealed){ revealCard(); return; }
+    if(dx<0) recall('again');
+    else recall('good');
+  }, {passive:true});
+})();
 async function initQueue(){
   await endSession(); // close previous session if any
   queue = (currentLevel==='all' ? [...allVocab] : allVocab.filter(v=>v.h===currentLevel)).sort(()=>Math.random()-0.5);
@@ -1310,9 +1336,12 @@ function cardHTML(card, revealed){
         </div>
         ${charsHTML}
         <div class="recall-row">
-          <button class="recall-btn recall-again" data-t="again" onclick="recall(this.dataset.t)"><span class="recall-label">AGAIN</span><span class="recall-name">Tomorrow</span></button>
-          <button class="recall-btn recall-good" data-t="good" onclick="recall(this.dataset.t)"><span class="recall-label">GOOD</span><span class="recall-name">Recall</span></button>
-          <button class="recall-btn recall-perfect" data-t="perfect" onclick="recall(this.dataset.t)"><span class="recall-label">PERFECT</span><span class="recall-name">Recall</span></button>
+          <button class="recall-btn recall-again" onclick="recall('again')">
+            <span class="recall-icon">✕</span> Didn't know
+          </button>
+          <button class="recall-btn recall-good" onclick="recall('good')">
+            <span class="recall-icon">✓</span> Got it
+          </button>
         </div>
       </div>
     </div>`;
