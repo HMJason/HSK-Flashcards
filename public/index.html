@@ -86,11 +86,9 @@
   .char-tile:hover { border-color: var(--gold-light); box-shadow: 0 2px 8px rgba(139,105,20,0.1); }
   .char-tile-char { font-family: 'Noto Serif SC', serif; font-size: 30px; color: var(--ink); display: block; }
   .recall-row { display: flex; gap: 12px; margin-top: 8px; }
-  .recall-btn { flex: 1; border: none; padding: 14px 10px; border-radius: 6px; font-family: 'EB Garamond', serif; cursor: pointer; transition: all 0.18s; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .recall-btn { flex: 1; border: none; padding: 16px 10px; border-radius: 6px; font-family: 'EB Garamond', serif; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; justify-content: center; gap: 8px; }
   .recall-btn:active { transform: scale(0.97); }
-  .recall-btn-top { display: flex; align-items: center; gap: 8px; }
-  .recall-btn-label { font-size: 18px; font-weight: 600; line-height: 1.2; }
-  .recall-interval { font-size: 12px; opacity: 0.65; letter-spacing: 0.03em; }
+  .recall-btn-label { font-size: 18px; font-weight: 600; }
   .recall-icon { font-size: 16px; line-height: 1; }
   .recall-again { background: #fef2f2; color: #c0392b; }
   .recall-again:hover { background: #fde8e8; box-shadow: 0 4px 14px rgba(192,57,43,0.18); }
@@ -1448,12 +1446,10 @@ function cardHTML(card, revealed){
           const iGood =fsrsNext(st,3).interval;
           return `<div class="recall-row">
           <button class="recall-btn recall-again" onclick="recall('again')">
-            <div class="recall-btn-top"><span class="recall-icon">✕</span><span class="recall-btn-label">Didn't know</span></div>
-            <span class="recall-interval">${fmtInterval(iAgain)}</span>
+            <span class="recall-icon">✕</span><span class="recall-btn-label">Didn't know</span>
           </button>
           <button class="recall-btn recall-good" onclick="recall('good')">
-            <div class="recall-btn-top"><span class="recall-icon">✓</span><span class="recall-btn-label">Got it</span></div>
-            <span class="recall-interval">${fmtInterval(iGood)}</span>
+            <span class="recall-icon">✓</span><span class="recall-btn-label">Got it</span>
           </button>
         </div>`;
         })()}
@@ -1501,13 +1497,12 @@ function recall(type){
 const VOICE_LABELS = {
   // macOS / iOS
   'Tingting':  'Tingting — Mainland ♀',
-  'Sinji':     'Sinji — Hong Kong ♀',
+  'Sinji':     'Sinji — Hong Kong ♀',  // zh-HK, filtered out at selection
   'Meijia':    'Meijia — Taiwan ♀',
   'Lili':      'Lili — Mainland ♀',
   // Chrome cloud voices
   'Google 普通话（中国大陆）':          'Google — Mainland Standard',
   'Google 中文（普通話）（台灣）':      'Google — Taiwan Standard',
-  'Google 粤语（香港）':               'Google — Cantonese HK',
   // Windows / Edge
   'Microsoft Huihui - Chinese (Simplified, PRC)':  'Microsoft Huihui — Mainland ♀',
   'Microsoft Yaoyao - Chinese (Simplified, PRC)':  'Microsoft Yaoyao — Mainland ♀',
@@ -1523,8 +1518,6 @@ const VOICE_LABELS = {
   'Microsoft HsiaoChen Online (Natural) - Chinese (Taiwan)':  'Microsoft HsiaoChen — Taiwan ♀',
   'Microsoft HsiaoYu Online (Natural) - Chinese (Taiwan)':    'Microsoft HsiaoYu — Taiwan ♀',
   'Microsoft YunJhe Online (Natural) - Chinese (Taiwan)':     'Microsoft YunJhe — Taiwan ♂',
-  'Microsoft HiuMaan Online (Natural) - Chinese (Hong Kong)': 'Microsoft HiuMaan — HK ♀',
-  'Microsoft WanLung Online (Natural) - Chinese (Hong Kong)': 'Microsoft WanLung — HK ♂',
 };
 
 let zhVoices = [];     // all zh-* voices available on this device
@@ -1536,7 +1529,11 @@ function initVoices() {
     function process() {
       const all = speechSynthesis.getVoices();
       // Normalise Android underscores, then filter for any zh locale
-      zhVoices = all.filter(v => v.lang.replace('_','-').toLowerCase().startsWith('zh'));
+      // Only Mandarin voices (zh-CN, zh-TW) — exclude Cantonese (zh-HK)
+      zhVoices = all.filter(v => {
+        const lang = v.lang.replace('_','-').toLowerCase();
+        return lang.startsWith('zh') && !lang.startsWith('zh-hk');
+      });
       voicesReady = true;
       populateVoiceSelector();
       resolve();
@@ -1675,6 +1672,15 @@ async function showDone(){
 loadUser();
 loadVocab();
 initVoices();
+
+// Auto-select level from URL param e.g. /app?level=3
+(function(){
+  const p=new URLSearchParams(location.search).get('level');
+  if(p&&['1','2','3','4','5','6'].includes(p)){
+    const btn=document.querySelector(`.level-btn[onclick*="setLevel(${p},"]`);
+    if(btn){ btn.click(); }
+  }
+})();
 </script>
 </body>
 </html>

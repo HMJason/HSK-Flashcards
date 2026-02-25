@@ -237,7 +237,10 @@ console.log('✅ Built docs/flashcards.html ('+Math.round(flash.length/1024)+'KB
 // ─── Build index.html (landing) ───────────────────────────────────────────────
 let landing = fs.readFileSync(path.join(PUBLIC,'landing.html'), 'utf8');
 landing = replace(landing, 'href="/home"',         'href="index.html"');
-landing = replace(landing, 'href="/app"',          'href="flashcards.html"');
+// Replace /app?level=N links (from HSK level grid)
+for (let l = 1; l <= 6; l++) {
+  landing = landing.split(`href="/app?level=${l}"`).join(`href="flashcards.html?level=${l}"`);
+}
 landing = replace(landing, 'href="/conversation"', 'href="conversation.html"');
 landing = replace(landing, 'href="/dashboard"',    'href="#"');
 landing = replace(landing,
