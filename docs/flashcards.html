@@ -86,13 +86,16 @@
   .char-tile:hover { border-color: var(--gold-light); box-shadow: 0 2px 8px rgba(139,105,20,0.1); }
   .char-tile-char { font-family: 'Noto Serif SC', serif; font-size: 30px; color: var(--ink); display: block; }
   .recall-row { display: flex; gap: 12px; margin-top: 8px; }
-  .recall-btn { flex: 1; border: none; padding: 18px 10px; border-radius: 6px; font-family: 'EB Garamond', serif; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 20px; font-weight: 600; letter-spacing: 0.02em; }
+  .recall-btn { flex: 1; border: none; padding: 14px 10px; border-radius: 6px; font-family: 'EB Garamond', serif; cursor: pointer; transition: all 0.18s; display: flex; flex-direction: column; align-items: center; gap: 3px; }
   .recall-btn:active { transform: scale(0.97); }
+  .recall-btn-top { display: flex; align-items: center; gap: 8px; }
+  .recall-btn-label { font-size: 18px; font-weight: 600; line-height: 1.2; }
+  .recall-interval { font-size: 12px; opacity: 0.65; letter-spacing: 0.03em; }
+  .recall-icon { font-size: 16px; line-height: 1; }
   .recall-again { background: #fef2f2; color: #c0392b; }
   .recall-again:hover { background: #fde8e8; box-shadow: 0 4px 14px rgba(192,57,43,0.18); }
   .recall-good  { background: #f0faf4; color: #1e7e45; }
   .recall-good:hover  { background: #e3f7ec; box-shadow: 0 4px 14px rgba(30,126,69,0.18); }
-  .recall-icon { font-size: 22px; line-height: 1; }
   .loading { text-align: center; padding: 80px; }
   .loading-char { font-family: 'Noto Serif SC', serif; font-size: 56px; color: var(--gold); animation: pulse 1.5s ease infinite; }
   @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
@@ -753,7 +756,94 @@
 <script>
 // ─── State ────────────────────────────────────────────────────────────────────
 let allVocab=[], script='simplified', currentLevel=1;
-let queue=[], doneCount=0, reviewCount=0, reviewed=0, cardsCorrect=0, currentCard=null;
+let queue=[], doneCount=0, reviewed=0, cardsCorrect=0, currentCard=null;
+let sessionNewSet=new Set(); // keys of new cards added to this session's queue
+
+// ─── FSRS-4 Algorithm ────────────────────────────────────────────────────────
+// Weights from FSRS-4 default parameters (19 values)
+const FSRS_W=[
+  0.40255,1.18385,3.173,15.69105,7.1949,
+  0.5345, 1.4604, 0.0046,1.54575,0.1192,
+  1.01925,1.9395, 0.11,  0.29605,2.2698,
+  0.2315, 2.9898, 0.51655,0.6621
+];
+const FSRS_F=19/81, FSRS_C=-0.5, FSRS_DESIRED_R=0.9;
+const NEW_PER_DAY=20, MAX_INTERVAL=365;
+const FSRS_KEY='hsk_fsrs_v1';
+
+// Retrievability after t days with stability s
+function fsrsR(t,s){ return Math.pow(1+FSRS_F*(t/s),FSRS_C); }
+
+// Interval (days) at which R drops to desired retention
+function fsrsInterval(s){
+  const t=(s/FSRS_F)*(Math.pow(FSRS_DESIRED_R,1/FSRS_C)-1);
+  return Math.max(1,Math.min(MAX_INTERVAL,Math.round(t)));
+}
+
+// Initial stability after first review (grade 1–4)
+function fsrsS0(g){ return FSRS_W[g-1]; }
+
+// Initial difficulty after first review
+function fsrsD0(g){ return Math.max(1,Math.min(10,FSRS_W[4]-Math.exp(FSRS_W[5]*(g-1))+1)); }
+
+// Stability after a successful review (grade 2,3,4)
+function fsrsSSuccess(d,s,r,g){
+  const alpha=1+(11-d)*Math.pow(s,-FSRS_W[9])*(Math.exp(FSRS_W[10]*(1-r))-1)
+    *(g===2?FSRS_W[15]:1)*(g===4?FSRS_W[16]:1)*Math.exp(FSRS_W[8]);
+  return Math.max(0.1,s*alpha);
+}
+
+// Stability after forgetting (grade 1)
+function fsrsSFail(d,s,r){
+  const sf=Math.pow(d,-FSRS_W[12])*(Math.pow(s+1,FSRS_W[13])-1)
+    *Math.exp(FSRS_W[14]*(1-r))*FSRS_W[11];
+  return Math.max(0.1,Math.min(sf,s));
+}
+
+// Update difficulty after n-th review
+function fsrsDNext(d,g){
+  const dp=d+(-FSRS_W[6]*(g-3))*((10-d)/9);
+  return Math.max(1,Math.min(10,FSRS_W[7]*fsrsD0(4)+(1-FSRS_W[7])*dp));
+}
+
+// Compute next {s, d, interval} given current card state and grade (1 or 3)
+function fsrsNext(cardState,grade){
+  if(!cardState){
+    const s=Math.max(0.1,fsrsS0(grade));
+    const d=fsrsD0(grade);
+    const interval=grade===1?1:fsrsInterval(s);
+    return {s,d,interval};
+  }
+  const t=Math.max(1,daysBetween(cardState.rev,todayStr()));
+  const r=fsrsR(t,cardState.s);
+  let s,d;
+  if(grade===1){
+    s=fsrsSFail(cardState.d,cardState.s,r);
+    d=Math.max(1,Math.min(10,cardState.d-FSRS_W[6]*(1-3)*((10-cardState.d)/9)));
+  } else {
+    s=fsrsSSuccess(cardState.d,cardState.s,r,grade);
+    d=fsrsDNext(cardState.d,grade);
+  }
+  return {s,d,interval:grade===1?1:fsrsInterval(s)};
+}
+
+// Format interval as human-readable string
+function fmtInterval(days){
+  if(days<=1) return '1 day';
+  if(days<7)  return days+' days';
+  if(days<30) return Math.round(days/7)+'w';
+  if(days<365)return Math.round(days/30)+'mo';
+  return Math.round(days/365)+'yr';
+}
+
+// ─── FSRS Storage ─────────────────────────────────────────────────────────────
+function loadFsrs(){ try{return JSON.parse(localStorage.getItem(FSRS_KEY)||'{}')}catch(e){return{}} }
+function saveFsrs(st){ localStorage.setItem(FSRS_KEY,JSON.stringify(st)); }
+
+// ─── Date Helpers ─────────────────────────────────────────────────────────────
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function addDays(s,n){ const d=new Date(s+'T00:00:00'); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
+function daysBetween(a,b){ return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000); }
 
 // ─── Daily Target ─────────────────────────────────────────────────────────────
 const DAILY_TARGET_DEFAULT = 20;
@@ -1214,9 +1304,23 @@ document.addEventListener('keydown', e => {
   }, {passive:true});
 })();
 async function initQueue(){
-  await endSession(); // close previous session if any
-  queue = (currentLevel==='all' ? [...allVocab] : allVocab.filter(v=>v.h===currentLevel)).sort(()=>Math.random()-0.5);
-  doneCount=0; reviewCount=0; reviewed=0; cardsCorrect=0; levelBreakdown={};
+  await endSession();
+  const fsrs=loadFsrs();
+  const today=todayStr();
+  const vocab=currentLevel==='all'?[...allVocab]:allVocab.filter(v=>v.h===currentLevel);
+
+  // Due reviews: have state and due date is today or earlier
+  const due=vocab.filter(v=>fsrs[v.s]&&fsrs[v.s].due<=today)
+    .sort((a,b)=>fsrs[a.s].due.localeCompare(fsrs[b.s].due));
+
+  // New cards: never reviewed, limited to NEW_PER_DAY
+  const newCards=vocab.filter(v=>!fsrs[v.s])
+    .sort(()=>Math.random()-0.5)
+    .slice(0,NEW_PER_DAY);
+
+  sessionNewSet=new Set(newCards.map(v=>v.s));
+  queue=[...due,...newCards];
+  doneCount=0; reviewed=0; cardsCorrect=0; levelBreakdown={};
   updateStats();
   await startSession();
   showNext();
@@ -1252,10 +1356,12 @@ function setScript(s,btn){
 }
 
 function updateStats(){
+  const newInQ=queue.filter(v=>sessionNewSet.has(v.s)).length;
+  const revInQ=queue.length-newInQ;
   const total=queue.length+doneCount;
   document.getElementById('statDue').textContent=queue.length;
-  document.getElementById('countNew').textContent=Math.max(0,queue.length-reviewCount);
-  document.getElementById('countReview').textContent=reviewCount;
+  document.getElementById('countNew').textContent=newInQ;
+  document.getElementById('countReview').textContent=revInQ;
   document.getElementById('countDone').textContent=doneCount;
   document.getElementById('statReviewed').textContent=reviewed;
   document.getElementById('progressBar').style.width=(total>0?(doneCount/total*100):0)+'%';
@@ -1307,14 +1413,22 @@ function cardHTML(card, revealed){
           </a>
         </div>
         ${charsHTML}
-        <div class="recall-row">
+        ${(()=>{
+          const fsrs=loadFsrs();
+          const st=fsrs[card.s]||null;
+          const iAgain=fsrsNext(st,1).interval;
+          const iGood =fsrsNext(st,3).interval;
+          return `<div class="recall-row">
           <button class="recall-btn recall-again" onclick="recall('again')">
-            <span class="recall-icon">✕</span> Didn't know
+            <div class="recall-btn-top"><span class="recall-icon">✕</span><span class="recall-btn-label">Didn't know</span></div>
+            <span class="recall-interval">${fmtInterval(iAgain)}</span>
           </button>
           <button class="recall-btn recall-good" onclick="recall('good')">
-            <span class="recall-icon">✓</span> Got it
+            <div class="recall-btn-top"><span class="recall-icon">✓</span><span class="recall-btn-label">Got it</span></div>
+            <span class="recall-interval">${fmtInterval(iGood)}</span>
           </button>
-        </div>
+        </div>`;
+        })()}
       </div>
     </div>`;
 }
@@ -1331,19 +1445,25 @@ function revealCard(){
 
 function recall(type){
   if(!currentCard) return;
-  const cardLevel = currentCard.h;
-  levelBreakdown[cardLevel] = (levelBreakdown[cardLevel]||0) + 1;
+  const grade=type==='again'?1:3;
+  const today=todayStr();
+  const fsrs=loadFsrs();
+  const key=currentCard.s;
+  const {s,d,interval}=fsrsNext(fsrs[key]||null,grade);
+
+  levelBreakdown[currentCard.h]=(levelBreakdown[currentCard.h]||0)+1;
   queue.shift(); reviewed++;
-  if(type==='again'){
+
+  // Always save updated state to localStorage
+  fsrs[key]={s,d,due:addDays(today,interval),rev:today};
+  saveFsrs(fsrs);
+
+  if(grade===1){
+    // Re-insert for same-session retry (still "due" in queue)
     queue.splice(Math.min(queue.length,5+Math.floor(Math.random()*5)),0,currentCard);
-    reviewCount++;
   } else {
-    doneCount++;
-    if(type==='good'||type==='perfect'){
-      cardsCorrect++;
-      dailyDone++;
-      updateDailyBar();
-    }
+    doneCount++; cardsCorrect++;
+    dailyDone++; updateDailyBar();
   }
   updateStats(); showNext();
 }
@@ -1492,15 +1612,32 @@ async function showDone(){
   currentCard=null;
   const lvl=currentLevel==='all'?'All HSK':`HSK ${currentLevel}`;
   const accuracy=reviewed>0?Math.round((cardsCorrect/reviewed)*100):0;
+
+  // Find next due date
+  const fsrs=loadFsrs();
+  const vocab=currentLevel==='all'?[...allVocab]:allVocab.filter(v=>v.h===currentLevel);
+  const today=todayStr();
+  const upcoming=vocab.filter(v=>fsrs[v.s]).map(v=>fsrs[v.s].due).sort();
+  const nextDue=upcoming.find(d=>d>today);
+  const newRemaining=vocab.filter(v=>!fsrs[v.s]).length;
+  let nextLine='';
+  if(nextDue){
+    const days=daysBetween(today,nextDue);
+    nextLine=`<div style="margin-top:12px;font-size:14px;color:var(--ink-muted);font-style:italic">${days<=1?'More cards due tomorrow':'Next review in '+days+' days'} · ${newRemaining} new cards remaining</div>`;
+  } else if(newRemaining>0){
+    nextLine=`<div style="margin-top:12px;font-size:14px;color:var(--ink-muted);font-style:italic">${newRemaining} new cards waiting</div>`;
+  }
+
   document.getElementById('cardContainer').innerHTML=`
     <div class="done-state">
       <div class="done-char">完</div>
-      <div class="done-title">Session Complete!</div>
+      <div class="done-title">${reviewed===0?'All caught up!':'Session Complete!'}</div>
       <div class="done-subtitle">
-        You reviewed <strong>${reviewed}</strong> ${lvl} card${reviewed!==1?'s':''} with <strong>${accuracy}%</strong> accuracy. 很好！
+        ${reviewed>0?`You reviewed <strong>${reviewed}</strong> ${lvl} card${reviewed!==1?'s':''} with <strong>${accuracy}%</strong> accuracy. 很好！`:'No cards due right now. Great work keeping up!'}
+        ${nextLine}
       </div>
       <div style="display:flex;gap:12px;justify-content:center;margin-top:24px">
-        <button class="restart-btn" onclick="initQueue()">Study Again</button>
+        <button class="restart-btn" onclick="initQueue()">Check Again</button>
         <a href="#" class="restart-btn" style="text-decoration:none">View Stats</a>
       </div>
     </div>`;
@@ -1513,4 +1650,3 @@ initVoices();
 </script>
 </body>
 </html>
-<!-- deploy 20260225213122 -->
