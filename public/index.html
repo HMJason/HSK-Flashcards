@@ -715,12 +715,7 @@
           <span class="toggle-track"></span>
         </label>
       </div>
-      <div class="settings-row" style="padding-top:0">
-        <a href="/dashboard" style="font-family:'EB Garamond',serif;font-size:15px;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:6px">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          View detailed analytics →
-        </a>
-      </div>
+
     </div>
 
     <!-- Account -->
@@ -1433,10 +1428,7 @@ function cardHTML(card, revealed){
             <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.536 8.464a5 5 0 010 7.072M9 9.5l-2 1.5H4v3h3l2 1.5V9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Speak word
           </button>
-          <a href="/dashboard" class="speak-btn" style="text-decoration:none">
-            <svg class="speak-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-            My Stats
-          </a>
+
         </div>
         ${charsHTML}
         ${(()=>{
@@ -1663,7 +1655,6 @@ async function showDone(){
       </div>
       <div style="display:flex;gap:12px;justify-content:center;margin-top:24px">
         <button class="restart-btn" onclick="initQueue()">Check Again</button>
-        <a href="/dashboard" class="restart-btn" style="text-decoration:none">View Stats</a>
       </div>
     </div>`;
 }
