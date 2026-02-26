@@ -336,20 +336,41 @@
 </main>
 
 <footer>
-  <a href="#">View your analytics</a> &nbsp;·&nbsp;
-  5,000 words across HSK 1–6
+  5,000 words across HSK 1–6 &nbsp;·&nbsp; Progress saved to your account
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-client.js"></script>
 <script>
-const _LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d}catch{return d}}};
-function loadUser(){
-  const user=_LS.get('hsk_user',null);
-  if(user){
-    document.getElementById('userName').textContent=user.name?.split(' ')[0]||'';
-    document.getElementById('userAvatar').textContent=(user.name?.[0]||'漢').toUpperCase();
+async function loadUser() {
+  // ── Auth check ───────────────────────────────────────────────────────────
+  if (window._sb) {
+    try {
+      const { data: { session } } = await window._sb.auth.getSession();
+      if (!session) {
+        const loginPage = location.pathname.endsWith('.html') ? 'login.html' : '/login';
+        window.location.href = loginPage;
+        return;
+      }
+      const user = {
+        name:   session.user.user_metadata?.full_name  || session.user.email?.split('@')[0] || 'Learner',
+        avatar: session.user.user_metadata?.avatar_url || session.user.user_metadata?.picture || null,
+      };
+      document.getElementById('userName').textContent = user.name.split(' ')[0] || '';
+      const av = document.getElementById('userAvatar');
+      if (user.avatar) {
+        av.innerHTML = `<img src="${user.avatar}" alt="${user.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+      } else {
+        av.textContent = (user.name?.[0] || '漢').toUpperCase();
+      }
+    } catch { /* Supabase not configured — allow unauthenticated for dev */ }
   }
 }
-function signOut(){if(confirm('Clear all local data?')){localStorage.clear();location.reload();}}
+async function signOut() {
+  if (window._sb) await sbSignOut();
+  const loginPage = location.pathname.endsWith('.html') ? 'login.html' : '/login';
+  window.location.href = loginPage;
+}
 loadUser();
 </script>
 </body>

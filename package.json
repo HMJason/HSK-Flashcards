@@ -1,15 +1,16 @@
 {
   "name": "hsk-flashcards",
   "version": "1.0.0",
-  "description": "HSK Mandarin Chinese flashcard app with Google/Apple authentication",
+  "description": "HSK Mandarin Chinese flashcard app — iOS, Android & Web",
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
-    "deploy:rules": "firebase deploy --only firestore:rules",
-    "deploy:indexes": "firebase deploy --only firestore:indexes",
-    "deploy:all": "firebase deploy --only firestore",
-    "build": "node build-static.js"
+    "build": "node build-static.js",
+    "build:mobile": "node build-static.js && npx cap sync",
+    "open:ios": "npx cap open ios",
+    "open:android": "npx cap open android",
+    "deploy:rules": "firebase deploy --only firestore:rules"
   },
   "dependencies": {
     "compression": "^1.8.1",
@@ -21,7 +22,16 @@
     "jose": "^5.3.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "@capacitor/cli": "^6.0.0"
+  },
+  "capacitor": {
+    "ios": {
+      "path": "ios"
+    },
+    "android": {
+      "path": "android"
+    }
   },
   "engines": {
     "node": ">=18.0.0"

@@ -1,0 +1,54 @@
+{
+  "appId": "com.hmjason.hskflashcards",
+  "appName": "HSK Flashcards",
+  "webDir": "docs",
+  "bundledWebRuntime": false,
+
+  "server": {
+    "androidScheme": "https",
+    "allowNavigation": [
+      "*.supabase.co",
+      "*.googleapis.com",
+      "*.apple.com",
+      "hmjason.github.io",
+      "accounts.google.com",
+      "appleid.apple.com",
+      "fonts.googleapis.com",
+      "fonts.gstatic.com",
+      "cdn.jsdelivr.net"
+    ]
+  },
+
+  "plugins": {
+    "CapacitorCookies": {
+      "enabled": true
+    },
+    "CapacitorHttp": {
+      "enabled": true
+    },
+    "Browser": {
+      "presentationStyle": "popover"
+    },
+    "App": {
+      "deepLinks": [
+        {
+          "scheme": "hsk-flashcards",
+          "host": "login-callback"
+        }
+      ]
+    }
+  },
+
+  "ios": {
+    "contentInset": "always",
+    "scrollEnabled": false,
+    "backgroundColor": "#f0ebe0",
+    "scheme": "HSKFlashcards"
+  },
+
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "backgroundColor": "#f0ebe0"
+  }
+}

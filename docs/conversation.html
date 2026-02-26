@@ -160,6 +160,8 @@
   <div id="cardContainer"></div>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-client.js"></script>
 <script>
 var PHRASES=[
   {id:1,cat:"greetings",zh:"\u4f60\u597d",py:"N\u01d0 h\u01ceo",en:"Hello",tip:"The universal greeting. Use any time of day. Pair with a nod for extra warmth."},
@@ -319,11 +321,21 @@ function showDone(){
     '<button class="restart-btn" onclick="initQueue()">Practice again</button>'+
     '</div>';
 }
-function loadUser(){
-  var _ls={get:function(k,d){try{var v=localStorage.getItem(k);return v!=null?JSON.parse(v):d;}catch(e){return d;}}};
-  var u=_ls.get('hsk_user',null);
-  var av=document.getElementById('userAvatar');
-  if(u&&av) av.textContent=(u.name&&u.name[0]||'漢').toUpperCase();
+async function loadUser(){
+  if (window._sb) {
+    try {
+      const { data: { session } } = await window._sb.auth.getSession();
+      if (!session) {
+        const loginPage = location.pathname.endsWith('.html') ? 'login.html' : '/login';
+        window.location.href = loginPage; return;
+      }
+      const user = session.user;
+      const av = document.getElementById("userAvatar");
+      const pic = user.user_metadata?.avatar_url || user.user_metadata?.picture;
+      if (pic) { av.innerHTML = '<img src="'+pic+'" alt="avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%">'; }
+      else { av.textContent = (user.user_metadata?.full_name?.[0] || user.email?.[0] || '漢').toUpperCase(); }
+    } catch {}
+  }
 }
 loadUser();
 loadAutoPlaySetting();

@@ -44,7 +44,7 @@ let flash = fs.readFileSync(path.join(PUBLIC,'index.html'), 'utf8');
 
 // 1. Fix links
 flash = replace(flash, 'href="/home"',      'href="index.html"');
-flash = replace(flash, 'href="/dashboard"', 'href="#"');
+// flash = replace(flash, 'href="/dashboard"', 'href="#"'); // removed from source
 
 // 2. Rewrite server-side vocab URLs to relative paths for GitHub Pages
 flash = replace(flash, "'/app-assets/vocab.json'",             "'vocab.json'");
@@ -69,57 +69,25 @@ const inlineVocab = `
 `;
 flash = replace(flash, 'const examplesCache = {}; // simplified character → {zh, py, en}', 'const examplesCache = {}; // simplified character → {zh, py, en}\n' + inlineVocab);
 
-// 3. Replace server loadUser() with localStorage version — no onboarding, auto-start
+// 3. Replace server loadUser() with Supabase-based localStorage version
+// (Supabase is used in static build too — auth guards redirect to login.html)
+// No replacement needed — the source loadUser() already works for static/GitHub Pages
+// because it checks `location.pathname.endsWith('.html')` for the redirect path.
+
+// ── calcStreak helper (referenced inside applySettings / daily bar logic) ──────
 flash = replace(flash,
-`async function loadUser(){
-  let user;
-  try {
-    const res = await fetch('/auth/me');
-    if (!res.ok) { window.location.href='/login'; return; }
-    user = await res.json();
-  } catch { window.location.href='/login'; return; }
-
-  // Render avatar in header
-  setAvatarEl('userAvatar', user);
-
-  // Populate settings panel account section
-  document.getElementById('settingsUserName').textContent  = user.name  || '—';
-  document.getElementById('settingsUserEmail').textContent = user.email || '—';
-  document.getElementById('userName').textContent = user.name?.split(' ')[0] || '';
-  setAvatarEl('settingsAvatar', user);
-
-  // Load settings from server
-  try {
-    const sr = await fetch('/api/settings');
-    currentSettings = sr.ok ? await sr.json() : { dailyTarget: 20 };
-  } catch { currentSettings = { dailyTarget: 20 }; }
-
-  applySettings(currentSettings);
-
-  // Show onboarding if ?new=1 in URL
-  if (new URLSearchParams(location.search).get('new') === '1') {
-    showOnboarding(user.name);
-  }
-}`,
-`// ── Static localStorage helpers ──
-const _LS={
-  get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d;}catch{return d;}},
-  set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
-};
-window._LS=_LS;
-
-function loadUser(){
-  const saved=_LS.get('hsk_settings',{});
-  currentSettings={dailyTarget:20,soundEnabled:true,autoPlayAudio:true,trackingEnabled:false,preferredScript:'simplified',defaultLevel:1,...saved};
-  applySettings(currentSettings);
-  const prog=_LS.get('hsk_progress',{});
+`// ─── Data loading`,
+`// ── calcStreak: count consecutive daily study days ──
+function calcStreak(prog){
+  if(!prog||!prog.lastStudyDate) return 0;
   const today=new Date().toISOString().split('T')[0];
-  dailyDone=prog.lastStudyDate===today?(prog.dailyCards||0):0;
-  targetNotified=dailyDone>=dailyTarget;
-  updateDailyBar();
-  const streak=document.getElementById('statStreak');
-  if(streak)streak.textContent=calcStreak(prog);
-}`);
+  const last=prog.lastStudyDate;
+  if(last===today) return prog.streak||1;
+  const diff=(new Date(today)-new Date(last))/(1000*60*60*24);
+  return diff<=1 ? (prog.streak||1) : 0;
+}
+
+// ─── Data loading`);
 
 // 4. Replace server saveSettings() with localStorage version
 flash = replace(flash,
@@ -189,52 +157,9 @@ flash = replace(flash,
   closeSettings();
 }`);
 
-// 5. Replace server logout with localStorage version
-flash = replace(flash,
-`async function logout(){
-  await endSession();
-  await fetch('/auth/logout', { method:'POST' });
-  window.location.href='/login';
-}`,
-`function logout(){
-  if(confirm('Sign out and clear all local data?')){localStorage.clear();location.reload();}
-}`);
+// 5. Session tracking: server calls already removed from source, Supabase handles it
 
-// 6. Strip session start/end API calls (just make them no-ops)
-flash = replace(flash,
-`async function startSession(){`,
-`async function startSession(){ return;`);
-flash = replace(flash,
-`async function endSession(){`,
-`async function endSession(){ return;`);
-
-// 6b. Remove the beforeunload sendBeacon (calls non-existent server endpoint)
-flash = replace(flash,
-`// End session on page close
-window.addEventListener('beforeunload', () => {
-  if(sessionStart && reviewed > 0) {
-    const duration = Math.round((Date.now()-sessionStart)/1000);
-    navigator.sendBeacon('/api/session/end', JSON.stringify({
-      sessionId, cardsReviewed:reviewed, cardsCorrect, durationSeconds:duration, levelBreakdown
-    }));
-  }
-});`,
-`// (session tracking disabled in static build)`);
-
-// 6c. Add missing calcStreak function (used in loadUser)
-flash = replace(flash,
-`// ─── Data loading`,
-`// ── calcStreak: count consecutive daily study days ──
-function calcStreak(prog){
-  if(!prog||!prog.lastStudyDate) return 0;
-  const today=new Date().toISOString().split('T')[0];
-  const last=prog.lastStudyDate;
-  if(last===today) return prog.streak||1;
-  const diff=(new Date(today)-new Date(last))/(1000*60*60*24);
-  return diff<=1 ? (prog.streak||1) : 0;
-}
-
-// ─── Data loading`);
+// 6c. Add missing calcStreak function is now handled above (step 3)
 
 // 7. Fix error message (remove server reference)
 flash = replace(flash,
@@ -243,6 +168,20 @@ flash = replace(flash,
 
 fs.writeFileSync(path.join(DOCS,'flashcards.html'), flash);
 console.log('✅ Built docs/flashcards.html ('+Math.round(flash.length/1024)+'KB, HSK1 embedded)');
+
+// ─── Copy supabase-client.js to docs/ ────────────────────────────────────────
+const sbClientSrc = path.join(PUBLIC, 'supabase-client.js');
+if (fs.existsSync(sbClientSrc)) {
+  fs.copyFileSync(sbClientSrc, path.join(DOCS, 'supabase-client.js'));
+  console.log('✅ Copied supabase-client.js');
+}
+
+// ─── Build login.html ─────────────────────────────────────────────────────────
+let login = fs.readFileSync(path.join(PUBLIC,'login.html'), 'utf8');
+// Fix relative script path (server serves from /supabase-client.js, static uses relative)
+login = replace(login, 'src="supabase-client.js"', 'src="supabase-client.js"'); // already relative — no change needed
+fs.writeFileSync(path.join(DOCS,'login.html'), login);
+console.log('✅ Built docs/login.html');
 
 // ─── Build index.html (landing) ───────────────────────────────────────────────
 let landing = fs.readFileSync(path.join(PUBLIC,'landing.html'), 'utf8');
@@ -253,54 +192,17 @@ for (let l = 1; l <= 6; l++) {
 }
 landing = landing.split(`href="/app?level=all"`).join(`href="flashcards.html?level=all"`);
 landing = replace(landing, 'href="/conversation"', 'href="conversation.html"');
-landing = replace(landing, 'href="/dashboard"',    'href="#"');
-landing = replace(landing,
-`async function loadUser() {
-  try {
-    const res = await fetch('/auth/me');
-    if (!res.ok) { window.location.href = '/login'; return; }
-    const user = await res.json();
-    document.getElementById('userName').textContent = user.name?.split(' ')[0] || '';
-    const av = document.getElementById('userAvatar');
-    if (user.avatar) {
-      av.innerHTML = \`<img src="\${user.avatar}" alt="\${user.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">\`;
-    } else {
-      av.textContent = (user.name?.[0] || '漢').toUpperCase();
-    }
-  } catch { window.location.href = '/login'; }
-}
-async function signOut() {
-  await fetch('/auth/logout', { method: 'POST' });
-  window.location.href = '/login';
-}
-loadUser();`,
-`const _LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d}catch{return d}}};
-function loadUser(){
-  const user=_LS.get('hsk_user',null);
-  if(user){
-    document.getElementById('userName').textContent=user.name?.split(' ')[0]||'';
-    document.getElementById('userAvatar').textContent=(user.name?.[0]||'漢').toUpperCase();
-  }
-}
-function signOut(){if(confirm('Clear all local data?')){localStorage.clear();location.reload();}}
-loadUser();`);
+// landing = replace(landing, 'href="/dashboard"', 'href="#"'); // removed from source
+// Login/auth redirects already use location.pathname check — no replacement needed
 fs.writeFileSync(path.join(DOCS,'index.html'), landing);
 console.log('✅ Built docs/index.html (landing)');
 
 // ─── Build conversation.html ──────────────────────────────────────────────────
 let conv = fs.readFileSync(path.join(PUBLIC,'conversation.html'), 'utf8');
 conv = replace(conv, 'href="/home"', 'href="index.html"');
-// Replace the auth fetch with a localStorage lookup
-conv = conv.replace(/async function loadUser\(\)[\s\S]*?\}\nloadUser\(\);/,
-  `function loadUser(){
-  var _ls={get:function(k,d){try{var v=localStorage.getItem(k);return v!=null?JSON.parse(v):d;}catch(e){return d;}}};
-  var u=_ls.get('hsk_user',null);
-  var av=document.getElementById('userAvatar');
-  if(u&&av) av.textContent=(u.name&&u.name[0]||'\u6f22').toUpperCase();
-}
-loadUser();`);
+// Auth already uses Supabase with pathname check — no replacement needed
 fs.writeFileSync(path.join(DOCS,'conversation.html'), conv);
-console.log('\u2705 Built docs/conversation.html');
+console.log('✅ Built docs/conversation.html');
 
 // ─── Verify JS syntax in all outputs ──────────────────────────────────────────
 const {execSync} = require('child_process');

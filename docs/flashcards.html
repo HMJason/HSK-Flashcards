@@ -6,6 +6,8 @@
 <title>HSK Flashcards</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-client.js"></script>
 <style>
   :root {
     --cream: #f0ebe0; --cream-dark: #e5dfd2; --cream-mid: #ede8dc;
@@ -833,6 +835,76 @@ function fmtInterval(days){
 function loadFsrs(){ try{return JSON.parse(localStorage.getItem(FSRS_KEY)||'{}')}catch(e){return{}} }
 function saveFsrs(st){ localStorage.setItem(FSRS_KEY,JSON.stringify(st)); }
 
+// ─── Supabase sync (non-blocking — localStorage stays the source of truth) ────
+let _sbUser = null;   // cached user, set on load
+let _sbSessionId = null;
+
+async function sbSyncInit() {
+  if (!window._sb) return;
+  try {
+    _sbUser = await sbGetUser();
+    if (!_sbUser) return;
+
+    // Pull all card states from Supabase and merge into localStorage
+    const { data, error } = await window._sb
+      .from('card_states')
+      .select('character,stability,difficulty,due_date,last_review')
+      .eq('user_id', _sbUser.id);
+
+    if (error || !data?.length) return;
+
+    const local = loadFsrs();
+    let changed = false;
+    for (const row of data) {
+      const loc = local[row.character];
+      // Supabase wins if local has no entry OR Supabase review is more recent
+      if (!loc || (row.last_review && row.last_review > (loc.rev || ''))) {
+        local[row.character] = { s: row.stability, d: row.difficulty, due: row.due_date, rev: row.last_review };
+        changed = true;
+      }
+    }
+    if (changed) saveFsrs(local);
+  } catch (e) { console.warn('[sb] sync init error:', e); }
+}
+
+function sbSyncCard(char, state) {
+  if (!window._sb || !_sbUser) return;
+  window._sb.from('card_states').upsert({
+    user_id:     _sbUser.id,
+    character:   char,
+    stability:   state.s,
+    difficulty:  state.d,
+    due_date:    state.due,
+    last_review: state.rev,
+  }, { onConflict: 'user_id,character' }).then(({ error }) => {
+    if (error) console.warn('[sb] card sync error:', error.message);
+  });
+}
+
+async function sbStartSession(level) {
+  if (!window._sb || !_sbUser) return;
+  try {
+    const { data, error } = await window._sb.from('study_sessions')
+      .insert({ user_id: _sbUser.id, level, started_at: new Date().toISOString() })
+      .select('id').single();
+    if (!error && data) _sbSessionId = data.id;
+  } catch(e) {}
+}
+
+async function sbEndSession(cardsReviewed, cardsCorrect, newCards, durationSecs) {
+  if (!window._sb || !_sbUser || !_sbSessionId) return;
+  try {
+    await window._sb.from('study_sessions').update({
+      ended_at:       new Date().toISOString(),
+      cards_reviewed: cardsReviewed,
+      cards_correct:  cardsCorrect,
+      new_cards:      newCards,
+      duration_secs:  durationSecs,
+    }).eq('id', _sbSessionId);
+    _sbSessionId = null;
+  } catch(e) {}
+}
+
 // ─── Date Helpers ─────────────────────────────────────────────────────────────
 function todayStr(){ return new Date().toISOString().slice(0,10); }
 function addDays(s,n){ const d=new Date(s+'T00:00:00'); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
@@ -933,39 +1005,27 @@ function launchConfetti() {
 // ─── Session Tracking ─────────────────────────────────────────────────────────
 let sessionId=null, sessionStart=null, levelBreakdown={};
 
-async function startSession(){ return;
+async function startSession(){
   sessionStart = Date.now();
   levelBreakdown = {};
   cardsCorrect = 0;
-  try {
-    const res = await fetch('/api/session/start', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ level: currentLevel })
-    });
-    const data = await res.json();
-    sessionId = data.sessionId;
-  } catch(e){ sessionId = null; }
+  sbStartSession(currentLevel);  // non-blocking Supabase session
 }
 
-async function endSession(){ return;
+async function endSession(){
   if(!sessionStart) return;
   const duration = Math.round((Date.now() - sessionStart) / 1000);
-  try {
-    await fetch('/api/session/end', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        sessionId,
-        cardsReviewed: reviewed,
-        cardsCorrect,
-        durationSeconds: duration,
-        levelBreakdown,
-      })
-    });
-  } catch(e){}
+  sbEndSession(reviewed, cardsCorrect, sessionNewSet?.size || 0, duration);  // non-blocking
   sessionId=null; sessionStart=null;
 }
 
-// (session tracking disabled in static build)
+// End session on page close
+window.addEventListener('beforeunload', () => {
+  if(sessionStart && reviewed > 0) {
+    const duration = Math.round((Date.now()-sessionStart)/1000);
+    sbEndSession(reviewed, cardsCorrect, sessionNewSet?.size || 0, duration);
+  }
+});
 
 // ── calcStreak: count consecutive daily study days ──
 function calcStreak(prog){
@@ -1063,24 +1123,66 @@ let currentSettings = {};
 let pendingSettings  = {};
 
 // ─── User & Settings loading ──────────────────────────────────────────────────
-// ── Static localStorage helpers ──
-const _LS={
-  get:(k,d)=>{try{const v=localStorage.getItem(k);return v!=null?JSON.parse(v):d;}catch{return d;}},
-  set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
-};
-window._LS=_LS;
+async function loadUser(){
+  // ── Auth check via Supabase ───────────────────────────────────────────────
+  let sbUser = null;
+  if (window._sb) {
+    try {
+      const { data: { session } } = await window._sb.auth.getSession();
+      if (!session) {
+        const loginPage = location.pathname.endsWith('.html')
+          ? 'login.html' : '/login';
+        window.location.href = loginPage;
+        return;
+      }
+      sbUser = session.user;
+    } catch { /* Supabase not configured — allow localStorage-only mode */ }
+  }
 
-function loadUser(){
-  const saved=_LS.get('hsk_settings',{});
-  currentSettings={dailyTarget:20,soundEnabled:true,autoPlayAudio:true,trackingEnabled:false,preferredScript:'simplified',defaultLevel:1,...saved};
+  // ── Build a normalised user object ────────────────────────────────────────
+  const user = sbUser ? {
+    name:   sbUser.user_metadata?.full_name  || sbUser.email?.split('@')[0] || 'Learner',
+    email:  sbUser.email || '',
+    avatar: sbUser.user_metadata?.avatar_url || sbUser.user_metadata?.picture || null,
+  } : { name: 'Learner', email: '', avatar: null };
+
+  // ── Render avatar + name ──────────────────────────────────────────────────
+  setAvatarEl('userAvatar', user);
+  setAvatarEl('settingsAvatar', user);
+  const nameEl = document.getElementById('userName');
+  if (nameEl) nameEl.textContent = user.name.split(' ')[0];
+  const sNameEl = document.getElementById('settingsUserName');
+  if (sNameEl) sNameEl.textContent = user.name  || '—';
+  const sEmailEl = document.getElementById('settingsUserEmail');
+  if (sEmailEl) sEmailEl.textContent = user.email || '—';
+
+  // ── Load settings (Supabase first, localStorage fallback) ─────────────────
+  let sbSettings = null;
+  if (window._sb && sbUser) {
+    try {
+      const { data } = await window._sb
+        .from('user_settings')
+        .select('*')
+        .eq('user_id', sbUser.id)
+        .single();
+      if (data) {
+        sbSettings = {
+          dailyTarget:     data.daily_target,
+          preferredScript: data.script,
+          defaultLevel:    data.default_level,
+          autoPlayAudio:   data.auto_play_audio,
+          voiceName:       data.voice_name,
+          speechRate:      data.speech_rate,
+        };
+      }
+    } catch {}
+  }
+
+  // Merge: Supabase wins, then localStorage, then defaults
+  const lsRaw = localStorage.getItem('hsk_settings');
+  const lsSettings = lsRaw ? JSON.parse(lsRaw) : {};
+  currentSettings = Object.assign({ dailyTarget: 20 }, lsSettings, sbSettings || {});
   applySettings(currentSettings);
-  const prog=_LS.get('hsk_progress',{});
-  const today=new Date().toISOString().split('T')[0];
-  dailyDone=prog.lastStudyDate===today?(prog.dailyCards||0):0;
-  targetNotified=dailyDone>=dailyTarget;
-  updateDailyBar();
-  const streak=document.getElementById('statStreak');
-  if(streak)streak.textContent=calcStreak(prog);
 }
 
 function setAvatarEl(id, user) {
@@ -1265,8 +1367,11 @@ function saveSettings(){
   closeSettings();
 }
 
-function logout(){
-  if(confirm('Sign out and clear all local data?')){localStorage.clear();location.reload();}
+async function logout(){
+  await endSession();
+  if (window._sb) await sbSignOut();
+  const loginPage = location.pathname.endsWith('.html') ? 'login.html' : '/login';
+  window.location.href = loginPage;
 }
 
 // ─── Swipe & keyboard ────────────────────────────────────────────────────────
@@ -1442,9 +1547,10 @@ function recall(type){
   levelBreakdown[currentCard.h]=(levelBreakdown[currentCard.h]||0)+1;
   queue.shift(); reviewed++;
 
-  // Always save updated state to localStorage
+  // Always save updated state to localStorage + sync to Supabase
   fsrs[key]={s,d,due:addDays(today,interval),rev:today};
   saveFsrs(fsrs);
+  sbSyncCard(key, fsrs[key]);  // non-blocking background sync
 
   if(grade===1){
     // Re-insert for same-session retry (still "due" in queue)
@@ -1679,6 +1785,7 @@ async function showDone(){
 loadUser();
 loadVocab();
 initVoices();
+sbSyncInit(); // pull card states from Supabase in background (non-blocking)
 
 // Auto-select level from URL param e.g. /app?level=3 or /app?level=all
 (function(){
