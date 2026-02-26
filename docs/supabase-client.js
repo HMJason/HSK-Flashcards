@@ -127,4 +127,83 @@ if (_isNative && window.Capacitor?.Plugins?.App) {
   });
 }
 
+// ─── Entitlements ─────────────────────────────────────────────────────────────
+// Free levels: 1, 2, 3.  Paid: 4, 5, 6 (£2 each) or 'all' (£5).
+const FREE_LEVELS = ['1', '2', '3'];
+
+/**
+ * Returns the user's owned level strings from Supabase.
+ * Cached in sessionStorage to avoid repeat DB calls per page.
+ */
+async function sbGetEntitlements() {
+  // Cache hit
+  const cached = sessionStorage.getItem('hsk_entitlements');
+  if (cached) return JSON.parse(cached);
+
+  const user = await sbGetUser();
+  if (!user) return [];
+
+  try {
+    const { data } = await window._sb
+      .from('user_entitlements')
+      .select('levels')
+      .eq('user_id', user.id)
+      .single();
+    const levels = data?.levels ?? [];
+    sessionStorage.setItem('hsk_entitlements', JSON.stringify(levels));
+    return levels;
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Returns true if the user can access the given level (string or number).
+ * Free levels always return true.
+ */
+async function sbHasAccess(level) {
+  const l = String(level);
+  if (FREE_LEVELS.includes(l) || l === 'all') {
+    // 'all' mode: user needs to have bought 'all' or own every paid level
+    if (l === 'all') {
+      const owned = await sbGetEntitlements();
+      return owned.includes('all') ||
+             ['4','5','6'].every(x => owned.includes(x));
+    }
+    return true;
+  }
+  const owned = await sbGetEntitlements();
+  return owned.includes('all') || owned.includes(l);
+}
+
+/**
+ * Invalidate the entitlements cache (call after a successful purchase).
+ */
+function sbClearEntitlementCache() {
+  sessionStorage.removeItem('hsk_entitlements');
+}
+
+/**
+ * Start a Stripe Checkout session for the given product key.
+ * productKey: 'hsk4' | 'hsk5' | 'hsk6' | 'all'
+ * Returns the Stripe Checkout URL to redirect to.
+ */
+async function sbBuyLevel(productKey) {
+  const { data: { session } } = await window._sb.auth.getSession();
+  if (!session) throw new Error('Not signed in');
+
+  const fnUrl = SUPABASE_URL + '/functions/v1/create-checkout';
+  const res = await fetch(fnUrl, {
+    method:  'POST',
+    headers: {
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer ' + session.access_token,
+    },
+    body: JSON.stringify({ productKey }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Checkout failed');
+  return data.url;  // Stripe-hosted checkout page
+}
+
 console.log('[supabase-client] ready — native:', _isNative);

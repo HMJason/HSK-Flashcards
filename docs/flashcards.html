@@ -516,6 +516,43 @@
     .target-display { font-size: 56px; }
   }
 
+  /* ── In-app paywall ── */
+  .paywall-state {
+    text-align: center; padding: 48px 24px 40px;
+    animation: fadeInUp 0.35s ease;
+  }
+  .paywall-state .pw-char {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 72px; color: var(--red); line-height: 1; margin-bottom: 16px; display: block;
+  }
+  .paywall-state .pw-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; color: var(--ink); font-weight: 600; margin-bottom: 8px;
+  }
+  .paywall-state .pw-desc {
+    font-size: 15px; color: var(--ink-muted); font-style: italic;
+    line-height: 1.55; max-width: 320px; margin: 0 auto 24px;
+  }
+  .paywall-state .pw-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; color: var(--ink); font-weight: 600; margin-bottom: 4px;
+  }
+  .paywall-state .pw-note {
+    font-size: 13px; color: var(--ink-muted); margin-bottom: 28px;
+  }
+  .paywall-state .pw-buy {
+    display: inline-block; padding: 15px 36px;
+    background: var(--red); color: #fff; border: none; border-radius: 5px;
+    font-family: 'EB Garamond', serif; font-size: 18px; letter-spacing: 0.04em;
+    cursor: pointer; transition: background 0.2s; margin-bottom: 14px;
+  }
+  .paywall-state .pw-buy:hover { background: #a01e1e; }
+  .paywall-state .pw-buy:disabled { opacity: 0.6; pointer-events: none; }
+  .paywall-state .pw-also {
+    font-size: 13px; color: var(--ink-muted); margin-top: 14px;
+  }
+  .paywall-state .pw-also a { color: var(--gold); cursor: pointer; }
+
 </style>
 </head>
 <body>
@@ -1425,9 +1462,20 @@ async function initQueue(){
 }
 
 async function setLevel(l, btn) {
+  // ── Entitlement check ─────────────────────────────────────────────────────
+  const FREE = ['1','2','3'];
+  const lStr = String(l);
+  if (!FREE.includes(lStr)) {
+    const hasAccess = window.sbHasAccess ? await sbHasAccess(lStr) : true;
+    if (!hasAccess) {
+      showPaywall(lStr);
+      return;
+    }
+  }
+
   currentLevel = l === 'all' ? 'all' : parseInt(l);
   document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
   fetchExamples(currentLevel); // preload examples for this level
 
   // Use cache if available, else fetch (shows spinner briefly)
@@ -1451,6 +1499,49 @@ function setScript(s,btn){
   document.querySelectorAll('.script-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   if(currentCard) renderCard(currentCard);
+}
+
+// ─── In-app paywall (shown when a level button is clicked without access) ────
+const PW_INFO = {
+  '4':   { char:'四', name:'HSK 4 — Intermediate',       words:'600 words',   price:'£2', product:'hsk4' },
+  '5':   { char:'五', name:'HSK 5 — Upper-Intermediate', words:'1,300 words', price:'£2', product:'hsk5' },
+  '6':   { char:'六', name:'HSK 6 — Advanced',           words:'2,500 words', price:'£2', product:'hsk6' },
+  'all': { char:'全', name:'All Levels — Full Access',   words:'5,000 words', price:'£5', product:'all'  },
+};
+
+function showPaywall(level) {
+  const info = PW_INFO[String(level)];
+  if (!info) return;
+
+  const alsoHtml = info.product !== 'all'
+    ? `<div class="pw-also">Or get <a onclick="showPaywall('all')">all levels for £5</a></div>`
+    : '';
+
+  document.getElementById('cardContainer').innerHTML = `
+    <div class="paywall-state">
+      <span class="pw-char">${info.char}</span>
+      <div class="pw-title">${info.name}</div>
+      <div class="pw-desc">${info.words} of Mandarin vocabulary, unlocked forever.</div>
+      <div class="pw-price">${info.price}</div>
+      <div class="pw-note">One-time payment · No subscription</div>
+      <button class="pw-buy" id="pwBuyBtn" onclick="paywallCheckout('${info.product}', this)">
+        Buy now &rarr;
+      </button>
+      ${alsoHtml}
+    </div>`;
+}
+
+async function paywallCheckout(productKey, btn) {
+  btn.disabled = true;
+  btn.textContent = 'Redirecting…';
+  try {
+    const url = await sbBuyLevel(productKey);
+    window.location.href = url;
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Buy now →';
+    alert(err.message || 'Could not start checkout. Please try again.');
+  }
 }
 
 function updateStats(){
@@ -1786,6 +1877,27 @@ loadUser();
 loadVocab();
 initVoices();
 sbSyncInit(); // pull card states from Supabase in background (non-blocking)
+
+// Handle return from Stripe Checkout (success or cancel)
+(function(){
+  const params = new URLSearchParams(location.search);
+  if (params.get('payment') === 'success') {
+    sbClearEntitlementCache();  // force re-check of what they now own
+    history.replaceState({}, '', location.pathname);
+    // Show a brief success toast then re-load the purchased level
+    const product = params.get('product') || '';
+    const levelMap = {hsk4:'4', hsk5:'5', hsk6:'6', all:'all'};
+    const paidLevel = levelMap[product];
+    if (paidLevel) {
+      setTimeout(() => {
+        const btn = paidLevel === 'all'
+          ? document.querySelector('.level-btn[onclick*="all"]')
+          : document.querySelector(`.level-btn[onclick*="setLevel(${paidLevel},"]`);
+        if (btn) btn.click();
+      }, 200);
+    }
+  }
+})();
 
 // Auto-select level from URL param e.g. /app?level=3 or /app?level=all
 (function(){

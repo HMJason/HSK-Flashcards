@@ -167,6 +167,82 @@
   .level-card-all-arrow svg { width: 16px; height: 16px; transition: transform 0.2s; }
   .level-card-all:hover .level-card-all-arrow { gap: 12px; }
   .level-card-all:hover .level-card-all-arrow svg { transform: translateX(2px); }
+
+  /* ── Free / paid badges ── */
+  .level-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 20px;
+    margin-bottom: 10px; font-style: normal;
+    position: relative; z-index: 1;
+  }
+  .badge-free  { background: rgba(45,90,61,0.10); color: var(--green); border: 1px solid rgba(45,90,61,0.18); }
+  .badge-paid  { background: rgba(139,105,20,0.10); color: var(--gold); border: 1px solid rgba(139,105,20,0.22); }
+  .badge-owned { background: rgba(45,90,61,0.10); color: var(--green); border: 1px solid rgba(45,90,61,0.18); }
+  .level-card.locked { cursor: pointer; opacity: 0.88; }
+  .level-card.locked:hover { opacity: 1; }
+
+  /* ── Paywall modal ── */
+  .paywall-backdrop {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(44,36,22,0.55);
+    backdrop-filter: blur(3px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .paywall-backdrop.open { opacity: 1; pointer-events: auto; }
+  .paywall-modal {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 40px 36px;
+    max-width: 420px; width: 100%;
+    box-shadow: 0 24px 64px rgba(44,36,22,0.18);
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+  .paywall-backdrop.open .paywall-modal { transform: translateY(0) scale(1); }
+  .paywall-char {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px; color: var(--red); line-height: 1;
+    margin-bottom: 16px; display: block;
+  }
+  .paywall-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--ink); font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .paywall-desc { font-size: 15px; color: var(--ink-muted); font-style: italic; line-height: 1.55; margin-bottom: 24px; }
+  .paywall-price { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
+  .paywall-price-note { font-size: 13px; color: var(--ink-muted); margin-bottom: 28px; }
+  .paywall-buy-btn {
+    width: 100%; padding: 15px;
+    background: var(--red); color: #fff;
+    border: none; border-radius: 5px;
+    font-family: 'EB Garamond', serif; font-size: 17px; letter-spacing: 0.04em;
+    cursor: pointer; transition: background 0.2s, transform 0.15s; margin-bottom: 10px;
+  }
+  .paywall-buy-btn:hover { background: #a01e1e; }
+  .paywall-buy-btn:active { transform: scale(0.99); }
+  .paywall-buy-btn:disabled { opacity: 0.6; pointer-events: none; }
+  .paywall-cancel {
+    width: 100%; padding: 11px;
+    background: none; border: 1px solid var(--border); border-radius: 5px;
+    color: var(--ink-muted); font-family: 'EB Garamond', serif; font-size: 15px;
+    cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  }
+  .paywall-cancel:hover { border-color: var(--ink-muted); color: var(--ink); }
+  .paywall-also { font-size: 13px; color: var(--ink-muted); text-align: center; margin-top: 14px; line-height: 1.5; }
+  .paywall-also a { color: var(--gold); cursor: pointer; text-decoration: none; }
+  .paywall-also a:hover { text-decoration: underline; }
+  .paywall-error {
+    background: rgba(139,26,26,0.06); border: 1px solid rgba(139,26,26,0.2);
+    color: #8b1a1a; border-radius: 3px; padding: 9px 13px;
+    font-size: 13px; margin-bottom: 14px; display: none; text-align: center;
+  }
+
   .choice-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -265,57 +341,85 @@
     <!-- Flashcard levels -->
     <div>
       <div class="section-heading">Flashcards — choose your level</div>
-      <div class="level-grid">
-        <a class="level-card" href="flashcards.html?level=1">
+      <div class="level-grid" id="levelGrid">
+
+        <!-- HSK 1 — Free -->
+        <a class="level-card" href="flashcards.html?level=1" data-level="1">
+          <span class="level-badge badge-free">Free</span>
           <span class="level-char">一</span>
           <span class="level-num">HSK 1</span>
           <span class="level-words">150 words</span>
           <span class="level-desc">Complete beginner. Everyday basics — greetings, numbers, family, simple questions.</span>
         </a>
-        <a class="level-card" href="flashcards.html?level=2">
+
+        <!-- HSK 2 — Free -->
+        <a class="level-card" href="flashcards.html?level=2" data-level="2">
+          <span class="level-badge badge-free">Free</span>
           <span class="level-char">二</span>
           <span class="level-num">HSK 2</span>
           <span class="level-words">150 words</span>
           <span class="level-desc">Elementary. Short conversations about daily life — shopping, travel, time.</span>
         </a>
-        <a class="level-card" href="flashcards.html?level=3">
+
+        <!-- HSK 3 — Free -->
+        <a class="level-card" href="flashcards.html?level=3" data-level="3">
+          <span class="level-badge badge-free">Free</span>
           <span class="level-char">三</span>
           <span class="level-num">HSK 3</span>
           <span class="level-words">300 words</span>
           <span class="level-desc">Pre-intermediate. Handle most situations while travelling or living in China.</span>
         </a>
-        <a class="level-card" href="flashcards.html?level=4">
+
+        <!-- HSK 4 — Paid -->
+        <a class="level-card locked" href="#" data-level="4" data-product="hsk4" data-price="£2"
+           data-char="四" data-words="600 words"
+           data-desc="Intermediate. Discuss a wide range of topics with native speakers fluently.">
+          <span class="level-badge badge-paid">🔒 £2</span>
           <span class="level-char">四</span>
           <span class="level-num">HSK 4</span>
           <span class="level-words">600 words</span>
           <span class="level-desc">Intermediate. Discuss a wide range of topics with native speakers fluently.</span>
         </a>
-        <a class="level-card" href="flashcards.html?level=5">
+
+        <!-- HSK 5 — Paid -->
+        <a class="level-card locked" href="#" data-level="5" data-product="hsk5" data-price="£2"
+           data-char="五" data-words="1,300 words"
+           data-desc="Upper-intermediate. Read newspapers, watch films, and express opinions naturally.">
+          <span class="level-badge badge-paid">🔒 £2</span>
           <span class="level-char">五</span>
           <span class="level-num">HSK 5</span>
           <span class="level-words">1,300 words</span>
           <span class="level-desc">Upper-intermediate. Read newspapers, watch films, and express opinions naturally.</span>
         </a>
-        <a class="level-card" href="flashcards.html?level=6">
+
+        <!-- HSK 6 — Paid -->
+        <a class="level-card locked" href="#" data-level="6" data-product="hsk6" data-price="£2"
+           data-char="六" data-words="2,500 words"
+           data-desc="Advanced. Near-native fluency — understand complex written and spoken Chinese.">
+          <span class="level-badge badge-paid">🔒 £2</span>
           <span class="level-char">六</span>
           <span class="level-num">HSK 6</span>
           <span class="level-words">2,500 words</span>
           <span class="level-desc">Advanced. Near-native fluency — understand complex written and spoken Chinese.</span>
         </a>
 
-        <!-- All Levels -->
-        <a class="level-card level-card-all" href="flashcards.html?level=all">
+        <!-- All Levels — Paid -->
+        <a class="level-card level-card-all locked" href="#" data-level="all" data-product="all" data-price="£5"
+           data-char="全" data-words="5,000 words"
+           data-desc="Study the full HSK vocabulary set together — ideal once you've covered the individual levels.">
           <span class="level-char">全</span>
           <div class="level-all-body">
             <span class="level-num">All Levels</span>
             <span class="level-words">5,000 words</span>
+            <span class="level-badge badge-paid" style="margin-bottom:8px">🔒 £5 one-time</span>
             <span class="level-desc">Study the full HSK vocabulary set together — ideal once you've covered the individual levels.</span>
           </div>
           <div class="level-card-all-arrow">
-            Start all
+            Unlock all
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
+
       </div>
     </div>
 
@@ -339,18 +443,45 @@
   5,000 words across HSK 1–6 &nbsp;·&nbsp; Progress saved to your account
 </footer>
 
+<!-- ── Paywall Modal ─────────────────────────────────────────────────────── -->
+<div class="paywall-backdrop" id="paywallBackdrop" onclick="closePaywall(event)">
+  <div class="paywall-modal" id="paywallModal">
+    <span class="paywall-char" id="paywallChar">四</span>
+    <div class="paywall-title" id="paywallTitle">HSK 4 — Intermediate</div>
+    <div class="paywall-desc" id="paywallDesc">600 words · Discuss a wide range of topics with native speakers fluently.</div>
+    <div class="paywall-price" id="paywallPrice">£2</div>
+    <div class="paywall-price-note" id="paywallNote">One-time payment · Yours forever · No subscription</div>
+    <div class="paywall-error" id="paywallError"></div>
+    <button class="paywall-buy-btn" id="paywallBuyBtn" onclick="startCheckout()">
+      Buy now &rarr;
+    </button>
+    <button class="paywall-cancel" onclick="closePaywallModal()">Maybe later</button>
+    <div class="paywall-also" id="paywallAlso"></div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="supabase-client.js"></script>
 <script>
+
+// ── Product catalogue (mirrors Edge Function) ─────────────────────────────────
+const PRODUCTS = {
+  hsk4: { name: 'HSK 4 — Intermediate',       price: '£2', char: '四', words: '600 words',   desc: 'Intermediate. Discuss a wide range of topics with native speakers fluently.',        note: 'One-time payment · Yours forever · No subscription' },
+  hsk5: { name: 'HSK 5 — Upper-Intermediate', price: '£2', char: '五', words: '1,300 words', desc: 'Upper-intermediate. Read newspapers, watch films, and express opinions naturally.',  note: 'One-time payment · Yours forever · No subscription' },
+  hsk6: { name: 'HSK 6 — Advanced',           price: '£2', char: '六', words: '2,500 words', desc: 'Advanced. Near-native fluency — understand complex written and spoken Chinese.',     note: 'One-time payment · Yours forever · No subscription' },
+  all:  { name: 'All HSK Levels — Full Access', price: '£5', char: '全', words: '5,000 words', desc: 'Complete Mandarin vocabulary. Every word across HSK 1–6 in one place.',           note: 'One-time · Includes HSK 4, 5, and 6 · No subscription' },
+};
+
+let _currentProduct = null;
+
+// ── Auth + entitlements ───────────────────────────────────────────────────────
 async function loadUser() {
-  // ── Auth check ───────────────────────────────────────────────────────────
   if (window._sb) {
     try {
       const { data: { session } } = await window._sb.auth.getSession();
       if (!session) {
         const loginPage = location.pathname.endsWith('.html') ? 'login.html' : '/login';
-        window.location.href = loginPage;
-        return;
+        window.location.href = loginPage; return;
       }
       const user = {
         name:   session.user.user_metadata?.full_name  || session.user.email?.split('@')[0] || 'Learner',
@@ -363,14 +494,119 @@ async function loadUser() {
       } else {
         av.textContent = (user.name?.[0] || '漢').toUpperCase();
       }
-    } catch { /* Supabase not configured — allow unauthenticated for dev */ }
+    } catch {}
   }
+
+  // Check URL for payment return
+  const params = new URLSearchParams(location.search);
+  if (params.get('payment') === 'success') {
+    sbClearEntitlementCache();   // force re-fetch after purchase
+    history.replaceState({}, '', location.pathname); // clean URL
+  }
+
+  await applyEntitlements();
 }
+
+async function applyEntitlements() {
+  // Show spinner on locked cards while loading
+  let owned = [];
+  try { owned = await sbGetEntitlements(); } catch {}
+
+  const hasAll = owned.includes('all');
+
+  document.querySelectorAll('.level-card[data-level]').forEach(card => {
+    const level = card.dataset.level;
+    const product = card.dataset.product;
+
+    // Free levels — always unlocked, no changes needed
+    if (!product) return;
+
+    // Check access
+    const unlocked = hasAll ||
+      (level === 'all' ? ['4','5','6'].every(l => owned.includes(l)) : owned.includes(level));
+
+    if (unlocked) {
+      // Unlock the card — turn it into a real link
+      card.classList.remove('locked');
+      card.classList.add('unlocked');
+      const badge = card.querySelector('.level-badge');
+      if (badge) { badge.className = 'level-badge badge-owned'; badge.textContent = '✓ Owned'; }
+      // Set the href properly
+      const dest = level === 'all' ? '/app?level=all' : `/app?level=${level}`;
+      card.setAttribute('href', dest);
+      card.onclick = null;
+    } else {
+      // Keep locked — attach paywall click handler
+      card.onclick = (e) => { e.preventDefault(); openPaywall(product); };
+    }
+  });
+}
+
 async function signOut() {
   if (window._sb) await sbSignOut();
   const loginPage = location.pathname.endsWith('.html') ? 'login.html' : '/login';
   window.location.href = loginPage;
 }
+
+// ── Paywall modal ─────────────────────────────────────────────────────────────
+function openPaywall(productKey) {
+  _currentProduct = productKey;
+  const p = PRODUCTS[productKey];
+  if (!p) return;
+
+  document.getElementById('paywallChar').textContent  = p.char;
+  document.getElementById('paywallTitle').textContent = p.name;
+  document.getElementById('paywallDesc').textContent  = p.words + ' · ' + p.desc;
+  document.getElementById('paywallPrice').textContent = p.price;
+  document.getElementById('paywallNote').textContent  = p.note;
+  document.getElementById('paywallError').style.display = 'none';
+
+  // "Also available" hint — if buying individual, mention the £5 bundle
+  const alsoEl = document.getElementById('paywallAlso');
+  if (productKey !== 'all') {
+    alsoEl.innerHTML = `Or get <a onclick="openPaywall('all')">all levels for £5</a> — save £1 per level.`;
+  } else {
+    alsoEl.textContent = '';
+  }
+
+  document.getElementById('paywallBuyBtn').disabled = false;
+  document.getElementById('paywallBuyBtn').textContent = 'Buy now →';
+  document.getElementById('paywallBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePaywallModal() {
+  document.getElementById('paywallBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+  _currentProduct = null;
+}
+
+function closePaywall(e) {
+  if (e.target === document.getElementById('paywallBackdrop')) closePaywallModal();
+}
+
+// Close on Escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePaywallModal(); });
+
+async function startCheckout() {
+  if (!_currentProduct) return;
+  const btn = document.getElementById('paywallBuyBtn');
+  const errEl = document.getElementById('paywallError');
+  errEl.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Redirecting to checkout…';
+
+  try {
+    const url = await sbBuyLevel(_currentProduct);
+    window.location.href = url;   // hand off to Stripe-hosted checkout
+  } catch (err) {
+    errEl.textContent = err.message || 'Something went wrong. Please try again.';
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Buy now →';
+  }
+}
+
 loadUser();
 </script>
 </body>

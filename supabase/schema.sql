@@ -6,6 +6,45 @@
 -- ─── Extensions ───────────────────────────────────────────────────────────────
 create extension if not exists "uuid-ossp";
 
+-- ─── User Entitlements (purchased levels) ────────────────────────────────────
+-- One row per user. 'levels' is an array of what they own: ['4'], ['5','6'], ['all']
+-- 'all' grants access to every level.
+-- Free levels (1,2,3) are never stored — they're always accessible.
+create table if not exists public.user_entitlements (
+  user_id     uuid references auth.users(id) on delete cascade primary key,
+  levels      text[] not null default '{}',   -- e.g. '{4,5}' or '{all}'
+  updated_at  timestamptz default now()
+);
+
+alter table public.user_entitlements enable row level security;
+
+create policy "user_entitlements: own row only"
+  on public.user_entitlements for all
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
+
+-- Stripe purchases table — audit trail of every completed payment
+create table if not exists public.purchases (
+  id                  bigint generated always as identity primary key,
+  user_id             uuid references auth.users(id) on delete cascade not null,
+  stripe_session_id   text unique not null,
+  stripe_payment_intent text,
+  product_key         text not null,   -- 'hsk4', 'hsk5', 'hsk6', 'all'
+  amount_gbp          int not null,    -- pence: 200 or 500
+  status              text not null default 'completed',
+  created_at          timestamptz default now()
+);
+
+alter table public.purchases enable row level security;
+
+create policy "purchases: own rows only"
+  on public.purchases for all
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
+
+create index if not exists idx_purchases_user
+  on public.purchases(user_id, created_at desc);
+
 -- ─── Card States (FSRS per-user per-word) ────────────────────────────────────
 -- Stores the spaced-repetition state for every card a user has reviewed.
 -- 'character' is the simplified Chinese word (matches vocab.json .s field).
