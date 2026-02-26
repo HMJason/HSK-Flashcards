@@ -1766,11 +1766,11 @@ function getSelectedVoice() {
 }
 
 // ─── Audio: MP3-first, TTS fallback ───────────────────────────────────────────
-// Pre-recorded MP3s from hugolpz/audio-cmn (CC BY-SA 3.0)
-// Served from /audio/cmn-WORD.mp3  (populated by scripts/download-audio.js)
-// Falls back to browser TTS for any word without an MP3.
+// Audio system: Youdao Dictionary API → browser TTS fallback
+// Youdao serves genuine native Mandarin recordings for Chinese words.
+// No files to host. Falls back to browser TTS if fetch fails.
 
-let _audioCache = {};  // word → 'ok' | 'missing'
+let _audioCache = {};  // word → 'ok' | 'failed'
 
 function speakText(text) {
   // Always use TTS for multi-sentence text (test voice, conversation page, etc.)
@@ -1779,38 +1779,36 @@ function speakText(text) {
 
 function speakWord() {
   if (!currentCard) return;
-  const word = script === 'traditional' ? currentCard.t : currentCard.s;
-  // Use simplified for file lookup regardless of display script
   const simplified = currentCard.s;
-  _playWordAudio(simplified, word);
+  _playWordAudio(simplified);
 }
 
-function _playWordAudio(simplified, displayWord) {
-  // If we already know this file is missing, skip straight to TTS
-  if (_audioCache[simplified] === 'missing') {
-    _ttsSpeak(displayWord);
+function _playWordAudio(simplified) {
+  if (_audioCache[simplified] === 'failed') {
+    _ttsSpeak(simplified);
     return;
   }
 
-  // Build path relative to current page location
-  const base    = window.location.pathname.replace(/[^/]*$/, '');
-  const mp3path = base + 'audio/cmn-' + encodeURIComponent(simplified) + '.mp3';
+  // Youdao Dictionary audio: type=1 female voice, type=2 male voice
+  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(simplified) + '&type=1';
 
-  const audio = new Audio(mp3path);
+  const audio = new Audio(url);
   audio.playbackRate = typeof currentSettings.speechRate === 'number'
     ? currentSettings.speechRate : 1.0;
 
   audio.addEventListener('canplaythrough', () => {
     _audioCache[simplified] = 'ok';
-    audio.play().catch(() => _ttsSpeak(displayWord));
+    audio.play().catch(() => {
+      _audioCache[simplified] = 'failed';
+      _ttsSpeak(simplified);
+    });
   }, { once: true });
 
   audio.addEventListener('error', () => {
-    _audioCache[simplified] = 'missing';
-    _ttsSpeak(displayWord);
+    _audioCache[simplified] = 'failed';
+    _ttsSpeak(simplified);
   }, { once: true });
 
-  // Kick off load
   audio.load();
 }
 
