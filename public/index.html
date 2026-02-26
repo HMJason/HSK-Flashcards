@@ -6,6 +6,8 @@
 <title>HSK Flashcards</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-client.js"></script>
 <style>
   :root {
     --cream: #f0ebe0; --cream-dark: #e5dfd2; --cream-mid: #ede8dc;
@@ -1596,10 +1598,59 @@ function getSelectedVoice() {
     || zhVoices[0] || null;
 }
 
+// ─── Audio: MP3-first, TTS fallback ───────────────────────────────────────────
+// Pre-recorded MP3s from hugolpz/audio-cmn (CC BY-SA 3.0)
+// Served from /audio/cmn-WORD.mp3  (populated by scripts/download-audio.js)
+// Falls back to browser TTS for any word without an MP3.
+
+let _audioCache = {};  // word → 'ok' | 'missing'
+
 function speakText(text) {
+  // Always use TTS for multi-sentence text (test voice, conversation page, etc.)
+  _ttsSpeak(text);
+}
+
+function speakWord() {
+  if (!currentCard) return;
+  const word = script === 'traditional' ? currentCard.t : currentCard.s;
+  // Use simplified for file lookup regardless of display script
+  const simplified = currentCard.s;
+  _playWordAudio(simplified, word);
+}
+
+function _playWordAudio(simplified, displayWord) {
+  // If we already know this file is missing, skip straight to TTS
+  if (_audioCache[simplified] === 'missing') {
+    _ttsSpeak(displayWord);
+    return;
+  }
+
+  // Build path relative to current page location
+  const base    = window.location.pathname.replace(/[^/]*$/, '');
+  const mp3path = base + 'audio/cmn-' + encodeURIComponent(simplified) + '.mp3';
+
+  const audio = new Audio(mp3path);
+  audio.playbackRate = typeof currentSettings.speechRate === 'number'
+    ? currentSettings.speechRate : 1.0;
+
+  audio.addEventListener('canplaythrough', () => {
+    _audioCache[simplified] = 'ok';
+    audio.play().catch(() => _ttsSpeak(displayWord));
+  }, { once: true });
+
+  audio.addEventListener('error', () => {
+    _audioCache[simplified] = 'missing';
+    _ttsSpeak(displayWord);
+  }, { once: true });
+
+  // Kick off load
+  audio.load();
+}
+
+function _ttsSpeak(text) {
   if (!window.speechSynthesis) return;
   speechSynthesis.cancel();
-  const utt  = new SpeechSynthesisUtterance(text);
+  const utt   = new SpeechSynthesisUtterance(text);
   const voice = getSelectedVoice();
   if (voice) {
     utt.voice = voice;
@@ -1611,16 +1662,11 @@ function speakText(text) {
   speechSynthesis.speak(utt);
 }
 
-function speakWord() {
-  if (!currentCard) return;
-  speakText(script === 'traditional' ? currentCard.t : currentCard.s);
-}
-
 function testVoice() {
   // Save pending voice selection before testing
   const sel = document.getElementById('settingsVoice');
   if (sel) currentSettings.voiceName = sel.value;
-  speakText('你好，欢迎学习汉语！');
+  _ttsSpeak('你好，欢迎学习汉语！');
 }
 
 // ─── Done screen ──────────────────────────────────────────────────────────────

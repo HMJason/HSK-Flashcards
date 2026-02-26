@@ -21,6 +21,16 @@ if (!fs.existsSync(DOCS)) fs.mkdirSync(DOCS);
   if (fs.existsSync(src)) { fs.copyFileSync(src, path.join(DOCS, f)); console.log('✅ Copied ' + f); }
 });
 
+// ─── Copy audio/ folder if it exists (pre-recorded MP3s) ──────────────────────
+const audioSrc = path.join(DOCS, 'audio');
+if (fs.existsSync(audioSrc)) {
+  const count = fs.readdirSync(audioSrc).filter(f => f.endsWith('.mp3')).length;
+  console.log(`✅ Audio folder present — ${count} MP3 files (already in docs/audio/)`);
+} else {
+  console.log('ℹ️  No docs/audio/ folder yet — run: node scripts/download-audio.js');
+  console.log('   App will fall back to browser TTS until audio is downloaded.');
+}
+
 // ─── Helper ────────────────────────────────────────────────────────────────────
 function replace(str, from, to) {
   if (!str.includes(from)) { console.warn('  ⚠️  Pattern not found: ' + from.slice(0, 60)); return str; }

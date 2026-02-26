@@ -7,11 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-<!-- Google Identity Services -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-<!-- Apple Sign In -->
-<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
-
 <style>
   :root {
     --cream: #f0ebe0;
@@ -321,12 +316,10 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-client.js"></script>
 <script>
-// ─── Config check ─────────────────────────────────────────────────────────────
-const GOOGLE_CLIENT_ID = '__GOOGLE_CLIENT_ID__'; // injected by server
-const APPLE_CLIENT_ID  = '__APPLE_CLIENT_ID__';  // injected by server
-
-// Floating background characters
+// ─── Floating background characters ──────────────────────────────────────────
 const chars = ['学','习','中','文','汉','字','读','写','听','说','语','言','考','试','词','拼','音','声','调','笔'];
 const bg = document.getElementById('bgChars');
 chars.forEach((c, i) => {
@@ -343,111 +336,69 @@ chars.forEach((c, i) => {
   bg.appendChild(el);
 });
 
-// ─── Show error ───────────────────────────────────────────────────────────────
+// ─── UI helpers ──────────────────────────────────────────────────────────────
 function showError(msg) {
   const el = document.getElementById('errorMsg');
   el.textContent = msg;
   el.style.display = 'block';
-  setTimeout(() => el.style.display = 'none', 5000);
+  setTimeout(() => el.style.display = 'none', 6000);
+}
+function setLoading(btnId, on) {
+  document.getElementById(btnId).classList.toggle('btn-loading', on);
+}
+function goToApp() {
+  // Detect whether we're in static/GitHub Pages or server mode
+  const isGhPages = location.hostname.includes('github.io');
+  window.location.href = isGhPages ? 'flashcards.html' : '/home';
 }
 
-function setLoading(btnId, loading) {
-  const btn = document.getElementById(btnId);
-  btn.classList.toggle('btn-loading', loading);
-}
-
-// ─── Send token to server ─────────────────────────────────────────────────────
-async function sendToServer(endpoint, body) {
-  try {
-    const res = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    const data = await res.json();
-    if (data.success) {
-      const dest = data.redirect || '/app';
-      window.location.href = data.isNewUser ? dest + '?new=1' : dest;
-    } else {
-      showError(data.error || 'Authentication failed. Please try again.');
-    }
-  } catch (err) {
-    showError('Network error. Is the server running?');
+// ─── Auth state change listener ───────────────────────────────────────────────
+// Catches the session when the user returns from an OAuth redirect
+window._sb.auth.onAuthStateChange((event, session) => {
+  if (event === 'SIGNED_IN' && session) {
+    goToApp();
   }
-}
+});
 
-// ─── Google Sign In ───────────────────────────────────────────────────────────
-function signInWithGoogle() {
-  if (GOOGLE_CLIENT_ID === '__GOOGLE_CLIENT_ID__') {
-    showError('Google Client ID not configured. See .env.example for setup instructions.');
-    return;
+// ─── Check if already logged in ──────────────────────────────────────────────
+(async () => {
+  const { data: { session } } = await window._sb.auth.getSession();
+  if (session) goToApp();
+
+  // Show config warning if Supabase not yet configured
+  if (SUPABASE_URL === 'YOUR_SUPABASE_URL') {
+    document.getElementById('configWarning').style.display = '';
+    document.getElementById('configWarning').innerHTML = `
+      <strong>⚙️ Supabase not configured</strong>
+      Open <code>public/supabase-client.js</code> and replace
+      <code>YOUR_SUPABASE_URL</code> and <code>YOUR_SUPABASE_ANON_KEY</code>
+      with your project's values from the Supabase dashboard.
+    `;
   }
+})();
 
+// ─── Sign in with Google ──────────────────────────────────────────────────────
+async function signInWithGoogle() {
   setLoading('googleBtn', true);
-
-  // Use Google Identity Services prompt
-  if (window.google?.accounts?.id) {
-    google.accounts.id.initialize({
-      client_id: GOOGLE_CLIENT_ID,
-      callback: async (response) => {
-        await sendToServer('/auth/google', { credential: response.credential });
-        setLoading('googleBtn', false);
-      },
-      auto_select: false,
-    });
-    google.accounts.id.prompt((notification) => {
-      if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-        // Fallback to popup
-        google.accounts.id.renderButton(
-          document.createElement('div'),
-          { theme: 'outline', size: 'large' }
-        );
-        setLoading('googleBtn', false);
-        showError('Google sign-in popup was blocked. Please allow popups and try again.');
-      }
-    });
-  } else {
+  try {
+    await sbSignInGoogle();
+    // OAuth redirect flow — page will reload after redirect
+  } catch (err) {
+    showError(err.message || 'Google sign-in failed. Please try again.');
     setLoading('googleBtn', false);
-    showError('Google Sign-In library not loaded. Check your connection.');
   }
 }
 
-// ─── Apple Sign In ────────────────────────────────────────────────────────────
+// ─── Sign in with Apple ───────────────────────────────────────────────────────
 async function signInWithApple() {
-  if (APPLE_CLIENT_ID === '__APPLE_CLIENT_ID__') {
-    showError('Apple Client ID not configured. See .env.example for setup instructions.');
-    return;
-  }
-
   setLoading('appleBtn', true);
-
   try {
-    AppleID.auth.init({
-      clientId: APPLE_CLIENT_ID,
-      scope: 'name email',
-      redirectURI: window.location.origin + '/auth/apple/callback',
-      state: crypto.randomUUID(),
-      usePopup: true,
-    });
-
-    const response = await AppleID.auth.signIn();
-    await sendToServer('/auth/apple', {
-      id_token: response.authorization.id_token,
-      user: response.user,
-    });
+    await sbSignInApple();
   } catch (err) {
-    if (err?.error !== 'popup_closed_by_user') {
-      showError('Apple sign-in failed. Please try again.');
-    }
-  } finally {
+    showError(err.message || 'Apple sign-in failed. Please try again.');
     setLoading('appleBtn', false);
   }
 }
-
-// ─── Check if already logged in ───────────────────────────────────────────────
-fetch('/auth/me').then(r => {
-  if (r.ok) window.location.href = '/app';
-}).catch(() => {});
 </script>
 </body>
 </html>

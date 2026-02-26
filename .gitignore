@@ -20,3 +20,7 @@ npm-debug.log*
 
 # ─── Firebase ─────────────────────────────────────────────────────────────────
 .firebase/
+
+# ─── Audio (large — download locally with scripts/download-audio.js) ──────────
+# Uncomment the line below to EXCLUDE audio from git (use CDN or serve separately)
+# docs/audio/*.mp3
