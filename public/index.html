@@ -1673,12 +1673,16 @@ loadUser();
 loadVocab();
 initVoices();
 
-// Auto-select level from URL param e.g. /app?level=3
+// Auto-select level from URL param e.g. /app?level=3 or /app?level=all
 (function(){
   const p=new URLSearchParams(location.search).get('level');
-  if(p&&['1','2','3','4','5','6'].includes(p)){
-    const btn=document.querySelector(`.level-btn[onclick*="setLevel(${p},"]`);
-    if(btn){ btn.click(); }
+  if(!p) return;
+  if(p==='all'){
+    const btn=document.querySelector('.level-btn[onclick*="setLevel(\'all\'"]') || document.querySelector('.level-btn[onclick*="setLevel(\"all\""]');
+    if(btn) btn.click();
+  } else if(['1','2','3','4','5','6'].includes(p)){
+    const btn=document.querySelector(`.level-btn[onclick*="setLevel(${p},"]`) || document.querySelector(`.level-btn[onclick*="setLevel('${p}'"]`);
+    if(btn) btn.click();
   }
 })();
 </script>

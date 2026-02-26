@@ -106,17 +106,17 @@
   }
   .level-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
   }
   .level-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 20px 12px;
+    padding: 28px 20px 24px;
     text-decoration: none;
     color: inherit;
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 0;
     transition: all 0.25s cubic-bezier(0.2, 0.8, 0.3, 1);
     cursor: pointer;
     position: relative; overflow: hidden;
@@ -131,17 +131,42 @@
   .level-card:hover::before { opacity: 1; }
   .level-char {
     font-family: 'Noto Serif SC', serif;
-    font-size: 30px; color: var(--red); line-height: 1;
+    font-size: 42px; color: var(--red); line-height: 1;
+    margin-bottom: 12px;
     transition: transform 0.25s;
   }
-  .level-card:hover .level-char { transform: scale(1.1); }
+  .level-card:hover .level-char { transform: scale(1.08); }
   .level-num {
     font-family: 'Playfair Display', serif;
-    font-size: 15px; color: var(--ink); font-weight: 600;
+    font-size: 18px; color: var(--ink); font-weight: 600;
+    margin-bottom: 4px;
   }
   .level-words {
-    font-size: 11px; color: var(--ink-muted);
+    font-size: 12px; color: var(--gold); letter-spacing: 0.06em;
+    margin-bottom: 10px;
   }
+  .level-desc {
+    font-size: 13px; color: var(--ink-muted);
+    line-height: 1.5; font-style: italic;
+  }
+  .level-card-all {
+    grid-column: 1 / -1;
+    flex-direction: row; align-items: center; gap: 20px;
+    padding: 24px 28px;
+  }
+  .level-card-all .level-char { font-size: 36px; margin-bottom: 0; flex-shrink: 0; }
+  .level-card-all .level-all-body { flex: 1; }
+  .level-card-all .level-num { margin-bottom: 3px; }
+  .level-card-all .level-words { margin-bottom: 4px; }
+  .level-card-all .level-desc { margin: 0; }
+  .level-card-all-arrow {
+    font-size: 13px; color: var(--gold); letter-spacing: 0.06em;
+    display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+    transition: gap 0.2s;
+  }
+  .level-card-all-arrow svg { width: 16px; height: 16px; transition: transform 0.2s; }
+  .level-card-all:hover .level-card-all-arrow { gap: 12px; }
+  .level-card-all:hover .level-card-all-arrow svg { transform: translateX(2px); }
   .choice-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -211,7 +236,8 @@
   @media (max-width: 600px) {
     header { padding: 0 20px; }
     .hero { padding: 40px 20px 32px; }
-    .level-grid { grid-template-columns: repeat(3, 1fr); }
+    .level-grid { grid-template-columns: repeat(2, 1fr); }
+    .level-card-all { flex-direction: column; align-items: flex-start; gap: 12px; }
     .choice-card { flex-direction: column; align-items: flex-start; gap: 12px; }
     .user-name { display: none; }
   }
@@ -244,31 +270,51 @@
           <span class="level-char">一</span>
           <span class="level-num">HSK 1</span>
           <span class="level-words">150 words</span>
+          <span class="level-desc">Complete beginner. Everyday basics — greetings, numbers, family, simple questions.</span>
         </a>
         <a class="level-card" href="/app?level=2">
           <span class="level-char">二</span>
           <span class="level-num">HSK 2</span>
           <span class="level-words">150 words</span>
+          <span class="level-desc">Elementary. Short conversations about daily life — shopping, travel, time.</span>
         </a>
         <a class="level-card" href="/app?level=3">
           <span class="level-char">三</span>
           <span class="level-num">HSK 3</span>
           <span class="level-words">300 words</span>
+          <span class="level-desc">Pre-intermediate. Handle most situations while travelling or living in China.</span>
         </a>
         <a class="level-card" href="/app?level=4">
           <span class="level-char">四</span>
           <span class="level-num">HSK 4</span>
           <span class="level-words">600 words</span>
+          <span class="level-desc">Intermediate. Discuss a wide range of topics with native speakers fluently.</span>
         </a>
         <a class="level-card" href="/app?level=5">
           <span class="level-char">五</span>
           <span class="level-num">HSK 5</span>
           <span class="level-words">1,300 words</span>
+          <span class="level-desc">Upper-intermediate. Read newspapers, watch films, and express opinions naturally.</span>
         </a>
         <a class="level-card" href="/app?level=6">
           <span class="level-char">六</span>
           <span class="level-num">HSK 6</span>
           <span class="level-words">2,500 words</span>
+          <span class="level-desc">Advanced. Near-native fluency — understand complex written and spoken Chinese.</span>
+        </a>
+
+        <!-- All Levels -->
+        <a class="level-card level-card-all" href="/app?level=all">
+          <span class="level-char">全</span>
+          <div class="level-all-body">
+            <span class="level-num">All Levels</span>
+            <span class="level-words">5,000 words</span>
+            <span class="level-desc">Study the full HSK vocabulary set together — ideal once you've covered the individual levels.</span>
+          </div>
+          <div class="level-card-all-arrow">
+            Start all
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
         </a>
       </div>
     </div>

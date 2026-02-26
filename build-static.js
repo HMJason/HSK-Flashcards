@@ -241,6 +241,7 @@ landing = replace(landing, 'href="/home"',         'href="index.html"');
 for (let l = 1; l <= 6; l++) {
   landing = landing.split(`href="/app?level=${l}"`).join(`href="flashcards.html?level=${l}"`);
 }
+landing = landing.split(`href="/app?level=all"`).join(`href="flashcards.html?level=all"`);
 landing = replace(landing, 'href="/conversation"', 'href="conversation.html"');
 landing = replace(landing, 'href="/dashboard"',    'href="#"');
 landing = replace(landing,
