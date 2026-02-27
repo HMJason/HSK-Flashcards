@@ -1707,7 +1707,6 @@ function recall(type){
 const VOICE_LABELS = {
   // macOS / iOS
   'Tingting':  'Tingting — Mainland ♀',
-  'Sinji':     'Sinji — Hong Kong ♀',  // zh-HK, filtered out at selection
   'Meijia':    'Meijia — Taiwan ♀',
   'Lili':      'Lili — Mainland ♀',
   // Chrome cloud voices
@@ -1738,10 +1737,10 @@ function initVoices() {
   return new Promise(resolve => {
     function process() {
       const all = speechSynthesis.getVoices();
-      // Normalise Android underscores, then filter for any zh locale
-      // Only Mandarin voices (zh-CN, zh-TW) — exclude Cantonese (zh-HK)
+      // Only Mandarin voices (zh-CN, zh-TW, zh-SG).
+      // Cantonese (zh-HK) is permanently excluded — it is a different language.
       zhVoices = all.filter(v => {
-        const lang = v.lang.replace('_','-').toLowerCase();
+        const lang = v.lang.replace('_', '-').toLowerCase();
         return lang.startsWith('zh') && !lang.startsWith('zh-hk');
       });
       voicesReady = true;
@@ -1780,6 +1779,9 @@ function populateVoiceSelector() {
     const grp = document.createElement('optgroup');
     grp.label = label;
     voices.forEach(v => {
+      // Final guard — never display a zh-HK (Cantonese) voice in the selector
+      const lang = v.lang.replace('_', '-').toLowerCase();
+      if (lang.startsWith('zh-hk')) return;
       const opt = document.createElement('option');
       opt.value = v.name;
       opt.textContent = VOICE_LABELS[v.name] || v.name;
