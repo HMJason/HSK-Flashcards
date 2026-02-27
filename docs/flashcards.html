@@ -1638,7 +1638,7 @@ function speakWordThenSentence() {
     return;
   }
   _playWordAudioWithCallback(simplified, () => {
-    setTimeout(() => speakText(example.zh), 600);
+    setTimeout(() => speakText(example.zh, simplified), 600);
   });
 }
 
@@ -1823,10 +1823,14 @@ function getSelectedVoice() {
 // Why Google TTS for sentences: browser speechSynthesis picks the OS default
 // Chinese voice which may be Cantonese (zh-HK). Google TTS is always Mandarin.
 
-const AUDIO_CDN    = 'https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk/cmn-';
-const GOOGLE_TTS   = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=';
+const AUDIO_CDN        = 'https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk/cmn-';
+const GOOGLE_TTS       = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=';
+// Pre-generated edge-tts sentence audio (set after GitHub Release upload)
+// Set to null to use Google TTS fallback instead.
+const SENTENCE_AUDIO_BASE = null;  // e.g. 'https://github.com/HMJason/HSK-Flashcards/releases/download/sentence-audio-v1/'
 
 let _audioCache = {};  // word → 'ok' | 'failed' | 'google'
+let _sentenceCache = {};  // word → 'ok' | 'google' (for sentence audio)
 
 // Play audio from a URL, with optional onEnd callback. No browser TTS fallback —
 // browser TTS cannot be trusted to use Mandarin on all devices.
@@ -1848,8 +1852,30 @@ function _playAudioUrl(url, onEnd) {
   return audio;
 }
 
-function speakText(text) {
-  // Google TTS with tl=zh-CN — always Mainland Mandarin, no browser voice involved
+function speakText(text, word) {
+  // 1. Try pre-generated edge-tts sentence audio (best quality, guaranteed Mandarin)
+  if (SENTENCE_AUDIO_BASE && word) {
+    const cached = _sentenceCache[word];
+    if (cached === 'google') {
+      _playAudioUrl(GOOGLE_TTS + encodeURIComponent(text));
+      return;
+    }
+    const url = SENTENCE_AUDIO_BASE + encodeURIComponent(word) + '_sentence.mp3';
+    const audio = new Audio(url);
+    audio.playbackRate = typeof currentSettings.speechRate === 'number' ? currentSettings.speechRate : 1.0;
+    audio.addEventListener('canplaythrough', () => {
+      _sentenceCache[word] = 'ok';
+      audio.play().catch(() => _playAudioUrl(GOOGLE_TTS + encodeURIComponent(text)));
+    }, { once: true });
+    audio.addEventListener('ended', () => {}, { once: true });
+    audio.addEventListener('error', () => {
+      _sentenceCache[word] = 'google';
+      _playAudioUrl(GOOGLE_TTS + encodeURIComponent(text));
+    }, { once: true });
+    audio.load();
+    return;
+  }
+  // 2. Google TTS fallback — tl=zh-CN guarantees Mainland Mandarin
   _playAudioUrl(GOOGLE_TTS + encodeURIComponent(text));
 }
 
