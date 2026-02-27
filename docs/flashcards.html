@@ -1638,42 +1638,13 @@ function speakWordThenSentence() {
     return;
   }
   _playWordAudioWithCallback(simplified, () => {
-    setTimeout(() => _ttsSpeak(example.zh), 600);
+    setTimeout(() => speakText(example.zh), 600);
   });
 }
 
 function _playWordAudioWithCallback(simplified, onEnd) {
-  if (_audioCache[simplified] === 'failed') {
-    _ttsSpeak(simplified);
-    if (onEnd) setTimeout(onEnd, 1200);
-    return;
-  }
-
-  const url = AUDIO_CDN + encodeURIComponent(simplified) + '.mp3';
-  const audio = new Audio(url);
-  audio.playbackRate = typeof currentSettings.speechRate === 'number'
-    ? currentSettings.speechRate : 1.0;
-
-  audio.addEventListener('canplaythrough', () => {
-    _audioCache[simplified] = 'ok';
-    audio.play().catch(() => {
-      _audioCache[simplified] = 'failed';
-      _ttsSpeak(simplified);
-      if (onEnd) setTimeout(onEnd, 1200);
-    });
-  }, { once: true });
-
-  audio.addEventListener('ended', () => {
-    if (onEnd) onEnd();
-  }, { once: true });
-
-  audio.addEventListener('error', () => {
-    _audioCache[simplified] = 'failed';
-    _ttsSpeak(simplified);
-    if (onEnd) setTimeout(onEnd, 1200);
-  }, { once: true });
-
-  audio.load();
+  // Delegate to _playWordAudio which handles CDN → Google TTS → browser TTS chain
+  _playWordAudio(simplified, onEnd);
 }
 
 function recall(type){
@@ -1843,20 +1814,47 @@ function getSelectedVoice() {
   return neural || googleCN || localCN || mandarin[0] || null;
 }
 
-// ─── Audio: Native speaker MP3 → TTS fallback ────────────────────────────────
-// Primary: hugolpz/audio-cmn (CC-BY-SA) — 8,596 words recorded by native
-// Mandarin speaker Yue Tan. Covers ~96% of HSK 1-6 vocabulary.
-// Filename format: cmn-{hanzi}.mp3 e.g. cmn-你好.mp3
-// Fallback: browser TTS locked to zh-CN (Mandarin) — never zh-HK (Cantonese).
-// Source: https://github.com/hugolpz/audio-cmn
+// ─── Audio system ────────────────────────────────────────────────────────────
+// Word audio:    hugolpz/audio-cmn CDN (CC-BY-SA native Mandarin speaker)
+//                → Google Translate TTS (zh-CN) on 404
+// Sentence audio: Google Translate TTS (zh-CN) — guaranteed Mandarin, no browser
+//                 voice dependency. Browser TTS only used if Google fails.
+//
+// Why Google TTS for sentences: browser speechSynthesis picks the OS default
+// Chinese voice which may be Cantonese (zh-HK). Google TTS is always Mandarin.
 
-const AUDIO_CDN = 'https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk/cmn-';
+const AUDIO_CDN    = 'https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk/cmn-';
+const GOOGLE_TTS   = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=';
 
-let _audioCache = {};  // word → 'ok' | 'failed'
+let _audioCache = {};  // word → 'ok' | 'failed' | 'google'
+
+// Play audio from a URL, with onEnd callback and TTS fallback
+function _playAudioUrl(url, onEnd, fallbackText) {
+  const audio = new Audio(url);
+  audio.playbackRate = typeof currentSettings.speechRate === 'number'
+    ? currentSettings.speechRate : 1.0;
+
+  audio.addEventListener('canplaythrough', () => {
+    audio.play().catch(() => {
+      if (fallbackText) _ttsSpeakFallback(fallbackText);
+      if (onEnd) setTimeout(onEnd, 1200);
+    });
+  }, { once: true });
+
+  audio.addEventListener('ended', () => { if (onEnd) onEnd(); }, { once: true });
+
+  audio.addEventListener('error', () => {
+    if (fallbackText) _ttsSpeakFallback(fallbackText);
+    if (onEnd) setTimeout(onEnd, 1200);
+  }, { once: true });
+
+  audio.load();
+  return audio;
+}
 
 function speakText(text) {
-  // Always use TTS for multi-sentence text (example sentences, test voice, etc.)
-  _ttsSpeak(text);
+  // Use Google TTS for sentences — guaranteed Mandarin zh-CN
+  _playAudioUrl(GOOGLE_TTS + encodeURIComponent(text), null, text);
 }
 
 function speakWord() {
@@ -1864,51 +1862,65 @@ function speakWord() {
   _playWordAudio(currentCard.s);
 }
 
-function _playWordAudio(simplified) {
-  if (_audioCache[simplified] === 'failed') {
-    _ttsSpeak(simplified);
+function _playWordAudio(simplified, onEnd) {
+  const cached = _audioCache[simplified];
+
+  if (cached === 'failed') {
+    _ttsSpeakFallback(simplified);
+    if (onEnd) setTimeout(onEnd, 800);
     return;
   }
 
-  const url = AUDIO_CDN + encodeURIComponent(simplified) + '.mp3';
-  const audio = new Audio(url);
+  if (cached === 'google') {
+    // Native CDN failed before — use Google TTS directly
+    _playAudioUrl(GOOGLE_TTS + encodeURIComponent(simplified), onEnd, simplified);
+    return;
+  }
+
+  // Try native speaker recording first
+  const cdnUrl = AUDIO_CDN + encodeURIComponent(simplified) + '.mp3';
+  const audio = new Audio(cdnUrl);
   audio.playbackRate = typeof currentSettings.speechRate === 'number'
     ? currentSettings.speechRate : 1.0;
 
   audio.addEventListener('canplaythrough', () => {
     _audioCache[simplified] = 'ok';
     audio.play().catch(() => {
-      _audioCache[simplified] = 'failed';
-      _ttsSpeak(simplified);
+      _audioCache[simplified] = 'google';
+      _playAudioUrl(GOOGLE_TTS + encodeURIComponent(simplified), onEnd, simplified);
     });
   }, { once: true });
 
+  audio.addEventListener('ended', () => { if (onEnd) onEnd(); }, { once: true });
+
   audio.addEventListener('error', () => {
-    _audioCache[simplified] = 'failed';
-    _ttsSpeak(simplified);
+    // CDN miss — try Google TTS (still guaranteed Mandarin)
+    _audioCache[simplified] = 'google';
+    _playAudioUrl(GOOGLE_TTS + encodeURIComponent(simplified), onEnd, simplified);
   }, { once: true });
 
   audio.load();
 }
 
-function _ttsSpeak(text) {
+// Last-resort fallback: browser TTS, locked to Mandarin as strictly as possible.
+// Only reached if both CDN and Google TTS fail (e.g. offline).
+function _ttsSpeakFallback(text) {
   if (!window.speechSynthesis) return;
   speechSynthesis.cancel();
   const utt = new SpeechSynthesisUtterance(text);
-
-  // Always enforce Mandarin — never allow Cantonese (zh-HK) to slip through.
-  // Priority: saved preference (if zh-CN/zh-TW) → best available zh-CN voice → lang-only fallback.
-  const voice = getSelectedVoice();
+  const voice = getSelectedVoice(); // already filters out zh-HK
   if (voice) {
     utt.voice = voice;
     utt.lang  = voice.lang.replace('_', '-');
   } else {
     utt.lang = 'zh-CN';
   }
-
   utt.rate = typeof currentSettings.speechRate === 'number' ? currentSettings.speechRate : 0.85;
   speechSynthesis.speak(utt);
 }
+
+// Keep _ttsSpeak as alias so testVoice() still works
+function _ttsSpeak(text) { _ttsSpeakFallback(text); }
 
 function testVoice() {
   // Save pending voice selection before testing
