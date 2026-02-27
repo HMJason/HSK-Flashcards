@@ -1649,7 +1649,7 @@ function _playWordAudioWithCallback(simplified, onEnd) {
     return;
   }
 
-  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(simplified) + '&type=1';
+  const url = AUDIO_CDN + encodeURIComponent(simplified) + '.mp3';
   const audio = new Audio(url);
   audio.playbackRate = typeof currentSettings.speechRate === 'number'
     ? currentSettings.speechRate : 1.0;
@@ -1796,11 +1796,18 @@ function populateVoiceSelector() {
   if (saved && zhVoices.find(v => v.name === saved)) {
     sel.value = saved;
   } else {
-    // Prefer a local zh-CN voice, else first available
-    const best = local.find(v => v.lang.startsWith('zh-CN') || v.lang.startsWith('zh_CN'))
-              || local[0] || remote[0];
+    // Prefer voices in this order:
+    // 1. Microsoft Neural zh-CN (highest quality, online)
+    // 2. Google 普通话（中国大陆） (online)
+    // 3. Any local zh-CN voice
+    // 4. Any other available voice (zh-TW acceptable, zh-HK already filtered out)
+    const neural = remote.find(v => v.name.includes('Xiaoxiao') || v.name.includes('Yunxi')
+                                 || v.name.includes('Xiaoyi') || v.name.includes('Yunyang')
+                                 || (v.name.includes('Online') && (v.lang.startsWith('zh-CN') || v.lang.startsWith('zh_CN'))));
+    const googleMandarin = remote.find(v => v.name.includes('普通话') && v.name.includes('中国大陆'));
+    const localCN = local.find(v => v.lang.startsWith('zh-CN') || v.lang.startsWith('zh_CN'));
+    const best = neural || googleMandarin || localCN || local[0] || remote[0];
     if (best) sel.value = best.name;
-    // Auto-save the default so it's persisted
     if (best) settingChanged('voiceName', best.name);
   }
 }
@@ -1814,22 +1821,25 @@ function getSelectedVoice() {
     || zhVoices[0] || null;
 }
 
-// ─── Audio: MP3-first, TTS fallback ───────────────────────────────────────────
-// Audio system: Youdao Dictionary API → browser TTS fallback
-// Youdao serves genuine native Mandarin recordings for Chinese words.
-// No files to host. Falls back to browser TTS if fetch fails.
+// ─── Audio: Native speaker MP3 → TTS fallback ────────────────────────────────
+// Primary: hugolpz/audio-cmn (CC-BY-SA) — 8,596 words recorded by native
+// Mandarin speaker Yue Tan. Covers ~96% of HSK 1-6 vocabulary.
+// Filename format: cmn-{hanzi}.mp3 e.g. cmn-你好.mp3
+// Fallback: browser TTS locked to zh-CN (Mandarin) — never zh-HK (Cantonese).
+// Source: https://github.com/hugolpz/audio-cmn
+
+const AUDIO_CDN = 'https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk/cmn-';
 
 let _audioCache = {};  // word → 'ok' | 'failed'
 
 function speakText(text) {
-  // Always use TTS for multi-sentence text (test voice, conversation page, etc.)
+  // Always use TTS for multi-sentence text (example sentences, test voice, etc.)
   _ttsSpeak(text);
 }
 
 function speakWord() {
   if (!currentCard) return;
-  const simplified = currentCard.s;
-  _playWordAudio(simplified);
+  _playWordAudio(currentCard.s);
 }
 
 function _playWordAudio(simplified) {
@@ -1838,9 +1848,7 @@ function _playWordAudio(simplified) {
     return;
   }
 
-  // Youdao Dictionary audio: type=1 female voice, type=2 male voice
-  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(simplified) + '&type=1';
-
+  const url = AUDIO_CDN + encodeURIComponent(simplified) + '.mp3';
   const audio = new Audio(url);
   audio.playbackRate = typeof currentSettings.speechRate === 'number'
     ? currentSettings.speechRate : 1.0;
@@ -1864,7 +1872,10 @@ function _playWordAudio(simplified) {
 function _ttsSpeak(text) {
   if (!window.speechSynthesis) return;
   speechSynthesis.cancel();
-  const utt   = new SpeechSynthesisUtterance(text);
+  const utt = new SpeechSynthesisUtterance(text);
+
+  // Always enforce Mandarin — never allow Cantonese (zh-HK) to slip through.
+  // Priority: saved preference (if zh-CN/zh-TW) → best available zh-CN voice → lang-only fallback.
   const voice = getSelectedVoice();
   if (voice) {
     utt.voice = voice;
@@ -1872,6 +1883,7 @@ function _ttsSpeak(text) {
   } else {
     utt.lang = 'zh-CN';
   }
+
   utt.rate = typeof currentSettings.speechRate === 'number' ? currentSettings.speechRate : 0.85;
   speechSynthesis.speak(utt);
 }
