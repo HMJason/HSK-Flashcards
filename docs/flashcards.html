@@ -1619,12 +1619,60 @@ function cardHTML(card, revealed){
 
 function renderCard(card){
   document.getElementById('cardContainer').innerHTML = cardHTML(card, false);
+  if(currentSettings.autoPlayAudio !== false) speakWordThenSentence();
 }
 
 function revealCard(){
   if(!currentCard) return;
   document.getElementById('cardContainer').innerHTML = cardHTML(currentCard, true);
-  if(currentSettings.autoPlayAudio !== false) speakWord();
+  if(currentSettings.autoPlayAudio !== false) speakWordThenSentence();
+}
+
+function speakWordThenSentence() {
+  if (!currentCard) return;
+  const simplified = currentCard.s;
+  const example = examplesCache[simplified];
+  if (!example) {
+    _playWordAudio(simplified);
+    return;
+  }
+  _playWordAudioWithCallback(simplified, () => {
+    setTimeout(() => _ttsSpeak(example.zh), 600);
+  });
+}
+
+function _playWordAudioWithCallback(simplified, onEnd) {
+  if (_audioCache[simplified] === 'failed') {
+    _ttsSpeak(simplified);
+    if (onEnd) setTimeout(onEnd, 1200);
+    return;
+  }
+
+  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(simplified) + '&type=1';
+  const audio = new Audio(url);
+  audio.playbackRate = typeof currentSettings.speechRate === 'number'
+    ? currentSettings.speechRate : 1.0;
+
+  audio.addEventListener('canplaythrough', () => {
+    _audioCache[simplified] = 'ok';
+    audio.play().catch(() => {
+      _audioCache[simplified] = 'failed';
+      _ttsSpeak(simplified);
+      if (onEnd) setTimeout(onEnd, 1200);
+    });
+  }, { once: true });
+
+  audio.addEventListener('ended', () => {
+    if (onEnd) onEnd();
+  }, { once: true });
+
+  audio.addEventListener('error', () => {
+    _audioCache[simplified] = 'failed';
+    _ttsSpeak(simplified);
+    if (onEnd) setTimeout(onEnd, 1200);
+  }, { once: true });
+
+  audio.load();
 }
 
 function recall(type){
