@@ -1142,6 +1142,7 @@ async function loadVocab() {
     if (currentLevel === 'all') {
       const remaining = [2, 3, 4, 5, 6];
       for (const lvl of remaining) {
+        fetchExamples(lvl); // preload examples for all levels
         fetchLevel(lvl).then(words => {
           allVocab = [...allVocab, ...words];
           vocabCache['all'] = allVocab;

@@ -1,0 +1,6707 @@
+{
+  "唉": {
+    "zh": "唉，真不知道怎么办。",
+    "py": "Āi, zhēn bù zhīdào zěnme bàn.",
+    "en": "Sigh, I really don't know what to do."
+  },
+  "爱护": {
+    "zh": "我们要爱护公共设施。",
+    "py": "Wǒmen yào àihù gōnggòng shèshī.",
+    "en": "We should take care of public facilities."
+  },
+  "爱惜": {
+    "zh": "要爱惜时间。",
+    "py": "Yào àixī shíjiān.",
+    "en": "We should cherish time."
+  },
+  "安慰": {
+    "zh": "朋友的安慰让我感到温暖。",
+    "py": "Péngyou de ānwèi ràng wǒ gǎndào wēnnuǎn.",
+    "en": "My friend's comfort made me feel warm."
+  },
+  "暗": {
+    "zh": "天越来越暗了。",
+    "py": "Tiān yuè lái yuè àn le.",
+    "en": "It's getting darker and darker."
+  },
+  "熬夜": {
+    "zh": "他经常熬夜工作。",
+    "py": "Tā jīngcháng áoyè gōngzuò.",
+    "en": "He often stays up late to work."
+  },
+  "保持": {
+    "zh": "保持健康的生活习惯很重要。",
+    "py": "Bǎochí jiànkāng de shēnghuó xíguàn hěn zhòngyào.",
+    "en": "Maintaining healthy lifestyle habits is important."
+  },
+  "报告": {
+    "zh": "他写了一份详细的报告。",
+    "py": "Tā xiě le yī fèn xiángxì de bàogào.",
+    "en": "He wrote a detailed report."
+  },
+  "背景": {
+    "zh": "了解文化背景很重要。",
+    "py": "Liǎojiě wénhuà bèijǐng hěn zhòngyào.",
+    "en": "Understanding the cultural background is important."
+  },
+  "本质": {
+    "zh": "我们要看问题的本质。",
+    "py": "Wǒmen yào kàn wèntí de běnzhì.",
+    "en": "We need to look at the essence of the problem."
+  },
+  "比例": {
+    "zh": "城乡人口比例差距很大。",
+    "py": "Chéng-xiāng rénkǒu bǐlì chājù hěn dà.",
+    "en": "The ratio of urban to rural population is very different."
+  },
+  "必然": {
+    "zh": "失败是成功之母，失败是必然的。",
+    "py": "Shībài shì chénggōng zhī mǔ, shībài shì bìrán de.",
+    "en": "Failure is the mother of success; failure is inevitable."
+  },
+  "毕竟": {
+    "zh": "毕竟他还是个孩子。",
+    "py": "Bìjìng tā háishì gè háizi.",
+    "en": "After all, he is still a child."
+  },
+  "编辑": {
+    "zh": "他在出版社做编辑。",
+    "py": "Tā zài chūbǎnshè zuò biānjí.",
+    "en": "He works as an editor at a publishing house."
+  },
+  "变化": {
+    "zh": "社会变化很快。",
+    "py": "Shèhuì biànhuà hěn kuài.",
+    "en": "Society changes very quickly."
+  },
+  "辩论": {
+    "zh": "他们进行了激烈的辩论。",
+    "py": "Tāmen jìnxíng le jīliè de biànlùn.",
+    "en": "They had a heated debate."
+  },
+  "表达": {
+    "zh": "他善于表达自己的感情。",
+    "py": "Tā shànyú biǎodá zìjǐ de gǎnqíng.",
+    "en": "He is good at expressing his feelings."
+  },
+  "补充": {
+    "zh": "我想补充一点意见。",
+    "py": "Wǒ xiǎng bǔchōng yīdiǎn yìjiàn.",
+    "en": "I'd like to add one more point."
+  },
+  "不断": {
+    "zh": "他不断努力，终于成功了。",
+    "py": "Tā bùduàn nǔlì, zhōngyú chénggōng le.",
+    "en": "He kept working hard and finally succeeded."
+  },
+  "不管": {
+    "zh": "不管结果如何，我都支持你。",
+    "py": "Bùguǎn jiéguǒ rúhé, wǒ dōu zhīchí nǐ.",
+    "en": "No matter the result, I support you."
+  },
+  "财富": {
+    "zh": "知识是最大的财富。",
+    "py": "Zhīshi shì zuìdà de cáifù.",
+    "en": "Knowledge is the greatest wealth."
+  },
+  "长期": {
+    "zh": "这需要长期的努力。",
+    "py": "Zhè xūyào chángqī de nǔlì.",
+    "en": "This requires long-term effort."
+  },
+  "承认": {
+    "zh": "他承认了自己的错误。",
+    "py": "Tā chéngrèn le zìjǐ de cuòwù.",
+    "en": "He admitted his mistake."
+  },
+  "承受": {
+    "zh": "他承受了很大的压力。",
+    "py": "Tā chéngshòu le hěn dà de yālì.",
+    "en": "He bore great pressure."
+  },
+  "充分": {
+    "zh": "要充分利用时间。",
+    "py": "Yào chōngfèn lìyòng shíjiān.",
+    "en": "Make full use of time."
+  },
+  "冲突": {
+    "zh": "他们之间有一些冲突。",
+    "py": "Tāmen zhījiān yǒu yīxiē chōngtú.",
+    "en": "There are some conflicts between them."
+  },
+  "出版": {
+    "zh": "他的书刚刚出版了。",
+    "py": "Tā de shū gānggāng chūbǎn le.",
+    "en": "His book has just been published."
+  },
+  "此外": {
+    "zh": "此外，我还有一个问题。",
+    "py": "Cǐwài, wǒ hái yǒu yīgè wèntí.",
+    "en": "In addition, I have another question."
+  },
+  "刺激": {
+    "zh": "他会刺激。",
+    "py": "Tā huì cì jī.",
+    "en": "He can provoke."
+  },
+  "达到": {
+    "zh": "他终于达到了目标。",
+    "py": "Tā zhōngyú dádào le mùbiāo.",
+    "en": "He finally reached his goal."
+  },
+  "大量": {
+    "zh": "他阅读了大量的书籍。",
+    "py": "Tā yuèdú le dàliàng de shūjí.",
+    "en": "He read a large number of books."
+  },
+  "担任": {
+    "zh": "他担任学校的校长。",
+    "py": "Tā dānrèn xuéxiào de xiàozhǎng.",
+    "en": "He serves as the school principal."
+  },
+  "导致": {
+    "zh": "这次失误导致了严重后果。",
+    "py": "Zhè cì shīwù dǎozhì le yánzhòng hòuguǒ.",
+    "en": "This mistake led to serious consequences."
+  },
+  "的确": {
+    "zh": "这个问题的确很难。",
+    "py": "Zhège wèntí díquè hěn nán.",
+    "en": "This problem is indeed very difficult."
+  },
+  "典型": {
+    "zh": "这是一个典型的例子。",
+    "py": "Zhè shì yīgè diǎnxíng de lìzi.",
+    "en": "This is a typical example."
+  },
+  "对比": {
+    "zh": "通过对比可以发现差异。",
+    "py": "Tōngguò duìbǐ kěyǐ fāxiàn chāyì.",
+    "en": "Differences can be found through comparison."
+  },
+  "多余": {
+    "zh": "这些话是多余的。",
+    "py": "Zhèxiē huà shì duōyú de.",
+    "en": "These words are unnecessary."
+  },
+  "而": {
+    "zh": "他努力而且聪明。",
+    "py": "Tā nǔlì érqiě cōngming.",
+    "en": "He is hardworking and smart."
+  },
+  "发言": {
+    "zh": "他在会议上发言了。",
+    "py": "Tā zài huìyì shàng fāyán le.",
+    "en": "He spoke at the meeting."
+  },
+  "方面": {
+    "zh": "在这方面他有丰富经验。",
+    "py": "Zài zhè fāngmiàn tā yǒu fēngfù jīngyàn.",
+    "en": "He has rich experience in this area."
+  },
+  "方式": {
+    "zh": "这种学习方式很有效。",
+    "py": "Zhè zhǒng xuéxí fāngshì hěn yǒuxiào.",
+    "en": "This learning method is very effective."
+  },
+  "复杂": {
+    "zh": "这个问题非常复杂。",
+    "py": "Zhège wèntí fēicháng fùzá.",
+    "en": "This problem is very complex."
+  },
+  "富裕": {
+    "zh": "他们生活富裕。",
+    "py": "Tāmen shēnghuó fùyù.",
+    "en": "They live a prosperous life."
+  },
+  "改革": {
+    "zh": "国家正在进行改革。",
+    "py": "Guójiā zhèngzài jìnxíng gǎigé.",
+    "en": "The country is undergoing reforms."
+  },
+  "干部": {
+    "zh": "他是一名优秀的干部。",
+    "py": "Tā shì yī míng yōuxiù de gànbù.",
+    "en": "He is an excellent official/cadre."
+  },
+  "高度": {
+    "zh": "这座楼的高度是五百米。",
+    "py": "Zhè zuò lóu de gāodù shì wǔbǎi mǐ.",
+    "en": "The height of this building is 500 meters."
+  },
+  "概念": {
+    "zh": "你理解这个概念吗？",
+    "py": "Nǐ lǐjiě zhège gàiniàn ma?",
+    "en": "Do you understand this concept?"
+  },
+  "感激": {
+    "zh": "我非常感激你的帮助。",
+    "py": "Wǒ fēicháng gǎnjī nǐ de bāngzhù.",
+    "en": "I'm very grateful for your help."
+  },
+  "各自": {
+    "zh": "大家各自做自己的事。",
+    "py": "Dàjiā gèzì zuò zìjǐ de shì.",
+    "en": "Everyone does their own thing."
+  },
+  "根本": {
+    "zh": "这是问题的根本所在。",
+    "py": "Zhè shì wèntí de gēnběn suǒzài.",
+    "en": "This is the root of the problem."
+  },
+  "公平": {
+    "zh": "这个判决不公平。",
+    "py": "Zhège pànjué bù gōngpíng.",
+    "en": "This judgment is not fair."
+  },
+  "贡献": {
+    "zh": "他为公司做出了巨大贡献。",
+    "py": "Tā wèi gōngsī zuòchū le jùdà gòngxiàn.",
+    "en": "He made a huge contribution to the company."
+  },
+  "够": {
+    "zh": "这些食物够吃吗？",
+    "py": "Zhèxiē shíwù gòu chī ma?",
+    "en": "Is there enough food?"
+  },
+  "关注": {
+    "zh": "大家都很关注这件事。",
+    "py": "Dàjiā dōu hěn guānzhù zhè jiàn shì.",
+    "en": "Everyone is paying close attention to this."
+  },
+  "观察": {
+    "zh": "科学家仔细观察实验结果。",
+    "py": "Kēxuéjiā zǐxì guānchá shíyàn jiéguǒ.",
+    "en": "Scientists carefully observed the experimental results."
+  },
+  "规律": {
+    "zh": "学习要有规律。",
+    "py": "Xuéxí yào yǒu guīlǜ.",
+    "en": "Study needs to follow regular patterns."
+  },
+  "过程": {
+    "zh": "学习是一个漫长的过程。",
+    "py": "Xuéxí shì yīgè màncháng de guòchéng.",
+    "en": "Learning is a long process."
+  },
+  "环节": {
+    "zh": "这是整个项目的重要环节。",
+    "py": "Zhè shì zhěnggè xiàngmù de zhòngyào huánjié.",
+    "en": "This is an important link in the whole project."
+  },
+  "活力": {
+    "zh": "年轻人充满活力。",
+    "py": "Niánqīngrén chōngmǎn huólì.",
+    "en": "Young people are full of vitality."
+  },
+  "及时": {
+    "zh": "请及时回复邮件。",
+    "py": "Qǐng jíshí huífù yóujiàn.",
+    "en": "Please reply to the email promptly."
+  },
+  "集中": {
+    "zh": "请集中注意力。",
+    "py": "Qǐng jízhōng zhùyìlì.",
+    "en": "Please concentrate."
+  },
+  "坚持": {
+    "zh": "只要坚持，就能成功。",
+    "py": "Zhǐyào jiānchí, jiù néng chénggōng.",
+    "en": "As long as you persist, you can succeed."
+  },
+  "坚强": {
+    "zh": "这里有坚强。",
+    "py": "Zhèlǐ yǒu jiān qiáng.",
+    "en": "There is staunch here."
+  },
+  "尖锐": {
+    "zh": "他提出了尖锐的批评。",
+    "py": "Tā tíchū le jiānruì de pīpíng.",
+    "en": "He raised sharp criticism."
+  },
+  "建立": {
+    "zh": "他们建立了深厚的友谊。",
+    "py": "Tāmen jiànlì le shēnhòu de yǒuyì.",
+    "en": "They established a deep friendship."
+  },
+  "将": {
+    "zh": "他将成为一名优秀的医生。",
+    "py": "Tā jiāng chéngwéi yī míng yōuxiù de yīshēng.",
+    "en": "He will become an excellent doctor."
+  },
+  "交流": {
+    "zh": "跨文化交流很重要。",
+    "py": "Kuà wénhuà jiāoliú hěn zhòngyào.",
+    "en": "Cross-cultural communication is very important."
+  },
+  "解释": {
+    "zh": "请解释一下这个词的意思。",
+    "py": "Qǐng jiěshì yīxià zhège cí de yìsi.",
+    "en": "Please explain the meaning of this word."
+  },
+  "谨慎": {
+    "zh": "做决定要谨慎。",
+    "py": "Zuò juédìng yào jǐnshèn.",
+    "en": "Making decisions requires caution."
+  },
+  "进行": {
+    "zh": "会议正在进行中。",
+    "py": "Huìyì zhèngzài jìnxíng zhōng.",
+    "en": "The meeting is currently in progress."
+  },
+  "矛盾": {
+    "zh": "他的话有矛盾。",
+    "py": "Tā de huà yǒu máodùn.",
+    "en": "His words are contradictory."
+  },
+  "目前": {
+    "zh": "目前情况怎么样？",
+    "py": "Mùqián qíngkuàng zěnmeyàng?",
+    "en": "What is the current situation?"
+  },
+  "能源": {
+    "zh": "太阳能是清洁能源。",
+    "py": "Tàiyángnéng shì qīngjié néngyuán.",
+    "en": "Solar energy is a clean energy source."
+  },
+  "平衡": {
+    "zh": "要保持工作和生活的平衡。",
+    "py": "Yào bǎochí gōngzuò hé shēnghuó de pínghéng.",
+    "en": "Maintain a balance between work and life."
+  },
+  "批评": {
+    "zh": "老师批评了我的错误。",
+    "py": "Lǎoshī pīpíng le wǒ de cuòwù.",
+    "en": "The teacher criticized my mistake."
+  },
+  "普遍": {
+    "zh": "这个现象很普遍。",
+    "py": "Zhège xiànxiàng hěn pǔbiàn.",
+    "en": "This phenomenon is very common."
+  },
+  "强调": {
+    "zh": "他强调了这个问题的重要性。",
+    "py": "Tā qiángdiào le zhège wèntí de zhòngyào xìng.",
+    "en": "He emphasized the importance of this issue."
+  },
+  "确实": {
+    "zh": "这确实是个问题。",
+    "py": "Zhè quèshí shì gè wèntí.",
+    "en": "This is indeed a problem."
+  },
+  "人才": {
+    "zh": "公司需要更多人才。",
+    "py": "Gōngsī xūyào gèng duō réncái.",
+    "en": "The company needs more talented people."
+  },
+  "认识": {
+    "zh": "我对这个问题有新的认识。",
+    "py": "Wǒ duì zhège wèntí yǒu xīn de rènshi.",
+    "en": "I have a new understanding of this issue."
+  },
+  "融合": {
+    "zh": "东西方文化的融合。",
+    "py": "Dōng-Xīfāng wénhuà de rónghé.",
+    "en": "The fusion of Eastern and Western cultures."
+  },
+  "如今": {
+    "zh": "如今生活水平提高了很多。",
+    "py": "Rújīn shēnghuó shuǐpíng tígāo le hěn duō.",
+    "en": "Nowadays, living standards have improved greatly."
+  },
+  "尝试": {
+    "zh": "请尝试一下这种方法。",
+    "py": "Qǐng chángshì yīxià zhè zhǒng fāngfǎ.",
+    "en": "Please try this method."
+  },
+  "实验": {
+    "zh": "科学家进行了很多实验。",
+    "py": "Kēxuéjiā jìnxíng le hěn duō shíyàn.",
+    "en": "Scientists conducted many experiments."
+  },
+  "事实": {
+    "zh": "我们要面对事实。",
+    "py": "Wǒmen yào miànduì shìshí.",
+    "en": "We need to face the facts."
+  },
+  "素质": {
+    "zh": "提高员工的综合素质。",
+    "py": "Tígāo yuángōng de zōnghé sùzhì.",
+    "en": "Improve the overall quality of employees."
+  },
+  "特点": {
+    "zh": "这个城市有独特的特点。",
+    "py": "Zhège chéngshì yǒu dútè de tèdiǎn.",
+    "en": "This city has unique characteristics."
+  },
+  "体现": {
+    "zh": "这体现了他的责任感。",
+    "py": "Zhè tǐxiàn le tā de zérèn gǎn.",
+    "en": "This reflects his sense of responsibility."
+  },
+  "突破": {
+    "zh": "这是一个重大的技术突破。",
+    "py": "Zhè shì yīgè zhòngdà de jìshù tūpò.",
+    "en": "This is a major technological breakthrough."
+  },
+  "吸引": {
+    "zh": "这部电影吸引了很多观众。",
+    "py": "Zhè bù diànyǐng xīyǐn le hěn duō guānzhòng.",
+    "en": "This movie attracted many viewers."
+  },
+  "现代": {
+    "zh": "现代科技发展很快。",
+    "py": "Xiàndài kējì fāzhǎn hěn kuài.",
+    "en": "Modern science and technology develops rapidly."
+  },
+  "现象": {
+    "zh": "这是一个常见的社会现象。",
+    "py": "Zhè shì yīgè chángjiàn de shèhuì xiànxiàng.",
+    "en": "This is a common social phenomenon."
+  },
+  "形式": {
+    "zh": "教育有多种形式。",
+    "py": "Jiàoyù yǒu duō zhǒng xíngshì.",
+    "en": "Education takes many forms."
+  },
+  "选手": {
+    "zh": "这位选手表现非常出色。",
+    "py": "Zhè wèi xuǎnshǒu biǎoxiàn fēicháng chūsè.",
+    "en": "This competitor performed exceptionally well."
+  },
+  "研究": {
+    "zh": "他正在研究这个问题。",
+    "py": "Tā zhèngzài yánjiū zhège wèntí.",
+    "en": "He is researching this problem."
+  },
+  "优势": {
+    "zh": "这个方案有很多优势。",
+    "py": "Zhège fāng'àn yǒu hěn duō yōushì.",
+    "en": "This plan has many advantages."
+  },
+  "长处": {
+    "zh": "每个人都有自己的长处。",
+    "py": "Měi gè rén dōu yǒu zìjǐ de chángchù.",
+    "en": "Everyone has their own strengths."
+  },
+  "政策": {
+    "zh": "政府出台了新政策。",
+    "py": "Zhèngfǔ chūtái le xīn zhèngcè.",
+    "en": "The government introduced new policies."
+  },
+  "爱心": {
+    "zh": "这个爱心很好。",
+    "py": "这 ài xīn hěn hǎo.",
+    "en": "This compassion is very good."
+  },
+  "安装": {
+    "zh": "他安装得很好。",
+    "py": "Tā ān zhuāng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "岸": {
+    "zh": "他对岸很感兴趣。",
+    "py": "Tā duì àn hěn gǎn xìngqù.",
+    "en": "He is very interested in bank."
+  },
+  "把握": {
+    "zh": "我们需要把握。",
+    "py": "Wǒmen xūyào bǎ wò.",
+    "en": "We need to grasp."
+  },
+  "摆": {
+    "zh": "他正在摆。",
+    "py": "Tā zhèngzài bǎi.",
+    "en": "He is arrange."
+  },
+  "班主任": {
+    "zh": "这个班主任很重要。",
+    "py": "Zhège bān zhǔ rèn hěn zhòngyào.",
+    "en": "This teacher in charge of a class is very important."
+  },
+  "办理": {
+    "zh": "他办理得很好。",
+    "py": "Tā bàn lǐ de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "棒": {
+    "zh": "我在找棒。",
+    "py": "Wǒ zài zhǎo bàng.",
+    "en": "I am looking for a a stick."
+  },
+  "傍晚": {
+    "zh": "我买了傍晚。",
+    "py": "Wǒ mǎi le bàng wǎn.",
+    "en": "I bought some in the evening."
+  },
+  "包裹": {
+    "zh": "这个包裹很好。",
+    "py": "Zhège bāo guǒ hěn hǎo.",
+    "en": "This wrap up is very good."
+  },
+  "包含": {
+    "zh": "我包含了。",
+    "py": "Wǒ bāo hán le.",
+    "en": "I contain."
+  },
+  "包子": {
+    "zh": "包子很重要。",
+    "py": "bāo zi hěn zhòngyào.",
+    "en": "steamed stuffed bun is very important."
+  },
+  "薄": {
+    "zh": "我需要薄。",
+    "py": "Wǒ xūyào báo.",
+    "en": "I need thin."
+  },
+  "宝贝": {
+    "zh": "这个宝贝很好。",
+    "py": "Zhège bǎo bèi hěn hǎo.",
+    "en": "This treasured object is very good."
+  },
+  "宝贵": {
+    "zh": "他正在宝贵。",
+    "py": "Tā zhèngzài bǎo guì.",
+    "en": "He is valuable."
+  },
+  "保存": {
+    "zh": "我保存了。",
+    "py": "Wǒ bǎo cún le.",
+    "en": "I conserve."
+  },
+  "保留": {
+    "zh": "他保留得很好。",
+    "py": "Tā bǎo liú de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "保险": {
+    "zh": "你喜欢保险吗？",
+    "py": "Nǐ xǐhuān bǎo xiǎn ma?",
+    "en": "Do you like to insurance?"
+  },
+  "悲观": {
+    "zh": "这个悲观不错。",
+    "py": "Zhège bēi guān bùcuò.",
+    "en": "This pessimistic is pretty good."
+  },
+  "被子": {
+    "zh": "他有被子。",
+    "py": "Tā yǒu bèi zi.",
+    "en": "He has quilt."
+  },
+  "背": {
+    "zh": "我背了。",
+    "py": "Wǒ bèi le.",
+    "en": "I the back of a body or object."
+  },
+  "本科": {
+    "zh": "那个本科是新的。",
+    "py": "Nàge běn kē shì xīn de.",
+    "en": "That undergraduate course is new."
+  },
+  "本领": {
+    "zh": "我在找本领。",
+    "py": "Wǒ zài zhǎo běn lǐng.",
+    "en": "I am looking for a skill."
+  },
+  "比如": {
+    "zh": "这个比如不错。",
+    "py": "Zhège bǐ rú bùcuò.",
+    "en": "This for example is pretty good."
+  },
+  "彼此": {
+    "zh": "这里有彼此。",
+    "py": "Zhèlǐ yǒu bǐ cǐ.",
+    "en": "There is each other here."
+  },
+  "必需": {
+    "zh": "我必需了。",
+    "py": "Wǒ bì xū le.",
+    "en": "I need."
+  },
+  "必要": {
+    "zh": "必要很重要。",
+    "py": "bì yào hěn zhòngyào.",
+    "en": "necessary is very important."
+  },
+  "避免": {
+    "zh": "你喜欢避免吗？",
+    "py": "Nǐ xǐhuān bì miǎn ma?",
+    "en": "Do you like to avert?"
+  },
+  "鞭炮": {
+    "zh": "我需要鞭炮。",
+    "py": "Wǒ xūyào biān pào.",
+    "en": "I need firecrackers."
+  },
+  "便": {
+    "zh": "这里有很多便。",
+    "py": "Zhèlǐ yǒu hěn duō biàn.",
+    "en": "There are many ordinarys here."
+  },
+  "标点": {
+    "zh": "我标点了。",
+    "py": "Wǒ biāo diǎn le.",
+    "en": "I punctuation."
+  },
+  "标志": {
+    "zh": "我喜欢这个标志。",
+    "py": "Wǒ xǐhuān zhège biāo zhì.",
+    "en": "I like this sign."
+  },
+  "表面": {
+    "zh": "我喜欢表面。",
+    "py": "Wǒ xǐhuān biǎo miàn.",
+    "en": "I like surface."
+  },
+  "表明": {
+    "zh": "我们需要表明。",
+    "py": "Wǒmen xūyào biǎo míng.",
+    "en": "We need to make clear."
+  },
+  "表情": {
+    "zh": "他正在表情。",
+    "py": "Tā zhèngzài biǎo qíng.",
+    "en": "He is expression."
+  },
+  "表现": {
+    "zh": "我表现了。",
+    "py": "Wǒ biǎo xiàn le.",
+    "en": "I show."
+  },
+  "丙": {
+    "zh": "他有一个丙。",
+    "py": "Tā yǒu yīgè bǐng.",
+    "en": "He has a third of 10 heavenly stems 十天干."
+  },
+  "病毒": {
+    "zh": "他在找病毒。",
+    "py": "Tā zài zhǎo bìng dú.",
+    "en": "He is looking for virus."
+  },
+  "玻璃": {
+    "zh": "他对玻璃很感兴趣。",
+    "py": "Tā duì bō li hěn gǎn xìngqù.",
+    "en": "He is very interested in glass."
+  },
+  "博物馆": {
+    "zh": "博物馆很重要。",
+    "py": "bó wù guǎn hěn zhòngyào.",
+    "en": "museum is very important."
+  },
+  "脖子": {
+    "zh": "她在找脖子。",
+    "py": "Tā zài zhǎo bó zi.",
+    "en": "She is looking for neck."
+  },
+  "不必": {
+    "zh": "他有不必。",
+    "py": "Tā yǒu bù bì.",
+    "en": "He has need not."
+  },
+  "不见得": {
+    "zh": "他对不见得很感兴趣。",
+    "py": "Tā duì bù jiàn de hěn gǎn xìngqù.",
+    "en": "He is very interested in not necessarily."
+  },
+  "不耐烦": {
+    "zh": "这个不耐烦不错。",
+    "py": "Zhège bù nài fán bùcuò.",
+    "en": "This impatience is pretty good."
+  },
+  "不要紧": {
+    "zh": "我在找不要紧。",
+    "py": "Wǒ zài zhǎo bù yào jǐn.",
+    "en": "I am looking for unimportant."
+  },
+  "不安": {
+    "zh": "这里有不安。",
+    "py": "Zhèlǐ yǒu bù ān.",
+    "en": "There is unpeaceful here."
+  },
+  "不得了": {
+    "zh": "我喜欢不得了。",
+    "py": "Wǒ xǐhuān bù dé liǎo.",
+    "en": "I like desperately serious."
+  },
+  "不好意思": {
+    "zh": "你喜欢不好意思吗？",
+    "py": "Nǐ xǐhuān bù hǎo yì si ma?",
+    "en": "Do you like to feel embarrassed?"
+  },
+  "不免": {
+    "zh": "那个不免是新的。",
+    "py": "Nàge bù miǎn shì xīn de.",
+    "en": "That inevitably is new."
+  },
+  "不然": {
+    "zh": "那个不然是我的。",
+    "py": "Nàge bù rán shì wǒ de.",
+    "en": "That not so is mine."
+  },
+  "不如": {
+    "zh": "这个不如很重要。",
+    "py": "Zhège bù rú hěn zhòngyào.",
+    "en": "This not equal to is very important."
+  },
+  "不足": {
+    "zh": "我买了不足。",
+    "py": "Wǒ mǎi le bù zú.",
+    "en": "I bought some insufficient."
+  },
+  "布": {
+    "zh": "你喜欢布吗？",
+    "py": "Nǐ xǐhuān bù ma?",
+    "en": "Do you like to cloth?"
+  },
+  "步骤": {
+    "zh": "他有一个步骤。",
+    "py": "Tā yǒu yīgè bù zhòu.",
+    "en": "He has a procedure."
+  },
+  "部门": {
+    "zh": "那个部门是我的。",
+    "py": "Nàge bù mén shì wǒ de.",
+    "en": "That department is mine."
+  },
+  "财产": {
+    "zh": "这个财产很好。",
+    "py": "这 cái chǎn hěn hǎo.",
+    "en": "This property is very good."
+  },
+  "踩": {
+    "zh": "他踩得很好。",
+    "py": "Tā cǎi de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "采访": {
+    "zh": "你喜欢采访吗？",
+    "py": "Nǐ xǐhuān cǎi fǎng ma?",
+    "en": "Do you like to interview?"
+  },
+  "采取": {
+    "zh": "我们需要采取。",
+    "py": "Wǒmen xūyào cǎi qǔ.",
+    "en": "We need to adopt or carry out."
+  },
+  "彩虹": {
+    "zh": "那个彩虹是新的。",
+    "py": "Nàge cǎi hóng shì xīn de.",
+    "en": "That rainbow is new."
+  },
+  "参考": {
+    "zh": "我参考了。",
+    "py": "Wǒ cān kǎo le.",
+    "en": "I consultation."
+  },
+  "参与": {
+    "zh": "他参与得很好。",
+    "py": "Tā cān yù de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "餐厅": {
+    "zh": "这个餐厅很好。",
+    "py": "Zhège cān tīng hěn hǎo.",
+    "en": "This dining hall is very good."
+  },
+  "残疾": {
+    "zh": "这个残疾不错。",
+    "py": "Zhège cán jí bùcuò.",
+    "en": "This disabled is pretty good."
+  },
+  "惭愧": {
+    "zh": "惭愧很重要。",
+    "py": "cán kuì hěn zhòngyào.",
+    "en": "ashamed is very important."
+  },
+  "操场": {
+    "zh": "这里有很多操场。",
+    "py": "Zhèlǐ yǒu hěn duō cāo chǎng.",
+    "en": "There are many playgrounds here."
+  },
+  "操心": {
+    "zh": "他操心得很好。",
+    "py": "Tā cāo xīn de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "册": {
+    "zh": "我在找册。",
+    "py": "Wǒ zài zhǎo cè.",
+    "en": "I am looking for a book."
+  },
+  "测验": {
+    "zh": "我们需要测验。",
+    "py": "Wǒmen xūyào cè yàn.",
+    "en": "We need to test."
+  },
+  "厕所": {
+    "zh": "我需要厕所。",
+    "py": "Wǒ xūyào cè suǒ.",
+    "en": "I need toilet."
+  },
+  "曾经": {
+    "zh": "你曾经去吧。",
+    "py": "Nǐ céng jīng qù ba.",
+    "en": "You should go once."
+  },
+  "插": {
+    "zh": "他插得很好。",
+    "py": "Tā chā de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "差别": {
+    "zh": "我在找差别。",
+    "py": "Wǒ zài zhǎo chā bié.",
+    "en": "I am looking for a difference."
+  },
+  "叉子": {
+    "zh": "他有叉子。",
+    "py": "Tā yǒu chā zi.",
+    "en": "He has fork."
+  },
+  "拆": {
+    "zh": "他正在拆。",
+    "py": "Tā zhèngzài chāi.",
+    "en": "He is tear open."
+  },
+  "产品": {
+    "zh": "产品很重要。",
+    "py": "chǎn pǐn hěn zhòngyào.",
+    "en": "goods is very important."
+  },
+  "产生": {
+    "zh": "他产生得很好。",
+    "py": "Tā chǎn shēng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "长途": {
+    "zh": "我在找长途。",
+    "py": "Wǒ zài zhǎo cháng tú.",
+    "en": "I am looking for a long distance."
+  },
+  "常识": {
+    "zh": "他对常识很感兴趣。",
+    "py": "Tā duì cháng shí hěn gǎn xìngqù.",
+    "en": "He is very interested in common sense."
+  },
+  "抄": {
+    "zh": "他正在抄。",
+    "py": "Tā zhèngzài chāo.",
+    "en": "He is make a copy."
+  },
+  "朝": {
+    "zh": "这个朝很重要。",
+    "py": "Zhège cháo hěn zhòngyào.",
+    "en": "This imperial or royal court is very important."
+  },
+  "朝代": {
+    "zh": "我需要朝代。",
+    "py": "Wǒ xūyào cháo dài.",
+    "en": "I need dynasty."
+  },
+  "炒": {
+    "zh": "你喜欢炒吗？",
+    "py": "Nǐ xǐhuān chǎo ma?",
+    "en": "Do you like to sauté?"
+  },
+  "吵架": {
+    "zh": "我们需要吵架。",
+    "py": "Wǒmen xūyào chǎo jià.",
+    "en": "We need to quarrel."
+  },
+  "车库": {
+    "zh": "这里有车库。",
+    "py": "Zhèlǐ yǒu chē kù.",
+    "en": "There is garage here."
+  },
+  "车厢": {
+    "zh": "我喜欢车厢。",
+    "py": "Wǒ xǐhuān chē xiāng.",
+    "en": "I like carriage."
+  },
+  "彻底": {
+    "zh": "他对彻底很感兴趣。",
+    "py": "Tā duì chè dǐ hěn gǎn xìngqù.",
+    "en": "He is very interested in thorough."
+  },
+  "沉默": {
+    "zh": "他有一个沉默。",
+    "py": "Tā yǒu yīgè chén mò.",
+    "en": "He has a taciturn."
+  },
+  "趁": {
+    "zh": "我们需要趁。",
+    "py": "Wǒmen xūyào chèn.",
+    "en": "We need to avail oneself of."
+  },
+  "称": {
+    "zh": "他正在称。",
+    "py": "Tā zhèngzài chēng.",
+    "en": "He is weigh."
+  },
+  "称呼": {
+    "zh": "我称呼了。",
+    "py": "Wǒ chēng hu le.",
+    "en": "I call."
+  },
+  "称赞": {
+    "zh": "他称赞得很好。",
+    "py": "Tā chēng zàn de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "乘": {
+    "zh": "你喜欢乘吗？",
+    "py": "Nǐ xǐhuān chéng ma?",
+    "en": "Do you like to ride?"
+  },
+  "承担": {
+    "zh": "我们需要承担。",
+    "py": "Wǒmen xūyào chéng dān.",
+    "en": "We need to undertake."
+  },
+  "成分": {
+    "zh": "那个成分是我的。",
+    "py": "Nàge chéng fèn shì wǒ de.",
+    "en": "That composition is mine."
+  },
+  "成果": {
+    "zh": "这个成果很重要。",
+    "py": "Zhège chéng guǒ hěn zhòngyào.",
+    "en": "This result is very important."
+  },
+  "成就": {
+    "zh": "他有一个成就。",
+    "py": "Tā yǒu yīgè chéng jiù.",
+    "en": "He has a accomplishment."
+  },
+  "成立": {
+    "zh": "你喜欢成立吗？",
+    "py": "Nǐ xǐhuān chéng lì ma?",
+    "en": "Do you like to establish?"
+  },
+  "成语": {
+    "zh": "我们需要成语。",
+    "py": "Wǒmen xūyào chéng yǔ.",
+    "en": "We need to Chinese set expression."
+  },
+  "成长": {
+    "zh": "他正在成长。",
+    "py": "Tā zhèngzài chéng zhǎng.",
+    "en": "He is mature."
+  },
+  "程度": {
+    "zh": "这个程度很重要。",
+    "py": "Zhège chéng dù hěn zhòngyào.",
+    "en": "This degree is very important."
+  },
+  "程序": {
+    "zh": "他有一个程序。",
+    "py": "Tā yǒu yīgè chéng xù.",
+    "en": "He has a procedures."
+  },
+  "诚恳": {
+    "zh": "他对诚恳很感兴趣。",
+    "py": "Tā duì chéng kěn hěn gǎn xìngqù.",
+    "en": "He is very interested in sincere."
+  },
+  "吃亏": {
+    "zh": "我们需要吃亏。",
+    "py": "Wǒmen xūyào chī kuī.",
+    "en": "We need to suffer losses."
+  },
+  "持续": {
+    "zh": "他正在持续。",
+    "py": "Tā zhèngzài chí xù.",
+    "en": "He is continue."
+  },
+  "池子": {
+    "zh": "她在找池子。",
+    "py": "Tā zài zhǎo chí zi.",
+    "en": "She is looking for pond."
+  },
+  "尺子": {
+    "zh": "他有一个尺子。",
+    "py": "Tā yǒu yīgè chǐ zi.",
+    "en": "He has a rule."
+  },
+  "翅膀": {
+    "zh": "他有翅膀。",
+    "py": "Tā yǒu chì bǎng.",
+    "en": "He has wing."
+  },
+  "冲": {
+    "zh": "我们需要冲。",
+    "py": "Wǒmen xūyào chōng.",
+    "en": "We need to thoroughfare."
+  },
+  "充电器": {
+    "zh": "那个充电器是新的。",
+    "py": "Nàge chōng diàn qì shì xīn de.",
+    "en": "That battery charger is new."
+  },
+  "充满": {
+    "zh": "这件事很充满。",
+    "py": "Zhè jiàn shì hěn chōng mǎn.",
+    "en": "This matter is very full of."
+  },
+  "重复": {
+    "zh": "他重复得很好。",
+    "py": "Tā chóng fù de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "宠物": {
+    "zh": "这里有宠物。",
+    "py": "Zhèlǐ yǒu chǒng wù.",
+    "en": "There is house pet here."
+  },
+  "抽屉": {
+    "zh": "这里有很多抽屉。",
+    "py": "Zhèlǐ yǒu hěn duō chōu ti.",
+    "en": "There are many drawers here."
+  },
+  "抽象": {
+    "zh": "那个抽象是我的。",
+    "py": "Nàge chōu xiàng shì wǒ de.",
+    "en": "That abstract is mine."
+  },
+  "丑": {
+    "zh": "我喜欢丑。",
+    "py": "Wǒ xǐhuān chǒu.",
+    "en": "I like shameful."
+  },
+  "臭": {
+    "zh": "那个臭是新的。",
+    "py": "Nàge chòu shì xīn de.",
+    "en": "That stench is new."
+  },
+  "出口": {
+    "zh": "你喜欢出口吗？",
+    "py": "Nǐ xǐhuān chū kǒu ma?",
+    "en": "Do you like to an exit?"
+  },
+  "出色": {
+    "zh": "我买了出色。",
+    "py": "Wǒ mǎi le chū sè.",
+    "en": "I bought some remarkable."
+  },
+  "出席": {
+    "zh": "他正在出席。",
+    "py": "Tā zhèngzài chū xí.",
+    "en": "He is attend."
+  },
+  "初级": {
+    "zh": "这个初级很好。",
+    "py": "这 chū jí hěn hǎo.",
+    "en": "This junior is very good."
+  },
+  "除": {
+    "zh": "他除得很好。",
+    "py": "Tā chú de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "除非": {
+    "zh": "我在找除非。",
+    "py": "Wǒ zài zhǎo chú fēi.",
+    "en": "I am looking for a only if."
+  },
+  "除夕": {
+    "zh": "我喜欢这个除夕。",
+    "py": "Wǒ xǐhuān zhège chú xī.",
+    "en": "I like this Eve."
+  },
+  "处理": {
+    "zh": "他正在处理。",
+    "py": "Tā zhèngzài chǔ lǐ.",
+    "en": "He is handle."
+  },
+  "传播": {
+    "zh": "我传播了。",
+    "py": "Wǒ chuán bō le.",
+    "en": "I disseminate."
+  },
+  "传递": {
+    "zh": "他传递得很好。",
+    "py": "Tā chuán dì de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "传染": {
+    "zh": "你喜欢传染吗？",
+    "py": "Nǐ xǐhuān chuán rǎn ma?",
+    "en": "Do you like to infect?"
+  },
+  "传说": {
+    "zh": "这个传说不错。",
+    "py": "Zhège chuán shuō bùcuò.",
+    "en": "This legend is pretty good."
+  },
+  "传统": {
+    "zh": "那个传统是我的。",
+    "py": "Nàge chuán tǒng shì wǒ de.",
+    "en": "That tradition is mine."
+  },
+  "窗帘": {
+    "zh": "他对窗帘很感兴趣。",
+    "py": "Tā duì chuāng lián hěn gǎn xìngqù.",
+    "en": "He is very interested in window curtains."
+  },
+  "闯": {
+    "zh": "他闯得很好。",
+    "py": "Tā chuǎng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "创造": {
+    "zh": "你喜欢创造吗？",
+    "py": "Nǐ xǐhuān chuàng zào ma?",
+    "en": "Do you like to create?"
+  },
+  "吹": {
+    "zh": "我们需要吹。",
+    "py": "Wǒmen xūyào chuī.",
+    "en": "We need to blow."
+  },
+  "磁带": {
+    "zh": "他对磁带很感兴趣。",
+    "py": "Tā duì cí dài hěn gǎn xìngqù.",
+    "en": "He is very interested in magnetic tape."
+  },
+  "辞职": {
+    "zh": "我辞职了。",
+    "py": "Wǒ cí zhí le.",
+    "en": "I resign."
+  },
+  "次要": {
+    "zh": "次要很重要。",
+    "py": "cì yào hěn zhòngyào.",
+    "en": "secondary is very important."
+  },
+  "匆忙": {
+    "zh": "他在找匆忙。",
+    "py": "Tā zài zhǎo cōng máng.",
+    "en": "He is looking for hasty."
+  },
+  "从此": {
+    "zh": "这个从此不错。",
+    "py": "Zhège cóng cǐ bùcuò.",
+    "en": "This from now on is pretty good."
+  },
+  "从而": {
+    "zh": "从而很重要。",
+    "py": "cóng ér hěn zhòngyào.",
+    "en": "thus is very important."
+  },
+  "从前": {
+    "zh": "他从前完成了任务。",
+    "py": "Tā cóng qián wánchéng le rènwu.",
+    "en": "He previously completed the task."
+  },
+  "从事": {
+    "zh": "他从事得很好。",
+    "py": "Tā cóng shì de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "醋": {
+    "zh": "他对醋很感兴趣。",
+    "py": "Tā duì cù hěn gǎn xìngqù.",
+    "en": "He is very interested in vinegar."
+  },
+  "促进": {
+    "zh": "我们需要促进。",
+    "py": "Wǒmen xūyào cù jìn.",
+    "en": "We need to promote."
+  },
+  "促使": {
+    "zh": "他正在促使。",
+    "py": "Tā zhèngzài cù shǐ.",
+    "en": "He is induce."
+  },
+  "催": {
+    "zh": "我催了。",
+    "py": "Wǒ cuī le.",
+    "en": "I urge."
+  },
+  "存": {
+    "zh": "他存得很好。",
+    "py": "Tā cún de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "存在": {
+    "zh": "你喜欢存在吗？",
+    "py": "Nǐ xǐhuān cún zài ma?",
+    "en": "Do you like to exist?"
+  },
+  "错误": {
+    "zh": "这个错误不错。",
+    "py": "Zhège cuò wù bùcuò.",
+    "en": "This error is pretty good."
+  },
+  "措施": {
+    "zh": "我需要措施。",
+    "py": "Wǒ xūyào cuò shī.",
+    "en": "I need measure."
+  },
+  "答应": {
+    "zh": "我答应了。",
+    "py": "Wǒ dā ying le.",
+    "en": "I promise."
+  },
+  "打工": {
+    "zh": "他打工得很好。",
+    "py": "Tā dǎ gōng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "打交道": {
+    "zh": "你喜欢打交道吗？",
+    "py": "Nǐ xǐhuān dǎ jiāo dào ma?",
+    "en": "Do you like to come into contact with?"
+  },
+  "打喷嚏": {
+    "zh": "我们需要打喷嚏。",
+    "py": "Wǒmen xūyào dǎ pēn tì.",
+    "en": "We need to sneeze."
+  },
+  "打听": {
+    "zh": "他正在打听。",
+    "py": "Tā zhèngzài dǎ ting.",
+    "en": "He is ask about."
+  },
+  "打招呼": {
+    "zh": "我打招呼了。",
+    "py": "Wǒ dǎ zhāo hu le.",
+    "en": "I greet sb by word or action."
+  },
+  "大方": {
+    "zh": "我需要大方。",
+    "py": "Wǒ xūyào dà fang.",
+    "en": "I need generous."
+  },
+  "大象": {
+    "zh": "他有大象。",
+    "py": "Tā yǒu dà xiàng.",
+    "en": "He has elephant."
+  },
+  "大型": {
+    "zh": "他对大型很感兴趣。",
+    "py": "Tā duì dà xíng hěn gǎn xìngqù.",
+    "en": "He is very interested in large."
+  },
+  "呆": {
+    "zh": "他有呆。",
+    "py": "Tā yǒu dāi.",
+    "en": "He has foolish."
+  },
+  "贷款": {
+    "zh": "我贷款了。",
+    "py": "Wǒ dài kuǎn le.",
+    "en": "I a loan."
+  },
+  "待遇": {
+    "zh": "他有一个待遇。",
+    "py": "Tā yǒu yīgè dài yù.",
+    "en": "He has a treatment."
+  },
+  "单纯": {
+    "zh": "他对单纯很感兴趣。",
+    "py": "Tā duì dān chún hěn gǎn xìngqù.",
+    "en": "He is very interested in simple."
+  },
+  "单调": {
+    "zh": "我在找单调。",
+    "py": "Wǒ zài zhǎo dān diào.",
+    "en": "I am looking for monotonous."
+  },
+  "单独": {
+    "zh": "这里有单独。",
+    "py": "Zhèlǐ yǒu dān dú.",
+    "en": "There is alone here."
+  },
+  "单位": {
+    "zh": "这个单位很重要。",
+    "py": "Zhège dān wèi hěn zhòngyào.",
+    "en": "This a unit is very important."
+  },
+  "单元": {
+    "zh": "他有一个单元。",
+    "py": "Tā yǒu yīgè dān yuán.",
+    "en": "He has a unit."
+  },
+  "耽误": {
+    "zh": "你喜欢耽误吗？",
+    "py": "Nǐ xǐhuān dān wu ma?",
+    "en": "Do you like to delay?"
+  },
+  "胆小鬼": {
+    "zh": "我喜欢胆小鬼。",
+    "py": "Wǒ xǐhuān dǎn xiǎo guǐ.",
+    "en": "I like coward."
+  },
+  "淡": {
+    "zh": "我需要一个淡。",
+    "py": "Wǒ xūyào yīgè dàn.",
+    "en": "I need a insipid."
+  },
+  "当代": {
+    "zh": "这个当代很重要。",
+    "py": "Zhège dāng dài hěn zhòngyào.",
+    "en": "This the present age is very important."
+  },
+  "挡": {
+    "zh": "他挡得很好。",
+    "py": "Tā dǎng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "岛": {
+    "zh": "她在找岛。",
+    "py": "Tā zài zhǎo dǎo.",
+    "en": "She is looking for island."
+  },
+  "倒霉": {
+    "zh": "我们需要倒霉。",
+    "py": "Wǒmen xūyào dǎo méi.",
+    "en": "We need to have bad luck."
+  },
+  "导演": {
+    "zh": "他正在导演。",
+    "py": "Tā zhèngzài dǎo yǎn.",
+    "en": "He is direct."
+  },
+  "倒": {
+    "zh": "我倒了。",
+    "py": "Wǒ dào le.",
+    "en": "I place upside down."
+  },
+  "到达": {
+    "zh": "他到达得很好。",
+    "py": "Tā dào dá de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "道德": {
+    "zh": "我在找道德。",
+    "py": "Wǒ zài zhǎo dào dé.",
+    "en": "I am looking for a virtue."
+  },
+  "道理": {
+    "zh": "这个道理不错。",
+    "py": "Zhège dào li bùcuò.",
+    "en": "This reason is pretty good."
+  },
+  "登机牌": {
+    "zh": "这里有登机牌。",
+    "py": "Zhèlǐ yǒu dēng jī pái.",
+    "en": "There is boarding pass here."
+  },
+  "登记": {
+    "zh": "我登记了。",
+    "py": "Wǒ dēng jì le.",
+    "en": "I register."
+  },
+  "等待": {
+    "zh": "他等待得很好。",
+    "py": "Tā děng dài de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "等候": {
+    "zh": "你喜欢等候吗？",
+    "py": "Nǐ xǐhuān děng hòu ma?",
+    "en": "Do you like to wait?"
+  },
+  "等于": {
+    "zh": "我们需要等于。",
+    "py": "Wǒmen xūyào děng yú.",
+    "en": "We need to equal."
+  },
+  "滴": {
+    "zh": "他正在滴。",
+    "py": "Tā zhèngzài dī.",
+    "en": "He is a drop."
+  },
+  "敌人": {
+    "zh": "那个敌人是新的。",
+    "py": "Nàge dí rén shì xīn de.",
+    "en": "That enemy is new."
+  },
+  "递": {
+    "zh": "他递得很好。",
+    "py": "Tā dì de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "地道": {
+    "zh": "我喜欢地道。",
+    "py": "Wǒ xǐhuān dì dao.",
+    "en": "I like authentic."
+  },
+  "地理": {
+    "zh": "这个地理很好。",
+    "py": "这 dì lǐ hěn hǎo.",
+    "en": "This geography is very good."
+  },
+  "地区": {
+    "zh": "那个地区是我的。",
+    "py": "Nàge dì qū shì wǒ de.",
+    "en": "That local is mine."
+  },
+  "地毯": {
+    "zh": "他对地毯很感兴趣。",
+    "py": "Tā duì dì tǎn hěn gǎn xìngqù.",
+    "en": "He is very interested in carpet."
+  },
+  "地位": {
+    "zh": "他有一个地位。",
+    "py": "Tā yǒu yīgè dì wèi.",
+    "en": "He has a position."
+  },
+  "地震": {
+    "zh": "地震很重要。",
+    "py": "dì zhèn hěn zhòngyào.",
+    "en": "earthquake is very important."
+  },
+  "点头": {
+    "zh": "我们需要点头。",
+    "py": "Wǒmen xūyào diǎn tóu.",
+    "en": "We need to nod."
+  },
+  "点心": {
+    "zh": "那个点心是我的。",
+    "py": "Nàge diǎn xin shì wǒ de.",
+    "en": "That light refreshments is mine."
+  },
+  "电池": {
+    "zh": "我需要电池。",
+    "py": "Wǒ xūyào diàn chí.",
+    "en": "I need battery."
+  },
+  "电台": {
+    "zh": "他有一个电台。",
+    "py": "Tā yǒu yīgè diàn tái.",
+    "en": "He has a transmitter-receiver."
+  },
+  "钓": {
+    "zh": "你喜欢钓吗？",
+    "py": "Nǐ xǐhuān diào ma?",
+    "en": "Do you like to fish with a hook and bait?"
+  },
+  "丁": {
+    "zh": "这个丁不错。",
+    "py": "Zhège dīng bùcuò.",
+    "en": "This fourth of 10 heavenly stems 十天干 is pretty good."
+  },
+  "顶": {
+    "zh": "那个顶是我的。",
+    "py": "Nàge dǐng shì wǒ de.",
+    "en": "That apex is mine."
+  },
+  "冻": {
+    "zh": "我冻了。",
+    "py": "Wǒ dòng le.",
+    "en": "I freeze."
+  },
+  "洞": {
+    "zh": "我买了洞。",
+    "py": "Wǒ mǎi le dòng.",
+    "en": "I bought some cave."
+  },
+  "动画片": {
+    "zh": "他对动画片很感兴趣。",
+    "py": "Tā duì dòng huà piàn hěn gǎn xìngqù.",
+    "en": "He is very interested in animated film."
+  },
+  "逗": {
+    "zh": "我们需要逗。",
+    "py": "Wǒmen xūyào dòu.",
+    "en": "We need to stay."
+  },
+  "豆腐": {
+    "zh": "他有豆腐。",
+    "py": "Tā yǒu dòu fu.",
+    "en": "He has tofu."
+  },
+  "独立": {
+    "zh": "我独立了。",
+    "py": "Wǒ dú lì le.",
+    "en": "I independent."
+  },
+  "独特": {
+    "zh": "他有一个独特。",
+    "py": "Tā yǒu yīgè dú tè.",
+    "en": "He has a unique."
+  },
+  "度过": {
+    "zh": "你喜欢度过吗？",
+    "py": "Nǐ xǐhuān dù guò ma?",
+    "en": "Do you like to pass?"
+  },
+  "短信": {
+    "zh": "这里有短信。",
+    "py": "Zhèlǐ yǒu duǎn xìn.",
+    "en": "There is text message here."
+  },
+  "堆": {
+    "zh": "他正在堆。",
+    "py": "Tā zhèngzài duī.",
+    "en": "He is pile up."
+  },
+  "对待": {
+    "zh": "我对待了。",
+    "py": "Wǒ duì dài le.",
+    "en": "I treat."
+  },
+  "对方": {
+    "zh": "他有一个对方。",
+    "py": "Tā yǒu yīgè duì fāng.",
+    "en": "He has a counterpart."
+  },
+  "对手": {
+    "zh": "我喜欢对手。",
+    "py": "Wǒ xǐhuān duì shǒu.",
+    "en": "I like opponent."
+  },
+  "对象": {
+    "zh": "他在找对象。",
+    "py": "Tā zài zhǎo duì xiàng.",
+    "en": "He is looking for target."
+  },
+  "对于": {
+    "zh": "这个对于很好。",
+    "py": "Zhège duì yú hěn hǎo.",
+    "en": "This regarding is very good."
+  },
+  "吨": {
+    "zh": "吨很重要。",
+    "py": "dūn hěn zhòngyào.",
+    "en": "ton is very important."
+  },
+  "蹲": {
+    "zh": "他蹲得很好。",
+    "py": "Tā dūn de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "多亏": {
+    "zh": "这个多亏很好。",
+    "py": "Zhège duō kuī hěn hǎo.",
+    "en": "This thanks to is very good."
+  },
+  "躲藏": {
+    "zh": "我们需要躲藏。",
+    "py": "Wǒmen xūyào duǒ cáng.",
+    "en": "We need to hide oneself."
+  },
+  "恶劣": {
+    "zh": "那个恶劣是我的。",
+    "py": "Nàge è liè shì wǒ de.",
+    "en": "That vile is mine."
+  },
+  "发表": {
+    "zh": "我发表了。",
+    "py": "Wǒ fā biǎo le.",
+    "en": "I issue."
+  },
+  "发愁": {
+    "zh": "他发愁得很好。",
+    "py": "Tā fā chóu de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "发达": {
+    "zh": "你喜欢发达吗？",
+    "py": "Nǐ xǐhuān fā dá ma?",
+    "en": "Do you like to developed?"
+  },
+  "发抖": {
+    "zh": "我们需要发抖。",
+    "py": "Wǒmen xūyào fā dǒu.",
+    "en": "We need to tremble."
+  },
+  "发挥": {
+    "zh": "他正在发挥。",
+    "py": "Tā zhèngzài fā huī.",
+    "en": "He is display."
+  },
+  "发明": {
+    "zh": "我发明了。",
+    "py": "Wǒ fā míng le.",
+    "en": "I invent."
+  },
+  "发票": {
+    "zh": "他有一个发票。",
+    "py": "Tā yǒu yīgè fā piào.",
+    "en": "He has a invoice."
+  },
+  "罚款": {
+    "zh": "我在找罚款。",
+    "py": "Wǒ zài zhǎo fá kuǎn.",
+    "en": "I am looking for a fine."
+  },
+  "法院": {
+    "zh": "她在找法院。",
+    "py": "Tā zài zhǎo fǎ yuàn.",
+    "en": "She is looking for court of law."
+  },
+  "翻": {
+    "zh": "他正在翻。",
+    "py": "Tā zhèngzài fān.",
+    "en": "He is turn over."
+  },
+  "繁荣": {
+    "zh": "繁荣很重要。",
+    "py": "fán róng hěn zhòngyào.",
+    "en": "prosperous is very important."
+  },
+  "凡是": {
+    "zh": "他有一个凡是。",
+    "py": "Tā yǒu yīgè fán shì.",
+    "en": "He has a each and every."
+  },
+  "反而": {
+    "zh": "你喜欢反而吗？",
+    "py": "Nǐ xǐhuān fǎn ér ma?",
+    "en": "Do you like to instead?"
+  },
+  "反复": {
+    "zh": "这个反复不错。",
+    "py": "Zhège fǎn fù bùcuò.",
+    "en": "This repeatedly is pretty good."
+  },
+  "反应": {
+    "zh": "他正在反应。",
+    "py": "Tā zhèngzài fǎn yìng.",
+    "en": "He is react."
+  },
+  "反正": {
+    "zh": "我反正了。",
+    "py": "Wǒ fǎn zhèng le.",
+    "en": "I anyway."
+  },
+  "方": {
+    "zh": "他有一个方。",
+    "py": "Tā yǒu yīgè fāng.",
+    "en": "He has a square."
+  },
+  "方案": {
+    "zh": "我在找方案。",
+    "py": "Wǒ zài zhǎo fāng àn.",
+    "en": "I am looking for a plan."
+  },
+  "妨碍": {
+    "zh": "我们需要妨碍。",
+    "py": "Wǒmen xūyào fáng ài.",
+    "en": "We need to hinder."
+  },
+  "房东": {
+    "zh": "我需要一个房东。",
+    "py": "Wǒ xūyào yīgè fáng dōng.",
+    "en": "I need a landlord."
+  },
+  "仿佛": {
+    "zh": "我仿佛了。",
+    "py": "Wǒ fǎng fú le.",
+    "en": "I seem."
+  },
+  "放松": {
+    "zh": "他放松得很好。",
+    "py": "Tā fàng sōng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "非": {
+    "zh": "你喜欢非吗？",
+    "py": "Nǐ xǐhuān fēi ma?",
+    "en": "Do you like to not be?"
+  },
+  "肥皂": {
+    "zh": "那个肥皂是新的。",
+    "py": "Nàge féi zào shì xīn de.",
+    "en": "That soap is new."
+  },
+  "肺": {
+    "zh": "这个肺很好。",
+    "py": "这 fèi hěn hǎo.",
+    "en": "This lung is very good."
+  },
+  "废话": {
+    "zh": "我需要废话。",
+    "py": "Wǒ xūyào fèi huà.",
+    "en": "I need nonsense."
+  },
+  "费用": {
+    "zh": "他对费用很感兴趣。",
+    "py": "Tā duì fèi yòng hěn gǎn xìngqù.",
+    "en": "He is very interested in cost."
+  },
+  "分别": {
+    "zh": "你喜欢分别吗？",
+    "py": "Nǐ xǐhuān fēn bié ma?",
+    "en": "Do you like to part or leave each other?"
+  },
+  "分布": {
+    "zh": "我们需要分布。",
+    "py": "Wǒmen xūyào fēn bù.",
+    "en": "We need to distributed."
+  },
+  "分配": {
+    "zh": "他正在分配。",
+    "py": "Tā zhèngzài fēn pèi.",
+    "en": "He is distribute."
+  },
+  "分析": {
+    "zh": "我分析了。",
+    "py": "Wǒ fēn xī le.",
+    "en": "I analyze."
+  },
+  "纷纷": {
+    "zh": "他有一个纷纷。",
+    "py": "Tā yǒu yīgè fēn fēn.",
+    "en": "He has a one after another."
+  },
+  "奋斗": {
+    "zh": "你喜欢奋斗吗？",
+    "py": "Nǐ xǐhuān fèn dòu ma?",
+    "en": "Do you like to strive?"
+  },
+  "愤怒": {
+    "zh": "这里有很多愤怒。",
+    "py": "Zhèlǐ yǒu hěn duō fèn nù.",
+    "en": "There are many angrys here."
+  },
+  "风格": {
+    "zh": "他对风格很感兴趣。",
+    "py": "Tā duì fēng gé hěn gǎn xìngqù.",
+    "en": "He is very interested in style."
+  },
+  "风俗": {
+    "zh": "风俗很重要。",
+    "py": "fēng sú hěn zhòngyào.",
+    "en": "social custom is very important."
+  },
+  "风险": {
+    "zh": "我需要风险。",
+    "py": "Wǒ xūyào fēng xiǎn.",
+    "en": "I need risk."
+  },
+  "疯狂": {
+    "zh": "我在找疯狂。",
+    "py": "Wǒ zài zhǎo fēng kuáng.",
+    "en": "I am looking for a madness."
+  },
+  "讽刺": {
+    "zh": "我们需要讽刺。",
+    "py": "Wǒmen xūyào fěng cì.",
+    "en": "We need to satirize."
+  },
+  "否定": {
+    "zh": "他正在否定。",
+    "py": "Tā zhèngzài fǒu dìng.",
+    "en": "He is negate."
+  },
+  "否认": {
+    "zh": "我否认了。",
+    "py": "Wǒ fǒu rèn le.",
+    "en": "I declare to be untrue."
+  },
+  "扶": {
+    "zh": "他扶得很好。",
+    "py": "Tā fú de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "幅": {
+    "zh": "我在找幅。",
+    "py": "Wǒ zài zhǎo fú.",
+    "en": "I am looking for a width."
+  },
+  "服从": {
+    "zh": "我们需要服从。",
+    "py": "Wǒmen xūyào fú cóng.",
+    "en": "We need to obey."
+  },
+  "服装": {
+    "zh": "他有服装。",
+    "py": "Tā yǒu fú zhuāng.",
+    "en": "He has dress."
+  },
+  "辅导": {
+    "zh": "我辅导了。",
+    "py": "Wǒ fǔ dǎo le.",
+    "en": "I coach."
+  },
+  "复制": {
+    "zh": "他复制得很好。",
+    "py": "Tā fù zhì de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "付款": {
+    "zh": "你喜欢付款吗？",
+    "py": "Nǐ xǐhuān fù kuǎn ma?",
+    "en": "Do you like to pay a sum of money?"
+  },
+  "妇女": {
+    "zh": "他有妇女。",
+    "py": "Tā yǒu fù nǚ.",
+    "en": "He has woman."
+  },
+  "改进": {
+    "zh": "他正在改进。",
+    "py": "Tā zhèngzài gǎi jìn.",
+    "en": "He is improve."
+  },
+  "改善": {
+    "zh": "我改善了。",
+    "py": "Wǒ gǎi shàn le.",
+    "en": "I make better."
+  },
+  "改正": {
+    "zh": "他改正得很好。",
+    "py": "Tā gǎi zhèng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "盖": {
+    "zh": "这里有盖。",
+    "py": "Zhèlǐ yǒu gài.",
+    "en": "There is lid here."
+  },
+  "概括": {
+    "zh": "我们需要概括。",
+    "py": "Wǒmen xūyào gài kuò.",
+    "en": "We need to summarize."
+  },
+  "干脆": {
+    "zh": "那个干脆是我的。",
+    "py": "Nàge gān cuì shì wǒ de.",
+    "en": "That straightforward is mine."
+  },
+  "感受": {
+    "zh": "我感受了。",
+    "py": "Wǒ gǎn shòu le.",
+    "en": "I sense."
+  },
+  "感想": {
+    "zh": "他有一个感想。",
+    "py": "Tā yǒu yīgè gǎn xiǎng.",
+    "en": "He has a impressions."
+  },
+  "赶紧": {
+    "zh": "他在找赶紧。",
+    "py": "Tā zài zhǎo gǎn jǐn.",
+    "en": "He is looking for hurriedly."
+  },
+  "赶快": {
+    "zh": "他对赶快很感兴趣。",
+    "py": "Tā duì gǎn kuài hěn gǎn xìngqù.",
+    "en": "He is very interested in at once."
+  },
+  "干活儿": {
+    "zh": "他正在干活儿。",
+    "py": "Tā zhèngzài gàn huó r.",
+    "en": "He is work."
+  },
+  "钢铁": {
+    "zh": "我喜欢钢铁。",
+    "py": "Wǒ xǐhuān gāng tiě.",
+    "en": "I like steel."
+  },
+  "高档": {
+    "zh": "他有一个高档。",
+    "py": "Tā yǒu yīgè gāo dàng.",
+    "en": "He has a superior quality."
+  },
+  "高速": {
+    "zh": "他对高速很感兴趣。",
+    "py": "Tā duì gāo sù hěn gǎn xìngqù.",
+    "en": "He is very interested in high speed."
+  },
+  "搞": {
+    "zh": "我们需要搞。",
+    "py": "Wǒmen xūyào gǎo.",
+    "en": "We need to do."
+  },
+  "告别": {
+    "zh": "他正在告别。",
+    "py": "Tā zhèngzài gào bié.",
+    "en": "He is leave."
+  },
+  "胳膊": {
+    "zh": "她在找胳膊。",
+    "py": "Tā zài zhǎo gē bo.",
+    "en": "She is looking for arm."
+  },
+  "鸽子": {
+    "zh": "我在找鸽子。",
+    "py": "Wǒ zài zhǎo gē zi.",
+    "en": "I am looking for pigeon."
+  },
+  "隔壁": {
+    "zh": "这个隔壁很好。",
+    "py": "Zhège gé bì hěn hǎo.",
+    "en": "This next door is very good."
+  },
+  "格外": {
+    "zh": "那个格外是新的。",
+    "py": "Nàge gé wài shì xīn de.",
+    "en": "That especially is new."
+  },
+  "革命": {
+    "zh": "那个革命是我的。",
+    "py": "Nàge gé mìng shì wǒ de.",
+    "en": "That revolution is mine."
+  },
+  "个别": {
+    "zh": "他对个别很感兴趣。",
+    "py": "Tā duì gè bié hěn gǎn xìngqù.",
+    "en": "He is very interested in individual."
+  },
+  "个人": {
+    "zh": "这里有个人。",
+    "py": "Zhèlǐ yǒu gè rén.",
+    "en": "There is individual here."
+  },
+  "个性": {
+    "zh": "我在找个性。",
+    "py": "Wǒ zài zhǎo gè xìng.",
+    "en": "I am looking for a individuality."
+  },
+  "根": {
+    "zh": "这个根不错。",
+    "py": "Zhège gēn bùcuò.",
+    "en": "This root is pretty good."
+  },
+  "更加": {
+    "zh": "他对更加很感兴趣。",
+    "py": "Tā duì gèng jiā hěn gǎn xìngqù.",
+    "en": "He is very interested in more."
+  },
+  "公布": {
+    "zh": "我公布了。",
+    "py": "Wǒ gōng bù le.",
+    "en": "I announce."
+  },
+  "公开": {
+    "zh": "他公开得很好。",
+    "py": "Tā gōng kāi de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "公寓": {
+    "zh": "我在找公寓。",
+    "py": "Wǒ zài zhǎo gōng yù.",
+    "en": "I am looking for a apartment building."
+  },
+  "公元": {
+    "zh": "这个公元不错。",
+    "py": "Zhège gōng yuán bùcuò.",
+    "en": "This CE is pretty good."
+  },
+  "公主": {
+    "zh": "我需要一个公主。",
+    "py": "Wǒ xūyào yīgè gōng zhǔ.",
+    "en": "I need a princess."
+  },
+  "工厂": {
+    "zh": "这个工厂很好。",
+    "py": "这 gōng chǎng hěn hǎo.",
+    "en": "This factory is very good."
+  },
+  "工程师": {
+    "zh": "工程师很重要。",
+    "py": "gōng chéng shī hěn zhòngyào.",
+    "en": "engineer is very important."
+  },
+  "工人": {
+    "zh": "他对工人很感兴趣。",
+    "py": "Tā duì gōng rén hěn gǎn xìngqù.",
+    "en": "He is very interested in worker."
+  },
+  "工业": {
+    "zh": "这里有很多工业。",
+    "py": "Zhèlǐ yǒu hěn duō gōng yè.",
+    "en": "There are many industrys here."
+  },
+  "功夫": {
+    "zh": "我需要功夫。",
+    "py": "Wǒ xūyào gōng fu.",
+    "en": "I need skill."
+  },
+  "功能": {
+    "zh": "这个功能很重要。",
+    "py": "Zhège gōng néng hěn zhòngyào.",
+    "en": "This function is very important."
+  },
+  "沟通": {
+    "zh": "他沟通得很好。",
+    "py": "Tā gōu tōng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "构成": {
+    "zh": "你喜欢构成吗？",
+    "py": "Nǐ xǐhuān gòu chéng ma?",
+    "en": "Do you like to constitute?"
+  },
+  "姑姑": {
+    "zh": "他有姑姑。",
+    "py": "Tā yǒu gū gu.",
+    "en": "He has paternal aunt."
+  },
+  "姑娘": {
+    "zh": "我喜欢这个姑娘。",
+    "py": "Wǒ xǐhuān zhège gū niang.",
+    "en": "I like this girl."
+  },
+  "古代": {
+    "zh": "他对古代很感兴趣。",
+    "py": "Tā duì gǔ dài hěn gǎn xìngqù.",
+    "en": "He is very interested in ancient times."
+  },
+  "古典": {
+    "zh": "我喜欢古典。",
+    "py": "Wǒ xǐhuān gǔ diǎn.",
+    "en": "I like classical."
+  },
+  "古老": {
+    "zh": "这里有古老。",
+    "py": "Zhèlǐ yǒu gǔ lǎo.",
+    "en": "There is ancient here."
+  },
+  "股票": {
+    "zh": "股票很重要。",
+    "py": "gǔ piào hěn zhòngyào.",
+    "en": "share is very important."
+  },
+  "鼓舞": {
+    "zh": "我买了鼓舞。",
+    "py": "Wǒ mǎi le gǔ wǔ.",
+    "en": "I bought some heartening."
+  },
+  "骨头": {
+    "zh": "我喜欢骨头。",
+    "py": "Wǒ xǐhuān gǔ tou.",
+    "en": "I like bone."
+  },
+  "固定": {
+    "zh": "她在找固定。",
+    "py": "Tā zài zhǎo gù dìng.",
+    "en": "She is looking for fixed."
+  },
+  "固体": {
+    "zh": "他有一个固体。",
+    "py": "Tā yǒu yīgè gù tǐ.",
+    "en": "He has a solid."
+  },
+  "雇佣": {
+    "zh": "我们需要雇佣。",
+    "py": "Wǒmen xūyào gù yōng.",
+    "en": "We need to employ."
+  },
+  "挂号": {
+    "zh": "他正在挂号。",
+    "py": "Tā zhèngzài guà hào.",
+    "en": "He is register."
+  },
+  "乖": {
+    "zh": "这个乖很重要。",
+    "py": "Zhège guāi hěn zhòngyào.",
+    "en": "This obedient is very important."
+  },
+  "拐弯": {
+    "zh": "他拐弯得很好。",
+    "py": "Tā guǎi wān de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "怪不得": {
+    "zh": "他对怪不得很感兴趣。",
+    "py": "Tā duì guài bu de hěn gǎn xìngqù.",
+    "en": "He is very interested in no wonder!."
+  },
+  "关闭": {
+    "zh": "我们需要关闭。",
+    "py": "Wǒmen xūyào guān bì.",
+    "en": "We need to close."
+  },
+  "关怀": {
+    "zh": "他正在关怀。",
+    "py": "Tā zhèngzài guān huái.",
+    "en": "He is care."
+  },
+  "官": {
+    "zh": "这个官很重要。",
+    "py": "Zhège guān hěn zhòngyào.",
+    "en": "This official is very important."
+  },
+  "观点": {
+    "zh": "他对观点很感兴趣。",
+    "py": "Tā duì guān diǎn hěn gǎn xìngqù.",
+    "en": "He is very interested in point of view."
+  },
+  "观念": {
+    "zh": "我在找观念。",
+    "py": "Wǒ zài zhǎo guān niàn.",
+    "en": "I am looking for a notion."
+  },
+  "管子": {
+    "zh": "这个管子很好。",
+    "py": "Zhège guǎn zi hěn hǎo.",
+    "en": "This tube is very good."
+  },
+  "罐头": {
+    "zh": "那个罐头是新的。",
+    "py": "Nàge guàn tou shì xīn de.",
+    "en": "That tin is new."
+  },
+  "冠军": {
+    "zh": "他对冠军很感兴趣。",
+    "py": "Tā duì guàn jūn hěn gǎn xìngqù.",
+    "en": "He is very interested in champion."
+  },
+  "光滑": {
+    "zh": "那个光滑是新的。",
+    "py": "Nàge guāng hua shì xīn de.",
+    "en": "That glossy is new."
+  },
+  "光临": {
+    "zh": "你喜欢光临吗？",
+    "py": "Nǐ xǐhuān guāng lín ma?",
+    "en": "Do you like to Welcome!?"
+  },
+  "光明": {
+    "zh": "这个光明不错。",
+    "py": "Zhège guāng míng bùcuò.",
+    "en": "This light is pretty good."
+  },
+  "光盘": {
+    "zh": "那个光盘是我的。",
+    "py": "Nàge guāng pán shì wǒ de.",
+    "en": "That compact disc is mine."
+  },
+  "光荣": {
+    "zh": "这个光荣很重要。",
+    "py": "Zhège guāng róng hěn zhòngyào.",
+    "en": "This honor and glory is very important."
+  },
+  "广场": {
+    "zh": "这个广场很好。",
+    "py": "这 guǎng chǎng hěn hǎo.",
+    "en": "This public square is very good."
+  },
+  "广大": {
+    "zh": "我在找广大。",
+    "py": "Wǒ zài zhǎo guǎng dà.",
+    "en": "I am looking for a vast or extensive."
+  },
+  "广泛": {
+    "zh": "他对广泛很感兴趣。",
+    "py": "Tā duì guǎng fàn hěn gǎn xìngqù.",
+    "en": "He is very interested in extensive."
+  },
+  "规矩": {
+    "zh": "规矩很重要。",
+    "py": "guī ju hěn zhòngyào.",
+    "en": "lit. compass and set square is very important."
+  },
+  "规模": {
+    "zh": "规模很重要。",
+    "py": "guī mó hěn zhòngyào.",
+    "en": "scale is very important."
+  },
+  "规则": {
+    "zh": "他有一个规则。",
+    "py": "Tā yǒu yīgè guī zé.",
+    "en": "He has a rule."
+  },
+  "柜台": {
+    "zh": "他对柜台很感兴趣。",
+    "py": "Tā duì guì tái hěn gǎn xìngqù.",
+    "en": "He is very interested in sales counter."
+  },
+  "滚": {
+    "zh": "我们需要滚。",
+    "py": "Wǒmen xūyào gǔn.",
+    "en": "We need to boil."
+  },
+  "锅": {
+    "zh": "我需要锅。",
+    "py": "Wǒ xūyào guō.",
+    "en": "I need pot."
+  },
+  "国籍": {
+    "zh": "这个国籍很重要。",
+    "py": "Zhège guó jí hěn zhòngyào.",
+    "en": "This nationality is very important."
+  },
+  "国庆节": {
+    "zh": "他有一个国庆节。",
+    "py": "Tā yǒu yīgè Guó qìng jié.",
+    "en": "He has a PRC National Day."
+  },
+  "果实": {
+    "zh": "这里有很多果实。",
+    "py": "Zhèlǐ yǒu hěn duō guǒ shí.",
+    "en": "There are many fruits here."
+  },
+  "过分": {
+    "zh": "他有过分。",
+    "py": "Tā yǒu guò fèn.",
+    "en": "He has excessive."
+  },
+  "过敏": {
+    "zh": "他正在过敏。",
+    "py": "Tā zhèngzài guò mǐn.",
+    "en": "He is be allergic."
+  },
+  "过期": {
+    "zh": "我过期了。",
+    "py": "Wǒ guò qī le.",
+    "en": "I be overdue."
+  },
+  "哈": {
+    "zh": "我喜欢这个哈。",
+    "py": "Wǒ xǐhuān zhège hā.",
+    "en": "I like this laughter."
+  },
+  "海关": {
+    "zh": "我在找海关。",
+    "py": "Wǒ zài zhǎo hǎi guān.",
+    "en": "I am looking for a customs."
+  },
+  "海鲜": {
+    "zh": "他在找海鲜。",
+    "py": "Tā zài zhǎo hǎi xiān.",
+    "en": "He is looking for seafood."
+  },
+  "喊": {
+    "zh": "他正在喊。",
+    "py": "Tā zhèngzài hǎn.",
+    "en": "He is yell."
+  },
+  "行业": {
+    "zh": "这个行业很重要。",
+    "py": "Zhège háng yè hěn zhòngyào.",
+    "en": "This industry is very important."
+  },
+  "豪华": {
+    "zh": "我需要豪华。",
+    "py": "Wǒ xūyào háo huá.",
+    "en": "I need luxurious."
+  },
+  "好奇": {
+    "zh": "我在找好奇。",
+    "py": "Wǒ zài zhǎo hào qí.",
+    "en": "I am looking for a inquisitive."
+  },
+  "和平": {
+    "zh": "他对和平很感兴趣。",
+    "py": "Tā duì hé píng hěn gǎn xìngqù.",
+    "en": "He is very interested in peace."
+  },
+  "何必": {
+    "zh": "何必很重要。",
+    "py": "hé bì hěn zhòngyào.",
+    "en": "there is no need is very important."
+  },
+  "何况": {
+    "zh": "我何况了。",
+    "py": "Wǒ hé kuàng le.",
+    "en": "I let alone."
+  },
+  "合法": {
+    "zh": "他有合法。",
+    "py": "Tā yǒu hé fǎ.",
+    "en": "He has lawful."
+  },
+  "合理": {
+    "zh": "我在找合理。",
+    "py": "Wǒ zài zhǎo hé lǐ.",
+    "en": "I am looking for a rational."
+  },
+  "合同": {
+    "zh": "这个合同不错。",
+    "py": "Zhège hé tong bùcuò.",
+    "en": "This contract is pretty good."
+  },
+  "合影": {
+    "zh": "这里有合影。",
+    "py": "Zhèlǐ yǒu hé yǐng.",
+    "en": "There is joint photo here."
+  },
+  "合作": {
+    "zh": "我合作了。",
+    "py": "Wǒ hé zuò le.",
+    "en": "I cooperate."
+  },
+  "核心": {
+    "zh": "他对核心很感兴趣。",
+    "py": "Tā duì hé xīn hěn gǎn xìngqù.",
+    "en": "He is very interested in core."
+  },
+  "恨": {
+    "zh": "你喜欢恨吗？",
+    "py": "Nǐ xǐhuān hèn ma?",
+    "en": "Do you like to hate?"
+  },
+  "横": {
+    "zh": "这个横不错。",
+    "py": "Zhège héng bùcuò.",
+    "en": "This horizontal is pretty good."
+  },
+  "后果": {
+    "zh": "那个后果是我的。",
+    "py": "Nàge hòu guǒ shì wǒ de.",
+    "en": "That consequences is mine."
+  },
+  "忽视": {
+    "zh": "我忽视了。",
+    "py": "Wǒ hū shì le.",
+    "en": "I neglect."
+  },
+  "呼吸": {
+    "zh": "他呼吸得很好。",
+    "py": "Tā hū xī de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "壶": {
+    "zh": "我在找壶。",
+    "py": "Wǒ zài zhǎo hú.",
+    "en": "I am looking for a pot."
+  },
+  "蝴蝶": {
+    "zh": "我喜欢蝴蝶。",
+    "py": "Wǒ xǐhuān hú dié.",
+    "en": "I like butterfly."
+  },
+  "胡说": {
+    "zh": "他正在胡说。",
+    "py": "Tā zhèngzài hú shuō.",
+    "en": "He is talk nonsense."
+  },
+  "胡同": {
+    "zh": "我在找胡同。",
+    "py": "Wǒ zài zhǎo hú tòng.",
+    "en": "I am looking for variant of 胡同[hú tòng]."
+  },
+  "胡须": {
+    "zh": "她在找胡须。",
+    "py": "Tā zài zhǎo hú xū.",
+    "en": "She is looking for beard."
+  },
+  "糊涂": {
+    "zh": "这里有糊涂。",
+    "py": "Zhèlǐ yǒu hú tu.",
+    "en": "There is muddled here."
+  },
+  "花生": {
+    "zh": "他对花生很感兴趣。",
+    "py": "Tā duì huā shēng hěn gǎn xìngqù.",
+    "en": "He is very interested in peanut."
+  },
+  "滑冰": {
+    "zh": "他正在滑冰。",
+    "py": "Tā zhèngzài huá bīng.",
+    "en": "He is skate."
+  },
+  "划船": {
+    "zh": "我划船了。",
+    "py": "Wǒ huá chuán le.",
+    "en": "I row a boat."
+  },
+  "华裔": {
+    "zh": "他有一个华裔。",
+    "py": "Tā yǒu yīgè Huá yì.",
+    "en": "He has a ethnic Chinese."
+  },
+  "化学": {
+    "zh": "我在找化学。",
+    "py": "Wǒ zài zhǎo huà xué.",
+    "en": "I am looking for a chemistry."
+  },
+  "话题": {
+    "zh": "这个话题不错。",
+    "py": "Zhège huà tí bùcuò.",
+    "en": "This subject is pretty good."
+  },
+  "怀念": {
+    "zh": "他正在怀念。",
+    "py": "Tā zhèngzài huái niàn.",
+    "en": "He is cherish the memory of."
+  },
+  "缓解": {
+    "zh": "我缓解了。",
+    "py": "Wǒ huǎn jiě le.",
+    "en": "I blunt."
+  },
+  "幻想": {
+    "zh": "他对幻想很感兴趣。",
+    "py": "Tā duì huàn xiǎng hěn gǎn xìngqù.",
+    "en": "He is very interested in delusion."
+  },
+  "慌张": {
+    "zh": "我喜欢慌张。",
+    "py": "Wǒ xǐhuān huāng zhāng.",
+    "en": "I like confused."
+  },
+  "黄瓜": {
+    "zh": "那个黄瓜是新的。",
+    "py": "Nàge huáng guā shì xīn de.",
+    "en": "That cucumber is new."
+  },
+  "黄金": {
+    "zh": "这里有很多黄金。",
+    "py": "Zhèlǐ yǒu hěn duō huáng jīn.",
+    "en": "There are many golds here."
+  },
+  "皇帝": {
+    "zh": "他对皇帝很感兴趣。",
+    "py": "Tā duì huáng dì hěn gǎn xìngqù.",
+    "en": "He is very interested in emperor."
+  },
+  "皇后": {
+    "zh": "我喜欢这个皇后。",
+    "py": "Wǒ xǐhuān zhège huáng hòu.",
+    "en": "I like this empress."
+  },
+  "灰": {
+    "zh": "这个灰很好。",
+    "py": "这 huī hěn hǎo.",
+    "en": "This ash is very good."
+  },
+  "灰尘": {
+    "zh": "他在找灰尘。",
+    "py": "Tā zài zhǎo huī chén.",
+    "en": "He is looking for dust."
+  },
+  "灰心": {
+    "zh": "他正在灰心。",
+    "py": "Tā zhèngzài huī xīn.",
+    "en": "He is lose heart."
+  },
+  "挥": {
+    "zh": "我挥了。",
+    "py": "Wǒ huī le.",
+    "en": "I wave."
+  },
+  "恢复": {
+    "zh": "他恢复得很好。",
+    "py": "Tā huī fù de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "汇率": {
+    "zh": "汇率很重要。",
+    "py": "huì lǜ hěn zhòngyào.",
+    "en": "exchange rate is very important."
+  },
+  "婚礼": {
+    "zh": "我买了婚礼。",
+    "py": "Wǒ mǎi le hūn lǐ.",
+    "en": "I bought some wedding ceremony."
+  },
+  "婚姻": {
+    "zh": "这个婚姻很好。",
+    "py": "Zhège hūn yīn hěn hǎo.",
+    "en": "This matrimony is very good."
+  },
+  "活跃": {
+    "zh": "他很活跃。",
+    "py": "Tā hěn huó yuè.",
+    "en": "He is very active."
+  },
+  "火柴": {
+    "zh": "他有一个火柴。",
+    "py": "Tā yǒu yīgè huǒ chái.",
+    "en": "He has a match."
+  },
+  "伙伴": {
+    "zh": "他对伙伴很感兴趣。",
+    "py": "Tā duì huǒ bàn hěn gǎn xìngqù.",
+    "en": "He is very interested in partner."
+  },
+  "基本": {
+    "zh": "这个基本不错。",
+    "py": "Zhège jī běn bùcuò.",
+    "en": "This basic is pretty good."
+  },
+  "机器": {
+    "zh": "机器很重要。",
+    "py": "jī qì hěn zhòngyào.",
+    "en": "machine is very important."
+  },
+  "激烈": {
+    "zh": "这个激烈很好。",
+    "py": "Zhège jī liè hěn hǎo.",
+    "en": "This intense is very good."
+  },
+  "肌肉": {
+    "zh": "他对肌肉很感兴趣。",
+    "py": "Tā duì jī ròu hěn gǎn xìngqù.",
+    "en": "He is very interested in muscle."
+  },
+  "及格": {
+    "zh": "你喜欢及格吗？",
+    "py": "Nǐ xǐhuān jí gé ma?",
+    "en": "Do you like to pass a test?"
+  },
+  "急忙": {
+    "zh": "我需要急忙。",
+    "py": "Wǒ xūyào jí máng.",
+    "en": "I need hastily."
+  },
+  "集体": {
+    "zh": "我需要集体。",
+    "py": "Wǒ xūyào jí tǐ.",
+    "en": "I need collective."
+  },
+  "记录": {
+    "zh": "我记录了。",
+    "py": "Wǒ jì lù le.",
+    "en": "I record."
+  },
+  "记忆": {
+    "zh": "他记忆得很好。",
+    "py": "Tā jì yì de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "计算": {
+    "zh": "你喜欢计算吗？",
+    "py": "Nǐ xǐhuān jì suàn ma?",
+    "en": "Do you like to count?"
+  },
+  "寂寞": {
+    "zh": "我需要一个寂寞。",
+    "py": "Wǒ xūyào yīgè jì mò.",
+    "en": "I need a lonely."
+  },
+  "系领带": {
+    "zh": "他正在系领带。",
+    "py": "Tā zhèngzài jì lǐng dài.",
+    "en": "He is tie one's necktie."
+  },
+  "纪录": {
+    "zh": "那个纪录是新的。",
+    "py": "Nàge jì lù shì xīn de.",
+    "en": "That record is new."
+  },
+  "纪律": {
+    "zh": "他有纪律。",
+    "py": "Tā yǒu jì lǜ.",
+    "en": "He has discipline."
+  },
+  "纪念": {
+    "zh": "你喜欢纪念吗？",
+    "py": "Nǐ xǐhuān jì niàn ma?",
+    "en": "Do you like to commemorate?"
+  },
+  "家庭": {
+    "zh": "他有家庭。",
+    "py": "Tā yǒu jiā tíng.",
+    "en": "He has family."
+  },
+  "家务": {
+    "zh": "我在找家务。",
+    "py": "Wǒ zài zhǎo jiā wù.",
+    "en": "I am looking for household duties."
+  },
+  "家乡": {
+    "zh": "这里有家乡。",
+    "py": "Zhèlǐ yǒu jiā xiāng.",
+    "en": "There is hometown here."
+  },
+  "嘉宾": {
+    "zh": "他有一个嘉宾。",
+    "py": "Tā yǒu yīgè jiā bīn.",
+    "en": "He has a esteemed guest."
+  },
+  "夹子": {
+    "zh": "他对夹子很感兴趣。",
+    "py": "Tā duì jiā zi hěn gǎn xìngqù.",
+    "en": "He is very interested in clip."
+  },
+  "甲": {
+    "zh": "这个甲不错。",
+    "py": "Zhège jiǎ bùcuò.",
+    "en": "This first of the ten heavenly stems 十天干[shí tiān gān] is pretty good."
+  },
+  "假如": {
+    "zh": "我喜欢假如。",
+    "py": "Wǒ xǐhuān jiǎ rú.",
+    "en": "I like if."
+  },
+  "假装": {
+    "zh": "我假装了。",
+    "py": "Wǒ jiǎ zhuāng le.",
+    "en": "I feign."
+  },
+  "嫁": {
+    "zh": "他嫁得很好。",
+    "py": "Tā jià de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "价值": {
+    "zh": "这里有很多价值。",
+    "py": "Zhèlǐ yǒu hěn duō jià zhí.",
+    "en": "There are many values here."
+  },
+  "驾驶": {
+    "zh": "我们需要驾驶。",
+    "py": "Wǒmen xūyào jià shǐ.",
+    "en": "We need to pilot."
+  },
+  "煎": {
+    "zh": "他正在煎。",
+    "py": "Tā zhèngzài jiān.",
+    "en": "He is pan fry."
+  },
+  "肩膀": {
+    "zh": "他对肩膀很感兴趣。",
+    "py": "Tā duì jiān bǎng hěn gǎn xìngqù.",
+    "en": "He is very interested in shoulder."
+  },
+  "坚决": {
+    "zh": "我喜欢这个坚决。",
+    "py": "Wǒ xǐhuān zhège jiān jué.",
+    "en": "I like this firm."
+  },
+  "艰巨": {
+    "zh": "我喜欢艰巨。",
+    "py": "Wǒ xǐhuān jiān jù.",
+    "en": "I like arduous."
+  },
+  "艰苦": {
+    "zh": "我买了艰苦。",
+    "py": "Wǒ mǎi le jiān kǔ.",
+    "en": "I bought some difficult."
+  },
+  "捡": {
+    "zh": "他正在捡。",
+    "py": "Tā zhèngzài jiǎn.",
+    "en": "He is pick up."
+  },
+  "剪刀": {
+    "zh": "她在找剪刀。",
+    "py": "Tā zài zhǎo jiǎn dāo.",
+    "en": "She is looking for scissors."
+  },
+  "简历": {
+    "zh": "那个简历是新的。",
+    "py": "Nàge jiǎn lì shì xīn de.",
+    "en": "That curriculum vitae is new."
+  },
+  "简直": {
+    "zh": "简直很重要。",
+    "py": "jiǎn zhí hěn zhòngyào.",
+    "en": "simply is very important."
+  },
+  "健身房": {
+    "zh": "他对健身房很感兴趣。",
+    "py": "Tā duì jiàn shēn fáng hěn gǎn xìngqù.",
+    "en": "He is very interested in gym."
+  },
+  "建设": {
+    "zh": "他正在建设。",
+    "py": "Tā zhèngzài jiàn shè.",
+    "en": "He is build."
+  },
+  "建议": {
+    "zh": "我建议了。",
+    "py": "Wǒ jiàn yì le.",
+    "en": "I propose."
+  },
+  "建筑": {
+    "zh": "他建筑得很好。",
+    "py": "Tā jiàn zhù de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "键盘": {
+    "zh": "他对键盘很感兴趣。",
+    "py": "Tā duì jiàn pán hěn gǎn xìngqù.",
+    "en": "He is very interested in keyboard."
+  },
+  "讲究": {
+    "zh": "我们需要讲究。",
+    "py": "Wǒmen xūyào jiǎng jiu.",
+    "en": "We need to pay particular attention to."
+  },
+  "讲座": {
+    "zh": "那个讲座是我的。",
+    "py": "Nàge jiǎng zuò shì wǒ de.",
+    "en": "That a course of lectures is mine."
+  },
+  "降落": {
+    "zh": "我降落了。",
+    "py": "Wǒ jiàng luò le.",
+    "en": "I descend."
+  },
+  "酱油": {
+    "zh": "他对酱油很感兴趣。",
+    "py": "Tā duì jiàng yóu hěn gǎn xìngqù.",
+    "en": "He is very interested in soy sauce."
+  },
+  "浇": {
+    "zh": "你喜欢浇吗？",
+    "py": "Nǐ xǐhuān jiāo ma?",
+    "en": "Do you like to pour liquid?"
+  },
+  "交换": {
+    "zh": "我们需要交换。",
+    "py": "Wǒmen xūyào jiāo huàn.",
+    "en": "We need to exchange."
+  },
+  "交际": {
+    "zh": "那个交际是我的。",
+    "py": "Nàge jiāo jì shì wǒ de.",
+    "en": "That communication is mine."
+  },
+  "郊区": {
+    "zh": "这个郊区很重要。",
+    "py": "Zhège jiāo qū hěn zhòngyào.",
+    "en": "This suburban district is very important."
+  },
+  "胶水": {
+    "zh": "这个胶水很好。",
+    "py": "Zhège jiāo shuǐ hěn hǎo.",
+    "en": "This glue is very good."
+  },
+  "角度": {
+    "zh": "这个角度很好。",
+    "py": "这 jiǎo dù hěn hǎo.",
+    "en": "This angle is very good."
+  },
+  "狡猾": {
+    "zh": "这个狡猾很好。",
+    "py": "Zhège jiǎo huá hěn hǎo.",
+    "en": "This crafty is very good."
+  },
+  "教材": {
+    "zh": "教材很重要。",
+    "py": "jiào cái hěn zhòngyào.",
+    "en": "teaching material is very important."
+  },
+  "教练": {
+    "zh": "他有一个教练。",
+    "py": "Tā yǒu yīgè jiào liàn.",
+    "en": "He has a instructor."
+  },
+  "教训": {
+    "zh": "他教训得很好。",
+    "py": "Tā jiào xun de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "接触": {
+    "zh": "你喜欢接触吗？",
+    "py": "Nǐ xǐhuān jiē chù ma?",
+    "en": "Do you like to touch?"
+  },
+  "接待": {
+    "zh": "我们需要接待。",
+    "py": "Wǒmen xūyào jiē dài.",
+    "en": "We need to receive."
+  },
+  "接近": {
+    "zh": "他正在接近。",
+    "py": "Tā zhèngzài jiē jìn.",
+    "en": "He is approach."
+  },
+  "接着": {
+    "zh": "我接着了。",
+    "py": "Wǒ jiē zhe le.",
+    "en": "I catch and hold on."
+  },
+  "阶段": {
+    "zh": "他有一个阶段。",
+    "py": "Tā yǒu yīgè jiē duàn.",
+    "en": "He has a stage."
+  },
+  "结实": {
+    "zh": "他对结实很感兴趣。",
+    "py": "Tā duì jiē shi hěn gǎn xìngqù.",
+    "en": "He is very interested in rugged."
+  },
+  "节": {
+    "zh": "我需要节。",
+    "py": "Wǒ xūyào jié.",
+    "en": "I need festival."
+  },
+  "节省": {
+    "zh": "他正在节省。",
+    "py": "Tā zhèngzài jié shěng.",
+    "en": "He is saving."
+  },
+  "结构": {
+    "zh": "这个结构很重要。",
+    "py": "Zhège jié gòu hěn zhòngyào.",
+    "en": "This structure is very important."
+  },
+  "结合": {
+    "zh": "他结合得很好。",
+    "py": "Tā jié hé de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "结论": {
+    "zh": "结论很重要。",
+    "py": "jié lùn hěn zhòngyào.",
+    "en": "conclusion is very important."
+  },
+  "结账": {
+    "zh": "我们需要结账。",
+    "py": "Wǒmen xūyào jié zhàng.",
+    "en": "We need to pay the bill."
+  },
+  "解放": {
+    "zh": "他正在解放。",
+    "py": "Tā zhèngzài jiě fàng.",
+    "en": "He is liberate."
+  },
+  "解说员": {
+    "zh": "这个解说员很重要。",
+    "py": "Zhège jiě shuō yuán hěn zhòngyào.",
+    "en": "This commentator is very important."
+  },
+  "届": {
+    "zh": "他届得很好。",
+    "py": "Tā jiè de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "借口": {
+    "zh": "你喜欢借口吗？",
+    "py": "Nǐ xǐhuān jiè kǒu ma?",
+    "en": "Do you like to use as an excuse?"
+  },
+  "戒烟": {
+    "zh": "我们需要戒烟。",
+    "py": "Wǒmen xūyào jiè yān.",
+    "en": "We need to give up smoking."
+  },
+  "戒指": {
+    "zh": "他有戒指。",
+    "py": "Tā yǒu jiè zhi.",
+    "en": "He has ring."
+  },
+  "金属": {
+    "zh": "我需要金属。",
+    "py": "Wǒ xūyào jīn shǔ.",
+    "en": "I need metal."
+  },
+  "紧": {
+    "zh": "他有紧。",
+    "py": "Tā yǒu jǐn.",
+    "en": "He has tight."
+  },
+  "紧急": {
+    "zh": "我在找紧急。",
+    "py": "Wǒ zài zhǎo jǐn jí.",
+    "en": "I am looking for urgent."
+  },
+  "尽量": {
+    "zh": "我们需要尽量。",
+    "py": "Wǒmen xūyào jǐn liàng.",
+    "en": "We need to as much as possible."
+  },
+  "进步": {
+    "zh": "他正在进步。",
+    "py": "Tā zhèngzài jìn bù.",
+    "en": "He is progress."
+  },
+  "进口": {
+    "zh": "我进口了。",
+    "py": "Wǒ jìn kǒu le.",
+    "en": "I import."
+  },
+  "近代": {
+    "zh": "他在找近代。",
+    "py": "Tā zài zhǎo jìn dài.",
+    "en": "He is looking for modern times."
+  },
+  "尽力": {
+    "zh": "你喜欢尽力吗？",
+    "py": "Nǐ xǐhuān jìn lì ma?",
+    "en": "Do you like to strive one's hardest?"
+  },
+  "精力": {
+    "zh": "精力很重要。",
+    "py": "jīng lì hěn zhòngyào.",
+    "en": "energy is very important."
+  },
+  "经典": {
+    "zh": "那个经典是我的。",
+    "py": "Nàge jīng diǎn shì wǒ de.",
+    "en": "That the classics is mine."
+  },
+  "经营": {
+    "zh": "我经营了。",
+    "py": "Wǒ jīng yíng le.",
+    "en": "I engage in."
+  },
+  "景色": {
+    "zh": "他对景色很感兴趣。",
+    "py": "Tā duì jǐng sè hěn gǎn xìngqù.",
+    "en": "He is very interested in scenery."
+  },
+  "敬爱": {
+    "zh": "这个敬爱很好。",
+    "py": "Zhège jìng ài hěn hǎo.",
+    "en": "This respect and love is very good."
+  },
+  "酒吧": {
+    "zh": "这里有酒吧。",
+    "py": "Zhèlǐ yǒu jiǔ bā.",
+    "en": "There is bar here."
+  },
+  "救": {
+    "zh": "他正在救。",
+    "py": "Tā zhèngzài jiù.",
+    "en": "He is save."
+  },
+  "救护车": {
+    "zh": "这个救护车很重要。",
+    "py": "Zhège jiù hù chē hěn zhòngyào.",
+    "en": "This ambulance is very important."
+  },
+  "舅舅": {
+    "zh": "我喜欢舅舅。",
+    "py": "Wǒ xǐhuān jiù jiu.",
+    "en": "I like mother's brother."
+  },
+  "居然": {
+    "zh": "你喜欢居然吗？",
+    "py": "Nǐ xǐhuān jū rán ma?",
+    "en": "Do you like to unexpectedly?"
+  },
+  "桔子": {
+    "zh": "你桔子去吧。",
+    "py": "Nǐ jú zi qù ba.",
+    "en": "You should go tangerine."
+  },
+  "举": {
+    "zh": "他正在举。",
+    "py": "Tā zhèngzài jǔ.",
+    "en": "He is lift."
+  },
+  "具备": {
+    "zh": "我具备了。",
+    "py": "Wǒ jù bèi le.",
+    "en": "I possess."
+  },
+  "具体": {
+    "zh": "她在找具体。",
+    "py": "Tā zài zhǎo jù tǐ.",
+    "en": "She is looking for concrete."
+  },
+  "巨大": {
+    "zh": "他巨大很努力。",
+    "py": "Tā jù dà hěn nǔlì.",
+    "en": "He works huge hard."
+  },
+  "聚会": {
+    "zh": "我们需要聚会。",
+    "py": "Wǒmen xūyào jù huì.",
+    "en": "We need to party."
+  },
+  "俱乐部": {
+    "zh": "那个俱乐部是我的。",
+    "py": "Nàge jù lè bù shì wǒ de.",
+    "en": "That club is mine."
+  },
+  "据说": {
+    "zh": "那个据说是新的。",
+    "py": "Nàge jù shuō shì xīn de.",
+    "en": "That it is said that is new."
+  },
+  "捐": {
+    "zh": "他捐得很好。",
+    "py": "Tā juān de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "卷": {
+    "zh": "你喜欢卷吗？",
+    "py": "Nǐ xǐhuān juǎn ma?",
+    "en": "Do you like to roll?"
+  },
+  "决赛": {
+    "zh": "这个决赛不错。",
+    "py": "Zhège jué sài bùcuò.",
+    "en": "This finals is pretty good."
+  },
+  "决心": {
+    "zh": "那个决心是我的。",
+    "py": "Nàge jué xīn shì wǒ de.",
+    "en": "That determination is mine."
+  },
+  "绝对": {
+    "zh": "这个绝对很重要。",
+    "py": "Zhège jué duì hěn zhòngyào.",
+    "en": "This absolute is very important."
+  },
+  "角色": {
+    "zh": "他对角色很感兴趣。",
+    "py": "Tā duì jué sè hěn gǎn xìngqù.",
+    "en": "He is very interested in role."
+  },
+  "军事": {
+    "zh": "这里有很多军事。",
+    "py": "Zhèlǐ yǒu hěn duō jūn shì.",
+    "en": "There are many military affairss here."
+  },
+  "均匀": {
+    "zh": "这个均匀不错。",
+    "py": "Zhège jūn yún bùcuò.",
+    "en": "This even is pretty good."
+  },
+  "卡车": {
+    "zh": "这个卡车很好。",
+    "py": "这 kǎ chē hěn hǎo.",
+    "en": "This truck is very good."
+  },
+  "开发": {
+    "zh": "我开发了。",
+    "py": "Wǒ kāi fā le.",
+    "en": "I exploit."
+  },
+  "开放": {
+    "zh": "他开放得很好。",
+    "py": "Tā kāi fàng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "开幕式": {
+    "zh": "这里有开幕式。",
+    "py": "Zhèlǐ yǒu kāi mù shì.",
+    "en": "There is opening ceremony here."
+  },
+  "开心": {
+    "zh": "我们需要开心。",
+    "py": "Wǒmen xūyào kāi xīn.",
+    "en": "We need to feel happy."
+  },
+  "砍": {
+    "zh": "他正在砍。",
+    "py": "Tā zhèngzài kǎn.",
+    "en": "He is chop."
+  },
+  "看不起": {
+    "zh": "我看不起了。",
+    "py": "Wǒ kàn bu qǐ le.",
+    "en": "I look down upon."
+  },
+  "看来": {
+    "zh": "看来很重要。",
+    "py": "kàn lai hěn zhòngyào.",
+    "en": "apparently is very important."
+  },
+  "抗议": {
+    "zh": "你喜欢抗议吗？",
+    "py": "Nǐ xǐhuān kàng yì ma?",
+    "en": "Do you like to protest?"
+  },
+  "烤鸭": {
+    "zh": "他对烤鸭很感兴趣。",
+    "py": "Tā duì kǎo yā hěn gǎn xìngqù.",
+    "en": "He is very interested in roast duck."
+  },
+  "颗": {
+    "zh": "那个颗是我的。",
+    "py": "Nàge kē shì wǒ de.",
+    "en": "That classifier for small spheres is mine."
+  },
+  "可见": {
+    "zh": "这个可见很重要。",
+    "py": "Zhège kě jiàn hěn zhòngyào.",
+    "en": "This it can clearly be seen is very important."
+  },
+  "可靠": {
+    "zh": "我喜欢可靠。",
+    "py": "Wǒ xǐhuān kě kào.",
+    "en": "I like reliable."
+  },
+  "可怕": {
+    "zh": "我买了可怕。",
+    "py": "Wǒ mǎi le kě pà.",
+    "en": "I bought some awful."
+  },
+  "刻苦": {
+    "zh": "这个刻苦很好。",
+    "py": "Zhège kè kǔ hěn hǎo.",
+    "en": "This hardworking is very good."
+  },
+  "课程": {
+    "zh": "我需要课程。",
+    "py": "Wǒ xūyào kè chéng.",
+    "en": "I need course."
+  },
+  "克": {
+    "zh": "我克了。",
+    "py": "Wǒ kè le.",
+    "en": "I variant of 克[kè]."
+  },
+  "克服": {
+    "zh": "他克服得很好。",
+    "py": "Tā kè fú de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "客观": {
+    "zh": "客观很重要。",
+    "py": "kè guān hěn zhòngyào.",
+    "en": "objective is very important."
+  },
+  "客厅": {
+    "zh": "这个客厅不错。",
+    "py": "Zhège kè tīng bùcuò.",
+    "en": "This drawing room is pretty good."
+  },
+  "空间": {
+    "zh": "他有空间。",
+    "py": "Tā yǒu kōng jiān.",
+    "en": "He has space."
+  },
+  "恐怖": {
+    "zh": "我需要恐怖。",
+    "py": "Wǒ xūyào kǒng bù.",
+    "en": "I need terrible."
+  },
+  "空闲": {
+    "zh": "他有空闲。",
+    "py": "Tā yǒu kòng xián.",
+    "en": "He has idle."
+  },
+  "控制": {
+    "zh": "你喜欢控制吗？",
+    "py": "Nǐ xǐhuān kòng zhì ma?",
+    "en": "Do you like to control?"
+  },
+  "口味": {
+    "zh": "这个口味不错。",
+    "py": "Zhège kǒu wèi bùcuò.",
+    "en": "This a person's preferences is pretty good."
+  },
+  "夸": {
+    "zh": "他正在夸。",
+    "py": "Tā zhèngzài kuā.",
+    "en": "He is boast."
+  },
+  "会计": {
+    "zh": "我在找会计。",
+    "py": "Wǒ zài zhǎo kuài jì.",
+    "en": "I am looking for accountant."
+  },
+  "矿泉水": {
+    "zh": "这里有矿泉水。",
+    "py": "Zhèlǐ yǒu kuàng quán shuǐ.",
+    "en": "There is mineral spring water here."
+  },
+  "辣椒": {
+    "zh": "这里非常辣椒。",
+    "py": "Zhèlǐ fēicháng là jiāo.",
+    "en": "It is very hot pepper here."
+  },
+  "蜡烛": {
+    "zh": "他对蜡烛很感兴趣。",
+    "py": "Tā duì là zhú hěn gǎn xìngqù.",
+    "en": "He is very interested in candle."
+  },
+  "来自": {
+    "zh": "他正在来自。",
+    "py": "Tā zhèngzài lái zì.",
+    "en": "He is come from."
+  },
+  "拦": {
+    "zh": "我拦了。",
+    "py": "Wǒ lán le.",
+    "en": "I cut off."
+  },
+  "烂": {
+    "zh": "我需要一个烂。",
+    "py": "Wǒ xūyào yīgè làn.",
+    "en": "I need a soft."
+  },
+  "狼": {
+    "zh": "他对狼很感兴趣。",
+    "py": "Tā duì láng hěn gǎn xìngqù.",
+    "en": "He is very interested in wolf."
+  },
+  "劳动": {
+    "zh": "那个劳动是新的。",
+    "py": "Nàge láo dòng shì xīn de.",
+    "en": "That work is new."
+  },
+  "劳驾": {
+    "zh": "这里有劳驾。",
+    "py": "Zhèlǐ yǒu láo jià.",
+    "en": "There is excuse me here."
+  },
+  "老百姓": {
+    "zh": "这个老百姓很重要。",
+    "py": "Zhège lǎo bǎi xìng hěn zhòngyào.",
+    "en": "This ordinary people is very important."
+  },
+  "老板": {
+    "zh": "他有一个老板。",
+    "py": "Tā yǒu yīgè lǎo bǎn.",
+    "en": "He has a boss."
+  },
+  "老实": {
+    "zh": "天气很老实。",
+    "py": "Tiānqì hěn lǎo shí.",
+    "en": "The weather is very honest."
+  },
+  "老鼠": {
+    "zh": "这个老鼠很好。",
+    "py": "Zhège lǎo shǔ hěn hǎo.",
+    "en": "This rat is very good."
+  },
+  "姥姥": {
+    "zh": "这里有很多姥姥。",
+    "py": "Zhèlǐ yǒu hěn duō lǎo lao.",
+    "en": "There are many mother's mothers here."
+  },
+  "乐观": {
+    "zh": "这个乐观很重要。",
+    "py": "Zhège lè guān hěn zhòngyào.",
+    "en": "This optimistic is very important."
+  },
+  "雷": {
+    "zh": "雷很重要。",
+    "py": "léi hěn zhòngyào.",
+    "en": "thunder is very important."
+  },
+  "类": {
+    "zh": "我喜欢类。",
+    "py": "Wǒ xǐhuān lèi.",
+    "en": "I like kind."
+  },
+  "梨": {
+    "zh": "她在找梨。",
+    "py": "Tā zài zhǎo lí.",
+    "en": "She is looking for pear."
+  },
+  "离婚": {
+    "zh": "他正在离婚。",
+    "py": "Tā zhèngzài lí hūn.",
+    "en": "He is divorce."
+  },
+  "厘米": {
+    "zh": "你厘米去吧。",
+    "py": "Nǐ lí mǐ qù ba.",
+    "en": "You should go centimeter."
+  },
+  "礼拜天": {
+    "zh": "那个礼拜天是新的。",
+    "py": "Nàge lǐ bài tiān shì xīn de.",
+    "en": "That sunday is new."
+  },
+  "理论": {
+    "zh": "这个理论很好。",
+    "py": "这 lǐ lùn hěn hǎo.",
+    "en": "This theory is very good."
+  },
+  "理由": {
+    "zh": "这个理由不错。",
+    "py": "Zhège lǐ yóu bùcuò.",
+    "en": "This reason is pretty good."
+  },
+  "粒": {
+    "zh": "那个粒是我的。",
+    "py": "Nàge lì shì wǒ de.",
+    "en": "That grain is mine."
+  },
+  "立方": {
+    "zh": "立方很重要。",
+    "py": "lì fāng hěn zhòngyào.",
+    "en": "cube is very important."
+  },
+  "立即": {
+    "zh": "这个立即很好。",
+    "py": "Zhège lì jí hěn hǎo.",
+    "en": "This immediately is very good."
+  },
+  "立刻": {
+    "zh": "他对立刻很感兴趣。",
+    "py": "Tā duì lì kè hěn gǎn xìngqù.",
+    "en": "He is very interested in forthwith."
+  },
+  "力量": {
+    "zh": "他有一个力量。",
+    "py": "Tā yǒu yīgè lì liang.",
+    "en": "He has a power."
+  },
+  "利润": {
+    "zh": "我需要利润。",
+    "py": "Wǒ xūyào lì rùn.",
+    "en": "I need profits."
+  },
+  "利息": {
+    "zh": "这个利息很重要。",
+    "py": "Zhège lì xī hěn zhòngyào.",
+    "en": "This interest is very important."
+  },
+  "利益": {
+    "zh": "他对利益很感兴趣。",
+    "py": "Tā duì lì yì hěn gǎn xìngqù.",
+    "en": "He is very interested in benefit."
+  },
+  "利用": {
+    "zh": "你喜欢利用吗？",
+    "py": "Nǐ xǐhuān lì yòng ma?",
+    "en": "Do you like to exploit?"
+  },
+  "连忙": {
+    "zh": "他有连忙。",
+    "py": "Tā yǒu lián máng.",
+    "en": "He has promptly."
+  },
+  "连续剧": {
+    "zh": "我需要连续剧。",
+    "py": "Wǒ xūyào lián xù jù.",
+    "en": "I need serialized drama."
+  },
+  "联合": {
+    "zh": "我联合了。",
+    "py": "Wǒ lián hé le.",
+    "en": "I combine."
+  },
+  "恋爱": {
+    "zh": "这里有恋爱。",
+    "py": "Zhèlǐ yǒu liàn ài.",
+    "en": "There is love here."
+  },
+  "良好": {
+    "zh": "他有良好。",
+    "py": "Tā yǒu liáng hǎo.",
+    "en": "He has good."
+  },
+  "粮食": {
+    "zh": "我喜欢粮食。",
+    "py": "Wǒ xǐhuān liáng shi.",
+    "en": "I like foodstuff."
+  },
+  "了不起": {
+    "zh": "我在找了不起。",
+    "py": "Wǒ zài zhǎo liǎo bu qǐ.",
+    "en": "I am looking for amazing."
+  },
+  "临时": {
+    "zh": "这个临时很重要。",
+    "py": "Zhège lín shí hěn zhòngyào.",
+    "en": "This at the instant sth happens is very important."
+  },
+  "铃": {
+    "zh": "她在找铃。",
+    "py": "Tā zài zhǎo líng.",
+    "en": "She is looking for bell."
+  },
+  "零件": {
+    "zh": "我喜欢这个零件。",
+    "py": "Wǒ xǐhuān zhège líng jiàn.",
+    "en": "I like this part."
+  },
+  "零钱": {
+    "zh": "他对零钱很感兴趣。",
+    "py": "Tā duì líng qián hěn gǎn xìngqù.",
+    "en": "He is very interested in change."
+  },
+  "零食": {
+    "zh": "这里有零食。",
+    "py": "Zhèlǐ yǒu líng shí.",
+    "en": "There is between-meal nibbles here."
+  },
+  "灵活": {
+    "zh": "我喜欢灵活。",
+    "py": "Wǒ xǐhuān líng huó.",
+    "en": "I like flexible."
+  },
+  "领导": {
+    "zh": "他领导得很好。",
+    "py": "Tā lǐng dǎo de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "领域": {
+    "zh": "他对领域很感兴趣。",
+    "py": "Tā duì lǐng yù hěn gǎn xìngqù.",
+    "en": "He is very interested in domain."
+  },
+  "流传": {
+    "zh": "我们需要流传。",
+    "py": "Wǒmen xūyào liú chuán.",
+    "en": "We need to spread."
+  },
+  "浏览": {
+    "zh": "他正在浏览。",
+    "py": "Tā zhèngzài liú lǎn.",
+    "en": "He is skim over."
+  },
+  "龙": {
+    "zh": "那个龙是新的。",
+    "py": "Nàge lóng shì xīn de.",
+    "en": "That dragon is new."
+  },
+  "漏": {
+    "zh": "他漏得很好。",
+    "py": "Tā lòu de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "露": {
+    "zh": "这个露很好。",
+    "py": "Zhège lù hěn hǎo.",
+    "en": "This dew is very good."
+  },
+  "陆地": {
+    "zh": "我们需要陆地。",
+    "py": "Wǒmen xūyào lù dì.",
+    "en": "We need to dry land."
+  },
+  "陆续": {
+    "zh": "那个陆续是我的。",
+    "py": "Nàge lù xù shì wǒ de.",
+    "en": "That in turn is mine."
+  },
+  "录取": {
+    "zh": "我录取了。",
+    "py": "Wǒ lù qǔ le.",
+    "en": "I recruit."
+  },
+  "录音": {
+    "zh": "他录音得很好。",
+    "py": "Tā lù yīn de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "轮流": {
+    "zh": "你喜欢轮流吗？",
+    "py": "Nǐ xǐhuān lún liú ma?",
+    "en": "Do you like to alternate?"
+  },
+  "论文": {
+    "zh": "他有一个论文。",
+    "py": "Tā yǒu yīgè lùn wén.",
+    "en": "He has a paper."
+  },
+  "逻辑": {
+    "zh": "他对逻辑很感兴趣。",
+    "py": "Tā duì luó ji hěn gǎn xìngqù.",
+    "en": "He is very interested in logic."
+  },
+  "落后": {
+    "zh": "我落后了。",
+    "py": "Wǒ luò hòu le.",
+    "en": "I fall behind."
+  },
+  "骂": {
+    "zh": "他骂得很好。",
+    "py": "Tā mà de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "麦克风": {
+    "zh": "我需要一个麦克风。",
+    "py": "Wǒ xūyào yīgè mài kè fēng.",
+    "en": "I need a microphone."
+  },
+  "馒头": {
+    "zh": "他对馒头很感兴趣。",
+    "py": "Tā duì mán tou hěn gǎn xìngqù.",
+    "en": "He is very interested in steamed roll."
+  },
+  "满足": {
+    "zh": "他正在满足。",
+    "py": "Tā zhèngzài mǎn zú.",
+    "en": "He is satisfy."
+  },
+  "毛": {
+    "zh": "这个毛很好。",
+    "py": "这 máo hěn hǎo.",
+    "en": "This hair is very good."
+  },
+  "毛病": {
+    "zh": "我买了毛病。",
+    "py": "Wǒ mǎi le máo bìng.",
+    "en": "I bought some fault."
+  },
+  "冒险": {
+    "zh": "你喜欢冒险吗？",
+    "py": "Nǐ xǐhuān mào xiǎn ma?",
+    "en": "Do you like to take risks?"
+  },
+  "贸易": {
+    "zh": "贸易很重要。",
+    "py": "mào yì hěn zhòngyào.",
+    "en": "trade is very important."
+  },
+  "眉毛": {
+    "zh": "我需要眉毛。",
+    "py": "Wǒ xūyào méi mao.",
+    "en": "I need eyebrow."
+  },
+  "煤炭": {
+    "zh": "这个煤炭很好。",
+    "py": "Zhège méi tàn hěn hǎo.",
+    "en": "This coal is very good."
+  },
+  "美术": {
+    "zh": "美术很重要。",
+    "py": "měi shù hěn zhòngyào.",
+    "en": "art is very important."
+  },
+  "魅力": {
+    "zh": "我在找魅力。",
+    "py": "Wǒ zài zhǎo mèi lì.",
+    "en": "I am looking for a charm."
+  },
+  "迷路": {
+    "zh": "我们需要迷路。",
+    "py": "Wǒmen xūyào mí lù.",
+    "en": "We need to lose the way."
+  },
+  "谜语": {
+    "zh": "我喜欢这个谜语。",
+    "py": "Wǒ xǐhuān zhège mí yǔ.",
+    "en": "I like this riddle."
+  },
+  "密切": {
+    "zh": "他对密切很感兴趣。",
+    "py": "Tā duì mì qiè hěn gǎn xìngqù.",
+    "en": "He is very interested in close."
+  },
+  "蜜蜂": {
+    "zh": "他有蜜蜂。",
+    "py": "Tā yǒu mì fēng.",
+    "en": "He has bee."
+  },
+  "秘密": {
+    "zh": "这里有秘密。",
+    "py": "Zhèlǐ yǒu mì mì.",
+    "en": "There is secret here."
+  },
+  "秘书": {
+    "zh": "秘书很重要。",
+    "py": "mì shū hěn zhòngyào.",
+    "en": "secretary is very important."
+  },
+  "棉花": {
+    "zh": "他对棉花很感兴趣。",
+    "py": "Tā duì mián hua hěn gǎn xìngqù.",
+    "en": "He is very interested in cotton."
+  },
+  "面对": {
+    "zh": "我面对了。",
+    "py": "Wǒ miàn duì le.",
+    "en": "I confront."
+  },
+  "面积": {
+    "zh": "他有一个面积。",
+    "py": "Tā yǒu yīgè miàn ji.",
+    "en": "He has a area."
+  },
+  "面临": {
+    "zh": "你喜欢面临吗？",
+    "py": "Nǐ xǐhuān miàn lín ma?",
+    "en": "Do you like to face sth?"
+  },
+  "描写": {
+    "zh": "我们需要描写。",
+    "py": "Wǒmen xūyào miáo xiě.",
+    "en": "We need to describe."
+  },
+  "苗条": {
+    "zh": "我需要苗条。",
+    "py": "Wǒ xūyào miáo tiáo.",
+    "en": "I need slim."
+  },
+  "秒": {
+    "zh": "我秒了。",
+    "py": "Wǒ miǎo le.",
+    "en": "I second."
+  },
+  "民主": {
+    "zh": "这个民主很好。",
+    "py": "Zhège mín zhǔ hěn hǎo.",
+    "en": "This democracy is very good."
+  },
+  "明确": {
+    "zh": "他对明确很感兴趣。",
+    "py": "Tā duì míng què hěn gǎn xìngqù.",
+    "en": "He is very interested in clear-cut."
+  },
+  "明显": {
+    "zh": "这个明显不错。",
+    "py": "Zhège míng xiǎn bùcuò.",
+    "en": "This clear is pretty good."
+  },
+  "明信片": {
+    "zh": "我喜欢明信片。",
+    "py": "Wǒ xǐhuān míng xìn piàn.",
+    "en": "I like postcard."
+  },
+  "明星": {
+    "zh": "这个明星很重要。",
+    "py": "Zhège míng xīng hěn zhòngyào.",
+    "en": "This star is very important."
+  },
+  "名牌": {
+    "zh": "天气很名牌。",
+    "py": "Tiānqì hěn míng pái.",
+    "en": "The weather is very famous brand."
+  },
+  "名片": {
+    "zh": "我在找名片。",
+    "py": "Wǒ zài zhǎo míng piàn.",
+    "en": "I am looking for a card."
+  },
+  "名胜": {
+    "zh": "这个名胜不错。",
+    "py": "Zhège míng shèng bùcuò.",
+    "en": "This a place famous for its scenery or historical relics is pretty good."
+  },
+  "命令": {
+    "zh": "她在找命令。",
+    "py": "Tā zài zhǎo mìng lìng.",
+    "en": "She is looking for order."
+  },
+  "命运": {
+    "zh": "他对命运很感兴趣。",
+    "py": "Tā duì mìng yùn hěn gǎn xìngqù.",
+    "en": "He is very interested in fate."
+  },
+  "摸": {
+    "zh": "他摸得很好。",
+    "py": "Tā mō de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "摩托车": {
+    "zh": "那个摩托车是新的。",
+    "py": "Nàge mó tuō chē shì xīn de.",
+    "en": "That motorbike is new."
+  },
+  "模仿": {
+    "zh": "我们需要模仿。",
+    "py": "Wǒmen xūyào mó fǎng.",
+    "en": "We need to imitate."
+  },
+  "模糊": {
+    "zh": "那个模糊是我的。",
+    "py": "Nàge mó hu shì wǒ de.",
+    "en": "That vague is mine."
+  },
+  "陌生": {
+    "zh": "我需要一个陌生。",
+    "py": "Wǒ xūyào yīgè mò shēng.",
+    "en": "I need a strange."
+  },
+  "某": {
+    "zh": "他有一个某。",
+    "py": "Tā yǒu yīgè mǒu.",
+    "en": "He has a some."
+  },
+  "目标": {
+    "zh": "那个目标是新的。",
+    "py": "Nàge mù biāo shì xīn de.",
+    "en": "That target is new."
+  },
+  "目录": {
+    "zh": "这个目录不错。",
+    "py": "Zhège mù lù bùcuò.",
+    "en": "This catalog is pretty good."
+  },
+  "木头": {
+    "zh": "我在找木头。",
+    "py": "Wǒ zài zhǎo mù tou.",
+    "en": "I am looking for slow-witted."
+  },
+  "哪怕": {
+    "zh": "这个哪怕很好。",
+    "py": "这 nǎ pà hěn hǎo.",
+    "en": "This even is very good."
+  },
+  "难怪": {
+    "zh": "他有一个难怪。",
+    "py": "Tā yǒu yīgè nán guài.",
+    "en": "He has a no wonder."
+  },
+  "难看": {
+    "zh": "他对难看很感兴趣。",
+    "py": "Tā duì nán kàn hěn gǎn xìngqù.",
+    "en": "He is very interested in ugly."
+  },
+  "脑袋": {
+    "zh": "我喜欢这个脑袋。",
+    "py": "Wǒ xǐhuān zhège nǎo dài.",
+    "en": "I like this head."
+  },
+  "内科": {
+    "zh": "内科很重要。",
+    "py": "nèi kē hěn zhòngyào.",
+    "en": "internal medicine is very important."
+  },
+  "嫩": {
+    "zh": "他在找嫩。",
+    "py": "Tā zài zhǎo nèn.",
+    "en": "He is looking for tender."
+  },
+  "能干": {
+    "zh": "这里有能干。",
+    "py": "Zhèlǐ yǒu néng gàn.",
+    "en": "There is capable here."
+  },
+  "年代": {
+    "zh": "我在找年代。",
+    "py": "Wǒ zài zhǎo nián dài.",
+    "en": "I am looking for a a decade of a century."
+  },
+  "年纪": {
+    "zh": "我需要年纪。",
+    "py": "Wǒ xūyào nián jì.",
+    "en": "I need age."
+  },
+  "念": {
+    "zh": "他正在念。",
+    "py": "Tā zhèngzài niàn.",
+    "en": "He is read."
+  },
+  "宁可": {
+    "zh": "这个宁可很重要。",
+    "py": "Zhège nìng kě hěn zhòngyào.",
+    "en": "This preferably is very important."
+  },
+  "牛仔裤": {
+    "zh": "他有牛仔裤。",
+    "py": "Tā yǒu niú zǎi kù.",
+    "en": "He has jeans."
+  },
+  "浓": {
+    "zh": "这里有浓。",
+    "py": "Zhèlǐ yǒu nóng.",
+    "en": "There is concentrated here."
+  },
+  "农民": {
+    "zh": "我喜欢农民。",
+    "py": "Wǒ xǐhuān nóng mín.",
+    "en": "I like peasant."
+  },
+  "农业": {
+    "zh": "我喜欢农业。",
+    "py": "Wǒ xǐhuān nóng yè.",
+    "en": "I like agriculture."
+  },
+  "女士": {
+    "zh": "她在找女士。",
+    "py": "Tā zài zhǎo nǚ shì.",
+    "en": "She is looking for lady."
+  },
+  "偶然": {
+    "zh": "那个偶然是新的。",
+    "py": "Nàge ǒu rán shì xīn de.",
+    "en": "That incidentally is new."
+  },
+  "拍": {
+    "zh": "你喜欢拍吗？",
+    "py": "Nǐ xǐhuān pāi ma?",
+    "en": "Do you like to pat?"
+  },
+  "排队": {
+    "zh": "我们需要排队。",
+    "py": "Wǒmen xūyào pái duì.",
+    "en": "We need to line up."
+  },
+  "排球": {
+    "zh": "这个排球很好。",
+    "py": "这 pái qiú hěn hǎo.",
+    "en": "This volleyball is very good."
+  },
+  "派": {
+    "zh": "派很重要。",
+    "py": "pài hěn zhòngyào.",
+    "en": "clique is very important."
+  },
+  "盼望": {
+    "zh": "他盼望得很好。",
+    "py": "Tā pàn wàng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "赔偿": {
+    "zh": "你喜欢赔偿吗？",
+    "py": "Nǐ xǐhuān péi cháng ma?",
+    "en": "Do you like to compensate?"
+  },
+  "培养": {
+    "zh": "我们需要培养。",
+    "py": "Wǒmen xūyào péi yǎng.",
+    "en": "We need to cultivate."
+  },
+  "配合": {
+    "zh": "我买了配合。",
+    "py": "Wǒ mǎi le pèi hé.",
+    "en": "I bought some matching."
+  },
+  "佩服": {
+    "zh": "我佩服了。",
+    "py": "Wǒ pèi fú le.",
+    "en": "I admire."
+  },
+  "盆": {
+    "zh": "他盆得很好。",
+    "py": "Tā pén de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "碰见": {
+    "zh": "你喜欢碰见吗？",
+    "py": "Nǐ xǐhuān pèng jiàn ma?",
+    "en": "Do you like to run into?"
+  },
+  "披": {
+    "zh": "我们需要披。",
+    "py": "Wǒmen xūyào pī.",
+    "en": "We need to drape over one's shoulders."
+  },
+  "批": {
+    "zh": "他正在批。",
+    "py": "Tā zhèngzài pī.",
+    "en": "He is ascertain."
+  },
+  "批准": {
+    "zh": "我批准了。",
+    "py": "Wǒ pī zhǔn le.",
+    "en": "I approve."
+  },
+  "疲劳": {
+    "zh": "他有一个疲劳。",
+    "py": "Tā yǒu yīgè pí láo.",
+    "en": "He has a fatigue."
+  },
+  "皮鞋": {
+    "zh": "我在找皮鞋。",
+    "py": "Wǒ zài zhǎo pí xié.",
+    "en": "I am looking for a leather shoes."
+  },
+  "匹": {
+    "zh": "这个匹不错。",
+    "py": "Zhège pǐ bùcuò.",
+    "en": "This classifier for horses is pretty good."
+  },
+  "片": {
+    "zh": "那个片是我的。",
+    "py": "Nàge piàn shì wǒ de.",
+    "en": "That thin piece is mine."
+  },
+  "片面": {
+    "zh": "这个片面很好。",
+    "py": "Zhège piàn miàn hěn hǎo.",
+    "en": "This unilateral is very good."
+  },
+  "飘": {
+    "zh": "他飘得很好。",
+    "py": "Tā piāo de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "频道": {
+    "zh": "这里有很多频道。",
+    "py": "Zhèlǐ yǒu hěn duō pín dào.",
+    "en": "There are many frequencys here."
+  },
+  "品种": {
+    "zh": "他对品种很感兴趣。",
+    "py": "Tā duì pǐn zhǒng hěn gǎn xìngqù.",
+    "en": "He is very interested in breed."
+  },
+  "凭": {
+    "zh": "他正在凭。",
+    "py": "Tā zhèngzài píng.",
+    "en": "He is lean against."
+  },
+  "平": {
+    "zh": "我需要平。",
+    "py": "Wǒ xūyào píng.",
+    "en": "I need flat."
+  },
+  "平常": {
+    "zh": "我喜欢这个平常。",
+    "py": "Wǒ xǐhuān zhège píng cháng.",
+    "en": "I like this ordinary."
+  },
+  "平等": {
+    "zh": "我在找平等。",
+    "py": "Wǒ zài zhǎo píng děng.",
+    "en": "I am looking for a equal."
+  },
+  "平方": {
+    "zh": "他在找平方。",
+    "py": "Tā zài zhǎo píng fāng.",
+    "en": "He is looking for square (as in square foot."
+  },
+  "平静": {
+    "zh": "那个平静是我的。",
+    "py": "Nàge píng jìng shì wǒ de.",
+    "en": "That tranquil is mine."
+  },
+  "平均": {
+    "zh": "平均很重要。",
+    "py": "píng jūn hěn zhòngyào.",
+    "en": "average is very important."
+  },
+  "评价": {
+    "zh": "他评价得很好。",
+    "py": "Tā píng jià de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "破产": {
+    "zh": "你喜欢破产吗？",
+    "py": "Nǐ xǐhuān pò chǎn ma?",
+    "en": "Do you like to go bankrupt?"
+  },
+  "破坏": {
+    "zh": "我们需要破坏。",
+    "py": "Wǒmen xūyào pò huài.",
+    "en": "We need to destruction."
+  },
+  "迫切": {
+    "zh": "迫切很重要。",
+    "py": "pò qiè hěn zhòngyào.",
+    "en": "urgent is very important."
+  },
+  "朴素": {
+    "zh": "我需要朴素。",
+    "py": "Wǒ xūyào pǔ sù.",
+    "en": "I need plain and simple."
+  },
+  "期待": {
+    "zh": "他期待得很好。",
+    "py": "Tā qī dài de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "期间": {
+    "zh": "他有期间。",
+    "py": "Tā yǒu qī jiān.",
+    "en": "He has period of time."
+  },
+  "其余": {
+    "zh": "他有其余。",
+    "py": "Tā yǒu qí yú.",
+    "en": "He has the rest."
+  },
+  "奇迹": {
+    "zh": "我在找奇迹。",
+    "py": "Wǒ zài zhǎo qí jì.",
+    "en": "I am looking for miracle."
+  },
+  "启发": {
+    "zh": "我启发了。",
+    "py": "Wǒ qǐ fā le.",
+    "en": "I enlighten."
+  },
+  "企图": {
+    "zh": "他企图得很好。",
+    "py": "Tā qǐ tú de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "企业": {
+    "zh": "这个企业很好。",
+    "py": "Zhège qǐ yè hěn hǎo.",
+    "en": "This company is very good."
+  },
+  "气氛": {
+    "zh": "他对气氛很感兴趣。",
+    "py": "Tā duì qì fēn hěn gǎn xìngqù.",
+    "en": "He is very interested in atmosphere."
+  },
+  "汽油": {
+    "zh": "他有一个汽油。",
+    "py": "Tā yǒu yīgè qì yóu.",
+    "en": "He has a gasoline."
+  },
+  "牵": {
+    "zh": "我牵了。",
+    "py": "Wǒ qiān le.",
+    "en": "I pull."
+  },
+  "签字": {
+    "zh": "他签字得很好。",
+    "py": "Tā qiān zì de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "谦虚": {
+    "zh": "你喜欢谦虚吗？",
+    "py": "Nǐ xǐhuān qiān xū ma?",
+    "en": "Do you like to modest?"
+  },
+  "前途": {
+    "zh": "我需要一个前途。",
+    "py": "Wǒ xūyào yīgè qián tú.",
+    "en": "I need a prospects."
+  },
+  "浅": {
+    "zh": "这里有浅。",
+    "py": "Zhèlǐ yǒu qiǎn.",
+    "en": "There is shallow here."
+  },
+  "欠": {
+    "zh": "我欠了。",
+    "py": "Wǒ qiàn le.",
+    "en": "I deficient."
+  },
+  "枪": {
+    "zh": "他对枪很感兴趣。",
+    "py": "Tā duì qiāng hěn gǎn xìngqù.",
+    "en": "He is very interested in gun."
+  },
+  "强烈": {
+    "zh": "那个强烈是新的。",
+    "py": "Nàge qiáng liè shì xīn de.",
+    "en": "That intense is new."
+  },
+  "抢": {
+    "zh": "我们需要抢。",
+    "py": "Wǒmen xūyào qiǎng.",
+    "en": "We need to fight over."
+  },
+  "悄悄": {
+    "zh": "这里有很多悄悄。",
+    "py": "Zhèlǐ yǒu hěn duō qiāo qiāo.",
+    "en": "There are many quietlys here."
+  },
+  "瞧": {
+    "zh": "我瞧了。",
+    "py": "Wǒ qiáo le.",
+    "en": "I look at."
+  },
+  "巧妙": {
+    "zh": "他有一个巧妙。",
+    "py": "Tā yǒu yīgè qiǎo miào.",
+    "en": "He has a ingenious."
+  },
+  "切": {
+    "zh": "你喜欢切吗？",
+    "py": "Nǐ xǐhuān qiē ma?",
+    "en": "Do you like to cut?"
+  },
+  "亲爱": {
+    "zh": "这里有亲爱。",
+    "py": "Zhèlǐ yǒu qīn ài.",
+    "en": "There is dear here."
+  },
+  "亲切": {
+    "zh": "我喜欢亲切。",
+    "py": "Wǒ xǐhuān qīn qiè.",
+    "en": "I like amiable."
+  },
+  "亲自": {
+    "zh": "我喜欢这个亲自。",
+    "py": "Wǒ xǐhuān zhège qīn zì.",
+    "en": "I like this personally."
+  },
+  "侵略": {
+    "zh": "他有一个侵略。",
+    "py": "Tā yǒu yīgè qīn lvè.",
+    "en": "He has a invasion."
+  },
+  "勤奋": {
+    "zh": "我买了勤奋。",
+    "py": "Wǒ mǎi le qín fèn.",
+    "en": "I bought some hardworking."
+  },
+  "勤劳": {
+    "zh": "这个勤劳很好。",
+    "py": "Zhège qín láo hěn hǎo.",
+    "en": "This hardworking is very good."
+  },
+  "青": {
+    "zh": "那个青是我的。",
+    "py": "Nàge qīng shì wǒ de.",
+    "en": "That nature's color is mine."
+  },
+  "青春": {
+    "zh": "这个青春很重要。",
+    "py": "Zhège qīng chūn hěn zhòngyào.",
+    "en": "This youth is very important."
+  },
+  "青少年": {
+    "zh": "青少年很重要。",
+    "py": "qīng shào nián hěn zhòngyào.",
+    "en": "adolescent is very important."
+  },
+  "轻视": {
+    "zh": "你喜欢轻视吗？",
+    "py": "Nǐ xǐhuān qīng shì ma?",
+    "en": "Do you like to contempt?"
+  },
+  "清淡": {
+    "zh": "这个清淡不错。",
+    "py": "Zhège qīng dàn bùcuò.",
+    "en": "This light is pretty good."
+  },
+  "情景": {
+    "zh": "那个情景是我的。",
+    "py": "Nàge qíng jǐng shì wǒ de.",
+    "en": "That scene is mine."
+  },
+  "情绪": {
+    "zh": "这个情绪很重要。",
+    "py": "Zhège qíng xù hěn zhòngyào.",
+    "en": "This mood is very important."
+  },
+  "请求": {
+    "zh": "他对请求很感兴趣。",
+    "py": "Tā duì qǐng qiú hěn gǎn xìngqù.",
+    "en": "He is very interested in request."
+  },
+  "庆祝": {
+    "zh": "你喜欢庆祝吗？",
+    "py": "Nǐ xǐhuān qìng zhù ma?",
+    "en": "Do you like to celebrate?"
+  },
+  "球迷": {
+    "zh": "这个球迷不错。",
+    "py": "Zhège qiú mí bùcuò.",
+    "en": "This soccer fan is pretty good."
+  },
+  "趋势": {
+    "zh": "趋势很重要。",
+    "py": "qū shì hěn zhòngyào.",
+    "en": "trend is very important."
+  },
+  "娶": {
+    "zh": "我娶了。",
+    "py": "Wǒ qǔ le.",
+    "en": "I take a wife."
+  },
+  "取消": {
+    "zh": "他取消得很好。",
+    "py": "Tā qǔ xiāo de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "去世": {
+    "zh": "你喜欢去世吗？",
+    "py": "Nǐ xǐhuān qù shì ma?",
+    "en": "Do you like to pass away?"
+  },
+  "圈": {
+    "zh": "我需要圈。",
+    "py": "Wǒ xūyào quān.",
+    "en": "I need circle."
+  },
+  "全面": {
+    "zh": "他对全面很感兴趣。",
+    "py": "Tā duì quán miàn hěn gǎn xìngqù.",
+    "en": "He is very interested in all-around."
+  },
+  "权力": {
+    "zh": "这个权力很重要。",
+    "py": "Zhège quán lì hěn zhòngyào.",
+    "en": "This power is very important."
+  },
+  "权利": {
+    "zh": "我喜欢权利。",
+    "py": "Wǒ xǐhuān quán lì.",
+    "en": "I like power."
+  },
+  "劝": {
+    "zh": "你喜欢劝吗？",
+    "py": "Nǐ xǐhuān quàn ma?",
+    "en": "Do you like to advise?"
+  },
+  "缺乏": {
+    "zh": "我们需要缺乏。",
+    "py": "Wǒmen xūyào quē fá.",
+    "en": "We need to shortage."
+  },
+  "确定": {
+    "zh": "这个确定很好。",
+    "py": "Zhège què dìng hěn hǎo.",
+    "en": "This definite is very good."
+  },
+  "确认": {
+    "zh": "我确认了。",
+    "py": "Wǒ què rèn le.",
+    "en": "I confirm."
+  },
+  "燃烧": {
+    "zh": "他燃烧得很好。",
+    "py": "Tā rán shāo de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "嚷": {
+    "zh": "你喜欢嚷吗？",
+    "py": "Nǐ xǐhuān rǎng ma?",
+    "en": "Do you like to blurt out?"
+  },
+  "绕": {
+    "zh": "我们需要绕。",
+    "py": "Wǒmen xūyào rào.",
+    "en": "We need to wind."
+  },
+  "热爱": {
+    "zh": "他正在热爱。",
+    "py": "Tā zhèngzài rè ài.",
+    "en": "He is love ardently."
+  },
+  "热烈": {
+    "zh": "他有一个热烈。",
+    "py": "Tā yǒu yīgè rè liè.",
+    "en": "He has a warm."
+  },
+  "热心": {
+    "zh": "他有热心。",
+    "py": "Tā yǒu rè xīn.",
+    "en": "He has enthusiasm."
+  },
+  "人口": {
+    "zh": "我在找人口。",
+    "py": "Wǒ zài zhǎo rén kǒu.",
+    "en": "I am looking for a population."
+  },
+  "人类": {
+    "zh": "这个人类不错。",
+    "py": "Zhège rén lèi bùcuò.",
+    "en": "This humanity is pretty good."
+  },
+  "人生": {
+    "zh": "我需要一个人生。",
+    "py": "Wǒ xūyào yīgè rén shēng.",
+    "en": "I need a life."
+  },
+  "人事": {
+    "zh": "这个人事很重要。",
+    "py": "Zhège rén shì hěn zhòngyào.",
+    "en": "This human affairs is very important."
+  },
+  "人物": {
+    "zh": "他有一个人物。",
+    "py": "Tā yǒu yīgè rén wù.",
+    "en": "He has a person."
+  },
+  "人员": {
+    "zh": "她在找人员。",
+    "py": "Tā zài zhǎo rén yuán.",
+    "en": "She is looking for staff."
+  },
+  "忍不住": {
+    "zh": "我们需要忍不住。",
+    "py": "Wǒmen xūyào rěn bu zhù.",
+    "en": "We need to cannot help."
+  },
+  "日常": {
+    "zh": "他对日常很感兴趣。",
+    "py": "Tā duì rì cháng hěn gǎn xìngqù.",
+    "en": "He is very interested in daily."
+  },
+  "日程": {
+    "zh": "那个日程是新的。",
+    "py": "Nàge rì chéng shì xīn de.",
+    "en": "That schedule is new."
+  },
+  "日历": {
+    "zh": "这个日历很好。",
+    "py": "这 rì lì hěn hǎo.",
+    "en": "This calendar is very good."
+  },
+  "日期": {
+    "zh": "日期很重要。",
+    "py": "rì qī hěn zhòngyào.",
+    "en": "date is very important."
+  },
+  "日用品": {
+    "zh": "这个日用品不错。",
+    "py": "Zhège rì yòng pǐn bùcuò.",
+    "en": "This articles for daily use is pretty good."
+  },
+  "融化": {
+    "zh": "他正在融化。",
+    "py": "Tā zhèngzài róng huà.",
+    "en": "He is melt."
+  },
+  "荣幸": {
+    "zh": "我需要荣幸。",
+    "py": "Wǒ xūyào róng xìng.",
+    "en": "I need honored."
+  },
+  "荣誉": {
+    "zh": "我喜欢这个荣誉。",
+    "py": "Wǒ xǐhuān zhège róng yù.",
+    "en": "I like this honor."
+  },
+  "如何": {
+    "zh": "他对如何很感兴趣。",
+    "py": "Tā duì rú hé hěn gǎn xìngqù.",
+    "en": "He is very interested in how."
+  },
+  "软件": {
+    "zh": "他在找软件。",
+    "py": "Tā zài zhǎo ruǎn jiàn.",
+    "en": "He is looking for software."
+  },
+  "弱": {
+    "zh": "他有弱。",
+    "py": "Tā yǒu ruò.",
+    "en": "He has weak."
+  },
+  "洒": {
+    "zh": "我洒了。",
+    "py": "Wǒ sǎ le.",
+    "en": "I sprinkle."
+  },
+  "嗓子": {
+    "zh": "他对嗓子很感兴趣。",
+    "py": "Tā duì sǎng zi hěn gǎn xìngqù.",
+    "en": "He is very interested in throat."
+  },
+  "杀": {
+    "zh": "你喜欢杀吗？",
+    "py": "Nǐ xǐhuān shā ma?",
+    "en": "Do you like to kill?"
+  },
+  "沙漠": {
+    "zh": "这里有沙漠。",
+    "py": "Zhèlǐ yǒu shā mò.",
+    "en": "There is desert here."
+  },
+  "沙滩": {
+    "zh": "我喜欢沙滩。",
+    "py": "Wǒ xǐhuān shā tān.",
+    "en": "I like beach."
+  },
+  "傻": {
+    "zh": "我在找傻。",
+    "py": "Wǒ zài zhǎo shǎ.",
+    "en": "I am looking for foolish."
+  },
+  "晒": {
+    "zh": "他晒得很好。",
+    "py": "Tā shài de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "删除": {
+    "zh": "你喜欢删除吗？",
+    "py": "Nǐ xǐhuān shān chú ma?",
+    "en": "Do you like to delete?"
+  },
+  "闪电": {
+    "zh": "这里有闪电。",
+    "py": "Zhèlǐ yǒu shǎn diàn.",
+    "en": "There is lightning here."
+  },
+  "善良": {
+    "zh": "他对善良很感兴趣。",
+    "py": "Tā duì shàn liáng hěn gǎn xìngqù.",
+    "en": "He is very interested in good and honest."
+  },
+  "善于": {
+    "zh": "我善于了。",
+    "py": "Wǒ shàn yú le.",
+    "en": "I be good at."
+  },
+  "扇子": {
+    "zh": "她在找扇子。",
+    "py": "Tā zài zhǎo shān zi.",
+    "en": "She is looking for fan."
+  },
+  "商品": {
+    "zh": "我在找商品。",
+    "py": "Wǒ zài zhǎo shāng pǐn.",
+    "en": "I am looking for a good."
+  },
+  "商业": {
+    "zh": "这个商业不错。",
+    "py": "Zhège shāng yè bùcuò.",
+    "en": "This business is pretty good."
+  },
+  "上当": {
+    "zh": "他正在上当。",
+    "py": "Tā zhèngzài shàng dàng.",
+    "en": "He is taken in."
+  },
+  "勺子": {
+    "zh": "那个勺子是新的。",
+    "py": "Nàge sháo zi shì xīn de.",
+    "en": "That scoop is new."
+  },
+  "蛇": {
+    "zh": "这个蛇很好。",
+    "py": "这 shé hěn hǎo.",
+    "en": "This snake is very good."
+  },
+  "舌头": {
+    "zh": "我在找舌头。",
+    "py": "Wǒ zài zhǎo shé tou.",
+    "en": "I am looking for a tongue."
+  },
+  "舍不得": {
+    "zh": "我们需要舍不得。",
+    "py": "Wǒmen xūyào shě bu de.",
+    "en": "We need to hate to do sth."
+  },
+  "设备": {
+    "zh": "那个设备是我的。",
+    "py": "Nàge shè bèi shì wǒ de.",
+    "en": "That equipment is mine."
+  },
+  "设计": {
+    "zh": "我设计了。",
+    "py": "Wǒ shè jì le.",
+    "en": "I plan."
+  },
+  "设施": {
+    "zh": "他有一个设施。",
+    "py": "Tā yǒu yīgè shè shī.",
+    "en": "He has a facilities."
+  },
+  "射击": {
+    "zh": "你喜欢射击吗？",
+    "py": "Nǐ xǐhuān shè jī ma?",
+    "en": "Do you like to shoot?"
+  },
+  "摄影": {
+    "zh": "我们需要摄影。",
+    "py": "Wǒmen xūyào shè yǐng.",
+    "en": "We need to take a photograph."
+  },
+  "伸": {
+    "zh": "他正在伸。",
+    "py": "Tā zhèngzài shēn.",
+    "en": "He is stretch."
+  },
+  "深刻": {
+    "zh": "我喜欢深刻。",
+    "py": "Wǒ xǐhuān shēn kè.",
+    "en": "I like profound."
+  },
+  "身材": {
+    "zh": "他有一个身材。",
+    "py": "Tā yǒu yīgè shēn cái.",
+    "en": "He has a stature."
+  },
+  "身份": {
+    "zh": "我在找身份。",
+    "py": "Wǒ zài zhǎo shēn fèn.",
+    "en": "I am looking for a identity."
+  },
+  "神话": {
+    "zh": "我需要一个神话。",
+    "py": "Wǒ xūyào yīgè shén huà.",
+    "en": "I need a legend."
+  },
+  "神经": {
+    "zh": "他对神经很感兴趣。",
+    "py": "Tā duì shén jīng hěn gǎn xìngqù.",
+    "en": "He is very interested in nerve."
+  },
+  "神秘": {
+    "zh": "我买了神秘。",
+    "py": "Wǒ mǎi le shén mì.",
+    "en": "I bought some mysterious."
+  },
+  "升": {
+    "zh": "升很重要。",
+    "py": "shēng hěn zhòngyào.",
+    "en": "variant of 升[shēng] is very important."
+  },
+  "生产": {
+    "zh": "你喜欢生产吗？",
+    "py": "Nǐ xǐhuān shēng chǎn ma?",
+    "en": "Do you like to childbirth?"
+  },
+  "生动": {
+    "zh": "他对生动很感兴趣。",
+    "py": "Tā duì shēng dòng hěn gǎn xìngqù.",
+    "en": "He is very interested in vivid."
+  },
+  "声调": {
+    "zh": "这个声调很好。",
+    "py": "Zhège shēng diào hěn hǎo.",
+    "en": "This tone is very good."
+  },
+  "绳子": {
+    "zh": "绳子很重要。",
+    "py": "shéng zi hěn zhòngyào.",
+    "en": "cord is very important."
+  },
+  "省略": {
+    "zh": "他省略得很好。",
+    "py": "Tā shěng lvè de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "胜利": {
+    "zh": "他对胜利很感兴趣。",
+    "py": "Tā duì shèng lì hěn gǎn xìngqù.",
+    "en": "He is very interested in victory."
+  },
+  "诗": {
+    "zh": "我需要诗。",
+    "py": "Wǒ xūyào shī.",
+    "en": "I need poem."
+  },
+  "失眠": {
+    "zh": "他正在失眠。",
+    "py": "Tā zhèngzài shī mián.",
+    "en": "He is suffer from insomnia."
+  },
+  "失去": {
+    "zh": "我失去了。",
+    "py": "Wǒ shī qù le.",
+    "en": "I lose."
+  },
+  "失业": {
+    "zh": "他失业得很好。",
+    "py": "Tā shī yè de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "时代": {
+    "zh": "这里有很多时代。",
+    "py": "Zhèlǐ yǒu hěn duō shí dài.",
+    "en": "There are many ages here."
+  },
+  "时刻": {
+    "zh": "这个时刻不错。",
+    "py": "Zhège shí kè bùcuò.",
+    "en": "This moment is pretty good."
+  },
+  "时髦": {
+    "zh": "我需要时髦。",
+    "py": "Wǒ xūyào shí máo.",
+    "en": "I need in vogue."
+  },
+  "时期": {
+    "zh": "他对时期很感兴趣。",
+    "py": "Tā duì shí qī hěn gǎn xìngqù.",
+    "en": "He is very interested in period."
+  },
+  "时尚": {
+    "zh": "他有时尚。",
+    "py": "Tā yǒu shí shàng.",
+    "en": "He has fashion."
+  },
+  "实话": {
+    "zh": "他有实话。",
+    "py": "Tā yǒu shí huà.",
+    "en": "He has truth."
+  },
+  "实践": {
+    "zh": "我们需要实践。",
+    "py": "Wǒmen xūyào shí jiàn.",
+    "en": "We need to practice."
+  },
+  "实习": {
+    "zh": "他正在实习。",
+    "py": "Tā zhèngzài shí xí.",
+    "en": "He is practice."
+  },
+  "实现": {
+    "zh": "我实现了。",
+    "py": "Wǒ shí xiàn le.",
+    "en": "I achieve."
+  },
+  "实行": {
+    "zh": "他实行得很好。",
+    "py": "Tā shí xíng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "实用": {
+    "zh": "我在找实用。",
+    "py": "Wǒ zài zhǎo shí yòng.",
+    "en": "I am looking for a practical."
+  },
+  "食物": {
+    "zh": "他对食物很感兴趣。",
+    "py": "Tā duì shí wù hěn gǎn xìngqù.",
+    "en": "He is very interested in food."
+  },
+  "石头": {
+    "zh": "这里有石头。",
+    "py": "Zhèlǐ yǒu shí tou.",
+    "en": "There is stone here."
+  },
+  "使劲儿": {
+    "zh": "我在找使劲儿。",
+    "py": "Wǒ zài zhǎo shǐ jìn ér.",
+    "en": "I am looking for Rearing."
+  },
+  "始终": {
+    "zh": "他始终得很好。",
+    "py": "Tā shǐ zhōng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "是否": {
+    "zh": "我在找是否。",
+    "py": "Wǒ zài zhǎo shì fǒu.",
+    "en": "I am looking for a whether."
+  },
+  "试卷": {
+    "zh": "这个试卷不错。",
+    "py": "Zhège shì juàn bùcuò.",
+    "en": "This examination paper is pretty good."
+  },
+  "士兵": {
+    "zh": "我喜欢士兵。",
+    "py": "Wǒ xǐhuān shì bīng.",
+    "en": "I like soldier."
+  },
+  "似的": {
+    "zh": "这个似的很重要。",
+    "py": "Zhège shì de hěn zhòngyào.",
+    "en": "This seems as if is very important."
+  },
+  "事物": {
+    "zh": "这里有事物。",
+    "py": "Zhèlǐ yǒu shì wù.",
+    "en": "There is thing here."
+  },
+  "事先": {
+    "zh": "我在找事先。",
+    "py": "Wǒ zài zhǎo shì xiān.",
+    "en": "I am looking for a in advance."
+  },
+  "收获": {
+    "zh": "我们需要收获。",
+    "py": "Wǒmen xūyào shōu huò.",
+    "en": "We need to harvest."
+  },
+  "收据": {
+    "zh": "她在找收据。",
+    "py": "Tā zài zhǎo shōu jù.",
+    "en": "She is looking for receipt."
+  },
+  "手工": {
+    "zh": "他对手工很感兴趣。",
+    "py": "Tā duì shǒu gōng hěn gǎn xìngqù.",
+    "en": "He is very interested in handwork."
+  },
+  "手术": {
+    "zh": "他有一个手术。",
+    "py": "Tā yǒu yīgè shǒu shù.",
+    "en": "He has a operation."
+  },
+  "手套": {
+    "zh": "那个手套是新的。",
+    "py": "Nàge shǒu tào shì xīn de.",
+    "en": "That glove is new."
+  },
+  "手续": {
+    "zh": "这个手续很好。",
+    "py": "这 shǒu xù hěn hǎo.",
+    "en": "This procedure is very good."
+  },
+  "手指": {
+    "zh": "我喜欢手指。",
+    "py": "Wǒ xǐhuān shǒu zhǐ.",
+    "en": "I like finger."
+  },
+  "受伤": {
+    "zh": "我受伤了。",
+    "py": "Wǒ shòu shāng le.",
+    "en": "I sustain injuries."
+  },
+  "寿命": {
+    "zh": "寿命很重要。",
+    "py": "shòu mìng hěn zhòngyào.",
+    "en": "life span is very important."
+  },
+  "书架": {
+    "zh": "我需要书架。",
+    "py": "Wǒ xūyào shū jià.",
+    "en": "I need bookshelf."
+  },
+  "输入": {
+    "zh": "我们需要输入。",
+    "py": "Wǒmen xūyào shū rù.",
+    "en": "We need to import."
+  },
+  "蔬菜": {
+    "zh": "我买了蔬菜。",
+    "py": "Wǒ mǎi le shū cài.",
+    "en": "I bought some vegetables."
+  },
+  "舒适": {
+    "zh": "他有舒适。",
+    "py": "Tā yǒu shū shì.",
+    "en": "He has cozy."
+  },
+  "梳子": {
+    "zh": "这里有梳子。",
+    "py": "Zhèlǐ yǒu shū zi.",
+    "en": "There is comb here."
+  },
+  "熟练": {
+    "zh": "他对熟练很感兴趣。",
+    "py": "Tā duì shú liàn hěn gǎn xìngqù.",
+    "en": "He is very interested in practiced."
+  },
+  "鼠标": {
+    "zh": "这个鼠标很好。",
+    "py": "Zhège shǔ biāo hěn hǎo.",
+    "en": "This mouse is very good."
+  },
+  "属于": {
+    "zh": "他正在属于。",
+    "py": "Tā zhèngzài shǔ yú.",
+    "en": "He is be classified as."
+  },
+  "数据": {
+    "zh": "这里有数据个人。",
+    "py": "Zhèlǐ yǒu shù jù gè rén.",
+    "en": "There are data people here."
+  },
+  "数码": {
+    "zh": "他对数码很感兴趣。",
+    "py": "Tā duì shù mǎ hěn gǎn xìngqù.",
+    "en": "He is very interested in number."
+  },
+  "摔": {
+    "zh": "你喜欢摔吗？",
+    "py": "Nǐ xǐhuān shuāi ma?",
+    "en": "Do you like to throw down?"
+  },
+  "甩": {
+    "zh": "我们需要甩。",
+    "py": "Wǒmen xūyào shuǎi.",
+    "en": "We need to throw."
+  },
+  "双方": {
+    "zh": "双方很重要。",
+    "py": "shuāng fāng hěn zhòngyào.",
+    "en": "bilateral is very important."
+  },
+  "税": {
+    "zh": "他对税很感兴趣。",
+    "py": "Tā duì shuì hěn gǎn xìngqù.",
+    "en": "He is very interested in taxes."
+  },
+  "说不定": {
+    "zh": "他有一个说不定。",
+    "py": "Tā yǒu yīgè shuō bu dìng.",
+    "en": "He has a can't say for sure."
+  },
+  "说服": {
+    "zh": "你喜欢说服吗？",
+    "py": "Nǐ xǐhuān shuō fú ma?",
+    "en": "Do you like to persuade?"
+  },
+  "撕": {
+    "zh": "我们需要撕。",
+    "py": "Wǒmen xūyào sī.",
+    "en": "We need to tear."
+  },
+  "丝绸": {
+    "zh": "他对丝绸很感兴趣。",
+    "py": "Tā duì sī chóu hěn gǎn xìngqù.",
+    "en": "He is very interested in silk cloth."
+  },
+  "丝毫": {
+    "zh": "这个丝毫很重要。",
+    "py": "Zhège sī háo hěn zhòngyào.",
+    "en": "This the slightest amount or degree is very important."
+  },
+  "思考": {
+    "zh": "他思考得很好。",
+    "py": "Tā sī kǎo de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "思想": {
+    "zh": "我需要思想。",
+    "py": "Wǒ xūyào sī xiǎng.",
+    "en": "I need thought."
+  },
+  "私人": {
+    "zh": "他对私人很感兴趣。",
+    "py": "Tā duì sī rén hěn gǎn xìngqù.",
+    "en": "He is very interested in private."
+  },
+  "似乎": {
+    "zh": "他正在似乎。",
+    "py": "Tā zhèngzài sì hū.",
+    "en": "He is apparently."
+  },
+  "寺庙": {
+    "zh": "我喜欢寺庙。",
+    "py": "Wǒ xǐhuān sì miào.",
+    "en": "I like temple."
+  },
+  "宿舍": {
+    "zh": "他有宿舍。",
+    "py": "Tā yǒu sù shè.",
+    "en": "He has dormitory."
+  },
+  "随时": {
+    "zh": "我在找随时。",
+    "py": "Wǒ zài zhǎo suí shí.",
+    "en": "I am looking for a at any time."
+  },
+  "碎": {
+    "zh": "我们需要碎。",
+    "py": "Wǒmen xūyào suì.",
+    "en": "We need to break down."
+  },
+  "损失": {
+    "zh": "她在找损失。",
+    "py": "Tā zài zhǎo sǔn shī.",
+    "en": "She is looking for loss."
+  },
+  "缩短": {
+    "zh": "我缩短了。",
+    "py": "Wǒ suō duǎn le.",
+    "en": "I curtail."
+  },
+  "缩小": {
+    "zh": "他缩小得很好。",
+    "py": "Tā suō xiǎo de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "锁": {
+    "zh": "你喜欢锁吗？",
+    "py": "Nǐ xǐhuān suǒ ma?",
+    "en": "Do you like to lock up?"
+  },
+  "所": {
+    "zh": "这个所不错。",
+    "py": "Zhège suǒ bùcuò.",
+    "en": "This actually is pretty good."
+  },
+  "所谓": {
+    "zh": "我在找所谓。",
+    "py": "Wǒ zài zhǎo suǒ wèi.",
+    "en": "I am looking for so-called."
+  },
+  "塔": {
+    "zh": "他对塔很感兴趣。",
+    "py": "Tā duì tǎ hěn gǎn xìngqù.",
+    "en": "He is very interested in pagoda."
+  },
+  "台阶": {
+    "zh": "他有一个台阶。",
+    "py": "Tā yǒu yīgè tái jiē.",
+    "en": "He has a steps."
+  },
+  "太极拳": {
+    "zh": "我在找太极拳。",
+    "py": "Wǒ zài zhǎo tài jí quán.",
+    "en": "I am looking for a shadowboxing or Taiji."
+  },
+  "太太": {
+    "zh": "这里有太太。",
+    "py": "Zhèlǐ yǒu tài tai.",
+    "en": "There is married woman here."
+  },
+  "谈判": {
+    "zh": "他正在谈判。",
+    "py": "Tā zhèngzài tán pàn.",
+    "en": "He is negotiate."
+  },
+  "坦率": {
+    "zh": "他在找坦率。",
+    "py": "Tā zài zhǎo tǎn shuài.",
+    "en": "He is looking for frank."
+  },
+  "烫": {
+    "zh": "他烫得很好。",
+    "py": "Tā tàng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "桃": {
+    "zh": "桃很重要。",
+    "py": "táo hěn zhòngyào.",
+    "en": "peach is very important."
+  },
+  "逃": {
+    "zh": "我们需要逃。",
+    "py": "Wǒmen xūyào táo.",
+    "en": "We need to escape."
+  },
+  "逃避": {
+    "zh": "他正在逃避。",
+    "py": "Tā zhèngzài táo bì.",
+    "en": "He is escape."
+  },
+  "套": {
+    "zh": "我套了。",
+    "py": "Wǒ tào le.",
+    "en": "I cover."
+  },
+  "特殊": {
+    "zh": "这里非常特殊。",
+    "py": "Zhèlǐ fēicháng tè shū.",
+    "en": "It is very special here."
+  },
+  "特意": {
+    "zh": "我在找特意。",
+    "py": "Wǒ zài zhǎo tè yì.",
+    "en": "I am looking for a specially."
+  },
+  "特征": {
+    "zh": "这个特征不错。",
+    "py": "Zhège tè zhēng bùcuò.",
+    "en": "This characteristic is pretty good."
+  },
+  "疼爱": {
+    "zh": "他正在疼爱。",
+    "py": "Tā zhèngzài téng ài.",
+    "en": "He is love dearly."
+  },
+  "提": {
+    "zh": "我提了。",
+    "py": "Wǒ tí le.",
+    "en": "I carry."
+  },
+  "提倡": {
+    "zh": "他提倡得很好。",
+    "py": "Tā tí chàng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "提纲": {
+    "zh": "我在找提纲。",
+    "py": "Wǒ zài zhǎo tí gāng.",
+    "en": "I am looking for a the key point."
+  },
+  "提问": {
+    "zh": "我们需要提问。",
+    "py": "Wǒmen xūyào tí wèn.",
+    "en": "We need to question."
+  },
+  "题目": {
+    "zh": "他有一个题目。",
+    "py": "Tā yǒu yīgè tí mù.",
+    "en": "He has a subject."
+  },
+  "体会": {
+    "zh": "我体会了。",
+    "py": "Wǒ tǐ huì le.",
+    "en": "I know from experience."
+  },
+  "体积": {
+    "zh": "那个体积是新的。",
+    "py": "Nàge tǐ jī shì xīn de.",
+    "en": "That volume is new."
+  },
+  "体贴": {
+    "zh": "我在找体贴。",
+    "py": "Wǒ zài zhǎo tǐ tiē.",
+    "en": "I am looking for a considerate."
+  },
+  "体验": {
+    "zh": "我们需要体验。",
+    "py": "Wǒmen xūyào tǐ yàn.",
+    "en": "We need to experience for oneself."
+  },
+  "天空": {
+    "zh": "他对天空很感兴趣。",
+    "py": "Tā duì tiān kōng hěn gǎn xìngqù.",
+    "en": "He is very interested in sky."
+  },
+  "天真": {
+    "zh": "我买了天真。",
+    "py": "Wǒ mǎi le tiān zhēn.",
+    "en": "I bought some naive."
+  },
+  "田野": {
+    "zh": "这个田野很好。",
+    "py": "这 tián yě hěn hǎo.",
+    "en": "This field is very good."
+  },
+  "调皮": {
+    "zh": "这个调皮很好。",
+    "py": "Zhège tiáo pí hěn hǎo.",
+    "en": "This naughty is very good."
+  },
+  "调整": {
+    "zh": "我们需要调整。",
+    "py": "Wǒmen xūyào tiáo zhěng.",
+    "en": "We need to adjust."
+  },
+  "挑战": {
+    "zh": "他正在挑战。",
+    "py": "Tā zhèngzài tiǎo zhàn.",
+    "en": "He is challenge."
+  },
+  "通常": {
+    "zh": "通常很重要。",
+    "py": "tōng cháng hěn zhòngyào.",
+    "en": "regular is very important."
+  },
+  "通讯": {
+    "zh": "他有一个通讯。",
+    "py": "Tā yǒu yīgè tōng xùn.",
+    "en": "He has a communications."
+  },
+  "铜": {
+    "zh": "我在找铜。",
+    "py": "Wǒ zài zhǎo tóng.",
+    "en": "I am looking for a copper."
+  },
+  "同时": {
+    "zh": "同时很重要。",
+    "py": "tóng shí hěn zhòngyào.",
+    "en": "at the same time is very important."
+  },
+  "统一": {
+    "zh": "他正在统一。",
+    "py": "Tā zhèngzài tǒng yī.",
+    "en": "He is unify."
+  },
+  "统治": {
+    "zh": "我统治了。",
+    "py": "Wǒ tǒng zhì le.",
+    "en": "I rule."
+  },
+  "痛苦": {
+    "zh": "我需要痛苦。",
+    "py": "Wǒ xūyào tòng kǔ.",
+    "en": "I need pain."
+  },
+  "痛快": {
+    "zh": "他有痛快。",
+    "py": "Tā yǒu tòng kuài.",
+    "en": "He has overjoyed."
+  },
+  "投资": {
+    "zh": "我们需要投资。",
+    "py": "Wǒmen xūyào tóu zī.",
+    "en": "We need to investment."
+  },
+  "透明": {
+    "zh": "我在找透明。",
+    "py": "Wǒ zài zhǎo tòu míng.",
+    "en": "I am looking for transparent."
+  },
+  "突出": {
+    "zh": "我突出了。",
+    "py": "Wǒ tū chū le.",
+    "en": "I prominent."
+  },
+  "土地": {
+    "zh": "我喜欢这个土地。",
+    "py": "Wǒ xǐhuān zhège tǔ dì.",
+    "en": "I like this land."
+  },
+  "土豆": {
+    "zh": "我需要土豆。",
+    "py": "Wǒ xūyào tǔ dòu.",
+    "en": "I need potato."
+  },
+  "吐": {
+    "zh": "我们需要吐。",
+    "py": "Wǒmen xūyào tù.",
+    "en": "We need to vomit."
+  },
+  "兔子": {
+    "zh": "他对兔子很感兴趣。",
+    "py": "Tā duì tù zi hěn gǎn xìngqù.",
+    "en": "He is very interested in hare."
+  },
+  "团": {
+    "zh": "这里有团。",
+    "py": "Zhèlǐ yǒu tuán.",
+    "en": "There is dumpling here."
+  },
+  "推辞": {
+    "zh": "他推辞得很好。",
+    "py": "Tā tuī cí de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "推广": {
+    "zh": "你喜欢推广吗？",
+    "py": "Nǐ xǐhuān tuī guǎng ma?",
+    "en": "Do you like to extend?"
+  },
+  "推荐": {
+    "zh": "我们需要推荐。",
+    "py": "Wǒmen xūyào tuī jiàn.",
+    "en": "We need to recommend."
+  },
+  "退": {
+    "zh": "他正在退。",
+    "py": "Tā zhèngzài tuì.",
+    "en": "He is retreat."
+  },
+  "退步": {
+    "zh": "我退步了。",
+    "py": "Wǒ tuì bù le.",
+    "en": "I do less well than before."
+  },
+  "退休": {
+    "zh": "他退休得很好。",
+    "py": "Tā tuì xiū de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "歪": {
+    "zh": "我喜欢歪。",
+    "py": "Wǒ xǐhuān wāi.",
+    "en": "I like askew."
+  },
+  "外交": {
+    "zh": "他在找外交。",
+    "py": "Tā zài zhǎo wài jiāo.",
+    "en": "He is looking for diplomacy."
+  },
+  "弯": {
+    "zh": "他有弯。",
+    "py": "Tā yǒu wān.",
+    "en": "He has bend."
+  },
+  "完美": {
+    "zh": "这个完美很重要。",
+    "py": "Zhège wán měi hěn zhòngyào.",
+    "en": "This perfect is very important."
+  },
+  "完善": {
+    "zh": "他完善得很好。",
+    "py": "Tā wán shàn de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "完整": {
+    "zh": "完整很重要。",
+    "py": "wán zhěng hěn zhòngyào.",
+    "en": "complete is very important."
+  },
+  "玩具": {
+    "zh": "我买了玩具。",
+    "py": "Wǒ mǎi le wán jù.",
+    "en": "I bought some plaything."
+  },
+  "万一": {
+    "zh": "那个万一是我的。",
+    "py": "Nàge wàn yī shì wǒ de.",
+    "en": "That just in case is mine."
+  },
+  "王子": {
+    "zh": "这个王子很好。",
+    "py": "Zhège wáng zǐ hěn hǎo.",
+    "en": "This prince is very good."
+  },
+  "往返": {
+    "zh": "他往返得很好。",
+    "py": "Tā wǎng fǎn de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "微笑": {
+    "zh": "这里有微笑。",
+    "py": "Zhèlǐ yǒu wēi xiào.",
+    "en": "There is smile here."
+  },
+  "威胁": {
+    "zh": "我们需要威胁。",
+    "py": "Wǒmen xūyào wēi xié.",
+    "en": "We need to threaten."
+  },
+  "危害": {
+    "zh": "他正在危害。",
+    "py": "Tā zhèngzài wēi hài.",
+    "en": "He is jeopardize."
+  },
+  "违反": {
+    "zh": "我违反了。",
+    "py": "Wǒ wéi fǎn le.",
+    "en": "I violate."
+  },
+  "维护": {
+    "zh": "他维护得很好。",
+    "py": "Tā wéi hù de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "围巾": {
+    "zh": "我喜欢围巾。",
+    "py": "Wǒ xǐhuān wéi jīn.",
+    "en": "I like scarf."
+  },
+  "围绕": {
+    "zh": "我们需要围绕。",
+    "py": "Wǒmen xūyào wéi rào.",
+    "en": "We need to revolve around."
+  },
+  "唯一": {
+    "zh": "我唯一明白了。",
+    "py": "Wǒ wéi yī míngbai le.",
+    "en": "I only understand."
+  },
+  "尾巴": {
+    "zh": "她在找尾巴。",
+    "py": "Tā zài zhǎo wěi ba.",
+    "en": "She is looking for tail."
+  },
+  "伟大": {
+    "zh": "我需要一个伟大。",
+    "py": "Wǒ xūyào yīgè wěi dà.",
+    "en": "I need a great."
+  },
+  "委屈": {
+    "zh": "你喜欢委屈吗？",
+    "py": "Nǐ xǐhuān wěi qu ma?",
+    "en": "Do you like to feel wronged?"
+  },
+  "委托": {
+    "zh": "我们需要委托。",
+    "py": "Wǒmen xūyào wěi tuō.",
+    "en": "We need to entrust."
+  },
+  "胃": {
+    "zh": "那个胃是新的。",
+    "py": "Nàge wèi shì xīn de.",
+    "en": "That stomach is new."
+  },
+  "位置": {
+    "zh": "这个位置很重要。",
+    "py": "Zhège wèi zhi hěn zhòngyào.",
+    "en": "This position is very important."
+  },
+  "未必": {
+    "zh": "他对未必很感兴趣。",
+    "py": "Tā duì wèi bì hěn gǎn xìngqù.",
+    "en": "He is very interested in not necessarily."
+  },
+  "未来": {
+    "zh": "这个未来很好。",
+    "py": "这 wèi lái hěn hǎo.",
+    "en": "This future is very good."
+  },
+  "卫生间": {
+    "zh": "卫生间很重要。",
+    "py": "wèi shēng jiān hěn zhòngyào.",
+    "en": "bathroom is very important."
+  },
+  "温暖": {
+    "zh": "这里有很多温暖。",
+    "py": "Zhèlǐ yǒu hěn duō wēn nuǎn.",
+    "en": "There are many warms here."
+  },
+  "温柔": {
+    "zh": "他对温柔很感兴趣。",
+    "py": "Tā duì wēn róu hěn gǎn xìngqù.",
+    "en": "He is very interested in gentle and soft."
+  },
+  "闻": {
+    "zh": "他闻得很好。",
+    "py": "Tā wén de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "文件": {
+    "zh": "我在找文件。",
+    "py": "Wǒ zài zhǎo wén jiàn.",
+    "en": "I am looking for a document."
+  },
+  "文具": {
+    "zh": "这个文具不错。",
+    "py": "Zhège wén jù bùcuò.",
+    "en": "This stationery is pretty good."
+  },
+  "文明": {
+    "zh": "那个文明是我的。",
+    "py": "Nàge wén míng shì wǒ de.",
+    "en": "That civilized is mine."
+  },
+  "文学": {
+    "zh": "我需要文学。",
+    "py": "Wǒ xūyào wén xué.",
+    "en": "I need literature."
+  },
+  "吻": {
+    "zh": "他吻得很好。",
+    "py": "Tā wěn de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "稳定": {
+    "zh": "我在找稳定。",
+    "py": "Wǒ zài zhǎo wěn dìng.",
+    "en": "I am looking for a steady."
+  },
+  "问候": {
+    "zh": "我们需要问候。",
+    "py": "Wǒmen xūyào wèn hòu.",
+    "en": "We need to give one's respects."
+  },
+  "卧室": {
+    "zh": "他有卧室。",
+    "py": "Tā yǒu wò shì.",
+    "en": "He has bedroom."
+  },
+  "屋子": {
+    "zh": "屋子很重要。",
+    "py": "wū zi hěn zhòngyào.",
+    "en": "house is very important."
+  },
+  "无奈": {
+    "zh": "他有一个无奈。",
+    "py": "Tā yǒu yīgè wú nài.",
+    "en": "He has a helpless."
+  },
+  "无数": {
+    "zh": "我需要无数。",
+    "py": "Wǒ xūyào wú shù.",
+    "en": "I need countless."
+  },
+  "武器": {
+    "zh": "这里有武器。",
+    "py": "Zhèlǐ yǒu wǔ qì.",
+    "en": "There is weapon here."
+  },
+  "武术": {
+    "zh": "那个武术是我的。",
+    "py": "Nàge wǔ shù shì wǒ de.",
+    "en": "That military skill or technique is mine."
+  },
+  "雾": {
+    "zh": "这个雾很重要。",
+    "py": "Zhège wù hěn zhòngyào.",
+    "en": "This fog is very important."
+  },
+  "物理": {
+    "zh": "他对物理很感兴趣。",
+    "py": "Tā duì wù lǐ hěn gǎn xìngqù.",
+    "en": "He is very interested in physics."
+  },
+  "物质": {
+    "zh": "我在找物质。",
+    "py": "Wǒ zài zhǎo wù zhì.",
+    "en": "I am looking for a matter."
+  },
+  "吸收": {
+    "zh": "我们需要吸收。",
+    "py": "Wǒmen xūyào xī shōu.",
+    "en": "We need to absorb."
+  },
+  "系": {
+    "zh": "他正在系。",
+    "py": "Tā zhèngzài xì.",
+    "en": "He is connect."
+  },
+  "系统": {
+    "zh": "他对系统很感兴趣。",
+    "py": "Tā duì xì tǒng hěn gǎn xìngqù.",
+    "en": "He is very interested in system."
+  },
+  "细节": {
+    "zh": "这个细节很好。",
+    "py": "Zhège xì jié hěn hǎo.",
+    "en": "This details is very good."
+  },
+  "戏剧": {
+    "zh": "我喜欢戏剧。",
+    "py": "Wǒ xǐhuān xì jù.",
+    "en": "I like drama."
+  },
+  "瞎": {
+    "zh": "他有瞎。",
+    "py": "Tā yǒu xiā.",
+    "en": "He has blind."
+  },
+  "吓": {
+    "zh": "他正在吓。",
+    "py": "Tā zhèngzài xià.",
+    "en": "He is frighten."
+  },
+  "下载": {
+    "zh": "我下载了。",
+    "py": "Wǒ xià zǎi le.",
+    "en": "I download."
+  },
+  "鲜艳": {
+    "zh": "她在找鲜艳。",
+    "py": "Tā zài zhǎo xiān yàn.",
+    "en": "She is looking for bright-colored."
+  },
+  "显得": {
+    "zh": "你喜欢显得吗？",
+    "py": "Nǐ xǐhuān xiǎn de ma?",
+    "en": "Do you like to seem?"
+  },
+  "显然": {
+    "zh": "他学习很显然。",
+    "py": "Tā xuéxí hěn xiǎn rán.",
+    "en": "He studies very clear."
+  },
+  "显示": {
+    "zh": "他正在显示。",
+    "py": "Tā zhèngzài xiǎn shì.",
+    "en": "He is show."
+  },
+  "县": {
+    "zh": "那个县是新的。",
+    "py": "Nàge xiàn shì xīn de.",
+    "en": "That county is new."
+  },
+  "现金": {
+    "zh": "他有一个现金。",
+    "py": "Tā yǒu yīgè xiàn jīn.",
+    "en": "He has a cash."
+  },
+  "现实": {
+    "zh": "我在找现实。",
+    "py": "Wǒ zài zhǎo xiàn shí.",
+    "en": "I am looking for a reality."
+  },
+  "相处": {
+    "zh": "我们需要相处。",
+    "py": "Wǒmen xūyào xiāng chǔ.",
+    "en": "We need to be in contact with."
+  },
+  "相当": {
+    "zh": "这个相当很好。",
+    "py": "这 xiāng dāng hěn hǎo.",
+    "en": "This equivalent to is very good."
+  },
+  "相对": {
+    "zh": "我相对了。",
+    "py": "Wǒ xiāng duì le.",
+    "en": "I relatively."
+  },
+  "相关": {
+    "zh": "他相关得很好。",
+    "py": "Tā xiāng guān de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "相似": {
+    "zh": "你喜欢相似吗？",
+    "py": "Nǐ xǐhuān xiāng sì ma?",
+    "en": "Do you like to resemble?"
+  },
+  "想念": {
+    "zh": "我们需要想念。",
+    "py": "Wǒmen xūyào xiǎng niàn.",
+    "en": "We need to miss."
+  },
+  "想象": {
+    "zh": "他正在想象。",
+    "py": "Tā zhèngzài xiǎng xiàng.",
+    "en": "He is imagine."
+  },
+  "享受": {
+    "zh": "我享受了。",
+    "py": "Wǒ xiǎng shòu le.",
+    "en": "I enjoy."
+  },
+  "项": {
+    "zh": "这里有项。",
+    "py": "Zhèlǐ yǒu xiàng.",
+    "en": "There is back of neck here."
+  },
+  "项链": {
+    "zh": "项链很重要。",
+    "py": "xiàng liàn hěn zhòngyào.",
+    "en": "necklace is very important."
+  },
+  "项目": {
+    "zh": "我需要一个项目。",
+    "py": "Wǒ xūyào yīgè xiàng mù.",
+    "en": "I need a item."
+  },
+  "橡皮": {
+    "zh": "那个橡皮是我的。",
+    "py": "Nàge xiàng pí shì wǒ de.",
+    "en": "That rubber is mine."
+  },
+  "象棋": {
+    "zh": "我需要象棋。",
+    "py": "Wǒ xūyào xiàng qí.",
+    "en": "I need chinese chess."
+  },
+  "象征": {
+    "zh": "他有象征。",
+    "py": "Tā yǒu xiàng zhēng.",
+    "en": "He has emblem."
+  },
+  "消费": {
+    "zh": "你喜欢消费吗？",
+    "py": "Nǐ xǐhuān xiāo fèi ma?",
+    "en": "Do you like to consume?"
+  },
+  "消化": {
+    "zh": "我们需要消化。",
+    "py": "Wǒmen xūyào xiāo huà.",
+    "en": "We need to digest."
+  },
+  "消灭": {
+    "zh": "他正在消灭。",
+    "py": "Tā zhèngzài xiāo miè.",
+    "en": "He is put an end to."
+  },
+  "消失": {
+    "zh": "我消失了。",
+    "py": "Wǒ xiāo shī le.",
+    "en": "I disappear."
+  },
+  "销售": {
+    "zh": "他销售得很好。",
+    "py": "Tā xiāo shòu de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "小吃": {
+    "zh": "我在找小吃。",
+    "py": "Wǒ zài zhǎo xiǎo chī.",
+    "en": "I am looking for a snack."
+  },
+  "小伙子": {
+    "zh": "这里有很多小伙子。",
+    "py": "Zhèlǐ yǒu hěn duō xiǎo huǒ zi.",
+    "en": "There are many young mans here."
+  },
+  "小麦": {
+    "zh": "这里有小麦。",
+    "py": "Zhèlǐ yǒu xiǎo mài.",
+    "en": "There is wheat here."
+  },
+  "小气": {
+    "zh": "我喜欢小气。",
+    "py": "Wǒ xǐhuān xiǎo qì.",
+    "en": "I like stingy."
+  },
+  "小偷": {
+    "zh": "他对小偷很感兴趣。",
+    "py": "Tā duì xiǎo tōu hěn gǎn xìngqù.",
+    "en": "He is very interested in thief."
+  },
+  "效率": {
+    "zh": "我喜欢这个效率。",
+    "py": "Wǒ xǐhuān zhège xiào lǜ.",
+    "en": "I like this efficiency."
+  },
+  "孝顺": {
+    "zh": "我们需要孝顺。",
+    "py": "Wǒmen xūyào xiào shùn.",
+    "en": "We need to filial piety."
+  },
+  "歇": {
+    "zh": "他正在歇。",
+    "py": "Tā zhèngzài xiē.",
+    "en": "He is rest."
+  },
+  "斜": {
+    "zh": "我买了斜。",
+    "py": "Wǒ mǎi le xié.",
+    "en": "I bought some inclined."
+  },
+  "协调": {
+    "zh": "他协调得很好。",
+    "py": "Tā xié tiáo de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "心理": {
+    "zh": "我在找心理。",
+    "py": "Wǒ zài zhǎo xīn lǐ.",
+    "en": "I am looking for a mental."
+  },
+  "心脏": {
+    "zh": "我喜欢心脏。",
+    "py": "Wǒ xǐhuān xīn zàng.",
+    "en": "I like heart."
+  },
+  "欣赏": {
+    "zh": "他正在欣赏。",
+    "py": "Tā zhèngzài xīn shǎng.",
+    "en": "He is appreciate."
+  },
+  "信封": {
+    "zh": "她在找信封。",
+    "py": "Tā zài zhǎo xìn fēng.",
+    "en": "She is looking for envelope."
+  },
+  "信号": {
+    "zh": "那个信号是新的。",
+    "py": "Nàge xìn hào shì xīn de.",
+    "en": "That signal is new."
+  },
+  "信息": {
+    "zh": "我在找信息。",
+    "py": "Wǒ zài zhǎo xìn xī.",
+    "en": "I am looking for a information."
+  },
+  "行动": {
+    "zh": "我们需要行动。",
+    "py": "Wǒmen xūyào xíng dòng.",
+    "en": "We need to operation."
+  },
+  "行人": {
+    "zh": "那个行人是我的。",
+    "py": "Nàge xíng rén shì wǒ de.",
+    "en": "That pedestrian is mine."
+  },
+  "行为": {
+    "zh": "这个行为很重要。",
+    "py": "Zhège xíng wéi hěn zhòngyào.",
+    "en": "This action is very important."
+  },
+  "形成": {
+    "zh": "他形成得很好。",
+    "py": "Tā xíng chéng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "形容": {
+    "zh": "你喜欢形容吗？",
+    "py": "Nǐ xǐhuān xíng róng ma?",
+    "en": "Do you like to describe?"
+  },
+  "形势": {
+    "zh": "这个形势不错。",
+    "py": "Zhège xíng shì bùcuò.",
+    "en": "This circumstances is pretty good."
+  },
+  "形象": {
+    "zh": "这个形象很好。",
+    "py": "这 xíng xiàng hěn hǎo.",
+    "en": "This image is very good."
+  },
+  "形状": {
+    "zh": "形状很重要。",
+    "py": "xíng zhuàng hěn zhòngyào.",
+    "en": "form is very important."
+  },
+  "性质": {
+    "zh": "他有一个性质。",
+    "py": "Tā yǒu yīgè xìng zhì.",
+    "en": "He has a nature."
+  },
+  "幸亏": {
+    "zh": "他有一个幸亏。",
+    "py": "Tā yǒu yīgè xìng kuī.",
+    "en": "He has a fortunately."
+  },
+  "幸运": {
+    "zh": "我需要幸运。",
+    "py": "Wǒ xūyào xìng yùn.",
+    "en": "I need fortunate."
+  },
+  "胸": {
+    "zh": "我需要一个胸。",
+    "py": "Wǒ xūyào yīgè xiōng.",
+    "en": "I need a chest."
+  },
+  "兄弟": {
+    "zh": "这个兄弟很重要。",
+    "py": "Zhège xiōng dì hěn zhòngyào.",
+    "en": "This brothers is very important."
+  },
+  "雄伟": {
+    "zh": "这个雄伟很好。",
+    "py": "Zhège xióng wěi hěn hǎo.",
+    "en": "This grand is very good."
+  },
+  "修改": {
+    "zh": "你喜欢修改吗？",
+    "py": "Nǐ xǐhuān xiū gǎi ma?",
+    "en": "Do you like to amend?"
+  },
+  "休闲": {
+    "zh": "这个休闲不错。",
+    "py": "Zhège xiū xián bùcuò.",
+    "en": "This leisure is pretty good."
+  },
+  "虚心": {
+    "zh": "他对虚心很感兴趣。",
+    "py": "Tā duì xū xīn hěn gǎn xìngqù.",
+    "en": "He is very interested in modest."
+  },
+  "叙述": {
+    "zh": "我叙述了。",
+    "py": "Wǒ xù shù le.",
+    "en": "I relate."
+  },
+  "宣布": {
+    "zh": "他宣布得很好。",
+    "py": "Tā xuān bù de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "宣传": {
+    "zh": "你喜欢宣传吗？",
+    "py": "Nǐ xǐhuān xuān chuán ma?",
+    "en": "Do you like to disseminate?"
+  },
+  "选举": {
+    "zh": "我们需要选举。",
+    "py": "Wǒmen xūyào xuǎn jǔ.",
+    "en": "We need to elect."
+  },
+  "学期": {
+    "zh": "他有学期。",
+    "py": "Tā yǒu xué qī.",
+    "en": "He has term."
+  },
+  "学术": {
+    "zh": "这个学术很重要。",
+    "py": "Zhège xué shù hěn zhòngyào.",
+    "en": "This learning is very important."
+  },
+  "学问": {
+    "zh": "学问很重要。",
+    "py": "xué wèn hěn zhòngyào.",
+    "en": "learning is very important."
+  },
+  "寻找": {
+    "zh": "你喜欢寻找吗？",
+    "py": "Nǐ xǐhuān xún zhǎo ma?",
+    "en": "Do you like to seek?"
+  },
+  "询问": {
+    "zh": "我们需要询问。",
+    "py": "Wǒmen xūyào xún wèn.",
+    "en": "We need to inquire."
+  },
+  "训练": {
+    "zh": "他正在训练。",
+    "py": "Tā zhèngzài xùn liàn.",
+    "en": "He is train."
+  },
+  "迅速": {
+    "zh": "我需要迅速。",
+    "py": "Wǒ xūyào xùn sù.",
+    "en": "I need rapid."
+  },
+  "延长": {
+    "zh": "他延长得很好。",
+    "py": "Tā yán cháng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "严肃": {
+    "zh": "他有严肃。",
+    "py": "Tā yǒu yán sù.",
+    "en": "He has solemn."
+  },
+  "宴会": {
+    "zh": "这个宴会不错。",
+    "py": "Zhège yàn huì bùcuò.",
+    "en": "This banquet is pretty good."
+  },
+  "阳台": {
+    "zh": "我喜欢这个阳台。",
+    "py": "Wǒ xǐhuān zhège yáng tái.",
+    "en": "I like this balcony."
+  },
+  "痒": {
+    "zh": "我痒了。",
+    "py": "Wǒ yǎng le.",
+    "en": "I itch."
+  },
+  "样式": {
+    "zh": "他在找样式。",
+    "py": "Tā zài zhǎo yàng shì.",
+    "en": "He is looking for type."
+  },
+  "腰": {
+    "zh": "我在找腰。",
+    "py": "Wǒ zài zhǎo yāo.",
+    "en": "I am looking for a waist."
+  },
+  "摇": {
+    "zh": "我们需要摇。",
+    "py": "Wǒmen xūyào yáo.",
+    "en": "We need to shake."
+  },
+  "咬": {
+    "zh": "他正在咬。",
+    "py": "Tā zhèngzài yǎo.",
+    "en": "He is bite."
+  },
+  "要不": {
+    "zh": "这个要不很重要。",
+    "py": "Zhège yào bù hěn zhòngyào.",
+    "en": "This otherwise is very important."
+  },
+  "要是": {
+    "zh": "这里有要是。",
+    "py": "Zhèlǐ yǒu yào shi.",
+    "en": "There is if here."
+  },
+  "夜": {
+    "zh": "夜很重要。",
+    "py": "yè hěn zhòngyào.",
+    "en": "night is very important."
+  },
+  "液体": {
+    "zh": "他对液体很感兴趣。",
+    "py": "Tā duì yè tǐ hěn gǎn xìngqù.",
+    "en": "He is very interested in liquid."
+  },
+  "业务": {
+    "zh": "那个业务是我的。",
+    "py": "Nàge yè wù shì wǒ de.",
+    "en": "That business is mine."
+  },
+  "业余": {
+    "zh": "我喜欢业余。",
+    "py": "Wǒ xǐhuān yè yú.",
+    "en": "I like spare time."
+  },
+  "依然": {
+    "zh": "她依然说话。",
+    "py": "Tā yī rán shuōhuà.",
+    "en": "She spoke still."
+  },
+  "一辈子": {
+    "zh": "我在找一辈子。",
+    "py": "Wǒ zài zhǎo yī bèi zi.",
+    "en": "I am looking for a a lifetime."
+  },
+  "一旦": {
+    "zh": "这个一旦很好。",
+    "py": "Zhège yī dàn hěn hǎo.",
+    "en": "This in case is very good."
+  },
+  "一路": {
+    "zh": "我在找一路。",
+    "py": "Wǒ zài zhǎo yī lù.",
+    "en": "I am looking for the whole journey."
+  },
+  "一致": {
+    "zh": "这个一致很重要。",
+    "py": "Zhège yī zhì hěn zhòngyào.",
+    "en": "This unanimous is very important."
+  },
+  "遗憾": {
+    "zh": "他遗憾得很好。",
+    "py": "Tā yí hàn de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "移动": {
+    "zh": "你喜欢移动吗？",
+    "py": "Nǐ xǐhuān yí dòng ma?",
+    "en": "Do you like to move?"
+  },
+  "移民": {
+    "zh": "我们需要移民。",
+    "py": "Wǒmen xūyào yí mín.",
+    "en": "We need to immigrate."
+  },
+  "疑问": {
+    "zh": "那个疑问是我的。",
+    "py": "Nàge yí wèn shì wǒ de.",
+    "en": "That question is mine."
+  },
+  "乙": {
+    "zh": "这个乙很重要。",
+    "py": "Zhège yǐ hěn zhòngyào.",
+    "en": "This second of 10 heavenly stems 十天干 is very important."
+  },
+  "以及": {
+    "zh": "他有一个以及。",
+    "py": "Tā yǒu yīgè yǐ jí.",
+    "en": "He has a as well as."
+  },
+  "以来": {
+    "zh": "这里有以来。",
+    "py": "Zhèlǐ yǒu yǐ lái.",
+    "en": "There is since here."
+  },
+  "意外": {
+    "zh": "我喜欢意外。",
+    "py": "Wǒ xǐhuān yì wài.",
+    "en": "I like unexpected."
+  },
+  "意义": {
+    "zh": "那个意义是我的。",
+    "py": "Nàge yì yì shì wǒ de.",
+    "en": "That sense is mine."
+  },
+  "议论": {
+    "zh": "我议论了。",
+    "py": "Wǒ yì lùn le.",
+    "en": "I comment."
+  },
+  "义务": {
+    "zh": "他有一个义务。",
+    "py": "Tā yǒu yīgè yì wù.",
+    "en": "He has a duty."
+  },
+  "因而": {
+    "zh": "我在找因而。",
+    "py": "Wǒ zài zhǎo yīn ér.",
+    "en": "I am looking for a therefore."
+  },
+  "因素": {
+    "zh": "这个因素不错。",
+    "py": "Zhège yīn sù bùcuò.",
+    "en": "This element is pretty good."
+  },
+  "银": {
+    "zh": "他正在银。",
+    "py": "Tā zhèngzài yín.",
+    "en": "He is silver."
+  },
+  "英俊": {
+    "zh": "她在找英俊。",
+    "py": "Tā zài zhǎo yīng jùn.",
+    "en": "She is looking for handsome."
+  },
+  "英雄": {
+    "zh": "那个英雄是新的。",
+    "py": "Nàge yīng xióng shì xīn de.",
+    "en": "That hero is new."
+  },
+  "迎接": {
+    "zh": "你喜欢迎接吗？",
+    "py": "Nǐ xǐhuān yíng jiē ma?",
+    "en": "Do you like to meet?"
+  },
+  "营养": {
+    "zh": "这个营养不错。",
+    "py": "Zhège yíng yǎng bùcuò.",
+    "en": "This nutrition is pretty good."
+  },
+  "营业": {
+    "zh": "他正在营业。",
+    "py": "Tā zhèngzài yíng yè.",
+    "en": "He is do business."
+  },
+  "影子": {
+    "zh": "这个影子很重要。",
+    "py": "Zhège yǐng zi hěn zhòngyào.",
+    "en": "This shadow is very important."
+  },
+  "硬币": {
+    "zh": "他对硬币很感兴趣。",
+    "py": "Tā duì yìng bì hěn gǎn xìngqù.",
+    "en": "He is very interested in coin."
+  },
+  "硬件": {
+    "zh": "那个硬件是新的。",
+    "py": "Nàge yìng jiàn shì xīn de.",
+    "en": "That hardware is new."
+  },
+  "应付": {
+    "zh": "我们需要应付。",
+    "py": "Wǒmen xūyào yìng fu.",
+    "en": "We need to deal with."
+  },
+  "应聘": {
+    "zh": "他正在应聘。",
+    "py": "Tā zhèngzài yìng pìn.",
+    "en": "He is accept a job offer."
+  },
+  "应用": {
+    "zh": "我应用了。",
+    "py": "Wǒ yìng yòng le.",
+    "en": "I use."
+  },
+  "拥抱": {
+    "zh": "他拥抱得很好。",
+    "py": "Tā yōng bào de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "拥挤": {
+    "zh": "你喜欢拥挤吗？",
+    "py": "Nǐ xǐhuān yōng jǐ ma?",
+    "en": "Do you like to crowded?"
+  },
+  "勇气": {
+    "zh": "这里有很多勇气。",
+    "py": "Zhèlǐ yǒu hěn duō yǒng qì.",
+    "en": "There are many courages here."
+  },
+  "用途": {
+    "zh": "那个用途是我的。",
+    "py": "Nàge yòng tú shì wǒ de.",
+    "en": "That use is mine."
+  },
+  "优惠": {
+    "zh": "我买了优惠。",
+    "py": "Wǒ mǎi le yōu huì.",
+    "en": "I bought some preferential."
+  },
+  "优美": {
+    "zh": "这个优美很好。",
+    "py": "Zhège yōu měi hěn hǎo.",
+    "en": "This graceful is very good."
+  },
+  "悠久": {
+    "zh": "悠久很重要。",
+    "py": "yōu jiǔ hěn zhòngyào.",
+    "en": "established is very important."
+  },
+  "邮局": {
+    "zh": "他对邮局很感兴趣。",
+    "py": "Tā duì yóu jú hěn gǎn xìngqù.",
+    "en": "He is very interested in post office."
+  },
+  "游览": {
+    "zh": "他正在游览。",
+    "py": "Tā zhèngzài yóu lǎn.",
+    "en": "He is go sight-seeing."
+  },
+  "油炸": {
+    "zh": "我油炸了。",
+    "py": "Wǒ yóu zhá le.",
+    "en": "I deep fry."
+  },
+  "犹豫": {
+    "zh": "他犹豫得很好。",
+    "py": "Tā yóu yù de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "有利": {
+    "zh": "你喜欢有利吗？",
+    "py": "Nǐ xǐhuān yǒu lì ma?",
+    "en": "Do you like to advantageous?"
+  },
+  "幼儿园": {
+    "zh": "我喜欢这个幼儿园。",
+    "py": "Wǒ xǐhuān zhège yòu ér yuán.",
+    "en": "I like this kindergarten."
+  },
+  "娱乐": {
+    "zh": "他正在娱乐。",
+    "py": "Tā zhèngzài yú lè.",
+    "en": "He is entertain."
+  },
+  "与其": {
+    "zh": "我与其了。",
+    "py": "Wǒ yǔ qí le.",
+    "en": "I rather than...."
+  },
+  "语气": {
+    "zh": "他有一个语气。",
+    "py": "Tā yǒu yīgè yǔ qì.",
+    "en": "He has a tone."
+  },
+  "宇宙": {
+    "zh": "他在找宇宙。",
+    "py": "Tā zài zhǎo yǔ zhòu.",
+    "en": "He is looking for universe."
+  },
+  "预报": {
+    "zh": "这个预报很好。",
+    "py": "这 yù bào hěn hǎo.",
+    "en": "This forecast is very good."
+  },
+  "预订": {
+    "zh": "他正在预订。",
+    "py": "Tā zhèngzài yù dìng.",
+    "en": "He is place an order."
+  },
+  "预防": {
+    "zh": "我预防了。",
+    "py": "Wǒ yù fáng le.",
+    "en": "I prevent."
+  },
+  "玉米": {
+    "zh": "玉米很重要。",
+    "py": "yù mǐ hěn zhòngyào.",
+    "en": "corn is very important."
+  },
+  "元旦": {
+    "zh": "我需要元旦。",
+    "py": "Wǒ xūyào yuán dàn.",
+    "en": "I need new year's day."
+  },
+  "原料": {
+    "zh": "他有原料。",
+    "py": "Tā yǒu yuán liào.",
+    "en": "He has raw material."
+  },
+  "原则": {
+    "zh": "他对原则很感兴趣。",
+    "py": "Tā duì yuán zé hěn gǎn xìngqù.",
+    "en": "He is very interested in principle."
+  },
+  "缘故": {
+    "zh": "他有一个缘故。",
+    "py": "Tā yǒu yīgè yuán gù.",
+    "en": "He has a reason."
+  },
+  "愿望": {
+    "zh": "我需要愿望。",
+    "py": "Wǒ xūyào yuàn wàng.",
+    "en": "I need desire."
+  },
+  "晕": {
+    "zh": "他有晕。",
+    "py": "Tā yǒu yūn.",
+    "en": "He has confused."
+  },
+  "运气": {
+    "zh": "这个运气不错。",
+    "py": "Zhège yùn qi bùcuò.",
+    "en": "This luck is pretty good."
+  },
+  "运输": {
+    "zh": "那个运输是新的。",
+    "py": "Nàge yùn shū shì xīn de.",
+    "en": "That transport is new."
+  },
+  "运用": {
+    "zh": "我运用了。",
+    "py": "Wǒ yùn yòng le.",
+    "en": "I use."
+  },
+  "灾害": {
+    "zh": "我在找灾害。",
+    "py": "Wǒ zài zhǎo zāi hài.",
+    "en": "I am looking for disastrous damage."
+  },
+  "再三": {
+    "zh": "我在找再三。",
+    "py": "Wǒ zài zhǎo zài sān.",
+    "en": "I am looking for a over and over again."
+  },
+  "赞成": {
+    "zh": "我们需要赞成。",
+    "py": "Wǒmen xūyào zàn chéng.",
+    "en": "We need to approve."
+  },
+  "赞美": {
+    "zh": "他正在赞美。",
+    "py": "Tā zhèngzài zàn měi.",
+    "en": "He is admire."
+  },
+  "糟糕": {
+    "zh": "这里有糟糕。",
+    "py": "Zhèlǐ yǒu zāo gāo.",
+    "en": "There is too bad here."
+  },
+  "造成": {
+    "zh": "他造成得很好。",
+    "py": "Tā zào chéng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "则": {
+    "zh": "你喜欢则吗？",
+    "py": "Nǐ xǐhuān zé ma?",
+    "en": "Do you like to conjunction used to express contrast with a previous sentence or clause?"
+  },
+  "责备": {
+    "zh": "我们需要责备。",
+    "py": "Wǒmen xūyào zé bèi.",
+    "en": "We need to blame."
+  },
+  "摘": {
+    "zh": "他正在摘。",
+    "py": "Tā zhèngzài zhāi.",
+    "en": "He is take."
+  },
+  "粘贴": {
+    "zh": "我粘贴了。",
+    "py": "Wǒ zhān tiē le.",
+    "en": "I stick."
+  },
+  "展开": {
+    "zh": "他展开得很好。",
+    "py": "Tā zhǎn kāi de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "展览": {
+    "zh": "你喜欢展览吗？",
+    "py": "Nǐ xǐhuān zhǎn lǎn ma?",
+    "en": "Do you like to put on display?"
+  },
+  "战争": {
+    "zh": "这里有战争。",
+    "py": "Zhèlǐ yǒu zhàn zhēng.",
+    "en": "There is war here."
+  },
+  "占线": {
+    "zh": "他对占线很感兴趣。",
+    "py": "Tā duì zhàn xiàn hěn gǎn xìngqù.",
+    "en": "He is very interested in busy."
+  },
+  "涨": {
+    "zh": "我涨了。",
+    "py": "Wǒ zhǎng le.",
+    "en": "I rise."
+  },
+  "掌握": {
+    "zh": "他掌握得很好。",
+    "py": "Tā zhǎng wò de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "账户": {
+    "zh": "我喜欢这个账户。",
+    "py": "Wǒ xǐhuān zhège zhàng hù.",
+    "en": "I like this bank account."
+  },
+  "招待": {
+    "zh": "我们需要招待。",
+    "py": "Wǒmen xūyào zhāo dài.",
+    "en": "We need to receive."
+  },
+  "着凉": {
+    "zh": "他正在着凉。",
+    "py": "Tā zhèngzài zháo liáng.",
+    "en": "He is catch cold."
+  },
+  "照常": {
+    "zh": "这个照常很重要。",
+    "py": "Zhège zhào cháng hěn zhòngyào.",
+    "en": "This as usual is very important."
+  },
+  "召开": {
+    "zh": "他召开得很好。",
+    "py": "Tā zhào kāi de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "哲学": {
+    "zh": "他对哲学很感兴趣。",
+    "py": "Tā duì zhé xué hěn gǎn xìngqù.",
+    "en": "He is very interested in philosophy."
+  },
+  "真理": {
+    "zh": "我喜欢真理。",
+    "py": "Wǒ xǐhuān zhēn lǐ.",
+    "en": "I like truth."
+  },
+  "真实": {
+    "zh": "她在找真实。",
+    "py": "Tā zài zhǎo zhēn shí.",
+    "en": "She is looking for true."
+  },
+  "针对": {
+    "zh": "我针对了。",
+    "py": "Wǒ zhēn duì le.",
+    "en": "I be directed against."
+  },
+  "珍惜": {
+    "zh": "他珍惜得很好。",
+    "py": "Tā zhēn xī de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "诊断": {
+    "zh": "你喜欢诊断吗？",
+    "py": "Nǐ xǐhuān zhěn duàn ma?",
+    "en": "Do you like to diagnosis?"
+  },
+  "枕头": {
+    "zh": "那个枕头是新的。",
+    "py": "Nàge zhěn tou shì xīn de.",
+    "en": "That pillow is new."
+  },
+  "阵": {
+    "zh": "那个阵是我的。",
+    "py": "Nàge zhèn shì wǒ de.",
+    "en": "That disposition of troops is mine."
+  },
+  "振动": {
+    "zh": "这个振动很重要。",
+    "py": "Zhège zhèn dòng hěn zhòngyào.",
+    "en": "This vibration is very important."
+  },
+  "睁": {
+    "zh": "他睁得很好。",
+    "py": "Tā zhēng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "争论": {
+    "zh": "你喜欢争论吗？",
+    "py": "Nǐ xǐhuān zhēng lùn ma?",
+    "en": "Do you like to argue?"
+  },
+  "争取": {
+    "zh": "我们需要争取。",
+    "py": "Wǒmen xūyào zhēng qǔ.",
+    "en": "We need to fight for."
+  },
+  "征求": {
+    "zh": "他正在征求。",
+    "py": "Tā zhèngzài zhēng qiú.",
+    "en": "He is solicit."
+  },
+  "整个": {
+    "zh": "整个很重要。",
+    "py": "zhěng gè hěn zhòngyào.",
+    "en": "whole is very important."
+  },
+  "整体": {
+    "zh": "他有一个整体。",
+    "py": "Tā yǒu yīgè zhěng tǐ.",
+    "en": "He has a whole entity."
+  },
+  "正": {
+    "zh": "他正回来了。",
+    "py": "Tā zhèng huí lái le.",
+    "en": "He has just returned."
+  },
+  "政府": {
+    "zh": "这个政府不错。",
+    "py": "Zhège zhèng fǔ bùcuò.",
+    "en": "This government is pretty good."
+  },
+  "政治": {
+    "zh": "他有一个政治。",
+    "py": "Tā yǒu yīgè zhèng zhì.",
+    "en": "He has a politics."
+  },
+  "证件": {
+    "zh": "这个证件很好。",
+    "py": "这 zhèng jiàn hěn hǎo.",
+    "en": "This paperwork is very good."
+  },
+  "证据": {
+    "zh": "他有一个证据。",
+    "py": "Tā yǒu yīgè zhèng jù.",
+    "en": "He has a evidence."
+  },
+  "挣钱": {
+    "zh": "你喜欢挣钱吗？",
+    "py": "Nǐ xǐhuān zhèng qián ma?",
+    "en": "Do you like to make money?"
+  },
+  "支": {
+    "zh": "我们需要支。",
+    "py": "Wǒmen xūyào zhī.",
+    "en": "We need to support."
+  },
+  "支票": {
+    "zh": "支票很重要。",
+    "py": "zhī piào hěn zhòngyào.",
+    "en": "check is very important."
+  },
+  "直": {
+    "zh": "我直了。",
+    "py": "Wǒ zhí le.",
+    "en": "I straight."
+  },
+  "执行": {
+    "zh": "他执行得很好。",
+    "py": "Tā zhí xíng de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "执照": {
+    "zh": "我在找执照。",
+    "py": "Wǒ zài zhǎo zhí zhào.",
+    "en": "I am looking for a a license."
+  },
+  "指导": {
+    "zh": "我们需要指导。",
+    "py": "Wǒmen xūyào zhǐ dǎo.",
+    "en": "We need to guide."
+  },
+  "指挥": {
+    "zh": "他正在指挥。",
+    "py": "Tā zhèngzài zhǐ huī.",
+    "en": "He is conduct."
+  },
+  "制定": {
+    "zh": "我制定了。",
+    "py": "Wǒ zhì dìng le.",
+    "en": "I draw up."
+  },
+  "制度": {
+    "zh": "他有一个制度。",
+    "py": "Tā yǒu yīgè zhì dù.",
+    "en": "He has a system."
+  },
+  "制作": {
+    "zh": "你喜欢制作吗？",
+    "py": "Nǐ xǐhuān zhì zuò ma?",
+    "en": "Do you like to make?"
+  },
+  "智慧": {
+    "zh": "我需要一个智慧。",
+    "py": "Wǒ xūyào yīgè zhì huì.",
+    "en": "I need a wisdom."
+  },
+  "至今": {
+    "zh": "他正在至今。",
+    "py": "Tā zhèngzài zhì jīn.",
+    "en": "He is so far."
+  },
+  "至于": {
+    "zh": "我至于了。",
+    "py": "Wǒ zhì yú le.",
+    "en": "I as for."
+  },
+  "治疗": {
+    "zh": "他治疗得很好。",
+    "py": "Tā zhì liáo de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "志愿者": {
+    "zh": "那个志愿者是新的。",
+    "py": "Nàge zhì yuàn zhě shì xīn de.",
+    "en": "That volunteer is new."
+  },
+  "秩序": {
+    "zh": "这个秩序不错。",
+    "py": "Zhège zhì xù bùcuò.",
+    "en": "This order is pretty good."
+  },
+  "钟": {
+    "zh": "这里有很多钟。",
+    "py": "Zhèlǐ yǒu hěn duō zhōng.",
+    "en": "There are many clocks here."
+  },
+  "中介": {
+    "zh": "我中介了。",
+    "py": "Wǒ zhōng jiè le.",
+    "en": "I act as intermediary."
+  },
+  "中心": {
+    "zh": "我喜欢这个中心。",
+    "py": "Wǒ xǐhuān zhège zhōng xīn.",
+    "en": "I like this center."
+  },
+  "中旬": {
+    "zh": "我在找中旬。",
+    "py": "Wǒ zài zhǎo zhōng xún.",
+    "en": "I am looking for a middle third of a month."
+  },
+  "重": {
+    "zh": "我们需要重。",
+    "py": "Wǒmen xūyào zhòng.",
+    "en": "We need to heavy."
+  },
+  "重量": {
+    "zh": "我需要重量。",
+    "py": "Wǒ xūyào zhòng liàng.",
+    "en": "I need weight."
+  },
+  "周到": {
+    "zh": "我喜欢周到。",
+    "py": "Wǒ xǐhuān zhōu dao.",
+    "en": "I like thoughtful."
+  },
+  "逐步": {
+    "zh": "他对逐步很感兴趣。",
+    "py": "Tā duì zhú bù hěn gǎn xìngqù.",
+    "en": "He is very interested in progressively."
+  },
+  "竹子": {
+    "zh": "他有竹子。",
+    "py": "Tā yǒu zhú zi.",
+    "en": "He has bamboo."
+  },
+  "煮": {
+    "zh": "我们需要煮。",
+    "py": "Wǒmen xūyào zhǔ.",
+    "en": "We need to cook."
+  },
+  "主持": {
+    "zh": "他正在主持。",
+    "py": "Tā zhèngzài zhǔ chí.",
+    "en": "He is take charge of."
+  },
+  "主观": {
+    "zh": "他对主观很感兴趣。",
+    "py": "Tā duì zhǔ guān hěn gǎn xìngqù.",
+    "en": "He is very interested in subjective."
+  },
+  "主人": {
+    "zh": "主人很重要。",
+    "py": "zhǔ rén hěn zhòngyào.",
+    "en": "master is very important."
+  },
+  "主席": {
+    "zh": "这里有主席。",
+    "py": "Zhèlǐ yǒu zhǔ xí.",
+    "en": "There is chairperson here."
+  },
+  "主张": {
+    "zh": "我们需要主张。",
+    "py": "Wǒmen xūyào zhǔ zhāng.",
+    "en": "We need to advocate."
+  },
+  "嘱咐": {
+    "zh": "他正在嘱咐。",
+    "py": "Tā zhèngzài zhǔ fù.",
+    "en": "He is tell."
+  },
+  "祝福": {
+    "zh": "我祝福了。",
+    "py": "Wǒ zhù fú le.",
+    "en": "I blessings."
+  },
+  "注册": {
+    "zh": "他注册得很好。",
+    "py": "Tā zhù cè de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "抓紧": {
+    "zh": "你喜欢抓紧吗？",
+    "py": "Nǐ xǐhuān zhuā jǐn ma?",
+    "en": "Do you like to grasp firmly?"
+  },
+  "专家": {
+    "zh": "这个专家不错。",
+    "py": "Zhège zhuān jiā bùcuò.",
+    "en": "This expert is pretty good."
+  },
+  "专心": {
+    "zh": "他正在专心。",
+    "py": "Tā zhèngzài zhuān xīn.",
+    "en": "He is concentrate."
+  },
+  "转变": {
+    "zh": "我转变了。",
+    "py": "Wǒ zhuǎn biàn le.",
+    "en": "I change."
+  },
+  "转告": {
+    "zh": "他转告得很好。",
+    "py": "Tā zhuǎn gào de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "装": {
+    "zh": "你喜欢装吗？",
+    "py": "Nǐ xǐhuān zhuāng ma?",
+    "en": "Do you like to adornment?"
+  },
+  "装饰": {
+    "zh": "我们需要装饰。",
+    "py": "Wǒmen xūyào zhuāng shì.",
+    "en": "We need to decorate."
+  },
+  "状况": {
+    "zh": "那个状况是我的。",
+    "py": "Nàge zhuàng kuàng shì wǒ de.",
+    "en": "That condition is mine."
+  },
+  "状态": {
+    "zh": "这个状态很好。",
+    "py": "Zhège zhuàng tài hěn hǎo.",
+    "en": "This state of affairs is very good."
+  },
+  "追求": {
+    "zh": "他追求得很好。",
+    "py": "Tā zhuī qiú de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "资格": {
+    "zh": "我在找资格。",
+    "py": "Wǒ zài zhǎo zī gé.",
+    "en": "I am looking for a qualifications."
+  },
+  "资金": {
+    "zh": "我买了资金。",
+    "py": "Wǒ mǎi le zī jīn.",
+    "en": "I bought some funds."
+  },
+  "资料": {
+    "zh": "这个资料很好。",
+    "py": "Zhège zī liào hěn hǎo.",
+    "en": "This material is very good."
+  },
+  "资源": {
+    "zh": "这个资源很重要。",
+    "py": "Zhège zī yuán hěn zhòngyào.",
+    "en": "This natural resource is very important."
+  },
+  "姿势": {
+    "zh": "他有一个姿势。",
+    "py": "Tā yǒu yīgè zī shì.",
+    "en": "He has a posture."
+  },
+  "咨询": {
+    "zh": "你喜欢咨询吗？",
+    "py": "Nǐ xǐhuān zī xún ma?",
+    "en": "Do you like to consult?"
+  },
+  "紫": {
+    "zh": "我需要一个紫。",
+    "py": "Wǒ xūyào yīgè zǐ.",
+    "en": "I need a purple."
+  },
+  "字幕": {
+    "zh": "那个字幕是我的。",
+    "py": "Nàge zì mù shì wǒ de.",
+    "en": "That caption is mine."
+  },
+  "自从": {
+    "zh": "这个自从很重要。",
+    "py": "Zhège zì cóng hěn zhòngyào.",
+    "en": "This since is very important."
+  },
+  "自动": {
+    "zh": "我喜欢自动。",
+    "py": "Wǒ xǐhuān zì dòng.",
+    "en": "I like automatic."
+  },
+  "自豪": {
+    "zh": "你喜欢自豪吗？",
+    "py": "Nǐ xǐhuān zì háo ma?",
+    "en": "Do you like to pride?"
+  },
+  "自觉": {
+    "zh": "自觉很重要。",
+    "py": "zì jué hěn zhòngyào.",
+    "en": "conscious is very important."
+  },
+  "自私": {
+    "zh": "那个自私是我的。",
+    "py": "Nàge zì sī shì wǒ de.",
+    "en": "That selfish is mine."
+  },
+  "自信": {
+    "zh": "我自信了。",
+    "py": "Wǒ zì xìn le.",
+    "en": "I have confidence in oneself."
+  },
+  "自由": {
+    "zh": "我需要自由。",
+    "py": "Wǒ xūyào zì yóu.",
+    "en": "I need freedom."
+  },
+  "自愿": {
+    "zh": "他对自愿很感兴趣。",
+    "py": "Tā duì zì yuàn hěn gǎn xìngqù.",
+    "en": "He is very interested in voluntary."
+  },
+  "综合": {
+    "zh": "他有综合。",
+    "py": "Tā yǒu zōng hé.",
+    "en": "He has comprehensive."
+  },
+  "宗教": {
+    "zh": "她在找宗教。",
+    "py": "Tā zài zhǎo zōng jiào.",
+    "en": "She is looking for religion."
+  },
+  "总裁": {
+    "zh": "这个总裁很重要。",
+    "py": "Zhège zǒng cái hěn zhòngyào.",
+    "en": "This chairman is very important."
+  },
+  "总共": {
+    "zh": "他对总共很感兴趣。",
+    "py": "Tā duì zǒng gòng hěn gǎn xìngqù.",
+    "en": "He is very interested in altogether."
+  },
+  "总理": {
+    "zh": "我在找总理。",
+    "py": "Wǒ zài zhǎo zǒng lǐ.",
+    "en": "I am looking for a premier."
+  },
+  "总算": {
+    "zh": "这个总算不错。",
+    "py": "Zhège zǒng suàn bùcuò.",
+    "en": "This at long last is pretty good."
+  },
+  "总统": {
+    "zh": "那个总统是我的。",
+    "py": "Nàge zǒng tǒng shì wǒ de.",
+    "en": "That president is mine."
+  },
+  "总之": {
+    "zh": "这个总之很重要。",
+    "py": "Zhège zǒng zhī hěn zhòngyào.",
+    "en": "This in a word is very important."
+  },
+  "组合": {
+    "zh": "他组合得很好。",
+    "py": "Tā zǔ hé de hěn hǎo.",
+    "en": "He does it well."
+  },
+  "阻止": {
+    "zh": "你喜欢阻止吗？",
+    "py": "Nǐ xǐhuān zǔ zhǐ ma?",
+    "en": "Do you like to prevent?"
+  },
+  "祖国": {
+    "zh": "这个祖国不错。",
+    "py": "Zhège zǔ guó bùcuò.",
+    "en": "This ancestral land is pretty good."
+  },
+  "祖先": {
+    "zh": "那个祖先是我的。",
+    "py": "Nàge zǔ xiān shì wǒ de.",
+    "en": "That ancestor is mine."
+  },
+  "醉": {
+    "zh": "我在找醉。",
+    "py": "Wǒ zài zhǎo zuì.",
+    "en": "I am looking for intoxicated."
+  },
+  "最初": {
+    "zh": "那个最初是新的。",
+    "py": "Nàge zuì chū shì xīn de.",
+    "en": "That first is new."
+  },
+  "罪犯": {
+    "zh": "这里有罪犯。",
+    "py": "Zhèlǐ yǒu zuì fàn.",
+    "en": "There is criminal here."
+  },
+  "尊敬": {
+    "zh": "我们需要尊敬。",
+    "py": "Wǒmen xūyào zūn jìng.",
+    "en": "We need to respect."
+  },
+  "遵守": {
+    "zh": "他正在遵守。",
+    "py": "Tā zhèngzài zūn shǒu.",
+    "en": "He is comply with."
+  },
+  "作品": {
+    "zh": "这个作品很好。",
+    "py": "这 zuò pǐn hěn hǎo.",
+    "en": "This work is very good."
+  },
+  "作为": {
+    "zh": "他有一个作为。",
+    "py": "Tā yǒu yīgè zuò wéi.",
+    "en": "He has a one's conduct."
+  },
+  "作文": {
+    "zh": "你喜欢作文吗？",
+    "py": "Nǐ xǐhuān zuò wén ma?",
+    "en": "Do you like to write an essay?"
+  }
+}

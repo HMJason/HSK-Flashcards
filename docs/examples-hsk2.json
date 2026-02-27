@@ -1,0 +1,737 @@
+{
+  "吧": {
+    "zh": "我们走吧。",
+    "py": "Wǒmen zǒu ba.",
+    "en": "Let's go."
+  },
+  "白": {
+    "zh": "她穿着白色的裙子。",
+    "py": "Tā chuānzhe báisè de qúnzi.",
+    "en": "She's wearing a white dress."
+  },
+  "百": {
+    "zh": "这本书有一百页。",
+    "py": "Zhè běn shū yǒu yībǎi yè.",
+    "en": "This book has one hundred pages."
+  },
+  "帮助": {
+    "zh": "谢谢你的帮助。",
+    "py": "Xièxiè nǐ de bāngzhù.",
+    "en": "Thank you for your help."
+  },
+  "报纸": {
+    "zh": "爸爸每天看报纸。",
+    "py": "Bàba měitiān kàn bàozhǐ.",
+    "en": "Dad reads the newspaper every day."
+  },
+  "比": {
+    "zh": "今天比昨天冷。",
+    "py": "Jīntiān bǐ zuótiān lěng.",
+    "en": "Today is colder than yesterday."
+  },
+  "别": {
+    "zh": "别说话！",
+    "py": "Bié shuōhuà!",
+    "en": "Don't talk!"
+  },
+  "长": {
+    "zh": "这条路很长。",
+    "py": "Zhè tiáo lù hěn cháng.",
+    "en": "This road is very long."
+  },
+  "唱歌": {
+    "zh": "她喜欢唱歌。",
+    "py": "Tā xǐhuan chànggē.",
+    "en": "She likes to sing."
+  },
+  "出": {
+    "zh": "他出去了。",
+    "py": "Tā chūqù le.",
+    "en": "He went out."
+  },
+  "穿": {
+    "zh": "今天你穿什么？",
+    "py": "Jīntiān nǐ chuān shénme?",
+    "en": "What are you wearing today?"
+  },
+  "船": {
+    "zh": "我们坐船去岛上。",
+    "py": "Wǒmen zuò chuán qù dǎo shàng.",
+    "en": "We took a boat to the island."
+  },
+  "次": {
+    "zh": "我去过北京两次。",
+    "py": "Wǒ qùguò Běijīng liǎng cì.",
+    "en": "I've been to Beijing twice."
+  },
+  "从": {
+    "zh": "他从上海来。",
+    "py": "Tā cóng Shànghǎi lái.",
+    "en": "He comes from Shanghai."
+  },
+  "错": {
+    "zh": "这个答案是错的。",
+    "py": "Zhège dá'àn shì cuò de.",
+    "en": "This answer is wrong."
+  },
+  "打篮球": {
+    "zh": "他们在打篮球。",
+    "py": "Tāmen zài dǎ lánqiú.",
+    "en": "They are playing basketball."
+  },
+  "大家": {
+    "zh": "大家好！",
+    "py": "Dàjiā hǎo!",
+    "en": "Hello everyone!"
+  },
+  "但是": {
+    "zh": "他很忙，但是他来了。",
+    "py": "Tā hěn máng, dànshì tā lái le.",
+    "en": "He was very busy, but he still came."
+  },
+  "到": {
+    "zh": "我到家了。",
+    "py": "Wǒ dào jiā le.",
+    "en": "I've arrived home."
+  },
+  "得": {
+    "zh": "他跑得很快。",
+    "py": "Tā pǎo de hěn kuài.",
+    "en": "He runs very fast."
+  },
+  "弟弟": {
+    "zh": "我弟弟今年十岁。",
+    "py": "Wǒ dìdi jīnnián shí suì.",
+    "en": "My younger brother is ten this year."
+  },
+  "第一": {
+    "zh": "她是第一名。",
+    "py": "Tā shì dì yī míng.",
+    "en": "She came in first place."
+  },
+  "懂": {
+    "zh": "你懂我的意思吗？",
+    "py": "Nǐ dǒng wǒ de yìsi ma?",
+    "en": "Do you understand what I mean?"
+  },
+  "房间": {
+    "zh": "我的房间很干净。",
+    "py": "Wǒ de fángjiān hěn gānjìng.",
+    "en": "My room is very clean."
+  },
+  "非常": {
+    "zh": "这个电影非常好看。",
+    "py": "Zhège diànyǐng fēicháng hǎokàn.",
+    "en": "This movie is extremely good."
+  },
+  "服务员": {
+    "zh": "服务员，请来一下。",
+    "py": "Fúwùyuán, qǐng lái yīxià.",
+    "en": "Waiter, please come here."
+  },
+  "高": {
+    "zh": "那座山很高。",
+    "py": "Nà zuò shān hěn gāo.",
+    "en": "That mountain is very tall."
+  },
+  "告诉": {
+    "zh": "请告诉我你的名字。",
+    "py": "Qǐng gàosu wǒ nǐ de míngzi.",
+    "en": "Please tell me your name."
+  },
+  "哥哥": {
+    "zh": "我哥哥在北京工作。",
+    "py": "Wǒ gēge zài Běijīng gōngzuò.",
+    "en": "My older brother works in Beijing."
+  },
+  "给": {
+    "zh": "他给我一本书。",
+    "py": "Tā gěi wǒ yī běn shū.",
+    "en": "He gave me a book."
+  },
+  "公共汽车": {
+    "zh": "我坐公共汽车去学校。",
+    "py": "Wǒ zuò gōnggòng qìchē qù xuéxiào.",
+    "en": "I take the bus to school."
+  },
+  "公斤": {
+    "zh": "这个包有五公斤。",
+    "py": "Zhège bāo yǒu wǔ gōngjīn.",
+    "en": "This bag weighs five kilograms."
+  },
+  "公司": {
+    "zh": "她在一家大公司工作。",
+    "py": "Tā zài yī jiā dà gōngsī gōngzuò.",
+    "en": "She works at a big company."
+  },
+  "贵": {
+    "zh": "这件衣服太贵了。",
+    "py": "Zhè jiàn yīfu tài guì le.",
+    "en": "This piece of clothing is too expensive."
+  },
+  "还": {
+    "zh": "他还没来。",
+    "py": "Tā hái méi lái.",
+    "en": "He hasn't come yet."
+  },
+  "孩子": {
+    "zh": "他们有两个孩子。",
+    "py": "Tāmen yǒu liǎng gè háizi.",
+    "en": "They have two children."
+  },
+  "好吃": {
+    "zh": "这个菜真好吃！",
+    "py": "Zhège cài zhēn hǎochī!",
+    "en": "This dish is really delicious!"
+  },
+  "号": {
+    "zh": "今天几号？",
+    "py": "Jīntiān jǐ hào?",
+    "en": "What's today's date?"
+  },
+  "黑": {
+    "zh": "他有一只黑猫。",
+    "py": "Tā yǒu yī zhī hēi māo.",
+    "en": "He has a black cat."
+  },
+  "红": {
+    "zh": "苹果是红色的。",
+    "py": "Píngguǒ shì hóngsè de.",
+    "en": "Apples are red."
+  },
+  "欢迎": {
+    "zh": "欢迎来中国！",
+    "py": "Huānyíng lái Zhōngguó!",
+    "en": "Welcome to China!"
+  },
+  "回答": {
+    "zh": "请回答这个问题。",
+    "py": "Qǐng huídá zhège wèntí.",
+    "en": "Please answer this question."
+  },
+  "机场": {
+    "zh": "我们去机场接他。",
+    "py": "Wǒmen qù jīchǎng jiē tā.",
+    "en": "We're going to the airport to pick him up."
+  },
+  "鸡蛋": {
+    "zh": "我早上吃了两个鸡蛋。",
+    "py": "Wǒ zǎoshang chī le liǎng gè jīdàn.",
+    "en": "I ate two eggs this morning."
+  },
+  "件": {
+    "zh": "我买了两件衣服。",
+    "py": "Wǒ mǎi le liǎng jiàn yīfu.",
+    "en": "I bought two pieces of clothing."
+  },
+  "教室": {
+    "zh": "学生们都在教室里。",
+    "py": "Xuéshengmen dōu zài jiàoshì lǐ.",
+    "en": "The students are all in the classroom."
+  },
+  "姐姐": {
+    "zh": "我姐姐比我大三岁。",
+    "py": "Wǒ jiějie bǐ wǒ dà sān suì.",
+    "en": "My older sister is three years older than me."
+  },
+  "介绍": {
+    "zh": "请介绍一下你自己。",
+    "py": "Qǐng jièshào yīxià nǐ zìjǐ.",
+    "en": "Please introduce yourself."
+  },
+  "进": {
+    "zh": "请进！",
+    "py": "Qǐng jìn!",
+    "en": "Please come in!"
+  },
+  "近": {
+    "zh": "学校离这里很近。",
+    "py": "Xuéxiào lí zhèlǐ hěn jìn.",
+    "en": "The school is very close to here."
+  },
+  "就": {
+    "zh": "我就来了！",
+    "py": "Wǒ jiù lái le!",
+    "en": "I'm coming right now!"
+  },
+  "觉得": {
+    "zh": "我觉得这个主意很好。",
+    "py": "Wǒ juéde zhège zhǔyì hěn hǎo.",
+    "en": "I think this idea is great."
+  },
+  "咖啡": {
+    "zh": "我每天喝一杯咖啡。",
+    "py": "Wǒ měitiān hē yī bēi kāfēi.",
+    "en": "I drink a cup of coffee every day."
+  },
+  "开始": {
+    "zh": "电影几点开始？",
+    "py": "Diànyǐng jǐ diǎn kāishǐ?",
+    "en": "What time does the movie start?"
+  },
+  "考试": {
+    "zh": "明天有考试。",
+    "py": "Míngtiān yǒu kǎoshì.",
+    "en": "There's an exam tomorrow."
+  },
+  "可能": {
+    "zh": "他可能来，也可能不来。",
+    "py": "Tā kěnéng lái, yě kěnéng bù lái.",
+    "en": "He might come, or might not."
+  },
+  "可以": {
+    "zh": "我可以坐这里吗？",
+    "py": "Wǒ kěyǐ zuò zhèlǐ ma?",
+    "en": "Can I sit here?"
+  },
+  "课": {
+    "zh": "下午我有两节课。",
+    "py": "Xiàwǔ wǒ yǒu liǎng jié kè.",
+    "en": "I have two classes this afternoon."
+  },
+  "快": {
+    "zh": "请快一点！",
+    "py": "Qǐng kuài yīdiǎn!",
+    "en": "Please hurry up!"
+  },
+  "快乐": {
+    "zh": "祝你生日快乐！",
+    "py": "Zhù nǐ shēngrì kuàilè!",
+    "en": "Happy birthday to you!"
+  },
+  "累": {
+    "zh": "今天工作太累了。",
+    "py": "Jīntiān gōngzuò tài lèi le.",
+    "en": "Work today was exhausting."
+  },
+  "离": {
+    "zh": "我家离公司很远。",
+    "py": "Wǒ jiā lí gōngsī hěn yuǎn.",
+    "en": "My home is far from the office."
+  },
+  "两": {
+    "zh": "我有两个妹妹。",
+    "py": "Wǒ yǒu liǎng gè mèimei.",
+    "en": "I have two younger sisters."
+  },
+  "路": {
+    "zh": "这条路通向哪里？",
+    "py": "Zhè tiáo lù tōng xiàng nǎlǐ?",
+    "en": "Where does this road lead?"
+  },
+  "旅游": {
+    "zh": "我喜欢旅游。",
+    "py": "Wǒ xǐhuan lǚyóu.",
+    "en": "I love to travel."
+  },
+  "卖": {
+    "zh": "这家店卖书。",
+    "py": "Zhè jiā diàn mài shū.",
+    "en": "This store sells books."
+  },
+  "慢": {
+    "zh": "请说慢一点。",
+    "py": "Qǐng shuō màn yīdiǎn.",
+    "en": "Please speak more slowly."
+  },
+  "忙": {
+    "zh": "他最近很忙。",
+    "py": "Tā zuìjìn hěn máng.",
+    "en": "He's been very busy lately."
+  },
+  "每": {
+    "zh": "我每天跑步。",
+    "py": "Wǒ měitiān pǎobù.",
+    "en": "I run every day."
+  },
+  "妹妹": {
+    "zh": "她妹妹很聪明。",
+    "py": "Tā mèimei hěn cōngming.",
+    "en": "Her younger sister is very smart."
+  },
+  "门": {
+    "zh": "请关门。",
+    "py": "Qǐng guān mén.",
+    "en": "Please close the door."
+  },
+  "男人": {
+    "zh": "那个男人是我爸爸。",
+    "py": "Nàgè nánrén shì wǒ bàba.",
+    "en": "That man is my father."
+  },
+  "您": {
+    "zh": "您好，请问您找谁？",
+    "py": "Nín hǎo, qǐngwèn nín zhǎo shéi?",
+    "en": "Hello, who are you looking for?"
+  },
+  "牛奶": {
+    "zh": "孩子们都喜欢喝牛奶。",
+    "py": "Háizimen dōu xǐhuan hē niúnǎi.",
+    "en": "Children all love to drink milk."
+  },
+  "女人": {
+    "zh": "那位女人是我妈妈。",
+    "py": "Nà wèi nǚrén shì wǒ māma.",
+    "en": "That woman is my mother."
+  },
+  "旁边": {
+    "zh": "银行在学校旁边。",
+    "py": "Yínháng zài xuéxiào pángbiān.",
+    "en": "The bank is next to the school."
+  },
+  "跑步": {
+    "zh": "我每天早上跑步。",
+    "py": "Wǒ měitiān zǎoshang pǎobù.",
+    "en": "I go running every morning."
+  },
+  "便宜": {
+    "zh": "这个东西很便宜。",
+    "py": "Zhège dōngxi hěn piányí.",
+    "en": "This thing is very cheap."
+  },
+  "票": {
+    "zh": "我买了两张票。",
+    "py": "Wǒ mǎi le liǎng zhāng piào.",
+    "en": "I bought two tickets."
+  },
+  "妻子": {
+    "zh": "他的妻子是医生。",
+    "py": "Tā de qīzi shì yīshēng.",
+    "en": "His wife is a doctor."
+  },
+  "起床": {
+    "zh": "我每天六点起床。",
+    "py": "Wǒ měitiān liù diǎn qǐchuáng.",
+    "en": "I get up at six every day."
+  },
+  "千": {
+    "zh": "这件衣服要两千块。",
+    "py": "Zhè jiàn yīfu yào liǎng qiān kuài.",
+    "en": "This piece of clothing costs two thousand yuan."
+  },
+  "晴": {
+    "zh": "今天天气很晴。",
+    "py": "Jīntiān tiānqì hěn qíng.",
+    "en": "The weather is clear today."
+  },
+  "去年": {
+    "zh": "去年我去了法国。",
+    "py": "Qùnián wǒ qù le Fǎguó.",
+    "en": "Last year I went to France."
+  },
+  "让": {
+    "zh": "请让我进去。",
+    "py": "Qǐng ràng wǒ jìnqù.",
+    "en": "Please let me in."
+  },
+  "上班": {
+    "zh": "他八点上班。",
+    "py": "Tā bā diǎn shàngbān.",
+    "en": "He starts work at eight."
+  },
+  "身体": {
+    "zh": "你的身体怎么样？",
+    "py": "Nǐ de shēntǐ zěnmeyàng?",
+    "en": "How is your health?"
+  },
+  "生病": {
+    "zh": "他生病了，在家休息。",
+    "py": "Tā shēngbìng le, zài jiā xiūxi.",
+    "en": "He's sick and resting at home."
+  },
+  "生日": {
+    "zh": "今天是我的生日。",
+    "py": "Jīntiān shì wǒ de shēngrì.",
+    "en": "Today is my birthday."
+  },
+  "时间": {
+    "zh": "你有时间吗？",
+    "py": "Nǐ yǒu shíjiān ma?",
+    "en": "Do you have time?"
+  },
+  "事情": {
+    "zh": "你有什么事情？",
+    "py": "Nǐ yǒu shénme shìqing?",
+    "en": "What's the matter?"
+  },
+  "手表": {
+    "zh": "这块手表是我爸爸给我的。",
+    "py": "Zhè kuài shǒubiǎo shì wǒ bàba gěi wǒ de.",
+    "en": "This watch was given to me by my father."
+  },
+  "手机": {
+    "zh": "他的手机没电了。",
+    "py": "Tā de shǒujī méi diàn le.",
+    "en": "His phone is out of battery."
+  },
+  "送": {
+    "zh": "我送你回家。",
+    "py": "Wǒ sòng nǐ huí jiā.",
+    "en": "I'll take you home."
+  },
+  "所以": {
+    "zh": "下雨了，所以我没出去。",
+    "py": "Xià yǔ le, suǒyǐ wǒ méi chūqù.",
+    "en": "It rained, so I didn't go out."
+  },
+  "它": {
+    "zh": "这只猫很可爱，它叫小白。",
+    "py": "Zhè zhī māo hěn kě'ài, tā jiào Xiǎobái.",
+    "en": "This cat is very cute, its name is Xiaobai."
+  },
+  "踢": {
+    "zh": "他们在踢足球。",
+    "py": "Tāmen zài tī zúqiú.",
+    "en": "They are playing football."
+  },
+  "题": {
+    "zh": "这道题很难。",
+    "py": "Zhè dào tí hěn nán.",
+    "en": "This question is very difficult."
+  },
+  "跳舞": {
+    "zh": "她跳舞跳得很好。",
+    "py": "Tā tiàowǔ tiào de hěn hǎo.",
+    "en": "She dances very well."
+  },
+  "外": {
+    "zh": "外面很冷。",
+    "py": "Wàimiàn hěn lěng.",
+    "en": "It's very cold outside."
+  },
+  "完": {
+    "zh": "作业做完了。",
+    "py": "Zuòyè zuò wán le.",
+    "en": "The homework is finished."
+  },
+  "玩": {
+    "zh": "孩子们在公园里玩。",
+    "py": "Háizimen zài gōngyuán lǐ wán.",
+    "en": "The children are playing in the park."
+  },
+  "晚上": {
+    "zh": "晚上我们一起吃饭。",
+    "py": "Wǎnshang wǒmen yīqǐ chīfàn.",
+    "en": "Let's have dinner together tonight."
+  },
+  "为": {
+    "zh": "他为家人努力工作。",
+    "py": "Tā wèi jiārén nǔlì gōngzuò.",
+    "en": "He works hard for his family."
+  },
+  "问": {
+    "zh": "我可以问你一个问题吗？",
+    "py": "Wǒ kěyǐ wèn nǐ yīgè wèntí ma?",
+    "en": "Can I ask you a question?"
+  },
+  "问题": {
+    "zh": "这个问题很难回答。",
+    "py": "Zhège wèntí hěn nán huídá.",
+    "en": "This question is hard to answer."
+  },
+  "西瓜": {
+    "zh": "夏天吃西瓜很好。",
+    "py": "Xiàtiān chī xīguā hěn hǎo.",
+    "en": "Eating watermelon in summer is great."
+  },
+  "希望": {
+    "zh": "我希望你快点好起来。",
+    "py": "Wǒ xīwàng nǐ kuài diǎn hǎo qǐlái.",
+    "en": "I hope you get better soon."
+  },
+  "洗": {
+    "zh": "吃饭前要洗手。",
+    "py": "Chīfàn qián yào xǐ shǒu.",
+    "en": "You should wash your hands before eating."
+  },
+  "向": {
+    "zh": "请向左转。",
+    "py": "Qǐng xiàng zuǒ zhuǎn.",
+    "en": "Please turn left."
+  },
+  "小时": {
+    "zh": "我等了两个小时。",
+    "py": "Wǒ děng le liǎng gè xiǎoshí.",
+    "en": "I waited for two hours."
+  },
+  "笑": {
+    "zh": "她总是在笑。",
+    "py": "Tā zǒng shì zài xiào.",
+    "en": "She's always smiling."
+  },
+  "新": {
+    "zh": "我买了一件新衣服。",
+    "py": "Wǒ mǎi le yī jiàn xīn yīfu.",
+    "en": "I bought a new piece of clothing."
+  },
+  "姓": {
+    "zh": "您贵姓？",
+    "py": "Nín guì xìng?",
+    "en": "What is your last name?"
+  },
+  "休息": {
+    "zh": "工作累了要休息。",
+    "py": "Gōngzuò lèi le yào xiūxi.",
+    "en": "You should rest when tired from work."
+  },
+  "雪": {
+    "zh": "北方冬天下很多雪。",
+    "py": "Běifāng dōngtiān xià hěn duō xuě.",
+    "en": "It snows a lot in the north in winter."
+  },
+  "颜色": {
+    "zh": "你喜欢什么颜色？",
+    "py": "Nǐ xǐhuan shénme yánsè?",
+    "en": "What color do you like?"
+  },
+  "眼睛": {
+    "zh": "她有一双大眼睛。",
+    "py": "Tā yǒu yī shuāng dà yǎnjing.",
+    "en": "She has a pair of big eyes."
+  },
+  "羊肉": {
+    "zh": "他很喜欢吃羊肉。",
+    "py": "Tā hěn xǐhuan chī yángròu.",
+    "en": "He loves eating mutton."
+  },
+  "药": {
+    "zh": "医生给他开了药。",
+    "py": "Yīshēng gěi tā kāi le yào.",
+    "en": "The doctor prescribed medicine for him."
+  },
+  "要": {
+    "zh": "你要喝什么？",
+    "py": "Nǐ yào hē shénme?",
+    "en": "What would you like to drink?"
+  },
+  "也": {
+    "zh": "我也想去。",
+    "py": "Wǒ yě xiǎng qù.",
+    "en": "I also want to go."
+  },
+  "已经": {
+    "zh": "他已经走了。",
+    "py": "Tā yǐjīng zǒu le.",
+    "en": "He has already left."
+  },
+  "一起": {
+    "zh": "我们一起去吧。",
+    "py": "Wǒmen yīqǐ qù ba.",
+    "en": "Let's go together."
+  },
+  "意思": {
+    "zh": "这个词是什么意思？",
+    "py": "Zhège cí shì shénme yìsi?",
+    "en": "What does this word mean?"
+  },
+  "阴": {
+    "zh": "今天是阴天。",
+    "py": "Jīntiān shì yīntiān.",
+    "en": "It's cloudy today."
+  },
+  "因为": {
+    "zh": "因为下雨，我没出门。",
+    "py": "Yīnwèi xià yǔ, wǒ méi chū mén.",
+    "en": "Because it was raining, I didn't go out."
+  },
+  "游泳": {
+    "zh": "夏天我喜欢游泳。",
+    "py": "Xiàtiān wǒ xǐhuan yóuyǒng.",
+    "en": "I like swimming in summer."
+  },
+  "右边": {
+    "zh": "银行在右边。",
+    "py": "Yínháng zài yòubiān.",
+    "en": "The bank is on the right."
+  },
+  "鱼": {
+    "zh": "我喜欢吃鱼。",
+    "py": "Wǒ xǐhuan chī yú.",
+    "en": "I like to eat fish."
+  },
+  "元": {
+    "zh": "这本书二十元。",
+    "py": "Zhè běn shū èrshí yuán.",
+    "en": "This book costs twenty yuan."
+  },
+  "远": {
+    "zh": "他家离公司很远。",
+    "py": "Tā jiā lí gōngsī hěn yuǎn.",
+    "en": "His home is far from the office."
+  },
+  "运动": {
+    "zh": "运动对身体好。",
+    "py": "Yùndòng duì shēntǐ hǎo.",
+    "en": "Exercise is good for your health."
+  },
+  "再": {
+    "zh": "请再说一遍。",
+    "py": "Qǐng zài shuō yī biàn.",
+    "en": "Please say it again."
+  },
+  "早上": {
+    "zh": "早上好！",
+    "py": "Zǎoshang hǎo!",
+    "en": "Good morning!"
+  },
+  "张": {
+    "zh": "我买了三张票。",
+    "py": "Wǒ mǎi le sān zhāng piào.",
+    "en": "I bought three tickets."
+  },
+  "丈夫": {
+    "zh": "她丈夫是工程师。",
+    "py": "Tā zhàngfū shì gōngchéngshī.",
+    "en": "Her husband is an engineer."
+  },
+  "找": {
+    "zh": "我在找我的钥匙。",
+    "py": "Wǒ zài zhǎo wǒ de yàoshi.",
+    "en": "I'm looking for my keys."
+  },
+  "着": {
+    "zh": "他站着等我。",
+    "py": "Tā zhànzhe děng wǒ.",
+    "en": "He stood waiting for me."
+  },
+  "真": {
+    "zh": "这个蛋糕真好吃！",
+    "py": "Zhège dàngāo zhēn hǎochī!",
+    "en": "This cake is really delicious!"
+  },
+  "正在": {
+    "zh": "他正在睡觉。",
+    "py": "Tā zhèngzài shuìjiào.",
+    "en": "He is sleeping right now."
+  },
+  "知道": {
+    "zh": "你知道他在哪里吗？",
+    "py": "Nǐ zhīdào tā zài nǎlǐ ma?",
+    "en": "Do you know where he is?"
+  },
+  "准备": {
+    "zh": "我在准备晚饭。",
+    "py": "Wǒ zài zhǔnbèi wǎnfàn.",
+    "en": "I'm preparing dinner."
+  },
+  "自行车": {
+    "zh": "他骑自行车上班。",
+    "py": "Tā qí zìxíngchē shàngbān.",
+    "en": "He cycles to work."
+  },
+  "走": {
+    "zh": "我们走过去吧。",
+    "py": "Wǒmen zǒu guòqù ba.",
+    "en": "Let's walk there."
+  },
+  "最": {
+    "zh": "这是我最喜欢的书。",
+    "py": "Zhè shì wǒ zuì xǐhuan de shū.",
+    "en": "This is my favorite book."
+  },
+  "左边": {
+    "zh": "邮局在左边。",
+    "py": "Yóujú zài zuǒbiān.",
+    "en": "The post office is on the left."
+  }
+}
