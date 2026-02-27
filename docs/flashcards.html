@@ -1813,12 +1813,32 @@ function populateVoiceSelector() {
 }
 
 function getSelectedVoice() {
+  // Re-query fresh voice list (Chrome replaces objects after voiceschanged),
+  // but ONLY match within Mandarin voices — already excludes zh-HK (Cantonese).
+  // This prevents a saved Cantonese voice name from slipping through.
+  const mandarin = speechSynthesis.getVoices().filter(v => {
+    const lang = v.lang.replace('_', '-').toLowerCase();
+    return lang.startsWith('zh') && !lang.startsWith('zh-hk');
+  });
+
   const name = currentSettings.voiceName
     || document.getElementById('settingsVoice')?.value;
-  if (!name) return zhVoices[0] || null;
-  // Always re-query — voice objects may have been replaced after voiceschanged
-  return speechSynthesis.getVoices().find(v => v.name === name)
-    || zhVoices[0] || null;
+
+  if (name) {
+    const match = mandarin.find(v => v.name === name);
+    if (match) return match;
+    // Saved name was Cantonese or unavailable — fall through to best default
+  }
+
+  // Pick best available Mandarin voice: Neural zh-CN > Google 普通话 > local zh-CN > anything
+  const neural   = mandarin.find(v => !v.localService &&
+    (v.name.includes('Xiaoxiao') || v.name.includes('Yunxi') || v.name.includes('Xiaoyi') ||
+     v.name.includes('Yunyang') ||
+     (v.name.includes('Online') && (v.lang.startsWith('zh-CN') || v.lang.startsWith('zh_CN')))));
+  const googleCN = mandarin.find(v => v.name.includes('普通话') && v.name.includes('中国大陆'));
+  const localCN  = mandarin.find(v => v.localService &&
+    (v.lang.startsWith('zh-CN') || v.lang.startsWith('zh_CN')));
+  return neural || googleCN || localCN || mandarin[0] || null;
 }
 
 // ─── Audio: Native speaker MP3 → TTS fallback ────────────────────────────────
