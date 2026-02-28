@@ -1827,7 +1827,7 @@ const AUDIO_CDN        = 'https://raw.githubusercontent.com/hugolpz/audio-cmn/ma
 const GOOGLE_TTS       = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=';
 // Pre-generated edge-tts sentence audio (set after GitHub Release upload)
 // Set to null to use Google TTS fallback instead.
-const SENTENCE_AUDIO_BASE = null;  // e.g. 'https://github.com/HMJason/HSK-Flashcards/releases/download/sentence-audio-v1/'
+const SENTENCE_AUDIO_BASE = 'https://github.com/HMJason/HSK-Flashcards/releases/download/sentence-audio-v1/';
 
 let _audioCache = {};  // word → 'ok' | 'failed' | 'google'
 let _sentenceCache = {};  // word → 'ok' | 'google' (for sentence audio)
