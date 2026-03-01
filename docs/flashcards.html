@@ -1864,7 +1864,7 @@ function speakText(text, word) {
     const url = SENTENCE_AUDIO_BASE + _wordToHex(word) + '_sentence.mp3';
     const audio = new Audio(url);
     const baseRate = typeof currentSettings.speechRate === 'number' ? currentSettings.speechRate : 1.0;
-    audio.playbackRate = baseRate * 0.75; // sentence MP3s recorded faster than word recordings
+    audio.playbackRate = baseRate * 0.65; // sentence MP3s recorded faster than word recordings
     audio.addEventListener('canplaythrough', () => {
       _sentenceCache[word] = 'ok';
       audio.play().catch(() => _ttsSpeak(text));
