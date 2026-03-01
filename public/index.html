@@ -1692,15 +1692,20 @@ let zhVoices = [];     // all zh-* voices available on this device
 let voicesReady = false;
 
 // Load voices — handles Chrome's async loading and Firefox/Safari sync loading
+function isCantonese(lang) {
+  const l = lang.replace('_','-').toLowerCase();
+  return l.includes('-hk') || l.startsWith('yue') || l.includes('-yue');
+}
+
 function initVoices() {
   return new Promise(resolve => {
     function process() {
       const all = speechSynthesis.getVoices();
       // Normalise Android underscores, then filter for any zh locale
-      // Only Mandarin voices (zh-CN, zh-TW) — exclude Cantonese (zh-HK)
+      // Only Mandarin voices (zh-CN, zh-TW) — exclude Cantonese (zh-HK, zh-Hant-HK, yue)
       zhVoices = all.filter(v => {
         const lang = v.lang.replace('_','-').toLowerCase();
-        return lang.startsWith('zh') && !lang.startsWith('zh-hk');
+        return lang.startsWith('zh') && !isCantonese(lang);
       });
       voicesReady = true;
       populateVoiceSelector();
@@ -1768,8 +1773,10 @@ function getSelectedVoice() {
     || document.getElementById('settingsVoice')?.value;
   if (!name) return zhVoices[0] || null;
   // Always re-query — voice objects may have been replaced after voiceschanged
-  return speechSynthesis.getVoices().find(v => v.name === name)
-    || zhVoices[0] || null;
+  const voices = speechSynthesis.getVoices();
+  const v = voices.find(v => v.name === name);
+  if (v && !isCantonese(v.lang)) return v;
+  return zhVoices[0] || null;
 }
 
 // ─── Audio: MP3-first, TTS fallback ───────────────────────────────────────────
