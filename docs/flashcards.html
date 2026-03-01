@@ -1971,7 +1971,11 @@ function testVoice() {
   // Save pending voice selection before testing
   const sel = document.getElementById('settingsVoice');
   if (sel) currentSettings.voiceName = sel.value;
-  _ttsSpeak('你好，欢迎学习汉语！');
+  const text = '你好，欢迎学习汉语！';
+  // Use Google TTS (guaranteed Mandarin) — browser TTS may pick Cantonese
+  // if the device only has zh-HK voices installed.
+  const url = GOOGLE_TTS + encodeURIComponent(text);
+  _playAudioUrl(url);
 }
 
 // ─── Done screen ──────────────────────────────────────────────────────────────
