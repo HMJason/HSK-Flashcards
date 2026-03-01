@@ -1701,6 +1701,12 @@ const VOICE_LABELS = {
 };
 
 let zhVoices = [];     // all zh-* voices available on this device
+
+// Returns true for any Cantonese voice (zh-HK, zh-Hant-HK, zh-yue, yue-HK, etc.)
+function isCantonese(lang) {
+  const l = lang.replace('_','-').toLowerCase();
+  return l.includes('-hk') || l.startsWith('yue') || l.includes('-yue');
+}
 let voicesReady = false;
 
 // Load voices — handles Chrome's async loading and Firefox/Safari sync loading
@@ -1709,10 +1715,10 @@ function initVoices() {
     function process() {
       const all = speechSynthesis.getVoices();
       // Only Mandarin voices (zh-CN, zh-TW, zh-SG).
-      // Cantonese (zh-HK) is permanently excluded — it is a different language.
+      // Cantonese is permanently excluded — covers zh-HK, zh-Hant-HK, zh-yue, yue-HK etc.
       zhVoices = all.filter(v => {
         const lang = v.lang.replace('_', '-').toLowerCase();
-        return lang.startsWith('zh') && !lang.startsWith('zh-hk');
+        return lang.startsWith('zh') && !isCantonese(v.lang);
       });
       voicesReady = true;
       populateVoiceSelector();
@@ -1750,9 +1756,8 @@ function populateVoiceSelector() {
     const grp = document.createElement('optgroup');
     grp.label = label;
     voices.forEach(v => {
-      // Final guard — never display a zh-HK (Cantonese) voice in the selector
-      const lang = v.lang.replace('_', '-').toLowerCase();
-      if (lang.startsWith('zh-hk')) return;
+      // Final guard — never display a Cantonese voice in the selector
+      if (isCantonese(v.lang)) return;
       const opt = document.createElement('option');
       opt.value = v.name;
       opt.textContent = VOICE_LABELS[v.name] || v.name;
@@ -1791,7 +1796,7 @@ function getSelectedVoice() {
   // This prevents a saved Cantonese voice name from slipping through.
   const mandarin = speechSynthesis.getVoices().filter(v => {
     const lang = v.lang.replace('_', '-').toLowerCase();
-    return lang.startsWith('zh') && !lang.startsWith('zh-hk');
+    return lang.startsWith('zh') && !isCantonese(v.lang);
   });
 
   const name = currentSettings.voiceName
