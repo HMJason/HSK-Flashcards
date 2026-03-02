@@ -1828,7 +1828,7 @@ function getSelectedVoice() {
 // Why Google TTS for sentences: browser speechSynthesis picks the OS default
 // Chinese voice which may be Cantonese (zh-HK). Google TTS is always Mandarin.
 
-console.log('[HSK] flashcards.html v2026-03-01d loaded — testVoice uses Google TTS');
+console.log('[HSK] flashcards.html v2026-03-02a loaded — sentence audio 0.55x');
 const AUDIO_CDN        = 'https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk/cmn-';
 const GOOGLE_TTS       = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=';
 // Pre-generated edge-tts sentence audio (set after GitHub Release upload)
@@ -1870,7 +1870,7 @@ function speakText(text, word) {
     const url = SENTENCE_AUDIO_BASE + _wordToHex(word) + '_sentence.mp3';
     const audio = new Audio(url);
     const baseRate = typeof currentSettings.speechRate === 'number' ? currentSettings.speechRate : 1.0;
-    audio.playbackRate = baseRate * 0.65; // sentence MP3s recorded faster than word recordings
+    audio.playbackRate = baseRate * 0.55; // sentence MP3s recorded faster than word recordings
     audio.addEventListener('canplaythrough', () => {
       _sentenceCache[word] = 'ok';
       audio.play().catch(() => _ttsSpeak(text));
